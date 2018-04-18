@@ -1,6 +1,6 @@
 //Maya ASCII 2017 scene
 //Name: WhiteboxHumanCharacter.ma
-//Last modified: Wed, Apr 18, 2018 04:00:51 PM
+//Last modified: Wed, Apr 18, 2018 04:04:02 PM
 //Codeset: UTF-8
 requires maya "2017";
 currentUnit -l centimeter -a degree -t film;
@@ -13,8 +13,8 @@ fileInfo "license" "education";
 createNode transform -s -n "persp";
 	rename -uid "71C48A9A-344B-E48C-B17A-F59D1D4C3671";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" -10.719447026335402 9.535818799638875 27.540526070492906 ;
-	setAttr ".r" -type "double3" -15.938352742470286 -741.79999999988661 0 ;
+	setAttr ".t" -type "double3" -4.5444174920902478 6.3253740545115136 30.025907083174207 ;
+	setAttr ".r" -type "double3" -9.9383527424697977 -729.39999999986992 -1.0074512302658452e-16 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "B517B36E-DF44-727F-BFC3-EEA7F9861494";
 	setAttr -k off ".v" no;
