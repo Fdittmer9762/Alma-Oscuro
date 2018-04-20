@@ -17,20 +17,18 @@ public class CCAnim : MonoBehaviour {
 		Anim = GetComponentInChildren<Animator> ();
 	}
 
-	void Update(){
-	}
-
 	public void RotateCharacter (){
 		lookTarget.x = TempPos.x; 
 		lookTarget.z = TempPos.z;
-		this.transform.rotation = Quaternion.LookRotation (lookTarget, Vector3.up);
+		if (Vector3.Distance(Vector3.zero, lookTarget) > .2f) {
+			this.transform.rotation = Quaternion.LookRotation (lookTarget, Vector3.up);
+		}
 	}
 
 	public void MoveCharacter(){
-		RotateCharacter ();
 		TempPos = new Vector3(Anim.GetFloat("TempX"),Anim.GetFloat("TempY"),Anim.GetFloat("TempZ"));
 		CC.Move (TempPos * Time.deltaTime * playerSpeed);
-		//RotateCharacter ();
+		RotateCharacter ();
 	}
 
 }
