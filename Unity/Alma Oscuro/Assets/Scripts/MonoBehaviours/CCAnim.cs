@@ -18,7 +18,7 @@ public class CCAnim : MonoBehaviour {
 	}
 
 	void Update(){
-		MoveCharacter ();
+		//MoveCharacter ();
 	}
 
 	public void MoveCharacter(){

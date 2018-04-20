@@ -110,7 +110,7 @@ MonoBehaviour:
   m_MinSize: {x: 613, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 76
+  controlID: 97
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -210,7 +210,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 492}
   m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
-  controlID: 77
+  controlID: 98
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -284,7 +284,7 @@ MonoBehaviour:
   m_MinSize: {x: 277, y: 192}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 153
+  controlID: 179
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -328,8 +328,8 @@ MonoBehaviour:
     y: 632
     width: 462
     height: 315
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 102, y: 121}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 22}
   m_Panes:
   - {fileID: 22}
@@ -470,7 +470,7 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: -0.021487063, y: 0.96993, z: -0.22384198, w: -0.0931064}
     speed: 2
-    m_Value: {x: -0.021487065, y: 0.96993005, z: -0.223842, w: -0.093106404}
+    m_Value: {x: -0.021487067, y: 0.96993005, z: -0.223842, w: -0.0931064}
   m_Size:
     m_Target: 5.845339
     speed: 2
@@ -516,13 +516,16 @@ MonoBehaviour:
     - {fileID: 1107800762018549222, guid: 8ae9e5b6451044e01833d492c7d49cf3, type: 2}
     - {fileID: 1102034431079388140, guid: 8ae9e5b6451044e01833d492c7d49cf3, type: 2}
     m_ValueSerializationHelper:
-    - {x: 335.00006, y: 128.80003}
+    - {x: 397.00003, y: 254.40001}
     - {x: 108.5, y: 63.900024}
   m_PreviewAnimator: {fileID: 0}
   m_AnimatorController: {fileID: 9100000, guid: 8ae9e5b6451044e01833d492c7d49cf3,
     type: 2}
   m_BreadCrumbs:
   - m_Target: {fileID: 1107800762018549222, guid: 8ae9e5b6451044e01833d492c7d49cf3,
+      type: 2}
+    m_ScrollPosition: {x: 0, y: 0}
+  - m_Target: {fileID: 1102034431079388140, guid: 8ae9e5b6451044e01833d492c7d49cf3,
       type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
@@ -591,9 +594,9 @@ MonoBehaviour:
     height: 425
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 9a31ffff
-    m_LastClickedID: -52838
-    m_ExpandedIDs: 34edffff1afcffff00000000
+    m_SelectedIDs: 82260000
+    m_LastClickedID: 0
+    m_ExpandedIDs: 10fcffff0000000032260000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -654,19 +657,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Scripts/MonoBehaviours
+    - Assets/Scripts/StateMachineBehaviour
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scripts/MonoBehaviours
+  - Assets/Scripts/StateMachineBehaviour
   m_LastFoldersGridSize: 16
   m_LastProjectPath: /Users/10668747/Documents/Alma-Oscuro/Unity/Alma Oscuro
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: fe250000
-    m_LastClickedID: 9726
-    m_ExpandedIDs: 00000000ea250000f0250000fa250000fc25000000ca9a3bffffff7f
+    m_SelectedIDs: 12260000
+    m_LastClickedID: 9746
+    m_ExpandedIDs: 00000000082600000e2600001e2600002026000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -694,7 +697,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ea250000fc250000
+    m_ExpandedIDs: 00000000082600000e2600001e26000020260000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -725,15 +728,15 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: 8c26000074ddfeff582d00007e2800001e2e0000fe26000006270000ee270000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: CCAnim
-      m_OriginalName: CCAnim
+      m_Name: ButtonTrigger
+      m_OriginalName: ButtonTrigger
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 10320
+      m_UserData: 10678
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
       m_OriginalEventType: 0
