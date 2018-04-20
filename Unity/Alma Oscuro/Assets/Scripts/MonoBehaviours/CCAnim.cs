@@ -9,7 +9,7 @@ public class CCAnim : MonoBehaviour {
 	private Animator Anim;
 
 	private Vector3 TempPos;
-
+	private Vector3 lookTarget;
 	public float playerSpeed;
 
 	void Start(){
@@ -18,12 +18,19 @@ public class CCAnim : MonoBehaviour {
 	}
 
 	void Update(){
-		//MoveCharacter ();
+	}
+
+	public void RotateCharacter (){
+		lookTarget.x = TempPos.x; 
+		lookTarget.z = TempPos.z;
+		this.transform.rotation = Quaternion.LookRotation (lookTarget, Vector3.up);
 	}
 
 	public void MoveCharacter(){
+		RotateCharacter ();
 		TempPos = new Vector3(Anim.GetFloat("TempX"),Anim.GetFloat("TempY"),Anim.GetFloat("TempZ"));
 		CC.Move (TempPos * Time.deltaTime * playerSpeed);
+		//RotateCharacter ();
 	}
 
 }
