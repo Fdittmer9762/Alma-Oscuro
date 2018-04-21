@@ -13,37 +13,37 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: TempZ
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: TempY
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Speed
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Grounded
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 1
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Jump
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -57,19 +57,6 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!114 &114006604609545056
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa9ff2f485a314504946c97026868970, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AnimParam: TempX
-  multiplyer: 0.7
 --- !u!114 &114172645517823982
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -235,19 +222,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Event: {fileID: 11400000, guid: aff76e9fd2aa14c9a891b54b80727845, type: 2}
---- !u!114 &114612116988243262
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa9ff2f485a314504946c97026868970, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AnimParam: TempZ
-  multiplyer: 0.7
 --- !u!114 &114618570215901868
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -656,8 +630,6 @@ AnimatorState:
   - {fileID: 114362111849413118}
   - {fileID: 114267673712270550}
   - {fileID: 114223146417486272}
-  - {fileID: 114006604609545056}
-  - {fileID: 114612116988243262}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -754,6 +726,33 @@ AnimatorState:
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
+--- !u!1107 &1107321264997126726
+AnimatorStateMachine:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Jump/Falling
+  m_ChildStates:
+  - serializedVersion: 1
+    m_State: {fileID: 1102093866427149530}
+    m_Position: {x: 0, y: 0, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 1102446886866756764}
+    m_Position: {x: 0, y: 0, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 1102373978048585202}
+    m_Position: {x: 0, y: 0, z: 0}
+  m_ChildStateMachines: []
+  m_AnyStateTransitions: []
+  m_EntryTransitions: []
+  m_StateMachineTransitions: {}
+  m_StateMachineBehaviours: []
+  m_AnyStatePosition: {x: 50, y: 20, z: 0}
+  m_EntryPosition: {x: 50, y: 120, z: 0}
+  m_ExitPosition: {x: 800, y: 120, z: 0}
+  m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
+  m_DefaultState: {fileID: 1102093866427149530}
 --- !u!1107 &1107800762018549222
 AnimatorStateMachine:
   serializedVersion: 5
@@ -768,16 +767,10 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 1102034431079388140}
     m_Position: {x: 492, y: 120, z: 0}
+  m_ChildStateMachines:
   - serializedVersion: 1
-    m_State: {fileID: 1102093866427149530}
-    m_Position: {x: 12, y: 264, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 1102446886866756764}
-    m_Position: {x: 12, y: 192, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 1102373978048585202}
-    m_Position: {x: 240, y: 264, z: 0}
-  m_ChildStateMachines: []
+    m_StateMachine: {fileID: 1107321264997126726}
+    m_Position: {x: 240, y: 12, z: 0}
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
