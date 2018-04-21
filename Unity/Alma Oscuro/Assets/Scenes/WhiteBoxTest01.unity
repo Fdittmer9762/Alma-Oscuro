@@ -852,7 +852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366297f922e2f434c8557ab751a88368, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CamTarget: {fileID: 777348444}
+  CamTarget: {fileID: 445199525}
   smoothValue: 0.1
 --- !u!4 &2070955435
 Transform:
