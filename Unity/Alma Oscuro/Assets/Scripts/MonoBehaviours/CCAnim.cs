@@ -12,6 +12,8 @@ public class CCAnim : MonoBehaviour {
 	private Vector3 lookTarget;
 	public float playerSpeed;
 
+	public Transform camTransform;
+
 	void Start(){
 		CC = GetComponent<CharacterController> ();
 		Anim = GetComponentInChildren<Animator> ();
@@ -27,6 +29,7 @@ public class CCAnim : MonoBehaviour {
 
 	public void MoveCharacter(){
 		TempPos = new Vector3(Anim.GetFloat("TempX"),Anim.GetFloat("TempY"),Anim.GetFloat("TempZ"));
+		TempPos = camTransform.TransformDirection (TempPos);
 		CC.Move (TempPos * Time.deltaTime * playerSpeed);
 		RotateCharacter ();
 	}
