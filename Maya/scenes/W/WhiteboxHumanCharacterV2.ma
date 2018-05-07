@@ -1,6 +1,6 @@
 //Maya ASCII 2017 scene
 //Name: WhiteboxHumanCharacterV2.ma
-//Last modified: Mon, May 07, 2018 03:02:00 PM
+//Last modified: Mon, May 07, 2018 03:21:54 PM
 //Codeset: UTF-8
 requires maya "2017";
 currentUnit -l centimeter -a degree -t film;
@@ -14,7 +14,7 @@ createNode transform -s -n "persp";
 	rename -uid "4A6A8DC5-7649-72D5-282C-CF9CB3D49308";
 	setAttr ".v" no;
 	setAttr ".t" -type "double3" -5.9184102963213832 7.8355899070175905 16.600425018045257 ;
-	setAttr ".r" -type "double3" -28.538352728151388 336.99999999921118 1.7276142920665404e-15 ;
+	setAttr ".r" -type "double3" -28.538352728151391 336.99999999921118 1.7276142920665404e-15 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "811FDD74-C445-3CE7-73E5-A2A5B9ACF211";
 	setAttr -k off ".v" no;
@@ -72,7 +72,3711 @@ createNode camera -s -n "sideShape" -p "side";
 	setAttr ".man" -type "string" "side_mask";
 	setAttr ".hc" -type "string" "viewSet -s %camera";
 	setAttr ".o" yes;
-createNode transform -n "WhiteboxHumanCharacter1:GEO_GRP";
+createNode transform -n "WhiteboxHumanCharacterGRP";
+	rename -uid "317C2417-9645-320A-3C16-9EB27D227782";
+createNode transform -n "WhiteboxHumanCharacter1:JNT_GRP" -p "WhiteboxHumanCharacterGRP";
+	rename -uid "3FF64077-8C4E-C74E-5E93-9385F353513F";
+	setAttr ".v" no;
+createNode joint -n "WhiteboxHumanCharacter1:COG_JNT" -p "WhiteboxHumanCharacter1:JNT_GRP";
+	rename -uid "C1481463-6B4F-F452-862F-ADBDDC3D3191";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" -89.999999999999986 -7.8617961959984601 89.999999999999986 ;
+	setAttr ".radi" 0.6;
+createNode joint -n "WhiteboxHumanCharacter1:SpineBase_RK_JNT" -p "WhiteboxHumanCharacter1:COG_JNT";
+	rename -uid "52165AD2-C744-24BF-B90C-BB81875BA583";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".radi" 0.4;
+createNode joint -n "WhiteboxHumanCharacter1:Chest_RK_JNT" -p "WhiteboxHumanCharacter1:SpineBase_RK_JNT";
+	rename -uid "4D43C7EB-1543-A548-C7C0-0BB5E1FCF671";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 0 0 24.668956883553896 ;
+	setAttr ".radi" 0.54375141074451394;
+createNode joint -n "WhiteboxHumanCharacter1:Neck_RK_JNT" -p "WhiteboxHumanCharacter1:Chest_RK_JNT";
+	rename -uid "461398D9-024E-7454-0386-8CACD4656B75";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 0 0 -33.313524526082119 ;
+	setAttr ".radi" 0.5;
+createNode joint -n "WhiteboxHumanCharacter1:Head_RK_JNT" -p "WhiteboxHumanCharacter1:Neck_RK_JNT";
+	rename -uid "CE12EA27-0E43-87FB-75D9-0893A64F0738";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 0 0 16.506363838526656 ;
+	setAttr ".radi" 0.55172413793103448;
+createNode joint -n "WhiteboxHumanCharacter1:Head02_RK_JNT" -p "WhiteboxHumanCharacter1:Head_RK_JNT";
+	rename -uid "76C46F44-DA48-FFAC-F741-E0BD9B2DF01C";
+	setAttr ".t" -type "double3" 1.7346918303048759 7.7035792425345117e-16 3.8517896212672539e-16 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jo" -type "double3" 89.999999999999986 89.999999999999943 0 ;
+	setAttr ".radi" 0.55172413793103448;
+createNode parentConstraint -n "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1" 
+		-p "WhiteboxHumanCharacter1:Head_RK_JNT";
+	rename -uid "493C5D6E-AE44-1F42-2876-C9B6B45278C9";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Head_CTRLW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" -5.0086799845564314e-15 1.0394919058853702e-07 
+		-1.861268243696923e-09 ;
+	setAttr ".tg[0].tor" -type "double3" -90 -2.544443745170814e-14 89.999999999999972 ;
+	setAttr ".lr" -type "double3" 1.3696828020924836e-15 9.4428450033698822e-15 3.8166656177562201e-14 ;
+	setAttr ".rst" -type "double3" 1.0429832337590401 -4.4408920985006262e-16 2.220446049250317e-16 ;
+	setAttr ".rsrr" -type "double3" 1.3696828020924836e-15 9.4428450033698822e-15 3.8166656177562201e-14 ;
+	setAttr -k on ".w0";
+createNode parentConstraint -n "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1" 
+		-p "WhiteboxHumanCharacter1:Neck_RK_JNT";
+	rename -uid "EEF1A1EA-C541-7735-39A5-398660429FBD";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Neck_CTRLW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" -1.8138771268477084e-16 1.0394919147671544e-07 
+		1.3711783541925371e-08 ;
+	setAttr ".tg[0].tor" -type "double3" -90 -16.506363838526696 89.999999999999972 ;
+	setAttr ".lr" -type "double3" 7.0058579804945521e-15 -1.2237623813625887e-15 -7.4817949232547961e-32 ;
+	setAttr ".rst" -type "double3" 2.0892455335266433 4.4408920985006262e-16 -4.4408920985006198e-16 ;
+	setAttr ".rsrr" -type "double3" 7.0058579804945521e-15 -1.2237623813625887e-15 -7.4817949232547961e-32 ;
+	setAttr -k on ".w0";
+createNode joint -n "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT" -p "WhiteboxHumanCharacter1:Chest_RK_JNT";
+	rename -uid "7C6BADE4-AA45-A558-9412-7EA14ACBBA17";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 36.630931006370723 60.479432523376403 106.09493995560251 ;
+	setAttr ".radi" 0.5;
+createNode joint -n "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT" -p "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT";
+	rename -uid "24A3EAD2-6E4D-9341-2A5A-2887BE1F429A";
+	setAttr ".t" -type "double3" 0.95693469205386983 9.0276145704271334e-16 -4.9960036108132044e-16 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 83.393433624841649 21.105803356008117 -15.883172248551773 ;
+	setAttr ".radi" 0.60434188757843832;
+createNode joint -n "WhiteboxHumanCharacter1:L_Elbow_RK_JNT" -p "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT";
+	rename -uid "BF49E625-524C-C85C-9E88-4C9F9966EF5C";
+	setAttr ".t" -type "double3" 3.0201197908950226 -6.6985255742173204e-17 -6.9808492224035787e-16 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 0.4668617108391494 -1.0624708392404922 -11.771931331807675 ;
+	setAttr ".radi" 0.56806478500620017;
+createNode joint -n "WhiteboxHumanCharacter1:L_Wrist_RK_JNT" -p "WhiteboxHumanCharacter1:L_Elbow_RK_JNT";
+	rename -uid "5C93DABD-734A-6FBC-D538-72B74FB0250E";
+	setAttr ".t" -type "double3" 2.3466453757273538 -4.3739203359650297e-16 -5.7681804584805341e-16 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 85.151962216901282 9.7996309802259027 -16.2215501884662 ;
+	setAttr ".radi" 0.3;
+createNode orientConstraint -n "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1" 
+		-p "WhiteboxHumanCharacter1:L_Wrist_RK_JNT";
+	rename -uid "7AE04FFC-8C4C-938E-ADB5-25930C91C416";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Wrist_IK_JNTW0" -dv 1 -min 0 -at "double";
+	addAttr -dcb 0 -ci true -k true -sn "w1" -ln "L_Wrist_FK_JNTW1" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr -s 2 ".tg";
+	setAttr ".lr" -type "double3" 2.1974340322016555 0.44840199971239597 -0.89731418251163542 ;
+	setAttr ".o" -type "double3" -2.2042440051078369 -0.41361196846423515 0.91387105439260119 ;
+	setAttr ".rsrr" -type "double3" -3.9718108387904993e-16 3.1060104311167148e-18 1.5530052155583574e-18 ;
+	setAttr -k on ".w0";
+	setAttr -k on ".w1";
+createNode orientConstraint -n "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1" 
+		-p "WhiteboxHumanCharacter1:L_Elbow_RK_JNT";
+	rename -uid "25866D65-484F-063D-CACC-F1908174737A";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Elbow_IK_JNTW0" -dv 1 -min 0 -at "double";
+	addAttr -dcb 0 -ci true -k true -sn "w1" -ln "L_Elbow_FK_JNTW1" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr -s 2 ".tg";
+	setAttr ".lr" -type "double3" 2.4023887063971867 0.27942768513078975 -0.021564581332019349 ;
+	setAttr ".o" -type "double3" -2.4025238184104203 -0.27833144580167513 0.032553237770718814 ;
+	setAttr ".rsrr" -type "double3" 3.6398559739649017e-20 9.9392333795734899e-17 5.4355182544542523e-18 ;
+	setAttr -k on ".w0";
+	setAttr -k on ".w1";
+createNode orientConstraint -n "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1" 
+		-p "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT";
+	rename -uid "1BB54D34-9C4F-297D-1FEE-23B54ECB344A";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Shoulder_IK_JNTW0" -dv 1 -min 0 
+		-at "double";
+	addAttr -dcb 0 -ci true -k true -sn "w1" -ln "L_Shoulder_FK_JNTW1" -dv 1 -min 0 
+		-at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr -s 2 ".tg";
+	setAttr ".lr" -type "double3" -5.9635400277440939e-16 -2.8966260080954173e-32 -5.5659706925611551e-15 ;
+	setAttr ".o" -type "double3" -2.408958344139208 0.21639814642967101 -0.02395853072253604 ;
+	setAttr ".rsrr" -type "double3" -7.9513867036587919e-16 2.4799552035947529e-17 -3.8825130388958945e-18 ;
+	setAttr -k on ".w0";
+	setAttr -k on ".w1";
+createNode parentConstraint -n "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1" 
+		-p "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT";
+	rename -uid "603F50CC-3E40-EDD4-C98B-1397AE4D2073";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Collar_FK_CTRLW0" -dv 1 -min 0 
+		-at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" 0.00027017853931393665 1.2541259764020651e-07 
+		-1.2956331563174217e-09 ;
+	setAttr ".tg[0].tor" -type "double3" -179.99999999999991 24.437544359623786 -17.09727965501256 ;
+	setAttr ".lr" -type "double3" 3.1805546814635155e-14 -9.5416640443905487e-15 1.5902773407317554e-15 ;
+	setAttr ".rst" -type "double3" 1.7279126959264417 -0.44883906917148231 -0.27427016757205952 ;
+	setAttr ".rsrr" -type "double3" 1.9083328088781097e-14 -1.2722218725854064e-14 -4.7708320221952767e-15 ;
+	setAttr -k on ".w0";
+createNode joint -n "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT" -p "WhiteboxHumanCharacter1:Chest_RK_JNT";
+	rename -uid "E2B9B790-2D4F-85BC-6265-7EB7140D990F";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" -36.629346544383125 -60.487156227430347 106.09542507489542 ;
+	setAttr ".radi" 0.5;
+createNode joint -n "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT" -p "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT";
+	rename -uid "6255D7B5-AE4B-3D43-291D-24AFEE02589A";
+	setAttr ".t" -type "double3" 0.9571669162148948 8.6120493468691508e-16 3.8857805861880479e-16 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 83.397362180450628 21.100253514761359 164.12265873399167 ;
+	setAttr ".radi" 0.60434188757843832;
+createNode joint -n "WhiteboxHumanCharacter1:R_Elbow_RK_JNT" -p "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT";
+	rename -uid "929C2D48-9149-C09D-98D4-31B78419F857";
+	setAttr ".t" -type "double3" -3.0201240546336696 -2.8538302976333085e-07 -4.7966670431165426e-06 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 0.46686171083506767 -1.0624708392404829 -11.771931331807645 ;
+	setAttr ".radi" 0.56806478500620017;
+createNode joint -n "WhiteboxHumanCharacter1:R_Wrist_RK_JNT" -p "WhiteboxHumanCharacter1:R_Elbow_RK_JNT";
+	rename -uid "1A3AA770-A84C-A15F-D301-F8881A01377B";
+	setAttr ".t" -type "double3" -2.346648632687955 -4.6468127234966516e-07 2.0844545982612317e-06 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 85.151962216905289 9.799630980227052 -16.221550188465535 ;
+	setAttr ".radi" 0.3;
+createNode orientConstraint -n "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1" 
+		-p "WhiteboxHumanCharacter1:R_Wrist_RK_JNT";
+	rename -uid "BD6891EE-CE42-5E6B-27F3-C39E287C64E6";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Wrist_IK_JNTW0" -dv 1 -min 0 -at "double";
+	addAttr -dcb 0 -ci true -k true -sn "w1" -ln "R_Wrist_FK_JNTW1" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr -s 2 ".tg";
+	setAttr ".lr" -type "double3" 2.1972207795336001 0.44794935222810628 -0.89720551941178306 ;
+	setAttr ".o" -type "double3" -2.2040227767488112 -0.41316729151784004 0.91374352331616349 ;
+	setAttr ".rsrr" -type "double3" -7.9358566515032083e-16 -5.2802177328984168e-17 
+		5.9946001320552611e-16 ;
+	setAttr -k on ".w0";
+	setAttr -k on ".w1";
+createNode orientConstraint -n "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1" 
+		-p "WhiteboxHumanCharacter1:R_Elbow_RK_JNT";
+	rename -uid "5E50636E-3647-48CA-4604-D9BE2F8DC1F0";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Elbow_IK_JNTW0" -dv 1 -min 0 -at "double";
+	addAttr -dcb 0 -ci true -k true -sn "w1" -ln "R_Elbow_FK_JNTW1" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr -s 2 ".tg";
+	setAttr ".lr" -type "double3" 2.402072501898604 0.27939073041861745 -0.021253352410089521 ;
+	setAttr ".o" -type "double3" -2.4022043183512629 -0.27825443610331169 0.032944786748329548 ;
+	setAttr ".rsrr" -type "double3" -1.1927322712553117e-15 3.8825130388958926e-19 -4.6590156466750726e-18 ;
+	setAttr -k on ".w0";
+	setAttr -k on ".w1";
+createNode orientConstraint -n "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1" 
+		-p "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT";
+	rename -uid "73310425-2940-CEB6-D459-698553EE035B";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Shoulder_IK_JNTW0" -dv 1 -min 0 
+		-at "double";
+	addAttr -dcb 0 -ci true -k true -sn "w1" -ln "R_Shoulder_FK_JNTW1" -dv 1 -min 0 
+		-at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr -s 2 ".tg";
+	setAttr ".lr" -type "double3" 2.5444437451708134e-14 8.7465253740246735e-15 -1.3119788061037004e-14 ;
+	setAttr ".o" -type "double3" -2.4086362790653419 0.21635815826540583 -0.024263665094834387 ;
+	setAttr ".rsrr" -type "double3" 7.9513867036587919e-16 -4.9599104071895058e-17 3.1060104311167156e-18 ;
+	setAttr -k on ".w0";
+	setAttr -k on ".w1";
+createNode parentConstraint -n "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1" 
+		-p "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT";
+	rename -uid "BD8EAF76-1E41-C399-682F-D29DF3B05744";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Collar_FK_CTRLW0" -dv 1 -min 0 
+		-at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" -1.0967254215898947e-08 1.2541259764020651e-07 
+		-1.2956325456947582e-09 ;
+	setAttr ".tg[0].tor" -type "double3" -2.6554644200347583e-14 24.431203455259098 
+		-162.90757134272872 ;
+	setAttr ".lr" -type "double3" 3.1805546814635155e-14 -3.1805546814635176e-15 4.7708320221952736e-15 ;
+	setAttr ".rst" -type "double3" 1.7279126959264417 -0.44883906917148275 0.27400000000000047 ;
+	setAttr ".rsrr" -type "double3" 3.1805546814635155e-14 -3.1805546814635176e-15 4.7708320221952736e-15 ;
+	setAttr -k on ".w0";
+createNode parentConstraint -n "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1" 
+		-p "WhiteboxHumanCharacter1:Chest_RK_JNT";
+	rename -uid "B748DECF-464E-6B14-FC7F-9F817C06F245";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Chest_CTRLW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" 2.7651430316072281e-17 1.0394919058853702e-07 
+		1.0015821505504618e-09 ;
+	setAttr ".tg[0].tor" -type "double3" -90 16.807160687555442 89.999999999999972 ;
+	setAttr ".lr" -type "double3" 1.2428554344792826e-14 -2.7176986968763291e-15 3.1805546814635168e-15 ;
+	setAttr ".rst" -type "double3" 1.1171135364414313 -0.12453097126772472 2.5496189143456058e-16 ;
+	setAttr ".rsrr" -type "double3" 1.2428554344792826e-14 -2.7176986968763291e-15 3.1805546814635168e-15 ;
+	setAttr -k on ".w0";
+createNode parentConstraint -n "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1" 
+		-p "WhiteboxHumanCharacter1:SpineBase_RK_JNT";
+	rename -uid "C85A7809-474A-972B-DB38-82B1206A5CF9";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "SpineBase_CTRLW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" 1.4701245677308265e-32 -4.4781982566632905e-09 
+		5.2468978605788231e-17 ;
+	setAttr ".tg[0].tor" -type "double3" -90 -7.8617961959984539 89.999999999999972 ;
+	setAttr ".lr" -type "double3" 3.1805546814635168e-15 6.3611093629270335e-15 1.7655625192200639e-31 ;
+	setAttr ".rst" -type "double3" 2.2204460492503131e-16 0 4.9303806576313238e-32 ;
+	setAttr ".rsrr" -type "double3" 3.1805546814635168e-15 6.3611093629270335e-15 1.7655625192200639e-31 ;
+	setAttr -k on ".w0";
+createNode joint -n "WhiteboxHumanCharacter1:Pelvis_RK_JNT" -p "WhiteboxHumanCharacter1:COG_JNT";
+	rename -uid "825EFAB8-254F-946C-1A66-3284690B41CC";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".radi" 0.3;
+createNode joint -n "WhiteboxHumanCharacter1:L_Hip_RK_JNT" -p "WhiteboxHumanCharacter1:Pelvis_RK_JNT";
+	rename -uid "1E515726-EA42-53B7-9B49-4CA04E23D787";
+	setAttr ".t" -type "double3" -1.4911548683528255 0.085978906117019749 -0.72107200000000038 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 3.3329378010491499 0.4696899673739558 179.45476347656918 ;
+	setAttr ".radi" 0.65910852983609347;
+createNode joint -n "WhiteboxHumanCharacter1:L_Knee_RK_JNT" -p "WhiteboxHumanCharacter1:L_Hip_RK_JNT";
+	rename -uid "BD35ADD0-E84F-67FC-264E-B9B3417CE07B";
+	setAttr ".t" -type "double3" 4.0401681341773967 0.54287343233163887 -2.271214316618142e-08 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" -1.1943682958428056e-06 -0.35809378237255041 8.4309309824981078 ;
+	setAttr ".radi" 0.64788465312454702;
+createNode joint -n "WhiteboxHumanCharacter1:L_Ankle_RK_JNT" -p "WhiteboxHumanCharacter1:L_Knee_RK_JNT";
+	rename -uid "88BCC2CB-5649-1E70-BCEA-26B73FE01C59";
+	setAttr ".t" -type "double3" 3.859095507869676 -1.8897061582201502e-07 1.4306168605142389e-07 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 0.28537603515314924 2.3512600368997814 52.785935235012793 ;
+	setAttr ".radi" 0.5;
+createNode joint -n "WhiteboxHumanCharacter1:L_Ball_RK_JNT" -p "WhiteboxHumanCharacter1:L_Ankle_RK_JNT";
+	rename -uid "F38D0050-864F-2D7B-CE30-798287301C19";
+	setAttr ".t" -type "double3" 1.2945435216654368 -2.6936225435589725e-07 -0.026361454188674648 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" -1.2370325768014823 -1.7398228642076301 35.421595798139847 ;
+	setAttr ".radi" 0.50927625006926813;
+createNode joint -n "WhiteboxHumanCharacter1:L_Toe_RK_JNT" -p "WhiteboxHumanCharacter1:L_Ball_RK_JNT";
+	rename -uid "BC94AA98-ED40-B20E-F794-2D81FC278CDB";
+	setAttr ".t" -type "double3" 1.1793378022302934 -9.3607522870466559e-06 -0.080459599374378923 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jo" -type "double3" 89.999999999999986 -1.0273191621127159e-12 91.822421587241536 ;
+	setAttr ".radi" 0.4;
+createNode orientConstraint -n "L_Toe_RK_JNT_orientConstraint1" -p "WhiteboxHumanCharacter1:L_Toe_RK_JNT";
+	rename -uid "F75A5BE2-B547-FE83-FB8C-FAA58966BED3";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Toe_IK_JNTW0" -dv 1 -min 0 -at "double";
+	addAttr -dcb 0 -ci true -k true -sn "w1" -ln "L_Toe_FK_JNTW1" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr -s 2 ".tg";
+	setAttr -k on ".w0";
+	setAttr -k on ".w1";
+createNode orientConstraint -n "L_Ball_RK_JNT_orientConstraint1" -p "WhiteboxHumanCharacter1:L_Ball_RK_JNT";
+	rename -uid "2CAE6880-B942-0A8E-A6F7-FA8DE2FCCF8B";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Ball_IK_JNTW0" -dv 1 -min 0 -at "double";
+	addAttr -dcb 0 -ci true -k true -sn "w1" -ln "L_Ball_FK_JNTW1" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr -s 2 ".tg";
+	setAttr -k on ".w0";
+	setAttr -k on ".w1";
+createNode orientConstraint -n "L_Ankle_RK_JNT_orientConstraint1" -p "WhiteboxHumanCharacter1:L_Ankle_RK_JNT";
+	rename -uid "554353AA-6243-7D29-6EA8-99A9E324FA89";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Ankle_IK_JNTW0" -dv 1 -min 0 -at "double";
+	addAttr -dcb 0 -ci true -k true -sn "w1" -ln "L_Ankle_FK_JNTW1" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr -s 2 ".tg";
+	setAttr ".lr" -type "double3" -9.1988860255015652 11.980131010966884 -1.351677944804204 ;
+	setAttr ".rsrr" -type "double3" 4.5720473546037823e-15 -8.2296852382868502e-14 3.2122359878609065e-14 ;
+	setAttr -k on ".w0";
+	setAttr -k on ".w1";
+createNode orientConstraint -n "L_Knee_RK_JNT_orientConstraint1" -p "WhiteboxHumanCharacter1:L_Knee_RK_JNT";
+	rename -uid "9B71B374-FD45-6D32-750D-7889D70D5702";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Knee_IK_JNTW0" -dv 1 -min 0 -at "double";
+	addAttr -dcb 0 -ci true -k true -sn "w1" -ln "L_Knee_FK_JNTW1" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr -s 2 ".tg";
+	setAttr ".lr" -type "double3" -3.1060104311167156e-17 3.8825130388958815e-19 -4.7707834907822889e-15 ;
+	setAttr ".rsrr" -type "double3" 7.5338973956222546 -0.050813020529789588 -0.027567350300259794 ;
+	setAttr -k on ".w0";
+	setAttr -k on ".w1";
+createNode orientConstraint -n "L_Hip_RK_JNT_orientConstraint1" -p "WhiteboxHumanCharacter1:L_Hip_RK_JNT";
+	rename -uid "C50D265C-AE47-73B4-6086-7EBAB1B8A3BB";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Hip_IK_JNTW0" -dv 1 -min 0 -at "double";
+	addAttr -dcb 0 -ci true -k true -sn "w1" -ln "L_Hip_FK_JNTW1" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr -s 2 ".tg";
+	setAttr ".lr" -type "double3" 14.927789403467697 2.0755658773545589 0.31801682777844043 ;
+	setAttr ".rsrr" -type "double3" 7.4612220120942192 1.0481512953646852 0.091277630201843749 ;
+	setAttr -k on ".w0";
+	setAttr -k on ".w1";
+createNode joint -n "WhiteboxHumanCharacter1:R_Hip_RK_JNT" -p "WhiteboxHumanCharacter1:Pelvis_RK_JNT";
+	rename -uid "2F396708-E343-6D5E-CDBD-6D8E9BABFDD3";
+	setAttr ".t" -type "double3" -1.4911545182571759 0.085978809894475594 0.72107199999999949 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 0 0 -0.56913478894544156 ;
+	setAttr ".radi" 0.65910852983609347;
+createNode joint -n "WhiteboxHumanCharacter1:R_Knee_RK_JNT" -p "WhiteboxHumanCharacter1:R_Hip_RK_JNT";
+	rename -uid "C9D23AAE-5141-F7B0-9BA6-21983A2B32AF";
+	setAttr ".t" -type "double3" -4.0401682775207899 -0.54287339455596872 -6.5084070544502485e-16 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 6.2121421895810701e-18 -0.35809395932360016 8.4309309849439025 ;
+	setAttr ".radi" 0.64788465312454702;
+createNode joint -n "WhiteboxHumanCharacter1:R_Ankle_RK_JNT" -p "WhiteboxHumanCharacter1:R_Knee_RK_JNT";
+	rename -uid "078EEEBD-7349-7862-0E8E-15AA29BAF710";
+	setAttr ".t" -type "double3" -3.8590953715295755 -3.3306690738754696e-16 -1.2499755963624182e-07 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 0.285376758110231 2.3512590857264817 52.78593526467256 ;
+	setAttr ".radi" 0.5;
+createNode joint -n "WhiteboxHumanCharacter1:R_Ball_RK_JNT" -p "WhiteboxHumanCharacter1:R_Ankle_RK_JNT";
+	rename -uid "48D4969A-F648-4BB0-5ED2-07A0B9979A3A";
+	setAttr ".t" -type "double3" -1.2935625580073733 3.2258676858631929e-06 1.4402362036314287e-07 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" -1.2370325768008548 -1.7398228642073374 35.421595798139876 ;
+	setAttr ".radi" 0.50927625006926813;
+createNode joint -n "WhiteboxHumanCharacter1:R_Toe_RK_JNT" -p "WhiteboxHumanCharacter1:R_Ball_RK_JNT";
+	rename -uid "95BE4797-6346-4070-7FBB-CB9235739F4F";
+	setAttr ".t" -type "double3" -1.1793406707196934 4.7352936878297669e-06 -2.2204460492503131e-16 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jo" -type "double3" 90.000000000000014 3.1805546814635168e-15 91.822421587241536 ;
+	setAttr ".radi" 0.4;
+createNode orientConstraint -n "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1" 
+		-p "WhiteboxHumanCharacter1:R_Toe_RK_JNT";
+	rename -uid "7A48C548-0B4A-B65D-DBBD-C2A8A6E1C5AE";
+	addAttr -dcb 0 -ci true -k true -sn "w1" -ln "R_Toe_FK_JNTW1" -dv 1 -min 0 -at "double";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Toe_IK_JNTW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr -s 2 ".tg";
+	setAttr ".rsrr" -type "double3" -1.6828756563439793 0.0049420236757404899 -0.011812200973079799 ;
+	setAttr -k on ".w1";
+	setAttr -k on ".w0";
+createNode orientConstraint -n "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1" 
+		-p "WhiteboxHumanCharacter1:R_Ball_RK_JNT";
+	rename -uid "7C834719-4F4C-8981-5EB9-24A762DCF618";
+	addAttr -dcb 0 -ci true -k true -sn "w1" -ln "R_Ball_FK_JNTW1" -dv 1 -min 0 -at "double";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Ball_IK_JNTW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr -s 2 ".tg";
+	setAttr ".rsrr" -type "double3" 0.041722668212670476 -1.6823989576659486 0.0045029047187652533 ;
+	setAttr -k on ".w1";
+	setAttr -k on ".w0";
+createNode orientConstraint -n "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1" 
+		-p "WhiteboxHumanCharacter1:R_Ankle_RK_JNT";
+	rename -uid "69F58FDB-BE45-B5D6-BF39-98873C126951";
+	addAttr -dcb 0 -ci true -k true -sn "w1" -ln "R_Ankle_FK_JNTW1" -dv 1 -min 0 -at "double";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Ankle_IK_JNTW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr -s 2 ".tg";
+	setAttr ".rsrr" -type "double3" 1.007501218003602 -1.3474194094748997 0.030839689514208141 ;
+	setAttr -k on ".w1";
+	setAttr -k on ".w0";
+createNode orientConstraint -n "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1" 
+		-p "WhiteboxHumanCharacter1:R_Knee_RK_JNT";
+	rename -uid "98E881C3-A04C-E467-0AF9-B78FC6AF69DF";
+	addAttr -dcb 0 -ci true -k true -sn "w1" -ln "R_Knee_FK_JNTW1" -dv 1 -min 0 -at "double";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Knee_IK_JNTW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr -s 2 ".tg";
+	setAttr ".rsrr" -type "double3" 1.6828748154511441 -0.011657748235100802 -0.0055743281545955004 ;
+	setAttr -k on ".w1";
+	setAttr -k on ".w0";
+createNode orientConstraint -n "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1" 
+		-p "WhiteboxHumanCharacter1:R_Hip_RK_JNT";
+	rename -uid "40D40684-3E44-2686-4171-A79D57A79981";
+	addAttr -dcb 0 -ci true -k true -sn "w1" -ln "R_Hip_FK_JNTW1" -dv 1 -min 0 -at "double";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Hip_IK_JNTW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr -s 2 ".tg";
+	setAttr ".lr" -type "double3" 3.3329365935852269 0.46968996787757628 0.0238982556163965 ;
+	setAttr ".rsrr" -type "double3" 1.6664298030438525 0.23501876591651522 0.0085334778237436647 ;
+	setAttr -k on ".w1";
+	setAttr -k on ".w0";
+createNode parentConstraint -n "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1" 
+		-p "WhiteboxHumanCharacter1:Pelvis_RK_JNT";
+	rename -uid "4CCD4B8F-574F-F2F7-42B3-C1B645003C06";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Pelvis_CTRLW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" 1.4701245677308265e-32 -4.4781982566632905e-09 
+		5.2468978605788231e-17 ;
+	setAttr ".tg[0].tor" -type "double3" -90 -7.8617961959984539 89.999999999999972 ;
+	setAttr ".lr" -type "double3" 3.1805546814635168e-15 6.3611093629270335e-15 1.7655625192200639e-31 ;
+	setAttr ".rst" -type "double3" 2.2204460492503131e-16 0 4.9303806576313238e-32 ;
+	setAttr ".rsrr" -type "double3" 3.1805546814635168e-15 6.3611093629270335e-15 1.7655625192200639e-31 ;
+	setAttr -k on ".w0";
+createNode parentConstraint -n "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1" 
+		-p "WhiteboxHumanCharacter1:COG_JNT";
+	rename -uid "D24AC2C8-984C-1CFE-7D95-E89F50E53BD0";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "COG_CTRLW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" 0 -4.4781984787078954e-09 0 ;
+	setAttr ".tg[0].tor" -type "double3" -89.999999999999986 -7.8617961959984601 89.999999999999986 ;
+	setAttr ".rst" -type "double3" 0 1.9083307936709104 0 ;
+	setAttr -k on ".w0";
+createNode transform -n "WhiteboxHumanCharacter1:FK_JNT_GRP" -p "WhiteboxHumanCharacter1:JNT_GRP";
+	rename -uid "3873D0D9-0644-D838-889C-D3994A4FA7E3";
+	setAttr ".v" no;
+createNode transform -n "WhiteboxHumanCharacter1:FK_Arm_JNT_GRP" -p "WhiteboxHumanCharacter1:FK_JNT_GRP";
+	rename -uid "085714A4-684F-1B11-38ED-4AB3461BDF02";
+createNode joint -n "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT" -p "WhiteboxHumanCharacter1:FK_Arm_JNT_GRP";
+	rename -uid "3DCAD200-9749-FB5D-D08F-A08915B6AC05";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 89.900575359835685 -2.4863988230193823 2.2906100426384932 ;
+	setAttr ".radi" 0.60434188757843832;
+createNode joint -n "WhiteboxHumanCharacter1:R_Elbow_FK_JNT" -p "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT";
+	rename -uid "E7013032-3A4A-213C-461A-6DB0D7A7E31F";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 0.46686171083506744 -1.0624708392404825 -11.771931331807638 ;
+	setAttr ".radi" 0.56806478500620017;
+createNode joint -n "WhiteboxHumanCharacter1:R_Wrist_FK_JNT" -p "WhiteboxHumanCharacter1:R_Elbow_FK_JNT";
+	rename -uid "4967B86B-6541-4301-4E6B-FABBF5272631";
+	setAttr ".t" -type "double3" -2.346648632687955 -4.6468127234966516e-07 2.0844545982612317e-06 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 85.151962216905289 9.799630980227052 -16.221550188465535 ;
+	setAttr ".radi" 0.3;
+createNode parentConstraint -n "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1" 
+		-p "WhiteboxHumanCharacter1:R_Elbow_FK_JNT";
+	rename -uid "2A0C7F89-8847-A905-4433-A296E7457C26";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Elbow_FK_CTRLW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" 1.5258727614764211e-10 -1.7818581987683046e-07 
+		-1.6976359207276914e-10 ;
+	setAttr ".tg[0].tor" -type "double3" 90.192530325092648 9.2820378407979138 1.1934894239819376 ;
+	setAttr ".lr" -type "double3" 3.2600685485001048e-14 -6.2120208622332414e-17 -6.6643336312648029e-15 ;
+	setAttr ".rst" -type "double3" -3.0201240546336701 -2.8538302987435316e-07 -4.796667044004721e-06 ;
+	setAttr ".rsrr" -type "double3" 6.7835267815589081e-15 8.9453100416161439e-16 -3.2477221570364163e-15 ;
+	setAttr -k on ".w0";
+createNode parentConstraint -n "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1" 
+		-p "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT";
+	rename -uid "78BC8AC7-3448-675A-0FA3-A8B8D4419C50";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Shoulder_FK_CTRLW0" -dv 1 -min 
+		0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" -4.7416685911016998e-08 0.12058982181417921 
+		0.13101999983023579 ;
+	setAttr ".tg[0].tor" -type "double3" 89.900575359835685 -2.4863988230193823 2.2906100426384928 ;
+	setAttr ".lr" -type "double3" -6.2120208622334312e-18 8.082103817230515e-36 1.4908850069360235e-16 ;
+	setAttr ".rst" -type "double3" -1.1069700000000011 4.5256606035219464 -0.18968299999999974 ;
+	setAttr ".rsrr" -type "double3" 1.9108176172230033e-14 7.951386703658788e-16 6.2120208622334334e-16 ;
+	setAttr -k on ".w0";
+createNode joint -n "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT" -p "WhiteboxHumanCharacter1:FK_Arm_JNT_GRP";
+	rename -uid "23B62E08-2E45-83B0-944D-61AAF01C608E";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" -90.099424640164173 2.4863988230193628 -2.2906100426385207 ;
+	setAttr ".radi" 0.60434188757843832;
+createNode joint -n "WhiteboxHumanCharacter1:L_Elbow_FK_JNT" -p "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT";
+	rename -uid "7042DE01-524E-D6D2-AA5E-95A2AE9E6A65";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 0.4668617108391494 -1.0624708392404922 -11.771931331807677 ;
+	setAttr ".radi" 0.56806478500620017;
+createNode joint -n "WhiteboxHumanCharacter1:L_Wrist_FK_JNT" -p "WhiteboxHumanCharacter1:L_Elbow_FK_JNT";
+	rename -uid "33F2320B-0B42-551B-1006-68AF1CEBA7EE";
+	setAttr ".t" -type "double3" 2.3466453757273538 -4.3739203359650297e-16 -5.7681804584805341e-16 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 85.151962216901282 9.7996309802259027 -16.2215501884662 ;
+	setAttr ".radi" 0.3;
+createNode parentConstraint -n "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1" 
+		-p "WhiteboxHumanCharacter1:L_Elbow_FK_JNT";
+	rename -uid "EB5F22CB-0247-058B-C999-C08FA14D52EB";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Elbow_FK_CTRLW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" 8.5428594864822571e-08 -2.8543648511458741e-07 
+		1.0777345360590829e-07 ;
+	setAttr ".tg[0].tor" -type "double3" -89.807469674903132 -9.2820378407979671 -1.1934894239819893 ;
+	setAttr ".lr" -type "double3" -1.9133024255678967e-15 -7.9513867036587919e-16 1.6108546598379067e-15 ;
+	setAttr ".rst" -type "double3" 3.020119790895023 0 0 ;
+	setAttr ".rsrr" -type "double3" -2.0872390097104338e-15 -2.484808344893378e-17 -3.1615303675729269e-15 ;
+	setAttr -k on ".w0";
+createNode parentConstraint -n "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1" 
+		-p "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT";
+	rename -uid "656D7FA3-3A42-E318-DED8-62AC13C91210";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Shoulder_FK_CTRLW0" -dv 1 -min 
+		0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" 4.568280557837312e-06 0.12059433715220802 0.13101962937329395 ;
+	setAttr ".tg[0].tor" -type "double3" -90.099424640164173 2.486398823019365 -2.2906100426385207 ;
+	setAttr ".lr" -type "double3" -3.8825130388958953e-17 -1.8636062586700295e-16 1.5902773407317584e-15 ;
+	setAttr ".rst" -type "double3" 1.106974520863873 4.5256651188599752 -0.18968337045694153 ;
+	setAttr ".rsrr" -type "double3" -6.3502383264181249e-15 2.8575295966273777e-16 -7.9513867036587919e-16 ;
+	setAttr -k on ".w0";
+createNode transform -n "WhiteboxHumanCharacter1:FK_Legs_JNT_GRP" -p "WhiteboxHumanCharacter1:FK_JNT_GRP";
+	rename -uid "3BE96C4E-4C4F-12E9-98E2-DE978AFC2FAB";
+createNode joint -n "L_Hip_FK_JNT" -p "WhiteboxHumanCharacter1:FK_Legs_JNT_GRP";
+	rename -uid "9F326134-5B41-8C7D-DD92-44AC4A6D66B7";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 93.40235367957122 8.4067481947350569 -89.525208338632183 ;
+	setAttr ".radi" 0.65910852983609347;
+createNode joint -n "L_Knee_FK_JNT" -p "L_Hip_FK_JNT";
+	rename -uid "1D7E3799-D84D-B7B5-C930-818E08552C16";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 3.1060710947305805e-18 -0.35809378237255041 8.4309309824981025 ;
+	setAttr ".radi" 0.64788465312454702;
+createNode joint -n "L_Ankle_FK_JNT" -p "L_Knee_FK_JNT";
+	rename -uid "64C8F7D1-9F42-F3BF-CD2B-BEBCEC49E70C";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 0.28537603515314958 2.3512600368997814 52.785935235012822 ;
+	setAttr ".radi" 0.5;
+createNode joint -n "L_Ball_FK_JNT" -p "L_Ankle_FK_JNT";
+	rename -uid "1C4B71DC-9D42-2FEC-3F09-DBA1DAB9D82C";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" -1.2370325768014823 -1.7398228642076301 35.421595798139847 ;
+	setAttr ".radi" 0.50927625006926813;
+createNode joint -n "L_Toe_FK_JNT" -p "L_Ball_FK_JNT";
+	rename -uid "23E1CCF7-5C45-1517-00E3-CC96A3F10D14";
+	setAttr ".t" -type "double3" 1.1793378022302934 -9.3607522870466559e-06 -0.080459599374378923 ;
+	setAttr ".r" -type "double3" -6.3611093629270335e-15 3.1805546814635168e-15 3.1805546814635168e-15 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jo" -type "double3" 89.999999999999986 -3.180554681463516e-15 91.822421587241536 ;
+	setAttr ".radi" 0.4;
+createNode parentConstraint -n "L_Ball_FK_JNT_parentConstraint1" -p "L_Ball_FK_JNT";
+	rename -uid "24F6A5A1-6E42-266E-3C16-0A91EDC67514";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Ball_FK_CTRLW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" -0.034502842357291397 0.00016925721234706259 
+		0.0027322917277348147 ;
+	setAttr ".tg[0].tor" -type "double3" 151.72361035467867 -86.177565589532747 -151.69354714421965 ;
+	setAttr ".lr" -type "double3" -1.0287106547858562e-13 1.0933156717530864e-14 2.7135660131451175e-14 ;
+	setAttr ".rst" -type "double3" 1.294543521665438 -2.6936225516749346e-07 -0.026361454188674749 ;
+	setAttr ".rsrr" -type "double3" -1.0346741948136005e-13 1.1107093301673372e-14 -4.6698866831839929e-15 ;
+	setAttr -k on ".w0";
+createNode parentConstraint -n "L_Ankle_FK_JNT_parentConstraint1" -p "L_Ankle_FK_JNT";
+	rename -uid "51EE524B-1740-0336-3D3B-E598D984A09C";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Ankle_FK_CTRLW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" 1.8017578551354774e-07 3.6717224167759355e-06 
+		-2.7331161694954531e-07 ;
+	setAttr ".tg[0].tor" -type "double3" 92.755267618147741 -52.809096742558779 -90.927306120878754 ;
+	setAttr ".lr" -type "double3" -1.987846675914698e-16 2.087239009710433e-15 -9.3180312933501514e-18 ;
+	setAttr ".rst" -type "double3" 3.8590955078696747 -1.8897061571099272e-07 1.43061685831114e-07 ;
+	setAttr ".rsrr" -type "double3" -1.987846675914698e-16 2.0375428428125655e-15 -9.3180312933501514e-18 ;
+	setAttr -k on ".w0";
+createNode parentConstraint -n "L_Knee_FK_JNT_parentConstraint1" -p "L_Knee_FK_JNT";
+	rename -uid "1BB1D0FF-EF4F-B433-F426-1A8BD33FE41F";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Knee_FK_CTRLW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" 0.0015592798767112281 -1.3952407837081182e-05 
+		0.00077372668838443515 ;
+	setAttr ".tg[0].tor" -type "double3" 93.365747413250915 0.011488610161350152 -90.381240724015811 ;
+	setAttr ".lr" -type "double3" -1.5592172364205913e-14 2.946050893914204e-15 -4.7221428821168721e-15 ;
+	setAttr ".rst" -type "double3" 4.0401681341773967 0.54287343233163887 -2.271214316618142e-08 ;
+	setAttr ".rsrr" -type "double3" -1.5592172364205913e-14 2.946050893914204e-15 -4.7221428821168721e-15 ;
+	setAttr -k on ".w0";
+createNode parentConstraint -n "L_Hip_FK_JNT_parentConstraint1" -p "L_Hip_FK_JNT";
+	rename -uid "228892C2-0E4C-297F-E8AD-2DB25726AB7C";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Hip_FK_CTLRW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" 2.7987670936369113e-07 -3.0507850662386815e-07 
+		-1.4320564278857972e-07 ;
+	setAttr ".tg[0].tor" -type "double3" 93.40235367957122 8.406748194735064 -89.525208338632183 ;
+	setAttr ".lr" -type "double3" 3.1805546814635168e-15 0 0 ;
+	setAttr ".rst" -type "double3" 0.721072 0.44295200000000023 -0.28913700000000009 ;
+	setAttr ".rsrr" -type "double3" 3.1805546814635168e-15 0 0 ;
+	setAttr -k on ".w0";
+createNode joint -n "WhiteboxHumanCharacter1:R_Hip_FK_JNT" -p "WhiteboxHumanCharacter1:FK_Legs_JNT_GRP";
+	rename -uid "8ABCE524-AD46-DAEC-EE1B-08965E999265";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" -89.999999999999957 -8.4309309849439042 89.999999999999957 ;
+	setAttr ".radi" 0.65910852983609347;
+createNode joint -n "WhiteboxHumanCharacter1:R_Knee_FK_JNT" -p "WhiteboxHumanCharacter1:R_Hip_FK_JNT";
+	rename -uid "40A53F0B-DF4A-7B80-D2B0-FE9052EFFBBC";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 6.2121421895810701e-18 -0.35809395932360016 8.4309309849439025 ;
+	setAttr ".radi" 0.64788465312454702;
+createNode joint -n "WhiteboxHumanCharacter1:R_Ankle_FK_JNT" -p "WhiteboxHumanCharacter1:R_Knee_FK_JNT";
+	rename -uid "5744444C-0743-0A7C-9998-239BDAD8864E";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 0.285376758110231 2.3512590857264817 52.78593526467256 ;
+	setAttr ".radi" 0.5;
+createNode joint -n "WhiteboxHumanCharacter1:R_Ball_FK_JNT" -p "WhiteboxHumanCharacter1:R_Ankle_FK_JNT";
+	rename -uid "A7A67CD7-0942-3810-A2A8-77B18B290EE6";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" -1.2370325768008548 -1.7398228642073374 35.421595798139876 ;
+	setAttr ".radi" 0.50927625006926813;
+createNode joint -n "WhiteboxHumanCharacter1:R_Toe_FK_JNT" -p "WhiteboxHumanCharacter1:R_Ball_FK_JNT";
+	rename -uid "5F625F0A-1140-9DB1-C9A8-21B9DEEB4FA6";
+	setAttr ".t" -type "double3" -1.1793406707196934 4.7352936878297669e-06 -2.2204460492503131e-16 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jo" -type "double3" 90.000000000000014 3.1805546814635168e-15 91.822421587241536 ;
+	setAttr ".radi" 0.4;
+createNode parentConstraint -n "R_Ball_FK_JNT_parentConstraint1" -p "WhiteboxHumanCharacter1:R_Ball_FK_JNT";
+	rename -uid "C4DC1E89-054C-FE20-5A26-539BEC57C1DE";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Ball_FK_CTRLW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" 2.2567749113910907e-08 2.5551834248460636e-07 
+		-1.5325546187661132e-07 ;
+	setAttr ".tg[0].tor" -type "double3" -90.000000000004775 88.177578412750137 89.999999999994671 ;
+	setAttr ".lr" -type "double3" 4.1168304658193397e-13 4.820528189093119e-15 6.5257279157762368e-15 ;
+	setAttr ".rst" -type "double3" -1.293562558007376 3.2258676876395498e-06 1.4402362047416517e-07 ;
+	setAttr ".rsrr" -type "double3" 4.1168304658193397e-13 4.820528189093119e-15 6.5257279157762368e-15 ;
+	setAttr -k on ".w0";
+createNode parentConstraint -n "R_Ankle_FK_JNT_parentConstraint1" -p "WhiteboxHumanCharacter1:R_Ankle_FK_JNT";
+	rename -uid "6D71B704-8449-10E4-3A51-A48F4525B9D1";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Ankle_FK_CTRLW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" -1.3618519645319793e-09 1.9066849343829517e-07 
+		4.4408920985006262e-16 ;
+	setAttr ".tg[0].tor" -type "double3" -92.806839579536614 52.722462988866411 86.474171715557091 ;
+	setAttr ".lr" -type "double3" -4.5720473546038036e-15 -7.4544250346801154e-15 -6.441865634136067e-15 ;
+	setAttr ".rst" -type "double3" -3.8590953715295737 -1.1102230246251565e-16 -1.2499755941419721e-07 ;
+	setAttr ".rsrr" -type "double3" -4.5720473546038036e-15 -7.4544250346801154e-15 
+		-6.441865634136067e-15 ;
+	setAttr -k on ".w0";
+createNode parentConstraint -n "R_Knee_FK_JNT_parentConstraint1" -p "WhiteboxHumanCharacter1:R_Knee_FK_JNT";
+	rename -uid "F2A47DC3-2D4C-3462-37E4-5B92A2C78D11";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Knee_FK_CTRLW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" 1.8146511404637522e-08 -4.2485802431713182e-08 
+		-1.6653345369377348e-16 ;
+	setAttr ".tg[0].tor" -type "double3" -89.999999999999986 4.7242005741956297e-15 
+		90.35809395932354 ;
+	setAttr ".lr" -type "double3" 7.5631353997692015e-15 1.2884119519576023e-14 1.5666668083139732e-15 ;
+	setAttr ".rst" -type "double3" -4.0401682775207926 -0.54287339455596872 -6.6613381477509392e-16 ;
+	setAttr ".rsrr" -type "double3" 7.5631353997692015e-15 1.2884119519576023e-14 1.5666668083139732e-15 ;
+	setAttr -k on ".w0";
+createNode parentConstraint -n "R_Hip_FK_JNT_parentConstraint1" -p "WhiteboxHumanCharacter1:R_Hip_FK_JNT";
+	rename -uid "8BE18556-6647-3764-DB63-D380E6A2C8B6";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Hip_FK_CTLRW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" 1.8146515179395806e-08 -1.2374773983303555e-09 
+		1.1102230246251565e-16 ;
+	setAttr ".tg[0].tor" -type "double3" -89.999999999999957 -8.4309309849439042 89.999999999999957 ;
+	setAttr ".lr" -type "double3" -3.180554681463516e-15 -8.8278125961003129e-32 -3.180554681463516e-15 ;
+	setAttr ".rst" -type "double3" -0.72107199999999982 0.44295233364335185 -0.28913685679435719 ;
+	setAttr ".rsrr" -type "double3" -3.180554681463516e-15 -8.8278125961003129e-32 -3.180554681463516e-15 ;
+	setAttr -k on ".w0";
+createNode transform -n "WhiteboxHumanCharacter1:IK_JNT_GRP" -p "WhiteboxHumanCharacter1:JNT_GRP";
+	rename -uid "12293CAC-6C4C-3F66-6626-6EB6D6236121";
+	setAttr ".v" no;
+createNode transform -n "WhiteboxHumanCharacter1:IK_Arm_JNT_GRP" -p "WhiteboxHumanCharacter1:IK_JNT_GRP";
+	rename -uid "41591F1A-EF44-913E-BFD0-57B6717AFF9F";
+createNode joint -n "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT" -p "WhiteboxHumanCharacter1:IK_Arm_JNT_GRP";
+	rename -uid "DA4BCFF9-0340-7BB9-F01B-4C88D9577EBC";
+	setAttr ".r" -type "double3" 4.8171180307455383 -0.43481819990122395 0.021158714001510415 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 89.900575359835685 -2.4863988230193823 2.2906100426384932 ;
+	setAttr ".radi" 0.60434188757843832;
+createNode joint -n "WhiteboxHumanCharacter1:R_Elbow_IK_JNT" -p "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT";
+	rename -uid "D12204AD-E64D-8DB9-15EE-6B8DE5C0049C";
+	setAttr ".t" -type "double3" -3.0201240546336696 -2.8538302976333085e-07 -4.7966670431165426e-06 ;
+	setAttr ".r" -type "double3" 7.2531803020162708e-19 8.0676131284082064e-14 8.3453577075891068e-13 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 0.46686171083506744 -1.0624708392404825 -11.771931331807638 ;
+	setAttr ".radi" 0.56806478500620017;
+createNode joint -n "WhiteboxHumanCharacter1:R_Wrist_IK_JNT" -p "WhiteboxHumanCharacter1:R_Elbow_IK_JNT";
+	rename -uid "D0728A02-2F4D-2F94-DBE6-DDAEA47314C2";
+	setAttr ".t" -type "double3" -2.346648632687955 -4.6468127234966516e-07 2.0844545982612317e-06 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 85.151962216905289 9.799630980227052 -16.221550188465535 ;
+	setAttr ".radi" 0.3;
+createNode ikEffector -n "WhiteboxHumanCharacter1:effector8" -p "WhiteboxHumanCharacter1:R_Elbow_IK_JNT";
+	rename -uid "73516B1A-D34C-3233-421A-6F8DA6825DFC";
+	setAttr ".v" no;
+	setAttr ".hd" yes;
+createNode pointConstraint -n "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT_pointConstraint1" 
+		-p "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT";
+	rename -uid "731BE1AB-134D-03FF-85C2-E3BDD2CF3D1A";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Shoulder_RK_JNTW0" -dv 1 -min 0 
+		-at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".rst" -type "double3" -1.1069700000000009 4.5256606035219464 -0.18968299999999971 ;
+	setAttr -k on ".w0";
+createNode joint -n "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT" -p "WhiteboxHumanCharacter1:IK_Arm_JNT_GRP";
+	rename -uid "05CDCCAE-6543-7C0E-F276-9BA8CB2C1346";
+	setAttr ".r" -type "double3" 4.8177656358843111 -0.43485970021436227 0.020541070233630589 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" -90.099424640164173 2.4863988230193628 -2.2906100426385207 ;
+	setAttr ".radi" 0.60434188757843832;
+createNode joint -n "WhiteboxHumanCharacter1:L_Elbow_IK_JNT" -p "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT";
+	rename -uid "44E563A0-0D4D-48C1-5C83-47B521FE2D76";
+	setAttr ".t" -type "double3" 3.0201197908950226 -6.6985255742173204e-17 -6.9808492224035787e-16 ;
+	setAttr ".r" -type "double3" 3.7863529459868397e-19 0.00013616449742319482 0.0014083475180205079 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 0.4668617108391494 -1.0624708392404922 -11.771931331807677 ;
+	setAttr ".radi" 0.56806478500620017;
+createNode joint -n "WhiteboxHumanCharacter1:L_Wrist_IK_JNT" -p "WhiteboxHumanCharacter1:L_Elbow_IK_JNT";
+	rename -uid "D4B70BEB-9946-6C64-A034-7E8F5D4B708E";
+	setAttr ".t" -type "double3" 2.3466453757273538 -4.3739203359650297e-16 -5.7681804584805341e-16 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 85.151962216901282 9.7996309802259027 -16.2215501884662 ;
+	setAttr ".radi" 0.3;
+createNode ikEffector -n "WhiteboxHumanCharacter1:effector9" -p "WhiteboxHumanCharacter1:L_Elbow_IK_JNT";
+	rename -uid "8A988088-774F-BF66-4DA3-A88ED79B9A0D";
+	setAttr ".v" no;
+	setAttr ".hd" yes;
+createNode pointConstraint -n "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT_pointConstraint1" 
+		-p "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT";
+	rename -uid "30995DB9-5446-DF6A-9A56-FF802DD77731";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Shoulder_RK_JNTW0" -dv 1 -min 0 
+		-at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".rst" -type "double3" 1.1069745208638728 4.5256651188599752 -0.1896833704569415 ;
+	setAttr -k on ".w0";
+createNode transform -n "WhiteboxHumanCharacter1:IK_Legs_JNT_GRP" -p "WhiteboxHumanCharacter1:IK_JNT_GRP";
+	rename -uid "94055A0B-1348-DCC1-E104-A992B5ABC478";
+createNode joint -n "L_Hip_IK_JNT" -p "WhiteboxHumanCharacter1:IK_Legs_JNT_GRP";
+	rename -uid "EF1F4DC1-7147-80DA-3D90-7E9B88F8191F";
+	setAttr ".r" -type "double3" 14.927789403467726 2.0755658773545291 0.3180168277784573 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 93.40235367957122 8.4067481947350569 -89.525208338632183 ;
+	setAttr ".radi" 0.65910852983609347;
+createNode joint -n "L_Knee_IK_JNT" -p "L_Hip_IK_JNT";
+	rename -uid "905A4D7A-A546-4ABC-68EF-E0A2164C62FE";
+	setAttr ".t" -type "double3" 4.0084186745977792 0.75776781664856108 -0.050416314759802287 ;
+	setAttr ".r" -type "double3" -7.4279166394114226e-16 -4.4469940139660134e-14 -1.3474711783689551e-13 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 3.1060710947305805e-18 -0.35809378237255041 8.4309309824981025 ;
+	setAttr ".radi" 0.64788465312454702;
+createNode joint -n "L_Ankle_IK_JNT" -p "L_Knee_IK_JNT";
+	rename -uid "AEAED86C-5941-31B4-A454-78BD8436CB32";
+	setAttr ".t" -type "double3" 3.8593097753064578 -0.21722729231605081 0.050416080621138996 ;
+	setAttr ".r" -type "double3" -9.1988860255015634 11.980131010966883 -1.3516779448042324 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 0.28537603515314958 2.3512600368997814 52.785935235012822 ;
+	setAttr ".radi" 0.5;
+createNode joint -n "L_Ball_IK_JNT" -p "L_Ankle_IK_JNT";
+	rename -uid "EADCB313-0845-15A1-ACC4-578234A2A871";
+	setAttr ".t" -type "double3" 1.2945435216654368 -2.6936225435589725e-07 -0.026361454188674648 ;
+	setAttr ".r" -type "double3" 3.3001055037753448e-13 -2.6193911602575211e-18 -2.2514767713271105e-14 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" -1.2370325768014823 -1.7398228642076301 35.421595798139847 ;
+	setAttr ".radi" 0.50927625006926813;
+createNode joint -n "L_Toe_IK_JNT" -p "L_Ball_IK_JNT";
+	rename -uid "4FCEC231-8A4A-521B-9C4A-5DAA2B0F0931";
+	setAttr ".t" -type "double3" 1.1793378022302934 -9.3607522870466559e-06 -0.080459599374378923 ;
+	setAttr ".r" -type "double3" -6.3611093629270335e-15 3.1805546814635168e-15 3.1805546814635168e-15 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jo" -type "double3" 89.999999999999986 -3.180554681463516e-15 91.822421587241536 ;
+	setAttr ".radi" 0.4;
+createNode ikEffector -n "effector2" -p "L_Ball_IK_JNT";
+	rename -uid "5CBDBCC7-3343-E8EC-4DAD-949259495F4E";
+	setAttr ".v" no;
+	setAttr ".hd" yes;
+createNode ikEffector -n "effector1" -p "L_Ankle_IK_JNT";
+	rename -uid "72980AD9-4D40-B7CF-4DCF-9E95AD81EEE4";
+	setAttr ".v" no;
+	setAttr ".hd" yes;
+createNode ikEffector -n "effector3" -p "L_Knee_IK_JNT";
+	rename -uid "5D45B3C4-CE40-C886-C4A9-3F862950B01A";
+	setAttr ".v" no;
+	setAttr ".hd" yes;
+createNode pointConstraint -n "L_Hip_IK_JNT_pointConstraint1" -p "L_Hip_IK_JNT";
+	rename -uid "FC82B383-BA4B-B55D-A5E0-0FB844940D0A";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Hip_RK_JNTW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".rst" -type "double3" 0.721072 0.44295200000000023 -0.28913700000000009 ;
+	setAttr -k on ".w0";
+createNode joint -n "WhiteboxHumanCharacter1:R_Hip_IK_JNT" -p "WhiteboxHumanCharacter1:IK_Legs_JNT_GRP";
+	rename -uid "F48CECE6-9D41-F691-C5BC-19A2D9D0FF51";
+	setAttr ".r" -type "double3" 3.3329365935851905 0.46968996787757378 0.023898255616406003 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" -89.999999999999957 -8.4309309849439042 89.999999999999957 ;
+	setAttr ".radi" 0.65910852983609347;
+createNode joint -n "WhiteboxHumanCharacter1:R_Knee_IK_JNT" -p "WhiteboxHumanCharacter1:R_Hip_IK_JNT";
+	rename -uid "E0ED0917-AE44-1852-50C2-F982147204FA";
+	setAttr ".t" -type "double3" -4.0068949425629148 -0.76736132319628392 -5.6129487627643947e-16 ;
+	setAttr ".r" -type "double3" 6.5004992681028707e-15 1.105399893997002e-13 1.7861328619460225e-12 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 6.2121421895810701e-18 -0.35809395932360016 8.4309309849439025 ;
+	setAttr ".radi" 0.64788465312454702;
+createNode joint -n "WhiteboxHumanCharacter1:R_Ankle_IK_JNT" -p "WhiteboxHumanCharacter1:R_Knee_IK_JNT";
+	rename -uid "3879BE75-8849-07FC-4884-2C9261163CA7";
+	setAttr ".t" -type "double3" -3.8590953715295746 0.22694039949827799 -1.2499755973078012e-07 ;
+	setAttr ".r" -type "double3" 2.544443745162886e-14 -6.3452971835096112e-20 -2.8329515083771147e-21 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 0.285376758110231 2.3512590857264817 52.78593526467256 ;
+	setAttr ".radi" 0.5;
+createNode joint -n "WhiteboxHumanCharacter1:R_Ball_IK_JNT" -p "WhiteboxHumanCharacter1:R_Ankle_IK_JNT";
+	rename -uid "D8FD163D-1947-362D-66FA-08A4A3B8A919";
+	setAttr ".t" -type "double3" -1.2935625580073733 3.2258676858631929e-06 1.4402362036314287e-07 ;
+	setAttr ".r" -type "double3" 7.6333312354509091e-14 -3.0649384112468813e-19 1.4371724662789449e-29 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" -1.2370325768008548 -1.7398228642073374 35.421595798139876 ;
+	setAttr ".radi" 0.50927625006926813;
+createNode joint -n "WhiteboxHumanCharacter1:R_Toe_IK_JNT" -p "WhiteboxHumanCharacter1:R_Ball_IK_JNT";
+	rename -uid "2DC38C39-F44B-2BEA-575A-9DB716A1A8B1";
+	setAttr ".t" -type "double3" -1.1793406707196934 4.7352936878297669e-06 -2.2204460492503131e-16 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jo" -type "double3" 90.000000000000014 3.1805546814635168e-15 91.822421587241536 ;
+	setAttr ".radi" 0.4;
+createNode ikEffector -n "WhiteboxHumanCharacter1:effector7" -p "WhiteboxHumanCharacter1:R_Ball_IK_JNT";
+	rename -uid "46EEC94E-1E45-B350-55C3-E3AF82B12FCA";
+	setAttr ".v" no;
+	setAttr ".hd" yes;
+createNode ikEffector -n "WhiteboxHumanCharacter1:effector6" -p "WhiteboxHumanCharacter1:R_Ankle_IK_JNT";
+	rename -uid "8AE4CF62-BE43-EF27-106D-DCBCFDFECC8E";
+	setAttr ".v" no;
+	setAttr ".hd" yes;
+createNode ikEffector -n "WhiteboxHumanCharacter1:effector3" -p "WhiteboxHumanCharacter1:R_Knee_IK_JNT";
+	rename -uid "8247881D-034C-B0B5-90C1-068F3BC0775D";
+	setAttr ".v" no;
+	setAttr ".hd" yes;
+createNode pointConstraint -n "WhiteboxHumanCharacter1:R_Hip_IK_JNT_pointConstraint1" 
+		-p "WhiteboxHumanCharacter1:R_Hip_IK_JNT";
+	rename -uid "5B99F417-3E48-D3BD-4224-95939979B073";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Hip_RK_JNTW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".rst" -type "double3" -0.72107199999999982 0.4429523336433514 -0.28913685679435719 ;
+	setAttr -k on ".w0";
+createNode transform -n "WhiteboxHumanCharacter1:Hand_JNT_GRP" -p "WhiteboxHumanCharacter1:JNT_GRP";
+	rename -uid "3A509E62-5943-6B7F-53F2-DB86544A0DAD";
+	setAttr ".v" no;
+createNode joint -n "WhiteboxHumanCharacter1:R_Hand_RK_JNT" -p "WhiteboxHumanCharacter1:Hand_JNT_GRP";
+	rename -uid "DB645AC5-0B41-EE7B-DC38-5BBCFB82BAD1";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 179.99999999999972 25.069621642117756 12.083553820328447 ;
+	setAttr ".radi" 0.5;
+createNode joint -n "WhiteboxHumanCharacter1:R_Index01_RK_JNT" -p "WhiteboxHumanCharacter1:R_Hand_RK_JNT";
+	rename -uid "6AC07CA0-7E46-2410-8FB5-5EA51097A83B";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" -1.3583137987283647 11.82835627150989 -3.1221834418951042 ;
+	setAttr ".radi" 0.2;
+createNode joint -n "WhiteboxHumanCharacter1:R_Index02_RK_JNT" -p "WhiteboxHumanCharacter1:R_Index01_RK_JNT";
+	rename -uid "DE1FD3D3-DC46-D17F-7876-5C8C1B503159";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" -8.3305409821383858 0.21768474061040347 -38.64440586065809 ;
+	setAttr ".radi" 0.15;
+createNode joint -n "WhiteboxHumanCharacter1:R_Index03_RK_JNT" -p "WhiteboxHumanCharacter1:R_Index02_RK_JNT";
+	rename -uid "B2E64E66-AA42-CAEC-3BD3-56A73420207A";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" -3.656855359009433 3.1200153266098143 -21.2770502560723 ;
+	setAttr ".radi" 0.12;
+createNode joint -n "WhiteboxHumanCharacter1:R_Index04_RK_JNT" -p "WhiteboxHumanCharacter1:R_Index03_RK_JNT";
+	rename -uid "A366B7CE-8346-E489-6B5D-5EB5C2F3C3F1";
+	setAttr ".t" -type "double3" -0.17643554305497755 8.7084570203899148e-06 2.4025126210691639e-07 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jo" -type "double3" 1.5231234571347487 -6.068767276154146 165.88254375341572 ;
+	setAttr ".radi" 0.1;
+createNode parentConstraint -n "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1" 
+		-p "WhiteboxHumanCharacter1:R_Index03_RK_JNT";
+	rename -uid "616EA209-7443-7EDE-2E76-AC9CDE818043";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Index03_CTRLW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" 2.1148681650373646e-07 8.7432861839431553e-08 
+		5.112745560253984e-09 ;
+	setAttr ".tg[0].tor" -type "double3" -179.99999999999903 6.2562895322556402 75.963288590674168 ;
+	setAttr ".lr" -type "double3" 3.081162347667783e-15 3.9756933518294058e-16 -3.175585064773731e-14 ;
+	setAttr ".rst" -type "double3" -0.2474832313126949 -4.338060854536252e-06 -4.5799354331244047e-07 ;
+	setAttr ".rsrr" -type "double3" 5.8641476939483601e-15 -9.939233379573482e-16 -2.2152066394724419e-14 ;
+	setAttr -k on ".w0";
+createNode parentConstraint -n "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1" 
+		-p "WhiteboxHumanCharacter1:R_Index02_RK_JNT";
+	rename -uid "9E99C43B-BC48-8695-B3B6-A9B10773984B";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Index02_CTRLW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" 1.3229369866252227e-07 -1.9119262262279335e-07 
+		1.5851117640686141e-08 ;
+	setAttr ".tg[0].tor" -type "double3" -179.99999999999986 10.062194696871872 54.585795777395475 ;
+	setAttr ".lr" -type "double3" 1.630034274250053e-14 5.5659706925611567e-15 -5.9883881111930289e-15 ;
+	setAttr ".rst" -type "double3" -0.4081200980678279 -5.8962586670929795e-06 1.5301157729741277e-06 ;
+	setAttr ".rsrr" -type "double3" 1.8685758753598167e-14 2.782985346280578e-15 2.2363275104040399e-16 ;
+	setAttr -k on ".w0";
+createNode parentConstraint -n "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1" 
+		-p "WhiteboxHumanCharacter1:R_Index01_RK_JNT";
+	rename -uid "27FCAC62-124C-723E-38F7-F98DE4D50514";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Index01_CTRLW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" 1.8249511679613306e-07 2.3635864554449881e-07 
+		-1.6278269288072522e-09 ;
+	setAttr ".tg[0].tor" -type "double3" -179.99999999999844 13.205034075672224 15.222453411734998 ;
+	setAttr ".lr" -type "double3" 7.4544250346801169e-15 4.9416625959066949e-15 4.4353828956346695e-15 ;
+	setAttr ".rst" -type "double3" -0.88418286231133258 4.3423798405939351e-06 -3.1130671462875625e-06 ;
+	setAttr ".rsrr" -type "double3" 7.8519943698630569e-15 1.7611079144431773e-15 5.6280909011834887e-15 ;
+	setAttr -k on ".w0";
+createNode joint -n "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT" -p "WhiteboxHumanCharacter1:R_Hand_RK_JNT";
+	rename -uid "88567B20-2A45-3EAF-796A-EE8ADA7FF01C";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 45.889760022626817 -31.589050034709079 -35.692545340629358 ;
+	setAttr ".radi" 0.3;
+createNode joint -n "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT" -p "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT";
+	rename -uid "368FFE2D-D241-91FC-7C37-8DAA9605701B";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 10.433589938804667 25.217463569702467 -28.512853109420387 ;
+	setAttr ".radi" 0.2;
+createNode joint -n "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT" -p "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT";
+	rename -uid "5A9114E8-074B-78A2-0B2A-249CE1D18BCC";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 12.161808297782413 3.5926471708858765 -14.213925873974414 ;
+	setAttr ".radi" 0.18;
+createNode joint -n "WhiteboxHumanCharacter1:R_Thumb04_RK_JNT" -p "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT";
+	rename -uid "0D491444-AC4B-A035-8150-61AE121C87B3";
+	setAttr ".t" -type "double3" -0.27526154709909068 4.4408920985006262e-16 9.4135744879153549e-06 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jo" -type "double3" -64.251117298133551 42.242863676044983 35.65728319926194 ;
+	setAttr ".radi" 0.15;
+createNode parentConstraint -n "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1" 
+		-p "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT";
+	rename -uid "91BF8406-F541-8995-28FF-FD8E90E8ED01";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Thumb03_CTRLW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" -2.0538329970065661e-07 -1.6250606638124054e-08 
+		-2.2726917348059317e-08 ;
+	setAttr ".tg[0].tor" -type "double3" -90.000000000000057 1.7532807681567636e-13 
+		48.179830119864519 ;
+	setAttr ".lr" -type "double3" -2.8823776800763143e-14 1.5505204072134603e-14 -1.6511551451816463e-13 ;
+	setAttr ".rst" -type "double3" -0.24906325678361996 1.4720752152808103e-06 -4.2625057430356605e-06 ;
+	setAttr ".rsrr" -type "double3" 1.5057938570053833e-14 1.1927080055488415e-15 -1.7025906779209389e-13 ;
+	setAttr -k on ".w0";
+createNode parentConstraint -n "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1" 
+		-p "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT";
+	rename -uid "E3F4E7FD-6F4E-5206-25E1-5C83644FDAB4";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Thumb02_CTRLW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" 1.205444544183365e-08 1.9317627142356741e-07 
+		1.9501782189124128e-08 ;
+	setAttr ".tg[0].tor" -type "double3" -102.55165681684873 14.645000183183098 48.63295073948882 ;
+	setAttr ".lr" -type "double3" -6.3611093629270327e-15 -1.5902773407317584e-14 -3.578124016646456e-15 ;
+	setAttr ".rst" -type "double3" -0.42567675150697576 9.1394900181285266e-07 5.8850988997605214e-06 ;
+	setAttr ".rsrr" -type "double3" -6.3611093629270327e-15 -1.5902773407317584e-14 
+		-3.5781240166464568e-15 ;
+	setAttr -k on ".w0";
+createNode parentConstraint -n "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1" 
+		-p "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT";
+	rename -uid "46CC425C-2A44-A922-00EE-799A41B5DD5C";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Thumb01_CTRLW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" 1.8554687386540536e-07 -2.1911620695647116e-07 
+		9.9860182900535222e-09 ;
+	setAttr ".tg[0].tor" -type "double3" -111.42183642955349 50.140001637606012 62.927919762006916 ;
+	setAttr ".lr" -type "double3" 7.1562480332929135e-15 1.5902773407317582e-15 1.5902773407317584e-15 ;
+	setAttr ".rst" -type "double3" -0.35987557910017021 -0.015660219460515101 -0.17097151068226069 ;
+	setAttr ".rsrr" -type "double3" 1.5107634736951704e-14 3.975693351829396e-15 1.5902773407317588e-15 ;
+	setAttr -k on ".w0";
+createNode joint -n "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT" -p "WhiteboxHumanCharacter1:R_Hand_RK_JNT";
+	rename -uid "39C2DBAF-D64D-BB11-7F49-16A7B0C76223";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 2.2771434497910095 22.857309659470207 5.3769986354497306 ;
+	setAttr ".radi" 0.3;
+createNode joint -n "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT" -p "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT";
+	rename -uid "44AB7948-F941-3D1B-D75F-9992A18BAB2D";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" -1.4476568555227598 0.05797411934792146 -43.212998810847694 ;
+	setAttr ".radi" 0.25;
+createNode joint -n "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT" -p "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT";
+	rename -uid "31612EE8-0644-FB1B-933B-B285EF512C45";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" -0.67325523041743951 4.4907143870605042 -26.968252079085016 ;
+	setAttr ".radi" 0.2;
+createNode joint -n "WhiteboxHumanCharacter1:R_Fingers04_RK_JNT" -p "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT";
+	rename -uid "B67C9526-E840-72CF-4EE4-979DE7861797";
+	setAttr ".t" -type "double3" -0.234382185853651 -4.2888504001581396e-06 2.6613046951416697e-07 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jo" -type "double3" 1.9722698054203363 -26.364370281006881 66.590886947327448 ;
+	setAttr ".radi" 0.15;
+createNode parentConstraint -n "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1" 
+		-p "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT";
+	rename -uid "ADBD31FF-4042-1EE5-199A-5AAA7B0DBE52";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Finger03_CTRLW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" -2.4261478159814942e-08 -4.1351319257643127e-08 
+		-1.5419943377725787e-09 ;
+	setAttr ".tg[0].tor" -type "double3" 179.99999999999605 -3.1691922059982636 77.280777335817987 ;
+	setAttr ".lr" -type "double3" -1.8486974086006691e-14 1.950574550741293e-15 -2.6202303996900613e-14 ;
+	setAttr ".rst" -type "double3" -0.28638876961168691 4.6150143404588562e-06 7.9294783836281191e-08 ;
+	setAttr ".rsrr" -type "double3" -1.7890620083232287e-14 1.5405811738338907e-15 -3.8794070284647783e-15 ;
+	setAttr -k on ".w0";
+createNode parentConstraint -n "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1" 
+		-p "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT";
+	rename -uid "250FA48C-D94F-5929-91D7-57997678936F";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Finger02_CTRLW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" -1.1352539264208872e-07 2.0599367545059977e-08 
+		-2.6353827037306488e-09 ;
+	setAttr ".tg[0].tor" -type "double3" -179.99999999999881 1.4824475851394647 50.357499199535191 ;
+	setAttr ".lr" -type "double3" 4.7708320221952752e-15 1.689669674527493e-15 6.3867339489837464e-15 ;
+	setAttr ".rst" -type "double3" -0.33204861416858567 -6.1269272073616321e-06 4.2673856767705409e-07 ;
+	setAttr ".rsrr" -type "double3" 6.708982531212106e-15 3.9756933518293925e-16 6.3696508916126048e-15 ;
+	setAttr -k on ".w0";
+createNode parentConstraint -n "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1" 
+		-p "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT";
+	rename -uid "FBBCBF9D-314F-EB9B-51CA-4FB94429005F";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Finger01_CTRLW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" 1.4038084472645096e-08 -8.6059566584140157e-08 
+		9.7951889654890323e-10 ;
+	setAttr ".tg[0].tor" -type "double3" 179.9999999999992 2.1138020903535306 7.1265026258541075 ;
+	setAttr ".lr" -type "double3" -1.05355873823479e-14 4.5347752294304053e-16 1.2424041724466865e-15 ;
+	setAttr ".rst" -type "double3" -0.79675110402320026 0.0096672799153036948 0.3152116203081059 ;
+	setAttr ".rsrr" -type "double3" -1.05355873823479e-14 4.5347752294304073e-16 2.882377680076313e-15 ;
+	setAttr -k on ".w0";
+createNode parentConstraint -n "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1" 
+		-p "WhiteboxHumanCharacter1:R_Hand_RK_JNT";
+	rename -uid "68F9AE3C-BB42-D59F-187A-B0BE00C2258B";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Hand_CTRLW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" -8.8817841970012523e-16 -1.7763568394002505e-15 
+		-3.3306690738754696e-16 ;
+	setAttr ".tg[0].tor" -type "double3" 179.99999999999972 25.069621642117756 12.083553820328445 ;
+	setAttr ".lr" -type "double3" -2.2040227767488054 -0.413167291517824 0.91374352331617148 ;
+	setAttr ".rst" -type "double3" -6.4372601509094238 4.3568305969238281 0.057797901332378387 ;
+	setAttr ".rsrr" -type "double3" -3.975693351829396e-16 -5.5173828725626983e-33 -1.5902773407317584e-15 ;
+	setAttr -k on ".w0";
+createNode joint -n "WhiteboxHumanCharacter1:L_Hand_RK_JNT" -p "WhiteboxHumanCharacter1:Hand_JNT_GRP";
+	rename -uid "2E31C6E7-2544-FB6F-4C6B-1C8A5A97D55D";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" -4.3891825083885231e-16 -25.06962164211772 -12.083553820328532 ;
+	setAttr ".radi" 0.5;
+createNode joint -n "WhiteboxHumanCharacter1:L_Index01_RK_JNT" -p "WhiteboxHumanCharacter1:L_Hand_RK_JNT";
+	rename -uid "BC7EFE76-3748-F7A1-D01A-62AAD1F53A4D";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" -1.3583137987304765 11.82835627150987 -3.1221834418951078 ;
+	setAttr ".radi" 0.2;
+createNode joint -n "WhiteboxHumanCharacter1:L_Index02_RK_JNT" -p "WhiteboxHumanCharacter1:L_Index01_RK_JNT";
+	rename -uid "6CE457FD-8049-0A57-2E0D-BAA72A0DCA35";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" -8.3305409821369789 0.21768474061171281 -38.644405860658033 ;
+	setAttr ".radi" 0.15;
+createNode joint -n "WhiteboxHumanCharacter1:L_Index03_RK_JNT" -p "WhiteboxHumanCharacter1:L_Index02_RK_JNT";
+	rename -uid "F4C5535E-5347-4BA2-EBBB-E5B738BE37A5";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" -3.6568553590100401 3.1200153266098978 -21.277050256072318 ;
+	setAttr ".radi" 0.12;
+createNode joint -n "WhiteboxHumanCharacter1:L_Index04_RK_JNT" -p "WhiteboxHumanCharacter1:L_Index03_RK_JNT";
+	rename -uid "B4AD2C3B-ED48-3EB8-723D-5CB5D238B5E1";
+	setAttr ".t" -type "double3" 0.17642944251445952 -9.7356670779816715e-17 2.8417571465855516e-16 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jo" -type "double3" 1.5231234571339314 -6.0687672761543414 165.8825437534158 ;
+	setAttr ".radi" 0.1;
+createNode parentConstraint -n "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1" 
+		-p "WhiteboxHumanCharacter1:L_Index03_RK_JNT";
+	rename -uid "878CE9F1-EB41-14FB-2029-E4946613C1A0";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Index03_CTRLW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" -4.4369131639854231e-06 -3.6829362843882052e-06 
+		2.3116423442104406e-08 ;
+	setAttr ".tg[0].tor" -type "double3" 2.3677116513964075e-13 -6.2562895322554244 
+		-75.963288590674097 ;
+	setAttr ".lr" -type "double3" -2.3635496976625761e-13 -3.478731682850689e-15 1.5753684906623991e-14 ;
+	setAttr ".rst" -type "double3" 0.24748520554016862 -1.7763568394002505e-15 -2.2204460492503131e-16 ;
+	setAttr ".rsrr" -type "double3" -2.3327380741858982e-13 -2.0872390097104002e-15 
+		1.5877925323868655e-14 ;
+	setAttr -k on ".w0";
+createNode parentConstraint -n "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1" 
+		-p "WhiteboxHumanCharacter1:L_Index02_RK_JNT";
+	rename -uid "1A800BC2-964A-2C04-3546-A38CBEF20045";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Index02_CTRLW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" -1.9950740002272482e-06 2.017023463807277e-07 
+		1.3987252134306516e-07 ;
+	setAttr ".tg[0].tor" -type "double3" 4.8453600687343373e-14 -10.062194696871707 
+		-54.585795777395418 ;
+	setAttr ".lr" -type "double3" -5.3274290914513908e-14 -7.9513867036588215e-16 -6.510197863620636e-15 ;
+	setAttr ".rst" -type "double3" 0.40811618694970875 0 1.1102230246251565e-16 ;
+	setAttr ".rsrr" -type "double3" -4.9298597562684508e-14 -1.9878466759147007e-15 
+		-6.6095901974163695e-15 ;
+	setAttr -k on ".w0";
+createNode parentConstraint -n "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1" 
+		-p "WhiteboxHumanCharacter1:L_Index01_RK_JNT";
+	rename -uid "6D3A0FEE-924E-D584-E754-D3AD0ED133D3";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Index01_CTRLW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" 3.5142650558483979e-06 5.2270793799991111e-06 
+		-4.7382237505777525e-07 ;
+	setAttr ".tg[0].tor" -type "double3" -2.8136488708253003e-13 -13.2050340756722 -15.222453411735032 ;
+	setAttr ".lr" -type "double3" 2.8003790046948314e-13 -4.9074964811644234e-16 4.8453762725420654e-16 ;
+	setAttr ".rst" -type "double3" 0.88418829235410534 0 0 ;
+	setAttr ".rsrr" -type "double3" 2.809324314736448e-13 -4.4726550208080167e-16 -2.2363275104040371e-15 ;
+	setAttr -k on ".w0";
+createNode joint -n "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT" -p "WhiteboxHumanCharacter1:L_Hand_RK_JNT";
+	rename -uid "D544376F-5E45-0A29-622D-D6B7F157F097";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 45.889760022626767 -31.589050034709054 -35.692545340629337 ;
+	setAttr ".radi" 0.3;
+createNode joint -n "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT" -p "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT";
+	rename -uid "83DA7C00-0F4A-D3C9-EA67-3E8DC788EBE3";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 10.433589938804683 25.217463569702431 -28.512853109420341 ;
+	setAttr ".radi" 0.2;
+createNode joint -n "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT" -p "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT";
+	rename -uid "4AB93CA7-8D46-B99A-D0AC-2BA1D6F47C6E";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 12.161808297782382 3.5926471708858805 -14.213925873974457 ;
+	setAttr ".radi" 0.18;
+createNode joint -n "WhiteboxHumanCharacter1:L_Thumb04_RK_JNT" -p "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT";
+	rename -uid "3B33346C-9643-7B9D-F612-E18384CA1AC4";
+	setAttr ".t" -type "double3" 0.27526617451949786 -7.0447603178497952e-16 -1.3055463497149784e-15 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jo" -type "double3" -64.251117298133494 42.242863676044948 35.657283199261926 ;
+	setAttr ".radi" 0.15;
+createNode parentConstraint -n "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1" 
+		-p "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT";
+	rename -uid "B6961D72-074B-0E4F-941D-E895949AD61B";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Thumb03_CTRLW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" -9.8494225042600192e-07 4.8184272345430657e-06 
+		2.3559763073777162e-07 ;
+	setAttr ".tg[0].tor" -type "double3" 90.000000000000071 3.766969450858352e-14 -48.179830119864519 ;
+	setAttr ".lr" -type "double3" -1.1827687721692452e-14 3.1805546814635195e-15 2.8252270881437646e-14 ;
+	setAttr ".rst" -type "double3" 0.24906314829253029 -4.4408920985006262e-16 4.4408920985006262e-15 ;
+	setAttr ".rsrr" -type "double3" -1.4362192233483691e-14 -2.5842006786891024e-15 
+		4.0030262436232228e-14 ;
+	setAttr -k on ".w0";
+createNode parentConstraint -n "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1" 
+		-p "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT";
+	rename -uid "6F999F7B-F348-B094-F4CB-32BA5347F2A1";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Thumb02_CTRLW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" -4.4103090477420892e-06 1.8910955876805247e-06 
+		-1.8872277585124664e-07 ;
+	setAttr ".tg[0].tor" -type "double3" 77.448343183151422 -14.645000183182935 -48.632950739488841 ;
+	setAttr ".lr" -type "double3" -1.590277340731758e-15 -7.9513867036587899e-16 -3.180554681463516e-15 ;
+	setAttr ".rst" -type "double3" 0.42567382791019254 4.4408920985006262e-16 1.7763568394002505e-15 ;
+	setAttr ".rsrr" -type "double3" -8.7465253740246687e-15 7.9513867036587888e-15 -5.5659706925611536e-15 ;
+	setAttr -k on ".w0";
+createNode parentConstraint -n "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1" 
+		-p "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT";
+	rename -uid "E9667250-5845-4E66-818B-AB8F8F59E32C";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Thumb01_CTRLW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" 1.8981521376915111e-06 1.0106777459384375e-07 
+		1.2305988861260886e-07 ;
+	setAttr ".tg[0].tor" -type "double3" 68.578163570446691 -50.140001637605771 -62.927919762007015 ;
+	setAttr ".lr" -type "double3" 1.7493050748049341e-14 -3.1805546814635168e-15 -1.5902773407317592e-15 ;
+	setAttr ".rst" -type "double3" 0.35988071401783284 0.015659657112156999 0.17096918180989684 ;
+	setAttr ".rsrr" -type "double3" 2.2263882770244621e-14 -3.1805546814635156e-15 -7.9513867036587919e-15 ;
+	setAttr -k on ".w0";
+createNode joint -n "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT" -p "WhiteboxHumanCharacter1:L_Hand_RK_JNT";
+	rename -uid "854343D6-2441-6DBF-06FE-CEA4D8EDDCFF";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 2.2771434497916179 22.857309659470189 5.3769986354497217 ;
+	setAttr ".radi" 0.3;
+createNode joint -n "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT" -p "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT";
+	rename -uid "D88F9C02-E149-D783-D37C-2ABBED9E9997";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" -1.4476568555243807 0.057974119347492095 -43.212998810847637 ;
+	setAttr ".radi" 0.25;
+createNode joint -n "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT" -p "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT";
+	rename -uid "82F0832F-B843-6F19-12E0-B6A21886FEB2";
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" -0.67325523041304891 4.4907143870610202 -26.968252079084944 ;
+	setAttr ".radi" 0.2;
+createNode joint -n "WhiteboxHumanCharacter1:L_Fingers04_RK_JNT" -p "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT";
+	rename -uid "9163D862-0F40-3E65-EDE5-8BB67FC0A3EC";
+	setAttr ".t" -type "double3" 0.23438613287589163 7.8789875074915504e-16 1.0198323031499772e-17 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jo" -type "double3" 1.9722698054187959 -26.364370281003733 66.590886947328102 ;
+	setAttr ".radi" 0.15;
+createNode parentConstraint -n "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1" 
+		-p "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT";
+	rename -uid "AB9F6006-BF43-D65C-493E-D5B508EAF53E";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Finger03_CTRLW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" -1.0531489698095697e-06 3.6739832589560706e-06 
+		-1.3101395959780326e-07 ;
+	setAttr ".tg[0].tor" -type "double3" -4.9513471003192007e-13 3.1691922059984954 
+		-77.280777335817888 ;
+	setAttr ".lr" -type "double3" 4.9755802298144891e-13 -5.0938571070312924e-16 -2.7954093880050464e-15 ;
+	setAttr ".rst" -type "double3" 0.28638704588378672 1.7763568394002505e-15 1.3877787807814457e-17 ;
+	setAttr ".rsrr" -type "double3" 4.9517260697035132e-13 5.7150591932548807e-16 -2.8854836905074267e-15 ;
+	setAttr -k on ".w0";
+createNode parentConstraint -n "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1" 
+		-p "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT";
+	rename -uid "2B12ECD8-4347-585C-2671-DCA5DA8D2AF2";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Finger02_CTRLW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" -3.4169605171996409e-06 -5.3689899992548362e-07 
+		-1.6678153536009432e-07 ;
+	setAttr ".tg[0].tor" -type "double3" 2.0899263603652371e-13 -1.4824475851393015 
+		-50.357499199535113 ;
+	setAttr ".lr" -type "double3" -2.0750634488204554e-13 -1.2921003393445771e-15 -1.2844906137883174e-14 ;
+	setAttr ".rst" -type "double3" 0.33204443467247913 8.8817841970012523e-16 -4.7184478546569153e-16 ;
+	setAttr ".rsrr" -type "double3" -2.090966222227773e-13 4.9696166897865112e-16 -1.2824717070080919e-14 ;
+	setAttr -k on ".w0";
+createNode parentConstraint -n "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1" 
+		-p "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT";
+	rename -uid "39E38EA7-CC40-113B-8C81-34BE017500F9";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Finger01_CTRLW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" 1.3755899734846366e-06 4.9159265094189664e-06 
+		-4.3545645621312357e-07 ;
+	setAttr ".tg[0].tor" -type "double3" 1.0105137279507002e-13 -2.1138020903535373 
+		-7.1265026258540942 ;
+	setAttr ".lr" -type "double3" -1.0197653447442403e-13 -1.956786571603532e-15 -7.9513867036587761e-16 ;
+	setAttr ".rst" -type "double3" 0.79675450359861522 -0.0096634094898959688 -0.31521374406968539 ;
+	setAttr ".rsrr" -type "double3" -1.0098261113646668e-13 -2.0064827385014026e-15 
+		-3.8763010180336594e-15 ;
+	setAttr -k on ".w0";
+createNode parentConstraint -n "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1" 
+		-p "WhiteboxHumanCharacter1:L_Hand_RK_JNT";
+	rename -uid "4FE57687-CB4F-75BE-902B-1BB61A566915";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Hand_CTRLW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" -3.3116253437270871e-06 2.0503119770864942e-06 
+		4.6788163510225189e-08 ;
+	setAttr ".tg[0].tor" -type "double3" 0 -25.069621642117717 -12.083553820328531 ;
+	setAttr ".lr" -type "double3" -2.2042440051078347 -0.41361196846425147 0.91387105439259575 ;
+	setAttr ".rst" -type "double3" 6.4372568392840819 4.356832647235807 0.057797948120541842 ;
+	setAttr ".rsrr" -type "double3" -1.987846675914698e-15 -7.931237879308879e-32 -4.5720473546038052e-15 ;
+	setAttr -k on ".w0";
+createNode transform -n "WhiteboxHumanCharacter1:CTRL_GRP" -p "WhiteboxHumanCharacterGRP";
+	rename -uid "92264D05-7040-2357-533C-48877F4C6C0B";
+createNode transform -n "WhiteboxHumanCharacter1:COG_CTRL" -p "WhiteboxHumanCharacter1:CTRL_GRP";
+	rename -uid "8723562C-6647-E3DE-ED87-8AAA1C8A4D43";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 16;
+	setAttr ".rp" -type "double3" 0 1.9083307981491089 0 ;
+	setAttr ".sp" -type "double3" 0 1.9083307981491089 0 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:COG_CTRLShape" -p "WhiteboxHumanCharacter1:COG_CTRL";
+	rename -uid "2C99EC97-9749-ECAB-9395-B99AABEFA827";
+	setAttr -k off ".v";
+	setAttr ".cc" -type "nurbsCurve" 
+		1 7 0 no 3
+		8 0 1 2 3 4 5 6 7
+		8
+		0 1.9083307981491089 3.0000000000000009
+		3.0000000000000027 1.9083307981491089 1.0000000000000002
+		2.0000000000000018 1.9083307981491089 1.0000000000000002
+		2.0000000000000018 1.9083307981491089 -2.0000000000000004
+		-2.0000000000000018 1.9083307981491089 -2.0000000000000004
+		-2.0000000000000018 1.9083307981491089 1.0000000000000002
+		-3.0000000000000027 1.9083307981491089 1.0000000000000002
+		0 1.9083307981491089 3.0000000000000009
+		;
+createNode transform -n "WhiteboxHumanCharacter1:SpineBase_CTRL_GRP" -p "WhiteboxHumanCharacter1:COG_CTRL";
+	rename -uid "42709276-B04C-D851-E537-8B9CBF720A6A";
+createNode transform -n "WhiteboxHumanCharacter1:SpineBase_CTRL" -p "WhiteboxHumanCharacter1:SpineBase_CTRL_GRP";
+	rename -uid "1ABA2051-2248-9A32-FF12-6E8F5A33DD03";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 17;
+	setAttr ".rp" -type "double3" 0 1.9083307981491089 0 ;
+	setAttr ".sp" -type "double3" 0 1.9083307981491089 0 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:SpineBase_CTRLShape" -p "WhiteboxHumanCharacter1:SpineBase_CTRL";
+	rename -uid "0B0DB6D4-C243-9B7A-0DD2-BDA58A63C328";
+	setAttr -k off ".v";
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		1.2537785998259601 1.9083307981491089 -1.2537785998259583
+		-2.0229072972526923e-16 1.9083307981491089 -1.7731107000870208
+		-1.253778599825959 1.9083307981491089 -1.253778599825959
+		-1.7731107000870208 1.9083307981491089 -5.1380312115795681e-16
+		-1.2537785998259592 1.9083307981491089 1.2537785998259585
+		-5.3427285817448315e-16 1.9083307981491089 1.7731107000870212
+		1.2537785998259583 1.9083307981491089 1.2537785998259592
+		1.7731107000870208 1.9083307981491089 9.5234121588489366e-16
+		1.2537785998259601 1.9083307981491089 -1.2537785998259583
+		-2.0229072972526923e-16 1.9083307981491089 -1.7731107000870208
+		-1.253778599825959 1.9083307981491089 -1.253778599825959
+		;
+createNode transform -n "WhiteboxHumanCharacter1:Chest_CTRL_GRP" -p "WhiteboxHumanCharacter1:SpineBase_CTRL";
+	rename -uid "687D9EE3-734E-9E69-084C-A0994C261FBB";
+	setAttr ".rp" -type "double3" 0 2.2204460492503131e-16 0 ;
+	setAttr ".sp" -type "double3" 0 2.2204460492503131e-16 0 ;
+createNode transform -n "WhiteboxHumanCharacter1:Chest_CTRL" -p "WhiteboxHumanCharacter1:Chest_CTRL_GRP";
+	rename -uid "34B4B790-B340-3C71-4A1B-59AA22747243";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 17;
+	setAttr ".rp" -type "double3" -1.9721522630525295e-31 2.9979104995727539 0.27616381645202637 ;
+	setAttr ".sp" -type "double3" -1.9721522630525295e-31 2.9979104995727539 0.27616381645202637 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:Chest_CTRLShape" -p "WhiteboxHumanCharacter1:Chest_CTRL";
+	rename -uid "4D38E0F5-D441-7998-5AB3-E7855F6029D0";
+	setAttr -k off ".v";
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		1.2537785998259601 2.9979104995727539 -0.97761478337393193
+		-2.0229072972526942e-16 2.9979104995727539 -1.4969468836349944
+		-1.253778599825959 2.9979104995727539 -0.97761478337393259
+		-1.7731107000870208 2.9979104995727539 0.27616381645202587
+		-1.2537785998259592 2.9979104995727539 1.5299424162779849
+		-5.3427285817448335e-16 2.9979104995727539 2.0492745165390476
+		1.2537785998259583 2.9979104995727539 1.5299424162779856
+		1.7731107000870208 2.9979104995727539 0.27616381645202731
+		1.2537785998259601 2.9979104995727539 -0.97761478337393193
+		-2.0229072972526942e-16 2.9979104995727539 -1.4969468836349944
+		-1.253778599825959 2.9979104995727539 -0.97761478337393259
+		;
+createNode transform -n "WhiteboxHumanCharacter1:Neck_CTRL_GRP" -p "WhiteboxHumanCharacter1:Chest_CTRL";
+	rename -uid "893F3769-944A-687A-0ED9-36BFF13002CF";
+	setAttr ".rp" -type "double3" 0 0 5.5511151231257827e-17 ;
+	setAttr ".sp" -type "double3" 0 0 5.5511151231257827e-17 ;
+createNode transform -n "WhiteboxHumanCharacter1:Neck_CTRL" -p "WhiteboxHumanCharacter1:Neck_CTRL_GRP";
+	rename -uid "FC1061CF-0444-BC02-5A9B-C2ADBEBBABE6";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 17;
+	setAttr ".rp" -type "double3" 8.3266726846886741e-16 4.997910499572753 -0.327944546937943 ;
+	setAttr ".sp" -type "double3" 8.3266726846886741e-16 4.997910499572753 -0.327944546937943 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:Neck_CTRLShape" -p "WhiteboxHumanCharacter1:Neck_CTRL";
+	rename -uid "FF56E080-F64D-DCC0-9AFD-129A0319E6CE";
+	setAttr -k off ".v";
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		0.78361162489122504 5.647658760481356 -0.90201593993743923
+		1.1081941875543893 5.4250175845572128 -0.15069837362624161
+		0.78361162489122593 5.2023764086330715 0.60061919268495534
+		1.9988442259816155e-15 5.1101554140225982 0.91182511830020085
+		-0.78361162489122238 5.2023764086330733 0.60061919268495623
+		-1.1081941875543868 5.4250175845572164 -0.15069837362624039
+		-0.78361162489122316 5.6476587604813577 -0.90201593993743745
+		5.9036693421837367e-16 5.739879755091831 -1.2132218655526834
+		0.78361162489122504 5.647658760481356 -0.90201593993743923
+		1.1081941875543893 5.4250175845572128 -0.15069837362624161
+		0.78361162489122593 5.2023764086330715 0.60061919268495534
+		;
+createNode transform -n "WhiteboxHumanCharacter1:Head_CTRL_GRP" -p "WhiteboxHumanCharacter1:Neck_CTRL";
+	rename -uid "D4E4C377-0949-EF2D-4887-A5B8A6AFBD3F";
+	setAttr ".rp" -type "double3" -5.9164567891575885e-31 -8.8817841970012523e-16 -1.6653345369377348e-16 ;
+	setAttr ".sp" -type "double3" -5.9164567891575885e-31 -8.8817841970012523e-16 -1.6653345369377348e-16 ;
+createNode transform -n "WhiteboxHumanCharacter1:Head_CTRL" -p "WhiteboxHumanCharacter1:Head_CTRL_GRP";
+	rename -uid "181F0A7B-5541-ECAD-ACF0-7F915F9AF112";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 17;
+	setAttr ".rp" -type "double3" 5.7103838532498699e-15 5.9979104995727539 -0.031610216945408616 ;
+	setAttr ".sp" -type "double3" 5.7103838532498699e-15 5.9979104995727539 -0.031610216945408616 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:Head_CTRLShape" -p "WhiteboxHumanCharacter1:Head_CTRL";
+	rename -uid "DC8BC8C0-704C-B4F6-A14B-3EB78CACCBC6";
+	setAttr -k off ".v";
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		0.94033394986947494 7.2539310976975457 -0.9719441668148785
+		3.730368433803187e-15 7.2539310976975466 -1.3614432420106737
+		-0.9403339498694645 7.2539310976975475 -0.97194416681487572
+		-1.329833025065259 7.2539310976975475 -0.031610216945406416
+		-0.94033394986946073 7.2539310976975475 0.90872373292406217
+		9.2092872404289257e-15 7.2539310976975466 1.2982228081198572
+		0.94033394986947749 7.2539310976975457 0.90872373292405917
+		1.3298330250652723 7.2539310976975457 -0.031610216945409914
+		0.94033394986947494 7.2539310976975457 -0.9719441668148785
+		3.730368433803187e-15 7.2539310976975466 -1.3614432420106737
+		-0.9403339498694645 7.2539310976975475 -0.97194416681487572
+		;
+createNode transform -n "WhiteboxHumanCharacter1:R_Collar_FK_CTRL_GRP" -p "WhiteboxHumanCharacter1:Chest_CTRL";
+	rename -uid "271A1D65-7247-0297-840D-0192DED43752";
+	setAttr ".rp" -type "double3" 0 0 5.5511151231257827e-17 ;
+	setAttr ".sp" -type "double3" 0 0 5.5511151231257827e-17 ;
+createNode transform -n "WhiteboxHumanCharacter1:R_Collar_FK_CTRL" -p "WhiteboxHumanCharacter1:R_Collar_FK_CTRL_GRP";
+	rename -uid "36765415-FE4E-2AE1-12F2-159029B75F0E";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 17;
+	setAttr ".rp" -type "double3" -0.27399998903274592 4.7817950248718262 0.20620155334472634 ;
+	setAttr ".sp" -type "double3" -0.27399998903274592 4.7817950248718262 0.20620155334472634 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Collar_FK_CTRLShape" -p "WhiteboxHumanCharacter1:R_Collar_FK_CTRL";
+	rename -uid "2677DE3B-114F-A36B-EEBD-00B9B2242BC1";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 13;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		-0.046055864235843735 4.6694277589431179 1.7248050265198207
+		-1.1130060710599217 4.8856769220812906 1.4867283484214016
+		-1.9285321713081065 5.3870271478595821 0.82457406012957368
+		-1.8584849311311233 5.241078654122493 0.81327396144487341
+		-2.0103734065015115 5.2279129141616512 0.8688781452062021
+		-1.2287470558318032 4.6606554148190735 1.5493837864053002
+		-0.12789709942925076 4.5103135252451887 1.7691091115964477
+		-0.18824694612909243 4.6333879501032049 1.7161726218040469
+		-0.046055864235843735 4.6694277589431179 1.7248050265198207
+		-1.1130060710599217 4.8856769220812906 1.4867283484214016
+		-1.9285321713081065 5.3870271478595821 0.82457406012957368
+		;
+createNode transform -n "WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL_GRP" -p "WhiteboxHumanCharacter1:R_Collar_FK_CTRL";
+	rename -uid "0BD79D48-C940-6674-0B54-DDAF43E08442";
+	setAttr ".rp" -type "double3" 2.2204460492503131e-16 0 -4.4408920985006262e-16 ;
+	setAttr ".sp" -type "double3" 2.2204460492503131e-16 0 -4.4408920985006262e-16 ;
+createNode transform -n "WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL" -p "WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL_GRP";
+	rename -uid "3B5CEA52-F840-5023-DE2A-238272A916D9";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 17;
+	setAttr ".rp" -type "double3" -1.1069699525833152 4.4050707817077672 -0.32070299983023554 ;
+	setAttr ".sp" -type "double3" -1.1069699525833152 4.4050707817077672 -0.32070299983023554 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Shoulder_FK_CTRLShape" -p "WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL";
+	rename -uid "DFD1802C-0B41-2EB9-600E-F38615E665B1";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 13;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		-1.9146517617616508 5.1886824065989945 -1.1043146247214575
+		-1.9146517617616512 4.405070781707769 -1.4288971873846235
+		-1.9146517617616501 3.6214591568165426 -1.1043146247214617
+		-1.9146517617616494 3.2968765941533782 -0.32070299983023909
+		-1.9146517617616483 3.6214591568165417 0.46290862506098585
+		-1.9146517617616483 4.4050707817077672 0.78749118772415183
+		-1.914651761761649 5.1886824065989918 0.46290862506099006
+		-1.9146517617616501 5.5132649692621571 -0.32070299983023254
+		-1.9146517617616508 5.1886824065989945 -1.1043146247214575
+		-1.9146517617616512 4.405070781707769 -1.4288971873846235
+		-1.9146517617616501 3.6214591568165426 -1.1043146247214617
+		;
+createNode transform -n "WhiteboxHumanCharacter1:R_Elbow_FK_CTRL" -p "WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL";
+	rename -uid "F2CA7180-DE42-0FF3-2F4B-CC852D845FEF";
+	setAttr ".rp" -type "double3" 2.2204460492503126e-16 -8.210733189403225e-48 -4.4408920985006262e-16 ;
+	setAttr ".sp" -type "double3" 2.2204460492503126e-16 -8.210733189403225e-48 -4.4408920985006262e-16 ;
+createNode transform -n "WhiteboxHumanCharacter1:R_Elbow_FK_CTRL" -p "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:R_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Collar_FK_CTRL|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL";
+	rename -uid "57126527-C541-5689-F0D3-77BD6AFED423";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 17;
+	setAttr ".rp" -type "double3" -4.1218400001525897 4.4050707817077681 -0.32070299983023576 ;
+	setAttr ".sp" -type "double3" -4.1218400001525897 4.4050707817077681 -0.32070299983023576 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Elbow_FK_CTRLShape" -p "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:R_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Collar_FK_CTRL|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL";
+	rename -uid "F8CAC042-114C-0016-972C-038A5AAE523F";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 13;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		-4.1218400001525914 5.0319600816207499 -0.94759229974321357
+		-4.1218400001525897 4.4050707817077699 -1.2072583498737464
+		-4.1218400001525906 3.7781814817947903 -0.94759229974321701
+		-4.1218400001525888 3.5185154316642584 -0.32070299983023887
+		-4.1218400001525888 3.778181481794789 0.30618630008274123
+		-4.1218400001525879 4.405070781707769 0.56585235021327396
+		-4.1218400001525888 5.031960081620749 0.30618630008274467
+		-4.1218400001525897 5.29162613175128 -0.32070299983023359
+		-4.1218400001525914 5.0319600816207499 -0.94759229974321357
+		-4.1218400001525897 4.4050707817077699 -1.2072583498737464
+		-4.1218400001525906 3.7781814817947903 -0.94759229974321701
+		;
+createNode transform -n "WhiteboxHumanCharacter1:L_Collar_FK_CTRL_GRP" -p "WhiteboxHumanCharacter1:Chest_CTRL";
+	rename -uid "429AA52A-3245-051E-56AF-D9AF0C813560";
+	setAttr ".rp" -type "double3" 0 0 5.5511151231257827e-17 ;
+	setAttr ".sp" -type "double3" 0 0 5.5511151231257827e-17 ;
+createNode transform -n "WhiteboxHumanCharacter1:L_Collar_FK_CTRL" -p "WhiteboxHumanCharacter1:L_Collar_FK_CTRL_GRP";
+	rename -uid "926EA005-0544-7E61-71A5-24AAF0A7ED0F";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 6;
+	setAttr ".rp" -type "double3" 0.27399998903274592 4.7817950248718262 0.2062015533447264 ;
+	setAttr ".sp" -type "double3" 0.27399998903274592 4.7817950248718262 0.2062015533447264 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Collar_FK_CTRLShape" -p "WhiteboxHumanCharacter1:L_Collar_FK_CTRL";
+	rename -uid "08066868-664C-1F61-1FB9-7B91949E0697";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 6;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		0.046055864235843735 4.6694277589431179 1.7248050265198207
+		1.1130060710599217 4.8856769220812906 1.4867283484214016
+		1.9285321713081065 5.3870271478595821 0.82457406012957368
+		1.8584849311311233 5.241078654122493 0.81327396144487341
+		2.0103734065015115 5.2279129141616512 0.86887814520620221
+		1.2287470558318032 4.6606554148190735 1.5493837864053002
+		0.12789709942925076 4.5103135252451887 1.7691091115964477
+		0.18824694612909243 4.6333879501032049 1.7161726218040469
+		0.046055864235843735 4.6694277589431179 1.7248050265198207
+		1.1130060710599217 4.8856769220812906 1.4867283484214016
+		1.9285321713081065 5.3870271478595821 0.82457406012957368
+		;
+createNode transform -n "WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL_GRP" -p "WhiteboxHumanCharacter1:L_Collar_FK_CTRL";
+	rename -uid "847D77B8-2844-1896-F725-A49E96D8350B";
+	setAttr ".rp" -type "double3" -2.2204460492503131e-16 0 -3.8857805861880479e-16 ;
+	setAttr ".sp" -type "double3" -2.2204460492503131e-16 0 -3.8857805861880479e-16 ;
+createNode transform -n "WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL" -p "WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL_GRP";
+	rename -uid "42787745-1645-D298-C360-119D1EBA6C4C";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 6;
+	setAttr ".rp" -type "double3" 1.1069699525833152 4.4050707817077672 -0.32070299983023548 ;
+	setAttr ".sp" -type "double3" 1.1069699525833152 4.4050707817077672 -0.32070299983023548 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Shoulder_FK_CTRLShape" -p "WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL";
+	rename -uid "C03FE45A-A642-839F-FC1A-C5AAC10AED58";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 6;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		1.9146517617616508 5.1886824065989945 -1.1043146247214575
+		1.9146517617616512 4.405070781707769 -1.4288971873846235
+		1.9146517617616501 3.6214591568165426 -1.1043146247214617
+		1.9146517617616494 3.2968765941533782 -0.32070299983023903
+		1.9146517617616483 3.6214591568165417 0.4629086250609859
+		1.9146517617616483 4.4050707817077672 0.78749118772415194
+		1.914651761761649 5.1886824065989918 0.46290862506099012
+		1.9146517617616501 5.5132649692621571 -0.32070299983023248
+		1.9146517617616508 5.1886824065989945 -1.1043146247214575
+		1.9146517617616512 4.405070781707769 -1.4288971873846235
+		1.9146517617616501 3.6214591568165426 -1.1043146247214617
+		;
+createNode transform -n "WhiteboxHumanCharacter1:L_Elbow_FK_CTRL" -p "WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL";
+	rename -uid "DF098A97-4843-96C7-56FD-03AFA6B429B7";
+	setAttr ".rp" -type "double3" -2.2204460492503126e-16 -8.210733189403225e-48 -3.8857805861880479e-16 ;
+	setAttr ".sp" -type "double3" -2.2204460492503126e-16 -8.210733189403225e-48 -3.8857805861880479e-16 ;
+createNode transform -n "WhiteboxHumanCharacter1:L_Elbow_FK_CTRL" -p "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:L_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Collar_FK_CTRL|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL";
+	rename -uid "3CBA2FFA-0D45-310C-25BE-6BAC3C5193EC";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 6;
+	setAttr ".rp" -type "double3" 4.1218400001525897 4.4050707817077681 -0.3207029998302357 ;
+	setAttr ".sp" -type "double3" 4.1218400001525897 4.4050707817077681 -0.3207029998302357 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Elbow_FK_CTRLShape" -p "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:L_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Collar_FK_CTRL|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL";
+	rename -uid "984178F5-0148-BCF9-1614-76A827ED7180";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 6;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		4.1218400001525914 5.0319600816207499 -0.94759229974321357
+		4.1218400001525897 4.4050707817077699 -1.2072583498737464
+		4.1218400001525906 3.7781814817947903 -0.9475922997432169
+		4.1218400001525888 3.5185154316642584 -0.32070299983023881
+		4.1218400001525888 3.778181481794789 0.30618630008274128
+		4.1218400001525879 4.405070781707769 0.56585235021327396
+		4.1218400001525888 5.031960081620749 0.30618630008274472
+		4.1218400001525897 5.29162613175128 -0.32070299983023354
+		4.1218400001525914 5.0319600816207499 -0.94759229974321357
+		4.1218400001525897 4.4050707817077699 -1.2072583498737464
+		4.1218400001525906 3.7781814817947903 -0.9475922997432169
+		;
+createNode transform -n "WhiteboxHumanCharacter1:Pelvis_CTRL_GRP" -p "WhiteboxHumanCharacter1:COG_CTRL";
+	rename -uid "5AFAB8E7-794C-5A1B-8536-4390660C57B6";
+createNode transform -n "WhiteboxHumanCharacter1:Pelvis_CTRL" -p "WhiteboxHumanCharacter1:Pelvis_CTRL_GRP";
+	rename -uid "34DB87C5-A440-98B0-BE89-7D918492EB15";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 14;
+	setAttr ".rp" -type "double3" 0 1.9083307981491089 0 ;
+	setAttr ".sp" -type "double3" 0 1.9083307981491089 0 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:Pelvis_CTRLShape" -p "WhiteboxHumanCharacter1:Pelvis_CTRL";
+	rename -uid "80130DFB-7842-7F04-05AF-FE80BDD36868";
+	setAttr -k off ".v";
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		1.4105009248042051 1.9083307981491089 -1.4105009248042029
+		-2.2757707094092787e-16 1.9083307981491091 -1.9947495375978983
+		-1.4105009248042037 1.9083307981491089 -1.4105009248042037
+		-1.9947495375978983 1.9083307981491089 -5.7802851130270145e-16
+		-1.4105009248042042 1.9083307981491089 1.4105009248042033
+		-6.0105696544629352e-16 1.9083307981491087 1.9947495375978987
+		1.4105009248042029 1.9083307981491089 1.410500924804204
+		1.9947495375978983 1.9083307981491089 1.0713838678705054e-15
+		1.4105009248042051 1.9083307981491089 -1.4105009248042029
+		-2.2757707094092787e-16 1.9083307981491091 -1.9947495375978983
+		-1.4105009248042037 1.9083307981491089 -1.4105009248042037
+		;
+createNode transform -n "WhiteboxHumanCharacter1:R_Hip_FK_CTRL_GRP" -p "WhiteboxHumanCharacter1:Pelvis_CTRL";
+	rename -uid "139B90B1-1647-B304-9BAD-68B2CD1B1EB0";
+	setAttr ".rp" -type "double3" 0 2.2204460492503131e-16 0 ;
+	setAttr ".sp" -type "double3" 0 2.2204460492503131e-16 0 ;
+createNode transform -n "WhiteboxHumanCharacter1:R_Hip_FK_CTLR" -p "WhiteboxHumanCharacter1:R_Hip_FK_CTRL_GRP";
+	rename -uid "006F312F-7F49-FC68-82D3-B4B5006DFEEC";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 17;
+	setAttr ".rp" -type "double3" -0.721072018146515 0.44295233488082925 -0.2891368567943573 ;
+	setAttr ".sp" -type "double3" -0.721072018146515 0.44295233488082925 -0.2891368567943573 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Hip_FK_CTLRShape" -p "WhiteboxHumanCharacter1:R_Hip_FK_CTLR";
+	rename -uid "20240863-D84A-9990-D30D-9F96696EA84E";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 13;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		-1.6734882373968973 1.226563959772053 -1.0727484816855826
+		-1.6734882373968978 1.551146522435217 -0.28913685679435741
+		-1.673488237396898 1.2265639597720535 0.49447476809686675
+		-1.6734882373968978 0.44295233488082947 0.8190573307600304
+		-1.6734882373968973 -0.34065929001039491 0.49447476809686697
+		-1.6734882373968969 -0.66524185267355906 -0.28913685679435724
+		-1.6734882373968967 -0.34065929001039524 -1.0727484816855815
+		-1.6734882373968969 0.44295233488082852 -1.3973310443487454
+		-1.6734882373968973 1.226563959772053 -1.0727484816855826
+		-1.6734882373968978 1.551146522435217 -0.28913685679435741
+		-1.673488237396898 1.2265639597720535 0.49447476809686675
+		;
+createNode transform -n "WhiteboxHumanCharacter1:R_Knee_FK_CTRL_GRP" -p "WhiteboxHumanCharacter1:R_Hip_FK_CTLR";
+	rename -uid "796AEA30-1345-B504-0355-0B88E3F21AAA";
+	setAttr ".rp" -type "double3" 0 2.7755575615628914e-16 -0.40101685374975282 ;
+	setAttr ".sp" -type "double3" 0 2.7755575615628914e-16 -0.40101685374975282 ;
+createNode transform -n "WhiteboxHumanCharacter1:R_Knee_FK_CTRL" -p "WhiteboxHumanCharacter1:R_Knee_FK_CTRL_GRP";
+	rename -uid "D21DFB25-A24E-3F00-A6C1-DE8316796747";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 17;
+	setAttr ".rp" -type "double3" -0.72107201814651234 -3.6331496238708492 -0.34448772668838495 ;
+	setAttr ".sp" -type "double3" -0.72107201814651234 -3.6331496238708492 -0.34448772668838495 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Knee_FK_CTRLShape" -p "WhiteboxHumanCharacter1:R_Knee_FK_CTRL";
+	rename -uid "FE119B8D-E741-EC31-AB89-098FF4E51F24";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 13;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		0.062539606744712706 -3.6331496238708487 -1.1280993515796085
+		-0.72107201814651234 -3.6331496238708492 -1.4526819142427727
+		-1.5046836430377364 -3.6331496238708496 -1.1280993515796094
+		-1.8292662057008999 -3.6331496238708496 -0.34448772668838551
+		-1.5046836430377368 -3.6331496238708496 0.43912389820283876
+		-0.72107201814651278 -3.6331496238708492 0.76370646086600291
+		0.062539606744711262 -3.6331496238708487 0.43912389820283954
+		0.38712216940787536 -3.6331496238708487 -0.34448772668838412
+		0.062539606744712706 -3.6331496238708487 -1.1280993515796085
+		-0.72107201814651234 -3.6331496238708492 -1.4526819142427727
+		-1.5046836430377364 -3.6331496238708496 -1.1280993515796094
+		;
+createNode transform -n "WhiteboxHumanCharacter1:R_Ankle_FK_CTRL_GRP" -p "WhiteboxHumanCharacter1:R_Knee_FK_CTRL";
+	rename -uid "62C74CC8-AE47-035C-0E33-73A2915EC639";
+	setAttr ".rp" -type "double3" 0 4.4408920985006262e-16 0.14778625965118464 ;
+	setAttr ".sp" -type "double3" 0 4.4408920985006262e-16 0.14778625965118464 ;
+createNode transform -n "WhiteboxHumanCharacter1:R_Ankle_FK_CTRL" -p "WhiteboxHumanCharacter1:R_Ankle_FK_CTRL_GRP";
+	rename -uid "3DD07DAD-2C44-17B7-E873-C3836C576A37";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 17;
+	setAttr ".rp" -type "double3" -0.69695299863814797 -7.4921698570251447 -0.3444877266883854 ;
+	setAttr ".sp" -type "double3" -0.69695299863814797 -7.4921698570251447 -0.3444877266883854 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Ankle_FK_CTRLShape" -p "WhiteboxHumanCharacter1:R_Ankle_FK_CTRL";
+	rename -uid "640BC035-3943-B53A-4082-A4AC3432CAD4";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 13;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		-0.070063698725167822 -7.4921698570251447 -0.97137702660136438
+		-0.69695299863814797 -7.4921698570251447 -1.2310430767318956
+		-1.3238422985511273 -7.4921698570251447 -0.97137702660136482
+		-1.5835083486816584 -7.4921698570251456 -0.34448772668838584
+		-1.3238422985511278 -7.4921698570251447 0.28240157322459364
+		-0.6969529986381483 -7.4921698570251447 0.54206762335512515
+		-0.070063698725169044 -7.4921698570251447 0.28240157322459419
+		0.1896023514053623 -7.4921698570251438 -0.34448772668838473
+		-0.070063698725167822 -7.4921698570251447 -0.97137702660136438
+		-0.69695299863814797 -7.4921698570251447 -1.2310430767318956
+		-1.3238422985511273 -7.4921698570251447 -0.97137702660136482
+		;
+createNode transform -n "WhiteboxHumanCharacter1:R_Ball_FK_CTRL_GRP" -p "WhiteboxHumanCharacter1:R_Ankle_FK_CTRL";
+	rename -uid "168D8E66-6A43-7E2A-0953-A4B12E6BF4D4";
+	setAttr ".rp" -type "double3" 0 0 0.14778625965118519 ;
+	setAttr ".sp" -type "double3" 0 0 0.14778625965118519 ;
+createNode transform -n "WhiteboxHumanCharacter1:R_Ball_FK_CTRL" -p "WhiteboxHumanCharacter1:R_Ball_FK_CTRL_GRP";
+	rename -uid "EEEEBC21-1E4C-BA1D-6B76-63B914FE86B6";
+	setAttr ".rp" -type "double3" -0.74513602256774902 -8.274169921875 0.68481242656707875 ;
+	setAttr ".sp" -type "double3" -0.74513602256774902 -8.274169921875 0.68481242656707875 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Ball_FK_CTRLShape" -p "WhiteboxHumanCharacter1:R_Ball_FK_CTRL";
+	rename -uid "C5C0C7B0-1D49-DF86-7593-C3BFAC9F8632";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 13;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		-0.274969047633014 -8.274169921875 0.2146454516323445
+		-0.74513602256774913 -8.274169921875 0.019895914034446016
+		-1.2153029975024836 -8.274169921875 0.21464545163234422
+		-1.4100525351003816 -8.274169921875 0.68481242656707852
+		-1.2153029975024836 -8.274169921875 1.1549794015018131
+		-0.74513602256774925 -8.274169921875 1.3497289390997116
+		-0.27496904763301477 -8.274169921875 1.1549794015018133
+		-0.080219510035116293 -8.274169921875 0.68481242656707908
+		-0.274969047633014 -8.274169921875 0.2146454516323445
+		-0.74513602256774913 -8.274169921875 0.019895914034446016
+		-1.2153029975024836 -8.274169921875 0.21464545163234422
+		;
+createNode transform -n "WhiteboxHumanCharacter1:L_Hip_FK_CTRL_GRP" -p "WhiteboxHumanCharacter1:Pelvis_CTRL";
+	rename -uid "B1DE621E-2B43-1364-92B4-D7911A9F7B35";
+	setAttr ".rp" -type "double3" 0 2.2204460492503131e-16 0 ;
+	setAttr ".sp" -type "double3" 0 2.2204460492503131e-16 0 ;
+createNode transform -n "WhiteboxHumanCharacter1:L_Hip_FK_CTLR" -p "WhiteboxHumanCharacter1:L_Hip_FK_CTRL_GRP";
+	rename -uid "E887A3D8-2D43-58DF-0A34-91A2FAD681F4";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 17;
+	setAttr ".rp" -type "double3" 0.72107172012329068 0.44295230507850686 -0.2891368567943573 ;
+	setAttr ".sp" -type "double3" 0.72107172012329068 0.44295230507850686 -0.2891368567943573 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Hip_FK_CTLRShape" -p "WhiteboxHumanCharacter1:L_Hip_FK_CTLR";
+	rename -uid "DC708049-344D-6501-6CE1-A9AF784D74D9";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 6;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		1.6734879393736728 -0.34065931981271719 -1.0727484816855815
+		1.6734879393736726 -0.66524188247588123 -0.28913685679435647
+		1.6734879393736726 -0.34065931981271741 0.49447476809686741
+		1.6734879393736726 0.4429523050785063 0.81905733076003095
+		1.6734879393736728 1.2265639299697304 0.49447476809686719
+		1.673487939373673 1.5511464926328944 -0.28913685679435674
+		1.673487939373673 1.2265639299697306 -1.0727484816855806
+		1.673487939373673 0.44295230507850702 -1.3973310443487446
+		1.6734879393736728 -0.34065931981271719 -1.0727484816855815
+		1.6734879393736726 -0.66524188247588123 -0.28913685679435647
+		1.6734879393736726 -0.34065931981271741 0.49447476809686741
+		;
+createNode transform -n "WhiteboxHumanCharacter1:L_Knee_FK_CTLR_GRP" -p "WhiteboxHumanCharacter1:L_Hip_FK_CTLR";
+	rename -uid "52FFAACE-E641-6DBE-5E54-74BA181E717C";
+	setAttr ".rp" -type "double3" 0 1.6653345369377348e-16 -0.40101730823516812 ;
+	setAttr ".sp" -type "double3" 0 1.6653345369377348e-16 -0.40101730823516812 ;
+createNode transform -n "WhiteboxHumanCharacter1:L_Knee_FK_CTRL" -p "WhiteboxHumanCharacter1:L_Knee_FK_CTLR_GRP";
+	rename -uid "E17C6000-564E-42B3-7A99-CCA70A110586";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 17;
+	setAttr ".rp" -type "double3" 0.72107172012328979 -3.6331460475921631 -0.34448772668838495 ;
+	setAttr ".sp" -type "double3" 0.72107172012328979 -3.6331460475921631 -0.34448772668838495 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Knee_FK_CTRLShape" -p "WhiteboxHumanCharacter1:L_Knee_FK_CTRL";
+	rename -uid "9484EC1B-4144-DEFC-E88C-789C7E4CE827";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 6;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		1.5046833450145147 -3.6331460475921631 -1.1280993515796087
+		0.72107172012328957 -3.6331460475921631 -1.4526819142427727
+		-0.062539904767934584 -3.6331460475921631 -1.1280993515796092
+		-0.38712246743109813 -3.6331460475921631 -0.3444877266883854
+		-0.062539904767934584 -3.6331460475921631 0.43912389820283898
+		0.72107172012328957 -3.6331460475921631 0.76370646086600324
+		1.5046833450145138 -3.6331460475921631 0.43912389820283954
+		1.8292659076776778 -3.6331460475921631 -0.34448772668838423
+		1.5046833450145147 -3.6331460475921631 -1.1280993515796087
+		0.72107172012328957 -3.6331460475921631 -1.4526819142427727
+		-0.062539904767934584 -3.6331460475921631 -1.1280993515796092
+		;
+createNode transform -n "WhiteboxHumanCharacter1:L_Ankle_FK_CTRL_GRP" -p "WhiteboxHumanCharacter1:L_Knee_FK_CTRL";
+	rename -uid "368827A8-664E-5CC8-2D5A-D1BA4B29B639";
+	setAttr ".rp" -type "double3" 0 0 0.14778625965118286 ;
+	setAttr ".sp" -type "double3" 0 0 0.14778625965118286 ;
+createNode transform -n "WhiteboxHumanCharacter1:L_Ankle_FK_CTRL" -p "WhiteboxHumanCharacter1:L_Ankle_FK_CTRL_GRP";
+	rename -uid "124DE9A9-314C-3200-C855-31BAD62F4D08";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 17;
+	setAttr ".rp" -type "double3" 0.69695281982421631 -7.4921736717224121 -0.34448772668838501 ;
+	setAttr ".sp" -type "double3" 0.69695281982421631 -7.4921736717224121 -0.34448772668838501 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Ankle_FK_CTRLShape" -p "WhiteboxHumanCharacter1:L_Ankle_FK_CTRL";
+	rename -uid "84575AFA-9A46-2D4D-FD8C-6E8BBEFD9EAC";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 6;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		1.3238421197371961 -7.4921736717224121 -0.97137702660136405
+		0.69695281982421609 -7.4921736717224121 -1.2310430767318956
+		0.070063519911236716 -7.4921736717224121 -0.97137702660136449
+		-0.18960253021929407 -7.4921736717224121 -0.34448772668838534
+		0.070063519911236827 -7.4921736717224121 0.28240157322459414
+		0.69695281982421609 -7.4921736717224121 0.54206762335512559
+		1.3238421197371957 -7.4921736717224121 0.28240157322459469
+		1.5835081698677267 -7.4921736717224121 -0.34448772668838445
+		1.3238421197371961 -7.4921736717224121 -0.97137702660136405
+		0.69695281982421609 -7.4921736717224121 -1.2310430767318956
+		0.070063519911236716 -7.4921736717224121 -0.97137702660136449
+		;
+createNode transform -n "WhiteboxHumanCharacter1:L_Ball_FK_CTRL_GRP" -p "WhiteboxHumanCharacter1:L_Ankle_FK_CTRL";
+	rename -uid "95DD441A-A34E-22D7-FDF3-AE8964F02E96";
+	setAttr ".rp" -type "double3" 0 0 0.14778625965118153 ;
+	setAttr ".sp" -type "double3" 0 0 0.14778625965118153 ;
+createNode transform -n "WhiteboxHumanCharacter1:L_Ball_FK_CTRL" -p "WhiteboxHumanCharacter1:L_Ball_FK_CTRL_GRP";
+	rename -uid "156E7024-014B-63DD-3F6B-DF938E0ADF29";
+	setAttr ".rp" -type "double3" 0.7451356053352356 -8.274169921875 0.68481242656707764 ;
+	setAttr ".sp" -type "double3" 0.7451356053352356 -8.274169921875 0.68481242656707764 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Ball_FK_CTRLShape" -p "WhiteboxHumanCharacter1:L_Ball_FK_CTRL";
+	rename -uid "0C85D3F6-094F-B1BB-A78A-3E868D8CF4C3";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 6;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		1.2153025802699706 -8.274169921875 0.21464545163234339
+		0.74513560533523548 -8.274169921875 0.019895914034444906
+		0.27496863040050107 -8.274169921875 0.21464545163234311
+		0.080219092802602865 -8.274169921875 0.68481242656707741
+		0.2749686304005009 -8.274169921875 1.154979401501812
+		0.74513560533523537 -8.274169921875 1.3497289390997105
+		1.2153025802699697 -8.274169921875 1.1549794015018122
+		1.4100521178678682 -8.274169921875 0.68481242656707797
+		1.2153025802699706 -8.274169921875 0.21464545163234339
+		0.74513560533523548 -8.274169921875 0.019895914034444906
+		0.27496863040050107 -8.274169921875 0.21464545163234311
+		;
+createNode transform -n "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL_GRP" -p "WhiteboxHumanCharacter1:COG_CTRL";
+	rename -uid "96AFF2AC-2347-AD00-C0BE-C88C5F00350F";
+createNode transform -n "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL" -p "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL_GRP";
+	rename -uid "15220650-0E49-78D9-470D-DDA3D3D2ED5C";
+	addAttr -ci true -sn "L_Arm_FK_IK" -ln "L_Arm_FK_IK" -min 0 -max 1 -at "double";
+	addAttr -ci true -sn "R_Arm_FK_IK" -ln "R_Arm_FK_IK" -min 0 -max 1 -at "double";
+	addAttr -ci true -sn "L_Leg_FK_IK" -ln "L_Leg_FK_IK" -min 0 -max 1 -at "double";
+	addAttr -ci true -sn "R_Leg_FK_IK" -ln "R_Leg_FK_IK" -min 0 -max 1 -at "double";
+	addAttr -ci true -sn "R_Arm_FK" -ln "R_Arm_FK" -min 0 -max 1 -at "double";
+	addAttr -ci true -sn "L_Arm_FK" -ln "L_Arm_FK" -min 0 -max 1 -at "double";
+	addAttr -ci true -sn "L_Leg_FK" -ln "L_Leg_FK" -min 0 -max 1 -at "double";
+	addAttr -ci true -sn "R_Leg_FK" -ln "R_Leg_FK" -min 0 -max 1 -at "double";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 9;
+	setAttr -l on -k off ".tx";
+	setAttr -l on -k off ".ty";
+	setAttr -l on -k off ".tz";
+	setAttr -l on -k off ".rx";
+	setAttr -l on -k off ".ry";
+	setAttr -l on -k off ".rz";
+	setAttr -l on -k off ".sx";
+	setAttr -l on -k off ".sy";
+	setAttr -l on -k off ".sz";
+	setAttr -k on ".L_Arm_FK_IK";
+	setAttr -k on ".R_Arm_FK_IK";
+	setAttr -k on ".L_Leg_FK_IK" 1;
+	setAttr -k on ".R_Leg_FK_IK" 1;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:IK_FK_Switch_CTRLShape" -p "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL";
+	rename -uid "6884400F-E743-A9B6-4AE0-94B28E25B0F8";
+	setAttr -k off ".v";
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1 2 3 4
+		5
+		2 6 0
+		2 8 2.1215650208276227
+		4 8 0
+		1.9895026721469131 8.0053642665415747 -1.6272966668537956
+		2 6 0
+		;
+createNode transform -n "WhiteboxHumanCharacter1:IK_CTRL_GRP" -p "WhiteboxHumanCharacter1:CTRL_GRP";
+	rename -uid "4220E3EA-A349-BC14-2549-2D83719185E9";
+createNode transform -n "WhiteboxHumanCharacter1:L_Arm_IK_CTRL_GRP" -p "WhiteboxHumanCharacter1:IK_CTRL_GRP";
+	rename -uid "69F7466F-A441-829E-8245-4E96ADE05E03";
+createNode transform -n "WhiteboxHumanCharacter1:L_Arm_IK_PoleVector_CTRL_GRP" -p
+		 "WhiteboxHumanCharacter1:L_Arm_IK_CTRL_GRP";
+	rename -uid "C3B0AFE4-4546-A288-E3E0-05A98C2F23B2";
+createNode transform -n "WhiteboxHumanCharacter1:L_Arm_IK_PoleVector_CTRL" -p "WhiteboxHumanCharacter1:L_Arm_IK_PoleVector_CTRL_GRP";
+	rename -uid "F05DEA60-2D47-249E-276E-9799B190EFA5";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 6;
+	setAttr ".rp" -type "double3" 4.1218400001525879 4.4050707817077637 -3.1998901477241524 ;
+	setAttr ".sp" -type "double3" 4.1218400001525879 4.4050707817077637 -3.1998901477241524 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Arm_IK_PoleVector_CTRLShape" 
+		-p "WhiteboxHumanCharacter1:L_Arm_IK_PoleVector_CTRL";
+	rename -uid "886613B6-D847-1AEB-9332-ACBC3A69D19F";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 13;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 3 0 no 3
+		4 0 1 2 3
+		4
+		4.1218400001525879 4.4050707817077637 -3.1998901477241524
+		4.1218400001525879 3.9050707817077637 -4.1998901477241528
+		4.1218400001525879 4.9050707817077637 -4.1998901477241528
+		4.1218400001525879 4.4050707817077637 -3.1998901477241524
+		;
+createNode transform -n "WhiteboxHumanCharacter1:L_Arm_IK_Handle_CTRL_GRP" -p "WhiteboxHumanCharacter1:L_Arm_IK_CTRL_GRP";
+	rename -uid "83B4E8CC-D843-37DC-E7E9-63A5681255A3";
+createNode transform -n "WhiteboxHumanCharacter1:L_Arm_IK_Handle_CTRL" -p "WhiteboxHumanCharacter1:L_Arm_IK_Handle_CTRL_GRP";
+	rename -uid "261F55EF-B243-A203-0CE8-50A0A5CD1BFB";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 6;
+	setAttr ".rp" -type "double3" 6.4372601509094238 4.3568305969238281 0.057797901332378387 ;
+	setAttr ".sp" -type "double3" 6.4372601509094238 4.3568305969238281 0.057797901332378387 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Arm_IK_Handle_CTRLShape" -p "WhiteboxHumanCharacter1:L_Arm_IK_Handle_CTRL";
+	rename -uid "447ABF7C-D74F-534B-620E-86AAE806F1BF";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 13;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1 2 3 4
+		5
+		6.4372601509094238 4.9568305969238278 0.65779790133237892
+		6.4372601509094238 4.9568305969238278 -0.54220209866762215
+		6.4372601509094238 3.756830596923828 -0.54220209866762215
+		6.4372601509094238 3.756830596923828 0.65779790133237892
+		6.4372601509094238 4.9568305969238278 0.65779790133237892
+		;
+createNode ikHandle -n "WhiteboxHumanCharacter1:L_Arm_IK_Hndl" -p "WhiteboxHumanCharacter1:L_Arm_IK_CTRL_GRP";
+	rename -uid "C42ED4DD-254D-2895-6337-80957B225505";
+	setAttr ".v" no;
+	setAttr ".roc" yes;
+createNode pointConstraint -n "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_pointConstraint1" 
+		-p "WhiteboxHumanCharacter1:L_Arm_IK_Hndl";
+	rename -uid "13AA87F7-7F42-4CD5-78C2-C79BC4C5F1A3";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Arm_IK_Handle_CTRLW0" -dv 1 -min 
+		0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".rst" -type "double3" 6.4372601509094238 4.3568305969238281 0.057797901332378387 ;
+	setAttr -k on ".w0";
+createNode poleVectorConstraint -n "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_poleVectorConstraint1" 
+		-p "WhiteboxHumanCharacter1:L_Arm_IK_Hndl";
+	rename -uid "C66D4FE0-5147-1B29-6CBA-80BAE1199675";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Arm_IK_PoleVector_CTRLW0" -dv 1 
+		-min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".rst" -type "double3" 3.0148654792887148 -0.12059433715221157 -3.0102067772672108 ;
+	setAttr -k on ".w0";
+createNode transform -n "WhiteboxHumanCharacter1:R_Arm_IK_CTRL_GRP" -p "WhiteboxHumanCharacter1:IK_CTRL_GRP";
+	rename -uid "417BFDC4-7B40-EB4F-D507-E69FBB08F6B7";
+createNode transform -n "WhiteboxHumanCharacter1:R_Arm_IK_PoleVector_CTRL_GRP" -p
+		 "WhiteboxHumanCharacter1:R_Arm_IK_CTRL_GRP";
+	rename -uid "D18C2006-0F45-A017-F678-8A9665FF7F69";
+createNode transform -n "WhiteboxHumanCharacter1:R_Arm_IK_PoleVector_CTRL" -p "WhiteboxHumanCharacter1:R_Arm_IK_PoleVector_CTRL_GRP";
+	rename -uid "6BE6CC42-E141-F65F-E259-F48FB32EEE2A";
+	setAttr ".rp" -type "double3" -4.1218400001525879 4.4050707817077637 -3.1998901477241524 ;
+	setAttr ".sp" -type "double3" -4.1218400001525879 4.4050707817077637 -3.1998901477241524 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Arm_IK_PoleVector_CTRLShape" 
+		-p "WhiteboxHumanCharacter1:R_Arm_IK_PoleVector_CTRL";
+	rename -uid "EC6E2A94-9040-A9F3-C7A8-318D5109B0A5";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 13;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 3 0 no 3
+		4 0 1 2 3
+		4
+		-4.1218400001525879 4.4050707817077637 -3.1998901477241524
+		-4.1218400001525879 3.9050707817077637 -4.1998901477241528
+		-4.1218400001525879 4.9050707817077637 -4.1998901477241528
+		-4.1218400001525879 4.4050707817077637 -3.1998901477241524
+		;
+createNode transform -n "WhiteboxHumanCharacter1:R_Arm_IK_Handle_CTRL_GRP" -p "WhiteboxHumanCharacter1:R_Arm_IK_CTRL_GRP";
+	rename -uid "B7A49DFA-D74B-A1D0-46B1-4688F8E32C05";
+createNode transform -n "WhiteboxHumanCharacter1:R_Arm_IK_Handle_CTRL" -p "WhiteboxHumanCharacter1:R_Arm_IK_Handle_CTRL_GRP";
+	rename -uid "DBDBC9F6-0A41-1D4C-DE1A-8E9F9E5B132B";
+	setAttr ".rp" -type "double3" -6.4372601509094238 4.3568305969238281 0.057797901332378387 ;
+	setAttr ".sp" -type "double3" -6.4372601509094238 4.3568305969238281 0.057797901332378387 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Arm_IK_Handle_CTRLShape" -p "WhiteboxHumanCharacter1:R_Arm_IK_Handle_CTRL";
+	rename -uid "81A300D9-9E43-188F-A9DD-3F9BCE275526";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 13;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1 2 3 4
+		5
+		-6.4372601509094238 4.9568305969238278 0.65779790133237892
+		-6.4372601509094238 4.9568305969238278 -0.54220209866762215
+		-6.4372601509094238 3.756830596923828 -0.54220209866762215
+		-6.4372601509094238 3.756830596923828 0.65779790133237892
+		-6.4372601509094238 4.9568305969238278 0.65779790133237892
+		;
+createNode ikHandle -n "WhiteboxHumanCharacter1:R_Arm_IK_Hndl" -p "WhiteboxHumanCharacter1:R_Arm_IK_CTRL_GRP";
+	rename -uid "97ABEEE3-824A-0CF3-34C3-A8A0633AFA21";
+	setAttr ".v" no;
+	setAttr ".roc" yes;
+createNode pointConstraint -n "WhiteboxHumanCharacter1:ikHandle4_pointConstraint1" 
+		-p "WhiteboxHumanCharacter1:R_Arm_IK_Hndl";
+	rename -uid "C8C9D7A1-9B40-8ABA-DF75-D5A61408474D";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Arm_IK_Handle_CTRLW0" -dv 1 -min 
+		0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".o" -type "double3" 1.5090942184770029e-07 6.5981202723719434e-09 -1.3323774306073233e-09 ;
+	setAttr ".rst" -type "double3" -6.437260000000002 4.3568306035219484 0.057797900000000957 ;
+	setAttr -k on ".w0";
+createNode poleVectorConstraint -n "WhiteboxHumanCharacter1:ikHandle4_poleVectorConstraint1" 
+		-p "WhiteboxHumanCharacter1:R_Arm_IK_Hndl";
+	rename -uid "4659327F-A04B-5D05-5FA3-D8BB15923409";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Arm_IK_PoleVector_CTRLW0" -dv 1 
+		-min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".rst" -type "double3" -3.014870000152587 -0.12058982181418276 -3.0102071477241528 ;
+	setAttr -k on ".w0";
+createNode transform -n "WhiteboxHumanCharacter1:L_Leg_IK_CTRL_GRP" -p "WhiteboxHumanCharacter1:IK_CTRL_GRP";
+	rename -uid "9C25ECF2-5047-0055-A878-41BDB4121B6A";
+createNode transform -n "L_Leg_IK_CTRL" -p "WhiteboxHumanCharacter1:L_Leg_IK_CTRL_GRP";
+	rename -uid "31CC8EAC-5845-049C-74B9-48BBEBF570AC";
+	addAttr -ci true -sn "Heel" -ln "Heel" -min -1 -max 1 -at "double";
+	addAttr -ci true -sn "Toe" -ln "Toe" -min -1 -max 1 -at "double";
+	addAttr -ci true -sn "Ball" -ln "Ball" -min -1 -max 1 -at "double";
+	setAttr ".rp" -type "double3" 0.79153384328590126 -8.4211044311523455 0.47073119071535097 ;
+	setAttr ".sp" -type "double3" 0.79153384328590126 -8.4211044311523455 0.47073119071535097 ;
+	setAttr -k on ".Heel";
+	setAttr -k on ".Toe";
+	setAttr -k on ".Ball";
+createNode nurbsCurve -n "L_Leg_IK_CTRLShape" -p "L_Leg_IK_CTRL";
+	rename -uid "FEBE1B3D-BD48-7E42-CFD9-14B31CB18313";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 6;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1 2 3 4
+		5
+		0.19153384328590062 -8.4211044311523455 -0.97085994327372704
+		0.19153384328590084 -8.4211044311523455 1.9123223247044288
+		1.3915338432859019 -8.4211044311523455 1.9123223247044288
+		1.3915338432859017 -8.4211044311523455 -0.97085994327372704
+		0.19153384328590062 -8.4211044311523455 -0.97085994327372704
+		;
+createNode transform -n "L_RIK_JNT_GRP" -p "L_Leg_IK_CTRL";
+	rename -uid "E305DA61-3348-9E01-2E09-1AB21C0F9125";
+	setAttr ".v" no;
+	setAttr ".rp" -type "double3" 1.4185785886782276 -1.5543122344752192e-15 1.0436096431476471e-14 ;
+	setAttr ".sp" -type "double3" 1.4185785886782276 -1.5543122344752192e-15 1.0436096431476471e-14 ;
+createNode joint -n "L_Heel_RIK_JNT" -p "L_RIK_JNT_GRP";
+	rename -uid "032DA827-A845-BEED-1B1C-9691A0E73BFE";
+	setAttr ".t" -type "double3" 0.70157085364482019 -8.3795091113378817 -0.80930061041269807 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" -73.531654532935903 -88.479230625212708 73.526166354498727 ;
+	setAttr ".radi" 0.59179287125186719;
+createNode joint -n "L_Toe_RIK_JNT" -p "L_Heel_RIK_JNT";
+	rename -uid "A6C5401B-0A4F-25A9-2397-1D9FBA5B96C4";
+	setAttr ".t" -type "double3" 2.6792267478887513 3.8910097704495695e-16 4.6561979201901011e-16 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" 179.9754202769472 -0.10760971874375562 176.73237755873774 ;
+	setAttr ".radi" 0.50941789102366919;
+createNode joint -n "L_Ball_RIK_JNT" -p "L_Toe_RIK_JNT";
+	rename -uid "1B5F3357-BF46-4438-F6A6-B681EDDCFEBA";
+	setAttr ".t" -type "double3" 1.1820792264576045 1.6003441190284883e-15 2.7464934184202942e-16 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jot" -type "string" "xzy";
+	setAttr ".jo" -type "double3" -0.31123645987202087 0.16635865273411166 35.334785783751791 ;
+	setAttr ".radi" 0.51524890926921296;
+createNode joint -n "L_Ankle_RIK_JNT" -p "L_Ball_RIK_JNT";
+	rename -uid "253E672E-0146-B125-88B7-A089CA673F90";
+	setAttr ".t" -type "double3" 1.2948122458714508 2.3906634016047733e-15 -4.7918031893376793e-17 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jo" -type "double3" 142.85372560810856 -89.394656551642314 179.99999999993707 ;
+	setAttr ".radi" 0.51524890926921296;
+createNode ikHandle -n "L_Leg_IK_Handle" -p "L_Ball_RIK_JNT";
+	rename -uid "EBC66B35-624A-E056-D216-0CA115C1635E";
+	setAttr ".t" -type "double3" 1.2948121635848882 -1.1703520552686086e-07 4.9252990574899513e-10 ;
+	setAttr ".r" -type "double3" 142.85372560813005 -89.394656551641688 -179.99999999999488 ;
+	setAttr ".roc" yes;
+createNode poleVectorConstraint -n "ikHandle1_poleVectorConstraint1" -p "L_Leg_IK_Handle";
+	rename -uid "7829939D-9341-9820-FA07-6D8AC2DEEE3D";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Leg_IK_PoleVectorW0" -dv 1 -min 
+		0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".rst" -type "double3" -0.024158624997142053 -4.0760980475921658 3.945955423463019 ;
+	setAttr -k on ".w0";
+createNode ikHandle -n "L_Leg_IK_FootHandle_01" -p "L_Toe_RIK_JNT";
+	rename -uid "A2C19A85-F04F-90B5-017B-EFBB8F9C4A62";
+	setAttr ".t" -type "double3" 1.1820792258767256 4.5710008578225825e-07 2.1522174487031975e-08 ;
+	setAttr ".r" -type "double3" 2.3281246779261666 179.00073968712314 35.382138314100075 ;
+	setAttr ".s" -type "double3" 1 0.99999999999999978 1.0000000000000002 ;
+	setAttr ".pv" -type "double3" -0.9994573158431328 0.031574609936200565 -0.0093871089807813796 ;
+	setAttr ".roc" yes;
+createNode ikHandle -n "L_Leg_IK_FootHandle_02" -p "L_Heel_RIK_JNT";
+	rename -uid "75F7A92F-E245-C965-E35C-A699632DF692";
+	setAttr ".t" -type "double3" 2.6792267897898796 -2.821905198402419e-08 -8.2326722106174088e-09 ;
+	setAttr ".r" -type "double3" 0.10804013611556605 -3.7953063546801045 -3.2745460146053214 ;
+	setAttr ".s" -type "double3" 1.0000000000000002 1 1.0000000000000002 ;
+	setAttr ".pv" -type "double3" 0.99964777031133023 -0.025450580696115908 0.0075235133957978241 ;
+	setAttr ".roc" yes;
+createNode transform -n "L_Leg_IK_PoleVector" -p "WhiteboxHumanCharacter1:L_Leg_IK_CTRL_GRP";
+	rename -uid "BAB99AA1-F44B-24F7-8D3D-7095A9737512";
+	setAttr ".t" -type "double3" 0.69691337500285799 -3.6331460475921653 3.0469264812626737 ;
+	setAttr ".s" -type "double3" 0.6 0.6 0.6 ;
+	setAttr ".rp" -type "double3" 0 -1.6757428777935956e-16 0.60989194220034504 ;
+	setAttr ".sp" -type "double3" 0 0 1.0164865703339083 ;
+	setAttr ".spt" -type "double3" 0 -1.6653345369377348e-16 -0.40659462813356378 ;
+createNode nurbsCurve -n "L_Leg_IK_PoleVectorShape" -p "L_Leg_IK_PoleVector";
+	rename -uid "76DC151D-F44C-1D46-7190-FDA86541F8B4";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 6;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 3 0 no 3
+		4 0 1 2 3
+		4
+		0 0 1.0000000000000009
+		0 1.0000000000000002 3.0000000000000027
+		0 -1.0000000000000002 3.0000000000000027
+		0 0 1.0000000000000009
+		;
+createNode transform -n "WhiteboxHumanCharacter1:R_Leg_IK_CTRL_GRP" -p "WhiteboxHumanCharacter1:IK_CTRL_GRP";
+	rename -uid "16CF5063-9847-7859-2A47-36A9780E28DD";
+	setAttr -av ".v" yes;
+createNode transform -n "WhiteboxHumanCharacter1:R_Leg_IK_PoleVector" -p "WhiteboxHumanCharacter1:R_Leg_IK_CTRL_GRP";
+	rename -uid "251BA885-9341-A31F-247D-D5B649D33522";
+	setAttr ".t" -type "double3" -0.72107201814651489 -3.6331460475921631 3.0469264812626702 ;
+	setAttr ".s" -type "double3" 0.6 0.6 0.6 ;
+	setAttr ".rp" -type "double3" 0 -1.6757428777935956e-16 0.60989194220034504 ;
+	setAttr ".sp" -type "double3" 0 0 1.0164865703339083 ;
+	setAttr ".spt" -type "double3" 0 -1.6653345369377348e-16 -0.40659462813356378 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Leg_IK_PoleVectorShape" -p "WhiteboxHumanCharacter1:R_Leg_IK_PoleVector";
+	rename -uid "885C71B8-794D-B7BE-BDA9-45B3B417B24F";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 13;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 3 0 no 3
+		4 0 1 2 3
+		4
+		0 0 1.0000000000000009
+		0 1.0000000000000002 3.0000000000000027
+		0 -1.0000000000000002 3.0000000000000027
+		0 0 1.0000000000000009
+		;
+createNode transform -n "WhiteboxHumanCharacter1:R_Leg_IK_CTRL" -p "WhiteboxHumanCharacter1:R_Leg_IK_CTRL_GRP";
+	rename -uid "2D06146D-994A-C76C-5301-EDB596656207";
+	addAttr -ci true -sn "Heel" -ln "Heel" -min -1 -max 1 -at "double";
+	addAttr -ci true -sn "Toe" -ln "Toe" -min -1 -max 1 -at "double";
+	addAttr -ci true -sn "Ball" -ln "Ball" -min -1 -max 1 -at "double";
+	setAttr ".t" -type "double3" 0.069908253245826613 -0.92893075942993164 0.81521891740372587 ;
+	setAttr ".r" -type "double3" 180 180 180 ;
+	setAttr ".s" -type "double3" 1 1 2.4026518899817959 ;
+	setAttr ".rp" -type "double3" -0.69695299863815308 -7.4921736717224121 -0.34448772668838501 ;
+	setAttr ".sp" -type "double3" -0.69695299863815308 -7.4921736717224121 -0.34448772668838501 ;
+	setAttr -k on ".Heel";
+	setAttr -k on ".Toe";
+	setAttr -k on ".Ball";
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Leg_IK_CTRLShape" -p "WhiteboxHumanCharacter1:R_Leg_IK_CTRL";
+	rename -uid "8C90B79C-0D44-5041-441A-5687FA525B72";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 13;
+	setAttr ".cc" -type "nurbsCurve" 
+		1 4 0 no 3
+		5 0 1 2 3 4
+		5
+		-1.2969529986381527 -7.4921736717224121 -0.94448772668838543
+		-1.2969529986381532 -7.4921736717224121 0.25551227331161508
+		-0.096952998638152571 -7.4921736717224121 0.25551227331161508
+		-0.096952998638152543 -7.4921736717224121 -0.94448772668838521
+		-1.2969529986381527 -7.4921736717224121 -0.94448772668838543
+		;
+createNode transform -n "WhiteboxHumanCharacter1:L_RIK_JNT_GRP" -p "WhiteboxHumanCharacter1:R_Leg_IK_CTRL";
+	rename -uid "513FA34A-C244-F389-48B3-38A0DAF976C2";
+	setAttr ".v" no;
+	setAttr ".t" -type "double3" -0.06990825324582757 0.92893075942993186 -0.54040923853041312 ;
+	setAttr ".s" -type "double3" 1 1 0.41620677725709848 ;
+createNode joint -n "WhiteboxHumanCharacter1:R_Heel_RIK_JNT" -p "WhiteboxHumanCharacter1:L_RIK_JNT_GRP";
+	rename -uid "5CBB22D0-B341-9E55-7A71-6782C41C82AE";
+	setAttr ".t" -type "double3" -0.6969529986381553 -8.4136211061156985 -0.83014922905531441 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jo" -type "double3" 90 -89.800363945475709 -90 ;
+	setAttr ".radi" 0.5813816572116205;
+createNode joint -n "WhiteboxHumanCharacter1:R_Toe_RIK_JNT" -p "WhiteboxHumanCharacter1:R_Heel_RIK_JNT";
+	rename -uid "B532CB8E-3B4A-4FEB-926C-5C98ED27D49B";
+	setAttr ".t" -type "double3" 2.5733787060913307 -1.7763568394002505e-15 -0.094001724000411291 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jo" -type "double3" 175.66265419131452 32.658385033196879 172.19901176013076 ;
+	setAttr ".radi" 0.51386676918686303;
+createNode joint -n "WhiteboxHumanCharacter1:R_Ball_RIK_JNT" -p "WhiteboxHumanCharacter1:R_Toe_RIK_JNT";
+	rename -uid "F47A93AD-9B4D-D8C1-4C35-C1BCE6CA9F34";
+	setAttr ".t" -type "double3" 0.85492607678968491 0.04875022428189979 -0.64275356750971846 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jo" -type "double3" 20.844516868651912 25.128645675669212 35.150855731748372 ;
+	setAttr ".radi" 0.51518416727606253;
+createNode joint -n "WhiteboxHumanCharacter1:R_Ankle_RIK_JNT" -p "WhiteboxHumanCharacter1:R_Ball_RIK_JNT";
+	rename -uid "65FA3C8D-AB4D-9286-D87E-F2B75B828DEA";
+	setAttr ".t" -type "double3" 1.2934001410946552 0.0001217049478263732 -0.016398087602660261 ;
+	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
+	setAttr ".mxrl" -type "double3" 360 360 360 ;
+	setAttr ".jo" -type "double3" 2.5902428579135231e-13 -89.296448443776171 -37.185223537560034 ;
+	setAttr ".radi" 0.51518416727606253;
+createNode ikHandle -n "WhiteboxHumanCharacter1:R_Leg_IK_Handle" -p "WhiteboxHumanCharacter1:R_Ankle_RIK_JNT";
+	rename -uid "15CA0010-A147-AA05-63C5-3B86B12BB43C";
+	setAttr ".t" -type "double3" -0.0089091672210679373 4.0053657617278304e-06 3.8857805861880479e-16 ;
+	setAttr ".s" -type "double3" 0.99999999999999978 1 0.99999999999999956 ;
+	setAttr ".roc" yes;
+createNode poleVectorConstraint -n "WhiteboxHumanCharacter1:ikHandle3_poleVectorConstraint1" 
+		-p "WhiteboxHumanCharacter1:R_Leg_IK_Handle";
+	rename -uid "725E5C83-C249-E208-B0DA-BE93FA1A9856";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Leg_IK_PoleVectorW0" -dv 1 -min 
+		0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".rst" -type "double3" -1.8146515068373503e-08 -4.0760983812355143 3.9459552802573725 ;
+	setAttr -k on ".w0";
+createNode ikHandle -n "WhiteboxHumanCharacter1:R_Leg_IK_FootHandle01" -p "WhiteboxHumanCharacter1:R_Toe_RIK_JNT";
+	rename -uid "4C508456-AE4A-EF5E-8DF3-059790A9ED90";
+	setAttr ".t" -type "double3" 0.85492628420296146 0.048750689953402926 -0.64275364800268064 ;
+	setAttr ".r" -type "double3" -156.51757985278513 26.172618458747877 35.603936290263626 ;
+	setAttr ".s" -type "double3" 0.99999999999999989 1 1 ;
+	setAttr ".pv" -type "double3" -0.83370832798197259 0.098371082313061714 0.54337238981941294 ;
+	setAttr ".roc" yes;
+createNode ikHandle -n "WhiteboxHumanCharacter1:R_Leg_IK_FootHandle02" -p "WhiteboxHumanCharacter1:R_Heel_RIK_JNT";
+	rename -uid "E3759F41-5F49-E0F1-CF98-66A378059FD2";
+	setAttr ".t" -type "double3" 2.6924890654568117 0.11172474946250865 -0.081873413688656194 ;
+	setAttr ".r" -type "double3" 0.083366940773552042 -3.3648007453889361 178.38499904851631 ;
+	setAttr ".s" -type "double3" 1 1.0000000000000002 0.99999999999999989 ;
+	setAttr ".pv" -type "double3" 0.99999392981039781 0.0034842994070036328 2.22317517002211e-16 ;
+	setAttr ".roc" yes;
+createNode transform -n "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP" -p "WhiteboxHumanCharacter1:CTRL_GRP";
+	rename -uid "C66A55C1-DC45-AC8F-6941-E3A62FE49347";
+	setAttr ".rp" -type "double3" 8.8817841970012523e-16 0 4.9960036108132044e-16 ;
+	setAttr ".sp" -type "double3" 8.8817841970012523e-16 0 4.9960036108132044e-16 ;
+createNode transform -n "WhiteboxHumanCharacter1:L_Hand_CTRL" -p "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP";
+	rename -uid "86243B25-B645-A847-C1BA-B988E331AF55";
+	addAttr -ci true -sn "Fist" -ln "Fist" -min 0 -max 1 -at "double";
+	addAttr -ci true -sn "Stretch" -ln "Stretch" -min 0 -max 1 -at "double";
+	addAttr -ci true -sn "Point" -ln "Point" -min 0 -max 1 -at "double";
+	addAttr -ci true -sn "Grab" -ln "Grab" -min 0 -max 1 -at "double";
+	addAttr -ci true -sn "Grip" -ln "Grip" -min 0 -max 1 -at "double";
+	setAttr ".rp" -type "double3" 6.4372601509094247 4.3568305969238299 0.057797901332378943 ;
+	setAttr ".sp" -type "double3" 6.4372601509094247 4.3568305969238299 0.057797901332378943 ;
+	setAttr -k on ".Fist";
+	setAttr -k on ".Stretch";
+	setAttr -k on ".Point";
+	setAttr -k on ".Grab";
+	setAttr -k on ".Grip";
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Hand_CTRLShape" -p "WhiteboxHumanCharacter1:L_Hand_CTRL";
+	rename -uid "373A7426-1449-D6CE-DCE4-B8B173FD5FA2";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 6;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		6.5827228447578321 4.7320522015825848 -0.21621245213993417
+		7.0395329501410195 4.6207799591360477 -0.41096198973783271
+		7.4963430555242061 4.5095077166895106 -0.21621245213993445
+		7.685559996603005 4.4634172447524882 0.25395452279480002
+		7.496343055524207 4.5095077166895106 0.72412149772953471
+		7.0395329501410195 4.6207799591360477 0.91887103532743319
+		6.582722844757833 4.7320522015825848 0.72412149772953482
+		6.393505903679034 4.7781426735196071 0.25395452279480052
+		6.5827228447578321 4.7320522015825848 -0.21621245213993417
+		7.0395329501410195 4.6207799591360477 -0.41096198973783271
+		7.4963430555242061 4.5095077166895106 -0.21621245213993445
+		;
+createNode transform -n "WhiteboxHumanCharacter1:L_Thumb01_CTRL_GRP" -p "WhiteboxHumanCharacter1:L_Hand_CTRL";
+	rename -uid "AC31F2B7-6B45-EB1D-5A38-699D1A48CBEB";
+	setAttr ".t" -type "double3" -8.8817841970012523e-16 8.8817841970012523e-16 3.8857805861880479e-16 ;
+createNode transform -n "WhiteboxHumanCharacter1:L_Thumb01_CTRL" -p "WhiteboxHumanCharacter1:L_Thumb01_CTRL_GRP";
+	rename -uid "BA12C99C-AA47-CB14-FF11-FAADE50108B9";
+	setAttr ".rp" -type "double3" 6.6884503364562979 4.3190708160400382 0.36514899134635914 ;
+	setAttr ".sp" -type "double3" 6.6884503364562979 4.3190708160400391 0.36514899134635914 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Thumb01_CTRLShape" -p "WhiteboxHumanCharacter1:L_Thumb01_CTRL";
+	rename -uid "2B8E688D-F24B-6F57-5FB1-AB8AF4389DD5";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 6;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		6.5738589166959169 4.5954942217166685 0.60612081926195827
+		6.7796378365606547 4.6131859847037795 0.54851972509027136
+		6.9620706623649848 4.5163550681154447 0.60612081926195815
+		7.0142907189747801 4.3617237096320931 0.7451821620187743
+		6.9057082054559125 4.2398728618850967 0.88424350477559055
+		6.6999292855911747 4.2221810988979858 0.94184459894727757
+		6.5174964597868446 4.3190120154863205 0.88424350477559066
+		6.4652764031770493 4.4736433739696722 0.74518216201877452
+		6.5738589166959169 4.5954942217166685 0.60612081926195827
+		6.7796378365606547 4.6131859847037795 0.54851972509027136
+		6.9620706623649848 4.5163550681154447 0.60612081926195815
+		;
+createNode transform -n "WhiteboxHumanCharacter1:L_Thumb02_CTRL_GRP" -p "WhiteboxHumanCharacter1:L_Thumb01_CTRL";
+	rename -uid "D8B7E6C4-144D-72CC-5097-43A27A61586E";
+createNode transform -n "WhiteboxHumanCharacter1:L_Thumb02_CTRL" -p "WhiteboxHumanCharacter1:L_Thumb02_CTRL_GRP";
+	rename -uid "1180A084-1B4D-0FBC-BF28-6EB6A315B8DD";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 6;
+	setAttr ".rp" -type "double3" 6.8126201629638663 4.0761404037475595 0.69190198183059692 ;
+	setAttr ".sp" -type "double3" 6.8126201629638663 4.0761404037475595 0.69190198183059692 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Thumb02_CTRLShape" -p "WhiteboxHumanCharacter1:L_Thumb02_CTRL";
+	rename -uid "772C4BD8-1F4C-61C6-C7CC-25A7198CAFDA";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 6;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		6.986764415514374 4.2507234348738985 0.86668302961250265
+		7.0537001137070385 4.2240484017951188 0.86649036019452375
+		7.0825932884686749 4.0721847756312801 0.94802934774428005
+		6.9749461449006276 4.027251521770042 0.98329255335684917
+		6.864989810035719 3.9866391998346846 1.0166188525976547
+		6.7459623232875918 4.1030686883025576 0.96349056819462142
+		6.7691609370814181 4.1651778590773034 0.93527253446587744
+		6.915500128493564 4.1315288574981706 0.92475305477983993
+		6.986764415514374 4.2507234348738985 0.86668302961250265
+		7.0537001137070385 4.2240484017951188 0.86649036019452375
+		7.0825932884686749 4.0721847756312801 0.94802934774428005
+		;
+createNode transform -n "WhiteboxHumanCharacter1:L_Thumb03_CTRL" -p "WhiteboxHumanCharacter1:L_Thumb02_CTRL";
+	rename -uid "F6F70A68-EA4D-B323-0BA6-E4BA0C785546";
+createNode transform -n "WhiteboxHumanCharacter1:L_Thumb03_CTRL" -p "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL|WhiteboxHumanCharacter1:L_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb01_CTRL|WhiteboxHumanCharacter1:L_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb02_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL";
+	rename -uid "10D22584-DE49-1920-4FCE-DB848D97201E";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 6;
+	setAttr ".rp" -type "double3" 6.9718699455261213 3.8952906131744371 0.75487202405929654 ;
+	setAttr ".sp" -type "double3" 6.9718699455261213 3.8952906131744371 0.75487202405929654 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Thumb03_CTRLShape" -p "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL|WhiteboxHumanCharacter1:L_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb01_CTRL|WhiteboxHumanCharacter1:L_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb02_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL";
+	rename -uid "60796671-724E-EAFD-F7DE-79B783CE1CE8";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 6;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		7.11612755068625 4.0404596147387668 0.96148395648466889
+		7.1718483693912756 4.0145053467824887 0.95246514987728648
+		7.2356909386096726 3.8591852512607767 0.98430172638802982
+		7.168005715600291 3.8141042466587107 1.0060301669976921
+		7.0974403767945624 3.7734034606969984 1.0272360742506346
+		6.9763325498666475 3.8931915751625445 1.0131834869162262
+		6.9778769888711407 3.9546778241749885 1.0044183043472736
+		7.0934872761807393 3.9223792045061447 0.98240813921673553
+		7.11612755068625 4.0404596147387668 0.96148395648466889
+		7.1718483693912756 4.0145053467824887 0.95246514987728648
+		7.2356909386096726 3.8591852512607767 0.98430172638802982
+		;
+createNode transform -n "WhiteboxHumanCharacter1:L_Finger01_CTRL_GRP" -p "WhiteboxHumanCharacter1:L_Hand_CTRL";
+	rename -uid "25B7DC64-8947-9BC4-E9AA-C887607FA154";
+	setAttr ".t" -type "double3" -8.8817841970012523e-16 8.8817841970012523e-16 3.8857805861880479e-16 ;
+createNode transform -n "WhiteboxHumanCharacter1:L_Finger01_CTRL" -p "WhiteboxHumanCharacter1:L_Finger01_CTRL_GRP";
+	rename -uid "821A7E46-A34E-CE53-BB10-1FB215218200";
+	setAttr ".rp" -type "double3" 7.2715401649475098 4.1683406829833984 0.1098800003528595 ;
+	setAttr ".sp" -type "double3" 7.2715401649475098 4.1683406829833984 0.1098800003528595 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Finger01_CTRLShape" -p "WhiteboxHumanCharacter1:L_Finger01_CTRL";
+	rename -uid "D84A3161-554E-496B-84C3-4E938BE10C0E";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 6;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		7.0842335032638291 4.445820795404078 -0.12907788612241333
+		7.3183757719126188 4.3980895735390613 -0.22805748353648198
+		7.5525180405614085 4.3503583516740454 -0.12907788612241347
+		7.6495029437605417 4.3305874322289162 0.1098800003528594
+		7.5525180405614085 4.3503583516740445 0.34883788682813244
+		7.3183757719126188 4.3980895735390613 0.44781748424220102
+		7.0842335032638291 4.4458207954040772 0.34883788682813249
+		6.9872486000646958 4.4655917148492064 0.10988000035285968
+		7.0842335032638291 4.445820795404078 -0.12907788612241333
+		7.3183757719126188 4.3980895735390613 -0.22805748353648198
+		7.5525180405614085 4.3503583516740454 -0.12907788612241347
+		;
+createNode transform -n "WhiteboxHumanCharacter1:L_Finger02_CTRL_GRP" -p "WhiteboxHumanCharacter1:L_Finger01_CTRL";
+	rename -uid "C30491EC-5E42-CCCD-B772-1A900C239745";
+createNode transform -n "WhiteboxHumanCharacter1:L_Finger02_CTRL" -p "WhiteboxHumanCharacter1:L_Finger02_CTRL_GRP";
+	rename -uid "FF6B6E63-7540-0D45-2F52-9F800EF2571C";
+	setAttr ".rp" -type "double3" 7.6008000373840332 4.127180576324462 0.12212700396776199 ;
+	setAttr ".sp" -type "double3" 7.6008000373840332 4.127180576324462 0.12212700396776199 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Finger02_CTRLShape" -p "WhiteboxHumanCharacter1:L_Finger02_CTRL";
+	rename -uid "BFEA1575-0C4B-9275-5AA9-398B94F8F7A8";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 6;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		7.5897030050072223 4.3385369159592555 -0.074545352674876927
+		7.6158437485918817 4.2968870945811428 -0.16071440434236872
+		7.7837704060767985 4.1835215954053595 -0.11200262029220732
+		7.824289388283959 4.1838543019999062 0.076231094374246522
+		7.8601438445972143 4.1879498457476823 0.26536468323092011
+		7.7238521011525219 4.3031495862728377 0.37296355429620259
+		7.666076443527639 4.3429651663015774 0.30282195084825042
+		7.6997691335658534 4.2705064149678265 0.10041528490729668
+		7.5897030050072223 4.3385369159592555 -0.074545352674876927
+		7.6158437485918817 4.2968870945811428 -0.16071440434236872
+		7.7837704060767985 4.1835215954053595 -0.11200262029220732
+		;
+createNode transform -n "WhiteboxHumanCharacter1:L_Finger03_CTRL_GRP" -p "WhiteboxHumanCharacter1:L_Finger02_CTRL";
+	rename -uid "4A5715D4-8045-F175-8E4B-A2AC887B7147";
+createNode transform -n "WhiteboxHumanCharacter1:L_Finger03_CTRL" -p "WhiteboxHumanCharacter1:L_Finger03_CTRL_GRP";
+	rename -uid "3B27BD13-B941-BF55-66C2-768D77367DBA";
+	setAttr ".rp" -type "double3" 7.7834501266479474 3.9067206382751465 0.12953600287437442 ;
+	setAttr ".sp" -type "double3" 7.7834501266479474 3.9067206382751465 0.12953600287437442 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Finger03_CTRLShape" -p "WhiteboxHumanCharacter1:L_Finger03_CTRL";
+	rename -uid "C8EA3046-4D40-0D6B-A100-15A6F3ED4066";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 6;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		7.8711215199898987 4.1247138433714561 -0.02650245885835098
+		7.8863813819740667 4.0855624367841834 -0.11255477651072299
+		7.9929247355950936 3.9114944368296758 -0.079383589745352395
+		8.0143992479715376 3.8762104626621601 0.097953282773847156
+		8.0329603942202059 3.846085128910544 0.27656579069543752
+		7.9430003533802402 3.9930597064195088 0.39083366482694287
+		7.911157178615011 4.0593045354523243 0.32944692158243888
+		7.9313067656418674 4.0013061943025399 0.13028677770182362
+		7.8711215199898987 4.1247138433714561 -0.02650245885835098
+		7.8863813819740667 4.0855624367841834 -0.11255477651072299
+		7.9929247355950936 3.9114944368296758 -0.079383589745352395
+		;
+createNode transform -n "WhiteboxHumanCharacter1:L_Index01_CTRL_GRP" -p "WhiteboxHumanCharacter1:L_Hand_CTRL";
+	rename -uid "09461A90-0E4D-6114-7647-718958A87B5B";
+	setAttr ".t" -type "double3" -8.8817841970012523e-16 8.8817841970012523e-16 3.8857805861880479e-16 ;
+createNode transform -n "WhiteboxHumanCharacter1:L_Index01_CTRL" -p "WhiteboxHumanCharacter1:L_Index01_CTRL_GRP";
+	rename -uid "F308BF41-1B47-5851-86A2-E0BB23ADB6CA";
+	setAttr ".rp" -type "double3" 7.220400333404541 4.1891703605651864 0.43244600296020508 ;
+	setAttr ".sp" -type "double3" 7.220400333404541 4.1891703605651864 0.43244600296020508 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Index01_CTRLShape" -p "WhiteboxHumanCharacter1:L_Index01_CTRL";
+	rename -uid "13FC9946-DB45-0910-395F-D5A32D653051";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 6;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		7.1441988442311244 4.4373831649695745 0.31961292400874192
+		7.2553468259723619 4.4147250220936396 0.27287593242273134
+		7.3664948077135994 4.3920668792177047 0.31961292400874186
+		7.412533809181217 4.3826815691403054 0.43244600296020547
+		7.3664948077135994 4.3920668792177047 0.54527908191166918
+		7.2553468259723619 4.4147250220936396 0.59201607349767971
+		7.1441988442311244 4.4373831649695745 0.54527908191166918
+		7.0981598427635069 4.4467684750469738 0.43244600296020563
+		7.1441988442311244 4.4373831649695745 0.31961292400874192
+		7.2553468259723619 4.4147250220936396 0.27287593242273134
+		7.3664948077135994 4.3920668792177047 0.31961292400874186
+		;
+createNode transform -n "WhiteboxHumanCharacter1:L_Index02_CTRL_GRP" -p "WhiteboxHumanCharacter1:L_Index01_CTRL";
+	rename -uid "0EFC99F2-674C-014B-9ACF-DE8BA1BE923F";
+createNode transform -n "WhiteboxHumanCharacter1:L_Index02_CTRL" -p "WhiteboxHumanCharacter1:L_Index02_CTRL_GRP";
+	rename -uid "7BDD3109-AA44-446E-E1EB-97843EBD6FD0";
+	setAttr ".rp" -type "double3" 7.603790283203125 4.084850788116456 0.52567398548126221 ;
+	setAttr ".sp" -type "double3" 7.603790283203125 4.084850788116456 0.52567398548126221 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Index02_CTRLShape" -p "WhiteboxHumanCharacter1:L_Index02_CTRL";
+	rename -uid "7351F7EF-2048-9DFC-7BB2-87AF9F4DF283";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 6;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		7.6663759992413754 4.2722019835910308 0.38573519879025092
+		7.711909131262451 4.2302300257296492 0.34889675629559658
+		7.8339318067236627 4.142274842388753 0.43789302243543571
+		7.8123217129609914 4.1577232795609191 0.55682471765373631
+		7.7866867620043196 4.1763295502906423 0.6744982255897789
+		7.6450945482654324 4.2783906555071551 0.68350704352451042
+		7.6191309545220332 4.3062566914929192 0.62234040194459428
+		7.7039639262341053 4.2289693566938267 0.52493347973960158
+		7.6663759992413754 4.2722019835910308 0.38573519879025092
+		7.711909131262451 4.2302300257296492 0.34889675629559658
+		7.8339318067236627 4.142274842388753 0.43789302243543571
+		;
+createNode transform -n "WhiteboxHumanCharacter1:L_Index03_CTRL_GRP" -p "WhiteboxHumanCharacter1:L_Index02_CTRL";
+	rename -uid "91850CA1-8441-1F32-6862-FFAF170ABDDB";
+createNode transform -n "WhiteboxHumanCharacter1:L_Index03_CTRL" -p "WhiteboxHumanCharacter1:L_Index03_CTRL_GRP";
+	rename -uid "1F7EB7F8-694A-38CD-EA87-5697A154319D";
+	setAttr ".rp" -type "double3" 7.7450003623962402 3.8862605094909664 0.56891399621963501 ;
+	setAttr ".sp" -type "double3" 7.7450003623962402 3.8862605094909668 0.56891399621963501 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Index03_CTRLShape" -p "WhiteboxHumanCharacter1:L_Index03_CTRL";
+	rename -uid "8D2E3E9F-D148-13B4-25EE-7B942610142B";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 6;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		7.8798033131487708 4.0577787545543424 0.51194667727963294
+		7.9073137541411924 4.0091849793378582 0.48471446874748741
+		7.9799930376681489 3.8665344456634556 0.54456695666252963
+		7.9597092840723125 3.866835437880987 0.62626267420535531
+		7.9370330165454126 3.8717646515322626 0.70717745199604887
+		7.8465591096295846 4.0165816074115277 0.71468043663235736
+		7.8368432920260354 4.063008960423149 0.67455717261315229
+		7.8900135794610673 3.9786058577583239 0.60425480047663649
+		7.8798033131487708 4.0577787545543424 0.51194667727963294
+		7.9073137541411924 4.0091849793378582 0.48471446874748741
+		7.9799930376681489 3.8665344456634556 0.54456695666252963
+		;
+createNode parentConstraint -n "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1" 
+		-p "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP";
+	rename -uid "DF06A856-584C-B2DF-5544-A48EB1131958";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Wrist_RK_JNTW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" -4.8999953788619797 -5.6078616712492879 2.2283490967531985 ;
+	setAttr ".tg[0].tor" -type "double3" 5.5928984128918833 24.477195717256084 13.297644475667601 ;
+	setAttr ".lr" -type "double3" -2.4150074804773456 0.073707535864503237 -0.11366300701274912 ;
+	setAttr ".rst" -type "double3" 8.8817841970012523e-16 0 -6.106226635438361e-16 ;
+	setAttr ".rsrr" -type "double3" -1.490885006936024e-16 -7.1562480332929135e-15 7.9513867036587919e-16 ;
+	setAttr -k on ".w0";
+createNode transform -n "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP" -p "WhiteboxHumanCharacter1:CTRL_GRP";
+	rename -uid "88B4DE5D-1E4A-902D-4807-E395440C3FEC";
+createNode transform -n "WhiteboxHumanCharacter1:R_Hand_CTRL" -p "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP";
+	rename -uid "347732E7-3B4F-D957-3CE6-45942D3E3887";
+	addAttr -ci true -sn "Fist" -ln "Fist" -min 0 -max 1 -at "double";
+	addAttr -ci true -sn "Stretch" -ln "Stretch" -min 0 -max 1 -at "double";
+	addAttr -ci true -sn "Point" -ln "Point" -min 0 -max 1 -at "double";
+	addAttr -ci true -sn "Grab" -ln "Grab" -min 0 -max 1 -at "double";
+	addAttr -ci true -sn "Grip" -ln "Grip" -min 0 -max 1 -at "double";
+	setAttr ".t" -type "double3" 0 -8.8817841970012523e-16 6.9388939039072284e-17 ;
+	setAttr ".s" -type "double3" 1 1.0000000000000004 1.0000000000000002 ;
+	setAttr ".rp" -type "double3" -6.4372601509094238 4.3568305969238308 0.057797901332378374 ;
+	setAttr ".sp" -type "double3" -6.4372601509094238 4.356830596923829 0.05779790133237836 ;
+	setAttr ".spt" -type "double3" 0 1.7763568394002513e-15 1.387778780781446e-17 ;
+	setAttr -k on ".Fist";
+	setAttr -k on ".Stretch";
+	setAttr -k on ".Point";
+	setAttr -k on ".Grab";
+	setAttr -k on ".Grip";
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Hand_CTRLShape" -p "WhiteboxHumanCharacter1:R_Hand_CTRL";
+	rename -uid "977F455C-0242-E78A-510D-C0BF8483EF9B";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 13;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		-6.5827228447578312 4.7320522015825839 -0.21621245213993467
+		-7.0395329501410187 4.6207799591360468 -0.41096198973783316
+		-7.4963430555242052 4.5095077166895097 -0.21621245213993495
+		-7.6855599966030042 4.4634172447524874 0.25395452279479941
+		-7.4963430555242061 4.5095077166895097 0.72412149772953405
+		-7.0395329501410187 4.6207799591360468 0.91887103532743242
+		-6.5827228447578321 4.7320522015825839 0.72412149772953416
+		-6.3935059036790332 4.7781426735196062 0.25395452279479991
+		-6.5827228447578312 4.7320522015825839 -0.21621245213993467
+		-7.0395329501410187 4.6207799591360468 -0.41096198973783316
+		-7.4963430555242052 4.5095077166895097 -0.21621245213993495
+		;
+createNode transform -n "WhiteboxHumanCharacter1:R_Finger01_CTRL_GRP" -p "WhiteboxHumanCharacter1:R_Hand_CTRL";
+	rename -uid "6B6D237A-CE4A-BDD2-5A3B-79BC3B487E13";
+	setAttr ".t" -type "double3" 0 8.8817841970012484e-16 -4.5796699765787697e-16 ;
+	setAttr ".s" -type "double3" 1 0.99999999999999956 0.99999999999999978 ;
+createNode transform -n "WhiteboxHumanCharacter1:R_Finger01_CTRL" -p "WhiteboxHumanCharacter1:R_Finger01_CTRL_GRP";
+	rename -uid "8987D077-F744-9742-C0B6-9C9F452489E8";
+	setAttr ".rp" -type "double3" -7.2715401649475098 4.1683406829833984 0.1098800003528595 ;
+	setAttr ".sp" -type "double3" -7.2715401649475098 4.1683406829833984 0.1098800003528595 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Finger01_CTRLShape" -p "WhiteboxHumanCharacter1:R_Finger01_CTRL";
+	rename -uid "94633750-BB4B-CFB7-3A19-DDB9C328C484";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 13;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		-7.0842335032638291 4.445820795404078 -0.12907788612241333
+		-7.3183757719126188 4.3980895735390613 -0.22805748353648198
+		-7.5525180405614085 4.3503583516740454 -0.12907788612241347
+		-7.6495029437605417 4.3305874322289162 0.1098800003528594
+		-7.5525180405614085 4.3503583516740445 0.34883788682813244
+		-7.3183757719126188 4.3980895735390613 0.44781748424220102
+		-7.0842335032638291 4.4458207954040772 0.34883788682813249
+		-6.9872486000646958 4.4655917148492064 0.10988000035285968
+		-7.0842335032638291 4.445820795404078 -0.12907788612241333
+		-7.3183757719126188 4.3980895735390613 -0.22805748353648198
+		-7.5525180405614085 4.3503583516740454 -0.12907788612241347
+		;
+createNode transform -n "WhiteboxHumanCharacter1:R_Finger02_CTRL_GRP" -p "WhiteboxHumanCharacter1:R_Finger01_CTRL";
+	rename -uid "852BC286-DF46-E3C6-0735-F68F483D483D";
+createNode transform -n "WhiteboxHumanCharacter1:R_Finger02_CTRL" -p "WhiteboxHumanCharacter1:R_Finger02_CTRL_GRP";
+	rename -uid "90DEDDB5-1A4E-358C-631B-35968E117BBE";
+	setAttr ".rp" -type "double3" -7.6008000373840332 4.127180576324462 0.12212700396776199 ;
+	setAttr ".sp" -type "double3" -7.6008000373840332 4.127180576324462 0.12212700396776199 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Finger02_CTRLShape" -p "WhiteboxHumanCharacter1:R_Finger02_CTRL";
+	rename -uid "9EE1ACD5-6545-37EA-017F-FC9B1B827F01";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 13;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		-7.5897030050072223 4.3385369159592555 -0.074545352674876927
+		-7.6158437485918817 4.2968870945811428 -0.16071440434236872
+		-7.7837704060767985 4.1835215954053595 -0.11200262029220732
+		-7.824289388283959 4.1838543019999062 0.076231094374246522
+		-7.8601438445972143 4.1879498457476823 0.26536468323092011
+		-7.7238521011525219 4.3031495862728377 0.37296355429620259
+		-7.666076443527639 4.3429651663015774 0.30282195084825042
+		-7.6997691335658534 4.2705064149678265 0.10041528490729668
+		-7.5897030050072223 4.3385369159592555 -0.074545352674876927
+		-7.6158437485918817 4.2968870945811428 -0.16071440434236872
+		-7.7837704060767985 4.1835215954053595 -0.11200262029220732
+		;
+createNode transform -n "WhiteboxHumanCharacter1:R_Finger03_CTRL_GRP" -p "WhiteboxHumanCharacter1:R_Finger02_CTRL";
+	rename -uid "61C1BA77-AD45-736D-971B-71938765A001";
+createNode transform -n "WhiteboxHumanCharacter1:R_Finger03_CTRL" -p "WhiteboxHumanCharacter1:R_Finger03_CTRL_GRP";
+	rename -uid "5604D00A-1E45-97BD-5337-7CB6515B9FF9";
+	setAttr ".rp" -type "double3" -7.7834501266479474 3.9067206382751465 0.12953600287437442 ;
+	setAttr ".sp" -type "double3" -7.7834501266479474 3.9067206382751465 0.12953600287437442 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Finger03_CTRLShape" -p "WhiteboxHumanCharacter1:R_Finger03_CTRL";
+	rename -uid "CAC75F90-A346-B021-D08B-7EB9A671B233";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 13;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		-7.8711215199898987 4.1247138433714561 -0.02650245885835098
+		-7.8863813819740667 4.0855624367841834 -0.11255477651072299
+		-7.9929247355950936 3.9114944368296758 -0.079383589745352395
+		-8.0143992479715376 3.8762104626621601 0.097953282773847156
+		-8.0329603942202059 3.846085128910544 0.27656579069543752
+		-7.9430003533802402 3.9930597064195088 0.39083366482694287
+		-7.911157178615011 4.0593045354523243 0.32944692158243888
+		-7.9313067656418674 4.0013061943025399 0.13028677770182362
+		-7.8711215199898987 4.1247138433714561 -0.02650245885835098
+		-7.8863813819740667 4.0855624367841834 -0.11255477651072299
+		-7.9929247355950936 3.9114944368296758 -0.079383589745352395
+		;
+createNode transform -n "WhiteboxHumanCharacter1:R_Index01_CTRL_GRP" -p "WhiteboxHumanCharacter1:R_Hand_CTRL";
+	rename -uid "C27C0154-8D44-FA00-7DEC-E78F8C212E53";
+	setAttr ".t" -type "double3" 0 8.8817841970012484e-16 -4.5796699765787697e-16 ;
+	setAttr ".s" -type "double3" 1 0.99999999999999956 0.99999999999999978 ;
+createNode transform -n "WhiteboxHumanCharacter1:R_Index01_CTRL" -p "WhiteboxHumanCharacter1:R_Index01_CTRL_GRP";
+	rename -uid "026516A4-7A48-CA8C-A1D0-B79D0F34FE89";
+	setAttr ".rp" -type "double3" -7.220400333404541 4.1891703605651864 0.43244600296020508 ;
+	setAttr ".sp" -type "double3" -7.220400333404541 4.1891703605651864 0.43244600296020508 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Index01_CTRLShape" -p "WhiteboxHumanCharacter1:R_Index01_CTRL";
+	rename -uid "3F0ABB9B-F34A-70D7-9BB8-DEBE9BEB2954";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 13;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		-7.1441988442311244 4.4373831649695745 0.31961292400874192
+		-7.2553468259723619 4.4147250220936396 0.27287593242273134
+		-7.3664948077135994 4.3920668792177047 0.31961292400874186
+		-7.412533809181217 4.3826815691403054 0.43244600296020547
+		-7.3664948077135994 4.3920668792177047 0.54527908191166918
+		-7.2553468259723619 4.4147250220936396 0.59201607349767971
+		-7.1441988442311244 4.4373831649695745 0.54527908191166918
+		-7.0981598427635069 4.4467684750469738 0.43244600296020563
+		-7.1441988442311244 4.4373831649695745 0.31961292400874192
+		-7.2553468259723619 4.4147250220936396 0.27287593242273134
+		-7.3664948077135994 4.3920668792177047 0.31961292400874186
+		;
+createNode transform -n "WhiteboxHumanCharacter1:R_Index02_CTRL_GRP" -p "WhiteboxHumanCharacter1:R_Index01_CTRL";
+	rename -uid "5D2B0FD8-054D-6D33-CD59-E18142BF62E8";
+createNode transform -n "WhiteboxHumanCharacter1:R_Index02_CTRL" -p "WhiteboxHumanCharacter1:R_Index02_CTRL_GRP";
+	rename -uid "82BEC4E7-2C40-A19A-91CB-CCBEDCC734B8";
+	setAttr ".rp" -type "double3" -7.603790283203125 4.084850788116456 0.52567398548126221 ;
+	setAttr ".sp" -type "double3" -7.603790283203125 4.084850788116456 0.52567398548126221 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Index02_CTRLShape" -p "WhiteboxHumanCharacter1:R_Index02_CTRL";
+	rename -uid "ABEE4D95-3F4C-BB07-4100-07969A0D6B38";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 13;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		-7.6663759992413754 4.2722019835910308 0.38573519879025092
+		-7.711909131262451 4.2302300257296492 0.34889675629559658
+		-7.8339318067236627 4.142274842388753 0.43789302243543571
+		-7.8123217129609914 4.1577232795609191 0.55682471765373631
+		-7.7866867620043196 4.1763295502906423 0.6744982255897789
+		-7.6450945482654324 4.2783906555071551 0.68350704352451042
+		-7.6191309545220332 4.3062566914929192 0.62234040194459428
+		-7.7039639262341053 4.2289693566938267 0.52493347973960158
+		-7.6663759992413754 4.2722019835910308 0.38573519879025092
+		-7.711909131262451 4.2302300257296492 0.34889675629559658
+		-7.8339318067236627 4.142274842388753 0.43789302243543571
+		;
+createNode transform -n "WhiteboxHumanCharacter1:R_Index03_CTRL_GRP" -p "WhiteboxHumanCharacter1:R_Index02_CTRL";
+	rename -uid "3763DB16-5F42-77C4-0B5F-93B6EF332AC8";
+createNode transform -n "WhiteboxHumanCharacter1:R_Index03_CTRL" -p "WhiteboxHumanCharacter1:R_Index03_CTRL_GRP";
+	rename -uid "E6FA9AF9-8943-DA4C-8AA3-F488CFB997A7";
+	setAttr ".rp" -type "double3" -7.7450003623962402 3.8862605094909664 0.56891399621963501 ;
+	setAttr ".sp" -type "double3" -7.7450003623962402 3.8862605094909668 0.56891399621963501 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Index03_CTRLShape" -p "WhiteboxHumanCharacter1:R_Index03_CTRL";
+	rename -uid "3EB5F871-2A41-CBAB-D0A1-BD97384D5453";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 13;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		-7.8798033131487708 4.0577787545543424 0.51194667727963294
+		-7.9073137541411924 4.0091849793378582 0.48471446874748741
+		-7.9799930376681489 3.8665344456634556 0.54456695666252963
+		-7.9597092840723125 3.866835437880987 0.62626267420535531
+		-7.9370330165454126 3.8717646515322626 0.70717745199604887
+		-7.8465591096295846 4.0165816074115277 0.71468043663235736
+		-7.8368432920260354 4.063008960423149 0.67455717261315229
+		-7.8900135794610673 3.9786058577583239 0.60425480047663649
+		-7.8798033131487708 4.0577787545543424 0.51194667727963294
+		-7.9073137541411924 4.0091849793378582 0.48471446874748741
+		-7.9799930376681489 3.8665344456634556 0.54456695666252963
+		;
+createNode transform -n "WhiteboxHumanCharacter1:R_Thumb01_CTRL_GRP" -p "WhiteboxHumanCharacter1:R_Hand_CTRL";
+	rename -uid "2762E2E6-394D-E27D-0FA5-6883B55432A4";
+	setAttr ".t" -type "double3" 0 8.8817841970012484e-16 -4.5796699765787697e-16 ;
+	setAttr ".s" -type "double3" 1 0.99999999999999956 0.99999999999999978 ;
+createNode transform -n "WhiteboxHumanCharacter1:R_Thumb01_CTRL" -p "WhiteboxHumanCharacter1:R_Thumb01_CTRL_GRP";
+	rename -uid "D7DEBBBE-E94D-F921-B8F5-5F98F6C9F92E";
+	setAttr ".rp" -type "double3" -6.6884503364562979 4.3190708160400382 0.36514899134635914 ;
+	setAttr ".sp" -type "double3" -6.6884503364562979 4.3190708160400391 0.36514899134635914 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Thumb01_CTRLShape" -p "WhiteboxHumanCharacter1:R_Thumb01_CTRL";
+	rename -uid "1C5B610A-874D-626A-0AFA-5F98870E6CD2";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 13;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		-6.5738589166959169 4.5954942217166685 0.60612081926195827
+		-6.7796378365606547 4.6131859847037795 0.54851972509027136
+		-6.9620706623649848 4.5163550681154447 0.60612081926195815
+		-7.0142907189747801 4.3617237096320931 0.7451821620187743
+		-6.9057082054559125 4.2398728618850967 0.88424350477559055
+		-6.6999292855911747 4.2221810988979858 0.94184459894727757
+		-6.5174964597868446 4.3190120154863205 0.88424350477559066
+		-6.4652764031770493 4.4736433739696722 0.74518216201877452
+		-6.5738589166959169 4.5954942217166685 0.60612081926195827
+		-6.7796378365606547 4.6131859847037795 0.54851972509027136
+		-6.9620706623649848 4.5163550681154447 0.60612081926195815
+		;
+createNode transform -n "WhiteboxHumanCharacter1:R_Thumb02_CTRL_GRP" -p "WhiteboxHumanCharacter1:R_Thumb01_CTRL";
+	rename -uid "77CA7D95-B54E-8648-2B79-64B574C0754A";
+createNode transform -n "WhiteboxHumanCharacter1:R_Thumb02_CTRL" -p "WhiteboxHumanCharacter1:R_Thumb02_CTRL_GRP";
+	rename -uid "AB1A93AF-2F49-C445-7074-58B6A1C309A7";
+	setAttr ".rp" -type "double3" -6.8126201629638663 4.0761404037475595 0.69190198183059692 ;
+	setAttr ".sp" -type "double3" -6.8126201629638663 4.0761404037475595 0.69190198183059692 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Thumb02_CTRLShape" -p "WhiteboxHumanCharacter1:R_Thumb02_CTRL";
+	rename -uid "41F2ABA3-FC4B-7C68-8103-B8A434FED473";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 13;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		-6.986764415514374 4.2507234348738985 0.86668302961250265
+		-7.0537001137070385 4.2240484017951188 0.86649036019452375
+		-7.0825932884686749 4.0721847756312801 0.94802934774428005
+		-6.9749461449006276 4.027251521770042 0.98329255335684917
+		-6.864989810035719 3.9866391998346846 1.0166188525976547
+		-6.7459623232875918 4.1030686883025576 0.96349056819462142
+		-6.7691609370814181 4.1651778590773034 0.93527253446587744
+		-6.915500128493564 4.1315288574981706 0.92475305477983993
+		-6.986764415514374 4.2507234348738985 0.86668302961250265
+		-7.0537001137070385 4.2240484017951188 0.86649036019452375
+		-7.0825932884686749 4.0721847756312801 0.94802934774428005
+		;
+createNode transform -n "WhiteboxHumanCharacter1:R_Thumb03_CTRL" -p "WhiteboxHumanCharacter1:R_Thumb02_CTRL";
+	rename -uid "FBCC6E96-FD4E-6721-BBB1-519CDA726F76";
+createNode transform -n "WhiteboxHumanCharacter1:R_Thumb03_CTRL" -p "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL|WhiteboxHumanCharacter1:R_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb01_CTRL|WhiteboxHumanCharacter1:R_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb02_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL";
+	rename -uid "26035416-FD42-A749-3E26-E8A6B1960673";
+	setAttr ".rp" -type "double3" -6.9718699455261213 3.8952906131744371 0.75487202405929654 ;
+	setAttr ".sp" -type "double3" -6.9718699455261213 3.8952906131744371 0.75487202405929654 ;
+createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Thumb03_CTRLShape" -p "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL|WhiteboxHumanCharacter1:R_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb01_CTRL|WhiteboxHumanCharacter1:R_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb02_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL";
+	rename -uid "524C5E5A-2247-8F26-7FCA-3CBAF419DC1D";
+	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 13;
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		-7.11612755068625 4.0404596147387668 0.96148395648466889
+		-7.1718483693912756 4.0145053467824887 0.95246514987728648
+		-7.2356909386096726 3.8591852512607767 0.98430172638802982
+		-7.168005715600291 3.8141042466587107 1.0060301669976921
+		-7.0974403767945624 3.7734034606969984 1.0272360742506346
+		-6.9763325498666475 3.8931915751625445 1.0131834869162262
+		-6.9778769888711407 3.9546778241749885 1.0044183043472736
+		-7.0934872761807393 3.9223792045061447 0.98240813921673553
+		-7.11612755068625 4.0404596147387668 0.96148395648466889
+		-7.1718483693912756 4.0145053467824887 0.95246514987728648
+		-7.2356909386096726 3.8591852512607767 0.98430172638802982
+		;
+createNode parentConstraint -n "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1" 
+		-p "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP";
+	rename -uid "90252ECF-A442-FF27-4964-8E8D169BB2F2";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Wrist_RK_JNTW0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" 4.8999985455178381 5.6078603344748528 -2.2283506312015873 ;
+	setAttr ".tg[0].tor" -type "double3" -174.407101587108 24.47719571725607 13.297644475667571 ;
+	setAttr ".lr" -type "double3" -2.4146726184661049 -0.074094652064132446 0.11368592674500479 ;
+	setAttr ".rst" -type "double3" 8.8817841970012523e-16 0 2.7755575615628914e-16 ;
+	setAttr ".rsrr" -type "double3" 1.2672522558956201e-14 -2.3854160110976376e-15 -1.5902773407317588e-15 ;
+	setAttr -k on ".w0";
+createNode transform -n "WhiteboxHumanCharacter1:GEO_GRP" -p "WhiteboxHumanCharacterGRP";
 	rename -uid "E9A776DA-384D-28F9-0845-2AB2D66CDC10";
 createNode transform -n "WhiteboxHumanCharacter1:AbWall" -p "WhiteboxHumanCharacter1:GEO_GRP";
 	rename -uid "AE881E38-674F-7CB2-5396-D8B87CDEE3D3";
@@ -8261,3725 +11965,23 @@ createNode parentConstraint -n "WhiteboxHumanCharacter1:Pelvis_parentConstraint1
 	setAttr ".rst" -type "double3" 0 2.2204460492503131e-16 -1.3877787807814506e-17 ;
 	setAttr ".rsrr" -type "double3" 1.3241718894150475e-30 1.5902773407317584e-14 9.5416640443905503e-15 ;
 	setAttr -k on ".w0";
-createNode transform -n "WhiteboxHumanCharacter1:CTRL_GRP";
-	rename -uid "92264D05-7040-2357-533C-48877F4C6C0B";
-createNode transform -n "WhiteboxHumanCharacter1:COG_CTRL" -p "WhiteboxHumanCharacter1:CTRL_GRP";
-	rename -uid "8723562C-6647-E3DE-ED87-8AAA1C8A4D43";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 16;
-	setAttr ".rp" -type "double3" 0 1.9083307981491089 0 ;
-	setAttr ".sp" -type "double3" 0 1.9083307981491089 0 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:COG_CTRLShape" -p "WhiteboxHumanCharacter1:COG_CTRL";
-	rename -uid "2C99EC97-9749-ECAB-9395-B99AABEFA827";
-	setAttr -k off ".v";
-	setAttr ".cc" -type "nurbsCurve" 
-		1 7 0 no 3
-		8 0 1 2 3 4 5 6 7
-		8
-		0 1.9083307981491089 3.0000000000000009
-		3.0000000000000027 1.9083307981491089 1.0000000000000002
-		2.0000000000000018 1.9083307981491089 1.0000000000000002
-		2.0000000000000018 1.9083307981491089 -2.0000000000000004
-		-2.0000000000000018 1.9083307981491089 -2.0000000000000004
-		-2.0000000000000018 1.9083307981491089 1.0000000000000002
-		-3.0000000000000027 1.9083307981491089 1.0000000000000002
-		0 1.9083307981491089 3.0000000000000009
-		;
-createNode transform -n "WhiteboxHumanCharacter1:SpineBase_CTRL_GRP" -p "WhiteboxHumanCharacter1:COG_CTRL";
-	rename -uid "42709276-B04C-D851-E537-8B9CBF720A6A";
-createNode transform -n "WhiteboxHumanCharacter1:SpineBase_CTRL" -p "WhiteboxHumanCharacter1:SpineBase_CTRL_GRP";
-	rename -uid "1ABA2051-2248-9A32-FF12-6E8F5A33DD03";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 17;
-	setAttr ".rp" -type "double3" 0 1.9083307981491089 0 ;
-	setAttr ".sp" -type "double3" 0 1.9083307981491089 0 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:SpineBase_CTRLShape" -p "WhiteboxHumanCharacter1:SpineBase_CTRL";
-	rename -uid "0B0DB6D4-C243-9B7A-0DD2-BDA58A63C328";
-	setAttr -k off ".v";
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		1.2537785998259601 1.9083307981491089 -1.2537785998259583
-		-2.0229072972526923e-16 1.9083307981491089 -1.7731107000870208
-		-1.253778599825959 1.9083307981491089 -1.253778599825959
-		-1.7731107000870208 1.9083307981491089 -5.1380312115795681e-16
-		-1.2537785998259592 1.9083307981491089 1.2537785998259585
-		-5.3427285817448315e-16 1.9083307981491089 1.7731107000870212
-		1.2537785998259583 1.9083307981491089 1.2537785998259592
-		1.7731107000870208 1.9083307981491089 9.5234121588489366e-16
-		1.2537785998259601 1.9083307981491089 -1.2537785998259583
-		-2.0229072972526923e-16 1.9083307981491089 -1.7731107000870208
-		-1.253778599825959 1.9083307981491089 -1.253778599825959
-		;
-createNode transform -n "WhiteboxHumanCharacter1:Chest_CTRL_GRP" -p "WhiteboxHumanCharacter1:SpineBase_CTRL";
-	rename -uid "687D9EE3-734E-9E69-084C-A0994C261FBB";
-	setAttr ".rp" -type "double3" 0 2.2204460492503131e-16 0 ;
-	setAttr ".sp" -type "double3" 0 2.2204460492503131e-16 0 ;
-createNode transform -n "WhiteboxHumanCharacter1:Chest_CTRL" -p "WhiteboxHumanCharacter1:Chest_CTRL_GRP";
-	rename -uid "34B4B790-B340-3C71-4A1B-59AA22747243";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 17;
-	setAttr ".rp" -type "double3" -1.9721522630525295e-31 2.9979104995727539 0.27616381645202637 ;
-	setAttr ".sp" -type "double3" -1.9721522630525295e-31 2.9979104995727539 0.27616381645202637 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:Chest_CTRLShape" -p "WhiteboxHumanCharacter1:Chest_CTRL";
-	rename -uid "4D38E0F5-D441-7998-5AB3-E7855F6029D0";
-	setAttr -k off ".v";
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		1.2537785998259601 2.9979104995727539 -0.97761478337393193
-		-2.0229072972526942e-16 2.9979104995727539 -1.4969468836349944
-		-1.253778599825959 2.9979104995727539 -0.97761478337393259
-		-1.7731107000870208 2.9979104995727539 0.27616381645202587
-		-1.2537785998259592 2.9979104995727539 1.5299424162779849
-		-5.3427285817448335e-16 2.9979104995727539 2.0492745165390476
-		1.2537785998259583 2.9979104995727539 1.5299424162779856
-		1.7731107000870208 2.9979104995727539 0.27616381645202731
-		1.2537785998259601 2.9979104995727539 -0.97761478337393193
-		-2.0229072972526942e-16 2.9979104995727539 -1.4969468836349944
-		-1.253778599825959 2.9979104995727539 -0.97761478337393259
-		;
-createNode transform -n "WhiteboxHumanCharacter1:Neck_CTRL_GRP" -p "WhiteboxHumanCharacter1:Chest_CTRL";
-	rename -uid "893F3769-944A-687A-0ED9-36BFF13002CF";
-	setAttr ".rp" -type "double3" 0 0 5.5511151231257827e-17 ;
-	setAttr ".sp" -type "double3" 0 0 5.5511151231257827e-17 ;
-createNode transform -n "WhiteboxHumanCharacter1:Neck_CTRL" -p "WhiteboxHumanCharacter1:Neck_CTRL_GRP";
-	rename -uid "FC1061CF-0444-BC02-5A9B-C2ADBEBBABE6";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 17;
-	setAttr ".rp" -type "double3" 8.3266726846886741e-16 4.997910499572753 -0.327944546937943 ;
-	setAttr ".sp" -type "double3" 8.3266726846886741e-16 4.997910499572753 -0.327944546937943 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:Neck_CTRLShape" -p "WhiteboxHumanCharacter1:Neck_CTRL";
-	rename -uid "FF56E080-F64D-DCC0-9AFD-129A0319E6CE";
-	setAttr -k off ".v";
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		0.78361162489122504 5.647658760481356 -0.90201593993743923
-		1.1081941875543893 5.4250175845572128 -0.15069837362624161
-		0.78361162489122593 5.2023764086330715 0.60061919268495534
-		1.9988442259816155e-15 5.1101554140225982 0.91182511830020085
-		-0.78361162489122238 5.2023764086330733 0.60061919268495623
-		-1.1081941875543868 5.4250175845572164 -0.15069837362624039
-		-0.78361162489122316 5.6476587604813577 -0.90201593993743745
-		5.9036693421837367e-16 5.739879755091831 -1.2132218655526834
-		0.78361162489122504 5.647658760481356 -0.90201593993743923
-		1.1081941875543893 5.4250175845572128 -0.15069837362624161
-		0.78361162489122593 5.2023764086330715 0.60061919268495534
-		;
-createNode transform -n "WhiteboxHumanCharacter1:Head_CTRL_GRP" -p "WhiteboxHumanCharacter1:Neck_CTRL";
-	rename -uid "D4E4C377-0949-EF2D-4887-A5B8A6AFBD3F";
-	setAttr ".rp" -type "double3" -5.9164567891575885e-31 -8.8817841970012523e-16 -1.6653345369377348e-16 ;
-	setAttr ".sp" -type "double3" -5.9164567891575885e-31 -8.8817841970012523e-16 -1.6653345369377348e-16 ;
-createNode transform -n "WhiteboxHumanCharacter1:Head_CTRL" -p "WhiteboxHumanCharacter1:Head_CTRL_GRP";
-	rename -uid "181F0A7B-5541-ECAD-ACF0-7F915F9AF112";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 17;
-	setAttr ".rp" -type "double3" 5.7103838532498699e-15 5.9979104995727539 -0.031610216945408616 ;
-	setAttr ".sp" -type "double3" 5.7103838532498699e-15 5.9979104995727539 -0.031610216945408616 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:Head_CTRLShape" -p "WhiteboxHumanCharacter1:Head_CTRL";
-	rename -uid "DC8BC8C0-704C-B4F6-A14B-3EB78CACCBC6";
-	setAttr -k off ".v";
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		0.94033394986947494 7.2539310976975457 -0.9719441668148785
-		3.730368433803187e-15 7.2539310976975466 -1.3614432420106737
-		-0.9403339498694645 7.2539310976975475 -0.97194416681487572
-		-1.329833025065259 7.2539310976975475 -0.031610216945406416
-		-0.94033394986946073 7.2539310976975475 0.90872373292406217
-		9.2092872404289257e-15 7.2539310976975466 1.2982228081198572
-		0.94033394986947749 7.2539310976975457 0.90872373292405917
-		1.3298330250652723 7.2539310976975457 -0.031610216945409914
-		0.94033394986947494 7.2539310976975457 -0.9719441668148785
-		3.730368433803187e-15 7.2539310976975466 -1.3614432420106737
-		-0.9403339498694645 7.2539310976975475 -0.97194416681487572
-		;
-createNode transform -n "WhiteboxHumanCharacter1:R_Collar_FK_CTRL_GRP" -p "WhiteboxHumanCharacter1:Chest_CTRL";
-	rename -uid "271A1D65-7247-0297-840D-0192DED43752";
-	setAttr ".rp" -type "double3" 0 0 5.5511151231257827e-17 ;
-	setAttr ".sp" -type "double3" 0 0 5.5511151231257827e-17 ;
-createNode transform -n "WhiteboxHumanCharacter1:R_Collar_FK_CTRL" -p "WhiteboxHumanCharacter1:R_Collar_FK_CTRL_GRP";
-	rename -uid "36765415-FE4E-2AE1-12F2-159029B75F0E";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 17;
-	setAttr ".rp" -type "double3" -0.27399998903274592 4.7817950248718262 0.20620155334472634 ;
-	setAttr ".sp" -type "double3" -0.27399998903274592 4.7817950248718262 0.20620155334472634 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Collar_FK_CTRLShape" -p "WhiteboxHumanCharacter1:R_Collar_FK_CTRL";
-	rename -uid "2677DE3B-114F-A36B-EEBD-00B9B2242BC1";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 13;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		-0.046055864235843735 4.6694277589431179 1.7248050265198207
-		-1.1130060710599217 4.8856769220812906 1.4867283484214016
-		-1.9285321713081065 5.3870271478595821 0.82457406012957368
-		-1.8584849311311233 5.241078654122493 0.81327396144487341
-		-2.0103734065015115 5.2279129141616512 0.8688781452062021
-		-1.2287470558318032 4.6606554148190735 1.5493837864053002
-		-0.12789709942925076 4.5103135252451887 1.7691091115964477
-		-0.18824694612909243 4.6333879501032049 1.7161726218040469
-		-0.046055864235843735 4.6694277589431179 1.7248050265198207
-		-1.1130060710599217 4.8856769220812906 1.4867283484214016
-		-1.9285321713081065 5.3870271478595821 0.82457406012957368
-		;
-createNode transform -n "WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL_GRP" -p "WhiteboxHumanCharacter1:R_Collar_FK_CTRL";
-	rename -uid "0BD79D48-C940-6674-0B54-DDAF43E08442";
-	setAttr ".rp" -type "double3" 2.2204460492503131e-16 0 -4.4408920985006262e-16 ;
-	setAttr ".sp" -type "double3" 2.2204460492503131e-16 0 -4.4408920985006262e-16 ;
-createNode transform -n "WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL" -p "WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL_GRP";
-	rename -uid "3B5CEA52-F840-5023-DE2A-238272A916D9";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 17;
-	setAttr ".rp" -type "double3" -1.1069699525833152 4.4050707817077672 -0.32070299983023554 ;
-	setAttr ".sp" -type "double3" -1.1069699525833152 4.4050707817077672 -0.32070299983023554 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Shoulder_FK_CTRLShape" -p "WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL";
-	rename -uid "DFD1802C-0B41-2EB9-600E-F38615E665B1";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 13;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		-1.9146517617616508 5.1886824065989945 -1.1043146247214575
-		-1.9146517617616512 4.405070781707769 -1.4288971873846235
-		-1.9146517617616501 3.6214591568165426 -1.1043146247214617
-		-1.9146517617616494 3.2968765941533782 -0.32070299983023909
-		-1.9146517617616483 3.6214591568165417 0.46290862506098585
-		-1.9146517617616483 4.4050707817077672 0.78749118772415183
-		-1.914651761761649 5.1886824065989918 0.46290862506099006
-		-1.9146517617616501 5.5132649692621571 -0.32070299983023254
-		-1.9146517617616508 5.1886824065989945 -1.1043146247214575
-		-1.9146517617616512 4.405070781707769 -1.4288971873846235
-		-1.9146517617616501 3.6214591568165426 -1.1043146247214617
-		;
-createNode transform -n "WhiteboxHumanCharacter1:R_Elbow_FK_CTRL" -p "WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL";
-	rename -uid "F2CA7180-DE42-0FF3-2F4B-CC852D845FEF";
-	setAttr ".rp" -type "double3" 2.2204460492503126e-16 -8.210733189403225e-48 -4.4408920985006262e-16 ;
-	setAttr ".sp" -type "double3" 2.2204460492503126e-16 -8.210733189403225e-48 -4.4408920985006262e-16 ;
-createNode transform -n "WhiteboxHumanCharacter1:R_Elbow_FK_CTRL" -p "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:R_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Collar_FK_CTRL|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL";
-	rename -uid "57126527-C541-5689-F0D3-77BD6AFED423";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 17;
-	setAttr ".rp" -type "double3" -4.1218400001525897 4.4050707817077681 -0.32070299983023576 ;
-	setAttr ".sp" -type "double3" -4.1218400001525897 4.4050707817077681 -0.32070299983023576 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Elbow_FK_CTRLShape" -p "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:R_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Collar_FK_CTRL|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL";
-	rename -uid "F8CAC042-114C-0016-972C-038A5AAE523F";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 13;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		-4.1218400001525914 5.0319600816207499 -0.94759229974321357
-		-4.1218400001525897 4.4050707817077699 -1.2072583498737464
-		-4.1218400001525906 3.7781814817947903 -0.94759229974321701
-		-4.1218400001525888 3.5185154316642584 -0.32070299983023887
-		-4.1218400001525888 3.778181481794789 0.30618630008274123
-		-4.1218400001525879 4.405070781707769 0.56585235021327396
-		-4.1218400001525888 5.031960081620749 0.30618630008274467
-		-4.1218400001525897 5.29162613175128 -0.32070299983023359
-		-4.1218400001525914 5.0319600816207499 -0.94759229974321357
-		-4.1218400001525897 4.4050707817077699 -1.2072583498737464
-		-4.1218400001525906 3.7781814817947903 -0.94759229974321701
-		;
-createNode transform -n "WhiteboxHumanCharacter1:L_Collar_FK_CTRL_GRP" -p "WhiteboxHumanCharacter1:Chest_CTRL";
-	rename -uid "429AA52A-3245-051E-56AF-D9AF0C813560";
-	setAttr ".rp" -type "double3" 0 0 5.5511151231257827e-17 ;
-	setAttr ".sp" -type "double3" 0 0 5.5511151231257827e-17 ;
-createNode transform -n "WhiteboxHumanCharacter1:L_Collar_FK_CTRL" -p "WhiteboxHumanCharacter1:L_Collar_FK_CTRL_GRP";
-	rename -uid "926EA005-0544-7E61-71A5-24AAF0A7ED0F";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 6;
-	setAttr ".rp" -type "double3" 0.27399998903274592 4.7817950248718262 0.2062015533447264 ;
-	setAttr ".sp" -type "double3" 0.27399998903274592 4.7817950248718262 0.2062015533447264 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Collar_FK_CTRLShape" -p "WhiteboxHumanCharacter1:L_Collar_FK_CTRL";
-	rename -uid "08066868-664C-1F61-1FB9-7B91949E0697";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 6;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		0.046055864235843735 4.6694277589431179 1.7248050265198207
-		1.1130060710599217 4.8856769220812906 1.4867283484214016
-		1.9285321713081065 5.3870271478595821 0.82457406012957368
-		1.8584849311311233 5.241078654122493 0.81327396144487341
-		2.0103734065015115 5.2279129141616512 0.86887814520620221
-		1.2287470558318032 4.6606554148190735 1.5493837864053002
-		0.12789709942925076 4.5103135252451887 1.7691091115964477
-		0.18824694612909243 4.6333879501032049 1.7161726218040469
-		0.046055864235843735 4.6694277589431179 1.7248050265198207
-		1.1130060710599217 4.8856769220812906 1.4867283484214016
-		1.9285321713081065 5.3870271478595821 0.82457406012957368
-		;
-createNode transform -n "WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL_GRP" -p "WhiteboxHumanCharacter1:L_Collar_FK_CTRL";
-	rename -uid "847D77B8-2844-1896-F725-A49E96D8350B";
-	setAttr ".rp" -type "double3" -2.2204460492503131e-16 0 -3.8857805861880479e-16 ;
-	setAttr ".sp" -type "double3" -2.2204460492503131e-16 0 -3.8857805861880479e-16 ;
-createNode transform -n "WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL" -p "WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL_GRP";
-	rename -uid "42787745-1645-D298-C360-119D1EBA6C4C";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 6;
-	setAttr ".rp" -type "double3" 1.1069699525833152 4.4050707817077672 -0.32070299983023548 ;
-	setAttr ".sp" -type "double3" 1.1069699525833152 4.4050707817077672 -0.32070299983023548 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Shoulder_FK_CTRLShape" -p "WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL";
-	rename -uid "C03FE45A-A642-839F-FC1A-C5AAC10AED58";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 6;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		1.9146517617616508 5.1886824065989945 -1.1043146247214575
-		1.9146517617616512 4.405070781707769 -1.4288971873846235
-		1.9146517617616501 3.6214591568165426 -1.1043146247214617
-		1.9146517617616494 3.2968765941533782 -0.32070299983023903
-		1.9146517617616483 3.6214591568165417 0.4629086250609859
-		1.9146517617616483 4.4050707817077672 0.78749118772415194
-		1.914651761761649 5.1886824065989918 0.46290862506099012
-		1.9146517617616501 5.5132649692621571 -0.32070299983023248
-		1.9146517617616508 5.1886824065989945 -1.1043146247214575
-		1.9146517617616512 4.405070781707769 -1.4288971873846235
-		1.9146517617616501 3.6214591568165426 -1.1043146247214617
-		;
-createNode transform -n "WhiteboxHumanCharacter1:L_Elbow_FK_CTRL" -p "WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL";
-	rename -uid "DF098A97-4843-96C7-56FD-03AFA6B429B7";
-	setAttr ".rp" -type "double3" -2.2204460492503126e-16 -8.210733189403225e-48 -3.8857805861880479e-16 ;
-	setAttr ".sp" -type "double3" -2.2204460492503126e-16 -8.210733189403225e-48 -3.8857805861880479e-16 ;
-createNode transform -n "WhiteboxHumanCharacter1:L_Elbow_FK_CTRL" -p "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:L_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Collar_FK_CTRL|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL";
-	rename -uid "3CBA2FFA-0D45-310C-25BE-6BAC3C5193EC";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 6;
-	setAttr ".rp" -type "double3" 4.1218400001525897 4.4050707817077681 -0.3207029998302357 ;
-	setAttr ".sp" -type "double3" 4.1218400001525897 4.4050707817077681 -0.3207029998302357 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Elbow_FK_CTRLShape" -p "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:L_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Collar_FK_CTRL|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL";
-	rename -uid "984178F5-0148-BCF9-1614-76A827ED7180";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 6;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		4.1218400001525914 5.0319600816207499 -0.94759229974321357
-		4.1218400001525897 4.4050707817077699 -1.2072583498737464
-		4.1218400001525906 3.7781814817947903 -0.9475922997432169
-		4.1218400001525888 3.5185154316642584 -0.32070299983023881
-		4.1218400001525888 3.778181481794789 0.30618630008274128
-		4.1218400001525879 4.405070781707769 0.56585235021327396
-		4.1218400001525888 5.031960081620749 0.30618630008274472
-		4.1218400001525897 5.29162613175128 -0.32070299983023354
-		4.1218400001525914 5.0319600816207499 -0.94759229974321357
-		4.1218400001525897 4.4050707817077699 -1.2072583498737464
-		4.1218400001525906 3.7781814817947903 -0.9475922997432169
-		;
-createNode transform -n "WhiteboxHumanCharacter1:Pelvis_CTRL_GRP" -p "WhiteboxHumanCharacter1:COG_CTRL";
-	rename -uid "5AFAB8E7-794C-5A1B-8536-4390660C57B6";
-createNode transform -n "WhiteboxHumanCharacter1:Pelvis_CTRL" -p "WhiteboxHumanCharacter1:Pelvis_CTRL_GRP";
-	rename -uid "34DB87C5-A440-98B0-BE89-7D918492EB15";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 14;
-	setAttr ".rp" -type "double3" 0 1.9083307981491089 0 ;
-	setAttr ".sp" -type "double3" 0 1.9083307981491089 0 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:Pelvis_CTRLShape" -p "WhiteboxHumanCharacter1:Pelvis_CTRL";
-	rename -uid "80130DFB-7842-7F04-05AF-FE80BDD36868";
-	setAttr -k off ".v";
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		1.4105009248042051 1.9083307981491089 -1.4105009248042029
-		-2.2757707094092787e-16 1.9083307981491091 -1.9947495375978983
-		-1.4105009248042037 1.9083307981491089 -1.4105009248042037
-		-1.9947495375978983 1.9083307981491089 -5.7802851130270145e-16
-		-1.4105009248042042 1.9083307981491089 1.4105009248042033
-		-6.0105696544629352e-16 1.9083307981491087 1.9947495375978987
-		1.4105009248042029 1.9083307981491089 1.410500924804204
-		1.9947495375978983 1.9083307981491089 1.0713838678705054e-15
-		1.4105009248042051 1.9083307981491089 -1.4105009248042029
-		-2.2757707094092787e-16 1.9083307981491091 -1.9947495375978983
-		-1.4105009248042037 1.9083307981491089 -1.4105009248042037
-		;
-createNode transform -n "WhiteboxHumanCharacter1:R_Hip_FK_CTRL_GRP" -p "WhiteboxHumanCharacter1:Pelvis_CTRL";
-	rename -uid "139B90B1-1647-B304-9BAD-68B2CD1B1EB0";
-	setAttr ".rp" -type "double3" 0 2.2204460492503131e-16 0 ;
-	setAttr ".sp" -type "double3" 0 2.2204460492503131e-16 0 ;
-createNode transform -n "WhiteboxHumanCharacter1:R_Hip_FK_CTLR" -p "WhiteboxHumanCharacter1:R_Hip_FK_CTRL_GRP";
-	rename -uid "006F312F-7F49-FC68-82D3-B4B5006DFEEC";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 17;
-	setAttr ".rp" -type "double3" -0.721072018146515 0.44295233488082925 -0.2891368567943573 ;
-	setAttr ".sp" -type "double3" -0.721072018146515 0.44295233488082925 -0.2891368567943573 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Hip_FK_CTLRShape" -p "WhiteboxHumanCharacter1:R_Hip_FK_CTLR";
-	rename -uid "20240863-D84A-9990-D30D-9F96696EA84E";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 13;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		-1.6734882373968973 1.226563959772053 -1.0727484816855826
-		-1.6734882373968978 1.551146522435217 -0.28913685679435741
-		-1.673488237396898 1.2265639597720535 0.49447476809686675
-		-1.6734882373968978 0.44295233488082947 0.8190573307600304
-		-1.6734882373968973 -0.34065929001039491 0.49447476809686697
-		-1.6734882373968969 -0.66524185267355906 -0.28913685679435724
-		-1.6734882373968967 -0.34065929001039524 -1.0727484816855815
-		-1.6734882373968969 0.44295233488082852 -1.3973310443487454
-		-1.6734882373968973 1.226563959772053 -1.0727484816855826
-		-1.6734882373968978 1.551146522435217 -0.28913685679435741
-		-1.673488237396898 1.2265639597720535 0.49447476809686675
-		;
-createNode transform -n "WhiteboxHumanCharacter1:R_Knee_FK_CTRL_GRP" -p "WhiteboxHumanCharacter1:R_Hip_FK_CTLR";
-	rename -uid "796AEA30-1345-B504-0355-0B88E3F21AAA";
-	setAttr ".rp" -type "double3" 0 2.7755575615628914e-16 -0.40101685374975282 ;
-	setAttr ".sp" -type "double3" 0 2.7755575615628914e-16 -0.40101685374975282 ;
-createNode transform -n "WhiteboxHumanCharacter1:R_Knee_FK_CTRL" -p "WhiteboxHumanCharacter1:R_Knee_FK_CTRL_GRP";
-	rename -uid "D21DFB25-A24E-3F00-A6C1-DE8316796747";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 17;
-	setAttr ".rp" -type "double3" -0.72107201814651234 -3.6331496238708492 -0.34448772668838495 ;
-	setAttr ".sp" -type "double3" -0.72107201814651234 -3.6331496238708492 -0.34448772668838495 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Knee_FK_CTRLShape" -p "WhiteboxHumanCharacter1:R_Knee_FK_CTRL";
-	rename -uid "FE119B8D-E741-EC31-AB89-098FF4E51F24";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 13;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		0.062539606744712706 -3.6331496238708487 -1.1280993515796085
-		-0.72107201814651234 -3.6331496238708492 -1.4526819142427727
-		-1.5046836430377364 -3.6331496238708496 -1.1280993515796094
-		-1.8292662057008999 -3.6331496238708496 -0.34448772668838551
-		-1.5046836430377368 -3.6331496238708496 0.43912389820283876
-		-0.72107201814651278 -3.6331496238708492 0.76370646086600291
-		0.062539606744711262 -3.6331496238708487 0.43912389820283954
-		0.38712216940787536 -3.6331496238708487 -0.34448772668838412
-		0.062539606744712706 -3.6331496238708487 -1.1280993515796085
-		-0.72107201814651234 -3.6331496238708492 -1.4526819142427727
-		-1.5046836430377364 -3.6331496238708496 -1.1280993515796094
-		;
-createNode transform -n "WhiteboxHumanCharacter1:R_Ankle_FK_CTRL_GRP" -p "WhiteboxHumanCharacter1:R_Knee_FK_CTRL";
-	rename -uid "62C74CC8-AE47-035C-0E33-73A2915EC639";
-	setAttr ".rp" -type "double3" 0 4.4408920985006262e-16 0.14778625965118464 ;
-	setAttr ".sp" -type "double3" 0 4.4408920985006262e-16 0.14778625965118464 ;
-createNode transform -n "WhiteboxHumanCharacter1:R_Ankle_FK_CTRL" -p "WhiteboxHumanCharacter1:R_Ankle_FK_CTRL_GRP";
-	rename -uid "3DD07DAD-2C44-17B7-E873-C3836C576A37";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 17;
-	setAttr ".rp" -type "double3" -0.69695299863814797 -7.4921698570251447 -0.3444877266883854 ;
-	setAttr ".sp" -type "double3" -0.69695299863814797 -7.4921698570251447 -0.3444877266883854 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Ankle_FK_CTRLShape" -p "WhiteboxHumanCharacter1:R_Ankle_FK_CTRL";
-	rename -uid "640BC035-3943-B53A-4082-A4AC3432CAD4";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 13;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		-0.070063698725167822 -7.4921698570251447 -0.97137702660136438
-		-0.69695299863814797 -7.4921698570251447 -1.2310430767318956
-		-1.3238422985511273 -7.4921698570251447 -0.97137702660136482
-		-1.5835083486816584 -7.4921698570251456 -0.34448772668838584
-		-1.3238422985511278 -7.4921698570251447 0.28240157322459364
-		-0.6969529986381483 -7.4921698570251447 0.54206762335512515
-		-0.070063698725169044 -7.4921698570251447 0.28240157322459419
-		0.1896023514053623 -7.4921698570251438 -0.34448772668838473
-		-0.070063698725167822 -7.4921698570251447 -0.97137702660136438
-		-0.69695299863814797 -7.4921698570251447 -1.2310430767318956
-		-1.3238422985511273 -7.4921698570251447 -0.97137702660136482
-		;
-createNode transform -n "WhiteboxHumanCharacter1:R_Ball_FK_CTRL_GRP" -p "WhiteboxHumanCharacter1:R_Ankle_FK_CTRL";
-	rename -uid "168D8E66-6A43-7E2A-0953-A4B12E6BF4D4";
-	setAttr ".rp" -type "double3" 0 0 0.14778625965118519 ;
-	setAttr ".sp" -type "double3" 0 0 0.14778625965118519 ;
-createNode transform -n "WhiteboxHumanCharacter1:R_Ball_FK_CTRL" -p "WhiteboxHumanCharacter1:R_Ball_FK_CTRL_GRP";
-	rename -uid "EEEEBC21-1E4C-BA1D-6B76-63B914FE86B6";
-	setAttr ".rp" -type "double3" -0.74513602256774902 -8.274169921875 0.68481242656707875 ;
-	setAttr ".sp" -type "double3" -0.74513602256774902 -8.274169921875 0.68481242656707875 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Ball_FK_CTRLShape" -p "WhiteboxHumanCharacter1:R_Ball_FK_CTRL";
-	rename -uid "C5C0C7B0-1D49-DF86-7593-C3BFAC9F8632";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 13;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		-0.274969047633014 -8.274169921875 0.2146454516323445
-		-0.74513602256774913 -8.274169921875 0.019895914034446016
-		-1.2153029975024836 -8.274169921875 0.21464545163234422
-		-1.4100525351003816 -8.274169921875 0.68481242656707852
-		-1.2153029975024836 -8.274169921875 1.1549794015018131
-		-0.74513602256774925 -8.274169921875 1.3497289390997116
-		-0.27496904763301477 -8.274169921875 1.1549794015018133
-		-0.080219510035116293 -8.274169921875 0.68481242656707908
-		-0.274969047633014 -8.274169921875 0.2146454516323445
-		-0.74513602256774913 -8.274169921875 0.019895914034446016
-		-1.2153029975024836 -8.274169921875 0.21464545163234422
-		;
-createNode transform -n "WhiteboxHumanCharacter1:L_Hip_FK_CTRL_GRP" -p "WhiteboxHumanCharacter1:Pelvis_CTRL";
-	rename -uid "B1DE621E-2B43-1364-92B4-D7911A9F7B35";
-	setAttr ".rp" -type "double3" 0 2.2204460492503131e-16 0 ;
-	setAttr ".sp" -type "double3" 0 2.2204460492503131e-16 0 ;
-createNode transform -n "WhiteboxHumanCharacter1:L_Hip_FK_CTLR" -p "WhiteboxHumanCharacter1:L_Hip_FK_CTRL_GRP";
-	rename -uid "E887A3D8-2D43-58DF-0A34-91A2FAD681F4";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 17;
-	setAttr ".rp" -type "double3" 0.72107172012329068 0.44295230507850686 -0.2891368567943573 ;
-	setAttr ".sp" -type "double3" 0.72107172012329068 0.44295230507850686 -0.2891368567943573 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Hip_FK_CTLRShape" -p "WhiteboxHumanCharacter1:L_Hip_FK_CTLR";
-	rename -uid "DC708049-344D-6501-6CE1-A9AF784D74D9";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 6;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		1.6734879393736728 -0.34065931981271719 -1.0727484816855815
-		1.6734879393736726 -0.66524188247588123 -0.28913685679435647
-		1.6734879393736726 -0.34065931981271741 0.49447476809686741
-		1.6734879393736726 0.4429523050785063 0.81905733076003095
-		1.6734879393736728 1.2265639299697304 0.49447476809686719
-		1.673487939373673 1.5511464926328944 -0.28913685679435674
-		1.673487939373673 1.2265639299697306 -1.0727484816855806
-		1.673487939373673 0.44295230507850702 -1.3973310443487446
-		1.6734879393736728 -0.34065931981271719 -1.0727484816855815
-		1.6734879393736726 -0.66524188247588123 -0.28913685679435647
-		1.6734879393736726 -0.34065931981271741 0.49447476809686741
-		;
-createNode transform -n "WhiteboxHumanCharacter1:L_Knee_FK_CTLR_GRP" -p "WhiteboxHumanCharacter1:L_Hip_FK_CTLR";
-	rename -uid "52FFAACE-E641-6DBE-5E54-74BA181E717C";
-	setAttr ".rp" -type "double3" 0 1.6653345369377348e-16 -0.40101730823516812 ;
-	setAttr ".sp" -type "double3" 0 1.6653345369377348e-16 -0.40101730823516812 ;
-createNode transform -n "WhiteboxHumanCharacter1:L_Knee_FK_CTRL" -p "WhiteboxHumanCharacter1:L_Knee_FK_CTLR_GRP";
-	rename -uid "E17C6000-564E-42B3-7A99-CCA70A110586";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 17;
-	setAttr ".rp" -type "double3" 0.72107172012328979 -3.6331460475921631 -0.34448772668838495 ;
-	setAttr ".sp" -type "double3" 0.72107172012328979 -3.6331460475921631 -0.34448772668838495 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Knee_FK_CTRLShape" -p "WhiteboxHumanCharacter1:L_Knee_FK_CTRL";
-	rename -uid "9484EC1B-4144-DEFC-E88C-789C7E4CE827";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 6;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		1.5046833450145147 -3.6331460475921631 -1.1280993515796087
-		0.72107172012328957 -3.6331460475921631 -1.4526819142427727
-		-0.062539904767934584 -3.6331460475921631 -1.1280993515796092
-		-0.38712246743109813 -3.6331460475921631 -0.3444877266883854
-		-0.062539904767934584 -3.6331460475921631 0.43912389820283898
-		0.72107172012328957 -3.6331460475921631 0.76370646086600324
-		1.5046833450145138 -3.6331460475921631 0.43912389820283954
-		1.8292659076776778 -3.6331460475921631 -0.34448772668838423
-		1.5046833450145147 -3.6331460475921631 -1.1280993515796087
-		0.72107172012328957 -3.6331460475921631 -1.4526819142427727
-		-0.062539904767934584 -3.6331460475921631 -1.1280993515796092
-		;
-createNode transform -n "WhiteboxHumanCharacter1:L_Ankle_FK_CTRL_GRP" -p "WhiteboxHumanCharacter1:L_Knee_FK_CTRL";
-	rename -uid "368827A8-664E-5CC8-2D5A-D1BA4B29B639";
-	setAttr ".rp" -type "double3" 0 0 0.14778625965118286 ;
-	setAttr ".sp" -type "double3" 0 0 0.14778625965118286 ;
-createNode transform -n "WhiteboxHumanCharacter1:L_Ankle_FK_CTRL" -p "WhiteboxHumanCharacter1:L_Ankle_FK_CTRL_GRP";
-	rename -uid "124DE9A9-314C-3200-C855-31BAD62F4D08";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 17;
-	setAttr ".rp" -type "double3" 0.69695281982421631 -7.4921736717224121 -0.34448772668838501 ;
-	setAttr ".sp" -type "double3" 0.69695281982421631 -7.4921736717224121 -0.34448772668838501 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Ankle_FK_CTRLShape" -p "WhiteboxHumanCharacter1:L_Ankle_FK_CTRL";
-	rename -uid "84575AFA-9A46-2D4D-FD8C-6E8BBEFD9EAC";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 6;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		1.3238421197371961 -7.4921736717224121 -0.97137702660136405
-		0.69695281982421609 -7.4921736717224121 -1.2310430767318956
-		0.070063519911236716 -7.4921736717224121 -0.97137702660136449
-		-0.18960253021929407 -7.4921736717224121 -0.34448772668838534
-		0.070063519911236827 -7.4921736717224121 0.28240157322459414
-		0.69695281982421609 -7.4921736717224121 0.54206762335512559
-		1.3238421197371957 -7.4921736717224121 0.28240157322459469
-		1.5835081698677267 -7.4921736717224121 -0.34448772668838445
-		1.3238421197371961 -7.4921736717224121 -0.97137702660136405
-		0.69695281982421609 -7.4921736717224121 -1.2310430767318956
-		0.070063519911236716 -7.4921736717224121 -0.97137702660136449
-		;
-createNode transform -n "WhiteboxHumanCharacter1:L_Ball_FK_CTRL_GRP" -p "WhiteboxHumanCharacter1:L_Ankle_FK_CTRL";
-	rename -uid "95DD441A-A34E-22D7-FDF3-AE8964F02E96";
-	setAttr ".rp" -type "double3" 0 0 0.14778625965118153 ;
-	setAttr ".sp" -type "double3" 0 0 0.14778625965118153 ;
-createNode transform -n "WhiteboxHumanCharacter1:L_Ball_FK_CTRL" -p "WhiteboxHumanCharacter1:L_Ball_FK_CTRL_GRP";
-	rename -uid "156E7024-014B-63DD-3F6B-DF938E0ADF29";
-	setAttr ".rp" -type "double3" 0.7451356053352356 -8.274169921875 0.68481242656707764 ;
-	setAttr ".sp" -type "double3" 0.7451356053352356 -8.274169921875 0.68481242656707764 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Ball_FK_CTRLShape" -p "WhiteboxHumanCharacter1:L_Ball_FK_CTRL";
-	rename -uid "0C85D3F6-094F-B1BB-A78A-3E868D8CF4C3";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 6;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		1.2153025802699706 -8.274169921875 0.21464545163234339
-		0.74513560533523548 -8.274169921875 0.019895914034444906
-		0.27496863040050107 -8.274169921875 0.21464545163234311
-		0.080219092802602865 -8.274169921875 0.68481242656707741
-		0.2749686304005009 -8.274169921875 1.154979401501812
-		0.74513560533523537 -8.274169921875 1.3497289390997105
-		1.2153025802699697 -8.274169921875 1.1549794015018122
-		1.4100521178678682 -8.274169921875 0.68481242656707797
-		1.2153025802699706 -8.274169921875 0.21464545163234339
-		0.74513560533523548 -8.274169921875 0.019895914034444906
-		0.27496863040050107 -8.274169921875 0.21464545163234311
-		;
-createNode transform -n "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL_GRP" -p "WhiteboxHumanCharacter1:COG_CTRL";
-	rename -uid "96AFF2AC-2347-AD00-C0BE-C88C5F00350F";
-createNode transform -n "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL" -p "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL_GRP";
-	rename -uid "15220650-0E49-78D9-470D-DDA3D3D2ED5C";
-	addAttr -ci true -sn "L_Arm_FK_IK" -ln "L_Arm_FK_IK" -min 0 -max 1 -at "double";
-	addAttr -ci true -sn "R_Arm_FK_IK" -ln "R_Arm_FK_IK" -min 0 -max 1 -at "double";
-	addAttr -ci true -sn "L_Leg_FK_IK" -ln "L_Leg_FK_IK" -min 0 -max 1 -at "double";
-	addAttr -ci true -sn "R_Leg_FK_IK" -ln "R_Leg_FK_IK" -min 0 -max 1 -at "double";
-	addAttr -ci true -sn "R_Arm_FK" -ln "R_Arm_FK" -min 0 -max 1 -at "double";
-	addAttr -ci true -sn "L_Arm_FK" -ln "L_Arm_FK" -min 0 -max 1 -at "double";
-	addAttr -ci true -sn "L_Leg_FK" -ln "L_Leg_FK" -min 0 -max 1 -at "double";
-	addAttr -ci true -sn "R_Leg_FK" -ln "R_Leg_FK" -min 0 -max 1 -at "double";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 9;
-	setAttr -l on -k off ".tx";
-	setAttr -l on -k off ".ty";
-	setAttr -l on -k off ".tz";
-	setAttr -l on -k off ".rx";
-	setAttr -l on -k off ".ry";
-	setAttr -l on -k off ".rz";
-	setAttr -l on -k off ".sx";
-	setAttr -l on -k off ".sy";
-	setAttr -l on -k off ".sz";
-	setAttr -k on ".L_Arm_FK_IK";
-	setAttr -k on ".R_Arm_FK_IK";
-	setAttr -k on ".L_Leg_FK_IK" 1;
-	setAttr -k on ".R_Leg_FK_IK" 1;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:IK_FK_Switch_CTRLShape" -p "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL";
-	rename -uid "6884400F-E743-A9B6-4AE0-94B28E25B0F8";
-	setAttr -k off ".v";
-	setAttr ".cc" -type "nurbsCurve" 
-		1 4 0 no 3
-		5 0 1 2 3 4
-		5
-		2 6 0
-		2 8 2.1215650208276227
-		4 8 0
-		1.9895026721469131 8.0053642665415747 -1.6272966668537956
-		2 6 0
-		;
-createNode transform -n "WhiteboxHumanCharacter1:IK_CTRL_GRP" -p "WhiteboxHumanCharacter1:CTRL_GRP";
-	rename -uid "4220E3EA-A349-BC14-2549-2D83719185E9";
-createNode transform -n "WhiteboxHumanCharacter1:L_Arm_IK_CTRL_GRP" -p "WhiteboxHumanCharacter1:IK_CTRL_GRP";
-	rename -uid "69F7466F-A441-829E-8245-4E96ADE05E03";
-createNode transform -n "WhiteboxHumanCharacter1:L_Arm_IK_PoleVector_CTRL_GRP" -p
-		 "WhiteboxHumanCharacter1:L_Arm_IK_CTRL_GRP";
-	rename -uid "C3B0AFE4-4546-A288-E3E0-05A98C2F23B2";
-createNode transform -n "WhiteboxHumanCharacter1:L_Arm_IK_PoleVector_CTRL" -p "WhiteboxHumanCharacter1:L_Arm_IK_PoleVector_CTRL_GRP";
-	rename -uid "F05DEA60-2D47-249E-276E-9799B190EFA5";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 6;
-	setAttr ".rp" -type "double3" 4.1218400001525879 4.4050707817077637 -3.1998901477241524 ;
-	setAttr ".sp" -type "double3" 4.1218400001525879 4.4050707817077637 -3.1998901477241524 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Arm_IK_PoleVector_CTRLShape" 
-		-p "WhiteboxHumanCharacter1:L_Arm_IK_PoleVector_CTRL";
-	rename -uid "886613B6-D847-1AEB-9332-ACBC3A69D19F";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 13;
-	setAttr ".cc" -type "nurbsCurve" 
-		1 3 0 no 3
-		4 0 1 2 3
-		4
-		4.1218400001525879 4.4050707817077637 -3.1998901477241524
-		4.1218400001525879 3.9050707817077637 -4.1998901477241528
-		4.1218400001525879 4.9050707817077637 -4.1998901477241528
-		4.1218400001525879 4.4050707817077637 -3.1998901477241524
-		;
-createNode transform -n "WhiteboxHumanCharacter1:L_Arm_IK_Handle_CTRL_GRP" -p "WhiteboxHumanCharacter1:L_Arm_IK_CTRL_GRP";
-	rename -uid "83B4E8CC-D843-37DC-E7E9-63A5681255A3";
-createNode transform -n "WhiteboxHumanCharacter1:L_Arm_IK_Handle_CTRL" -p "WhiteboxHumanCharacter1:L_Arm_IK_Handle_CTRL_GRP";
-	rename -uid "261F55EF-B243-A203-0CE8-50A0A5CD1BFB";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 6;
-	setAttr ".rp" -type "double3" 6.4372601509094238 4.3568305969238281 0.057797901332378387 ;
-	setAttr ".sp" -type "double3" 6.4372601509094238 4.3568305969238281 0.057797901332378387 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Arm_IK_Handle_CTRLShape" -p "WhiteboxHumanCharacter1:L_Arm_IK_Handle_CTRL";
-	rename -uid "447ABF7C-D74F-534B-620E-86AAE806F1BF";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 13;
-	setAttr ".cc" -type "nurbsCurve" 
-		1 4 0 no 3
-		5 0 1 2 3 4
-		5
-		6.4372601509094238 4.9568305969238278 0.65779790133237892
-		6.4372601509094238 4.9568305969238278 -0.54220209866762215
-		6.4372601509094238 3.756830596923828 -0.54220209866762215
-		6.4372601509094238 3.756830596923828 0.65779790133237892
-		6.4372601509094238 4.9568305969238278 0.65779790133237892
-		;
-createNode ikHandle -n "WhiteboxHumanCharacter1:L_Arm_IK_Hndl" -p "WhiteboxHumanCharacter1:L_Arm_IK_CTRL_GRP";
-	rename -uid "C42ED4DD-254D-2895-6337-80957B225505";
-	setAttr ".v" no;
-	setAttr ".roc" yes;
-createNode pointConstraint -n "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_pointConstraint1" 
-		-p "WhiteboxHumanCharacter1:L_Arm_IK_Hndl";
-	rename -uid "13AA87F7-7F42-4CD5-78C2-C79BC4C5F1A3";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Arm_IK_Handle_CTRLW0" -dv 1 -min 
-		0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".rst" -type "double3" 6.4372601509094238 4.3568305969238281 0.057797901332378387 ;
-	setAttr -k on ".w0";
-createNode poleVectorConstraint -n "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_poleVectorConstraint1" 
-		-p "WhiteboxHumanCharacter1:L_Arm_IK_Hndl";
-	rename -uid "C66D4FE0-5147-1B29-6CBA-80BAE1199675";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Arm_IK_PoleVector_CTRLW0" -dv 1 
-		-min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".rst" -type "double3" 3.0148654792887148 -0.12059433715221157 -3.0102067772672108 ;
-	setAttr -k on ".w0";
-createNode transform -n "WhiteboxHumanCharacter1:R_Arm_IK_CTRL_GRP" -p "WhiteboxHumanCharacter1:IK_CTRL_GRP";
-	rename -uid "417BFDC4-7B40-EB4F-D507-E69FBB08F6B7";
-createNode transform -n "WhiteboxHumanCharacter1:R_Arm_IK_PoleVector_CTRL_GRP" -p
-		 "WhiteboxHumanCharacter1:R_Arm_IK_CTRL_GRP";
-	rename -uid "D18C2006-0F45-A017-F678-8A9665FF7F69";
-createNode transform -n "WhiteboxHumanCharacter1:R_Arm_IK_PoleVector_CTRL" -p "WhiteboxHumanCharacter1:R_Arm_IK_PoleVector_CTRL_GRP";
-	rename -uid "6BE6CC42-E141-F65F-E259-F48FB32EEE2A";
-	setAttr ".rp" -type "double3" -4.1218400001525879 4.4050707817077637 -3.1998901477241524 ;
-	setAttr ".sp" -type "double3" -4.1218400001525879 4.4050707817077637 -3.1998901477241524 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Arm_IK_PoleVector_CTRLShape" 
-		-p "WhiteboxHumanCharacter1:R_Arm_IK_PoleVector_CTRL";
-	rename -uid "EC6E2A94-9040-A9F3-C7A8-318D5109B0A5";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 13;
-	setAttr ".cc" -type "nurbsCurve" 
-		1 3 0 no 3
-		4 0 1 2 3
-		4
-		-4.1218400001525879 4.4050707817077637 -3.1998901477241524
-		-4.1218400001525879 3.9050707817077637 -4.1998901477241528
-		-4.1218400001525879 4.9050707817077637 -4.1998901477241528
-		-4.1218400001525879 4.4050707817077637 -3.1998901477241524
-		;
-createNode transform -n "WhiteboxHumanCharacter1:R_Arm_IK_Handle_CTRL_GRP" -p "WhiteboxHumanCharacter1:R_Arm_IK_CTRL_GRP";
-	rename -uid "B7A49DFA-D74B-A1D0-46B1-4688F8E32C05";
-createNode transform -n "WhiteboxHumanCharacter1:R_Arm_IK_Handle_CTRL" -p "WhiteboxHumanCharacter1:R_Arm_IK_Handle_CTRL_GRP";
-	rename -uid "DBDBC9F6-0A41-1D4C-DE1A-8E9F9E5B132B";
-	setAttr ".rp" -type "double3" -6.4372601509094238 4.3568305969238281 0.057797901332378387 ;
-	setAttr ".sp" -type "double3" -6.4372601509094238 4.3568305969238281 0.057797901332378387 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Arm_IK_Handle_CTRLShape" -p "WhiteboxHumanCharacter1:R_Arm_IK_Handle_CTRL";
-	rename -uid "81A300D9-9E43-188F-A9DD-3F9BCE275526";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 13;
-	setAttr ".cc" -type "nurbsCurve" 
-		1 4 0 no 3
-		5 0 1 2 3 4
-		5
-		-6.4372601509094238 4.9568305969238278 0.65779790133237892
-		-6.4372601509094238 4.9568305969238278 -0.54220209866762215
-		-6.4372601509094238 3.756830596923828 -0.54220209866762215
-		-6.4372601509094238 3.756830596923828 0.65779790133237892
-		-6.4372601509094238 4.9568305969238278 0.65779790133237892
-		;
-createNode ikHandle -n "WhiteboxHumanCharacter1:R_Arm_IK_Hndl" -p "WhiteboxHumanCharacter1:R_Arm_IK_CTRL_GRP";
-	rename -uid "97ABEEE3-824A-0CF3-34C3-A8A0633AFA21";
-	setAttr ".v" no;
-	setAttr ".roc" yes;
-createNode pointConstraint -n "WhiteboxHumanCharacter1:ikHandle4_pointConstraint1" 
-		-p "WhiteboxHumanCharacter1:R_Arm_IK_Hndl";
-	rename -uid "C8C9D7A1-9B40-8ABA-DF75-D5A61408474D";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Arm_IK_Handle_CTRLW0" -dv 1 -min 
-		0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".o" -type "double3" 1.5090942184770029e-07 6.5981202723719434e-09 -1.3323774306073233e-09 ;
-	setAttr ".rst" -type "double3" -6.437260000000002 4.3568306035219484 0.057797900000000957 ;
-	setAttr -k on ".w0";
-createNode poleVectorConstraint -n "WhiteboxHumanCharacter1:ikHandle4_poleVectorConstraint1" 
-		-p "WhiteboxHumanCharacter1:R_Arm_IK_Hndl";
-	rename -uid "4659327F-A04B-5D05-5FA3-D8BB15923409";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Arm_IK_PoleVector_CTRLW0" -dv 1 
-		-min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".rst" -type "double3" -3.014870000152587 -0.12058982181418276 -3.0102071477241528 ;
-	setAttr -k on ".w0";
-createNode transform -n "WhiteboxHumanCharacter1:L_Leg_IK_CTRL_GRP" -p "WhiteboxHumanCharacter1:IK_CTRL_GRP";
-	rename -uid "9C25ECF2-5047-0055-A878-41BDB4121B6A";
-createNode transform -n "L_Leg_IK_CTRL" -p "WhiteboxHumanCharacter1:L_Leg_IK_CTRL_GRP";
-	rename -uid "31CC8EAC-5845-049C-74B9-48BBEBF570AC";
-	addAttr -ci true -sn "Heel" -ln "Heel" -min -1 -max 1 -at "double";
-	addAttr -ci true -sn "Toe" -ln "Toe" -min -1 -max 1 -at "double";
-	addAttr -ci true -sn "Ball" -ln "Ball" -min -1 -max 1 -at "double";
-	setAttr ".rp" -type "double3" 0.79153384328590126 -8.4211044311523455 0.47073119071535097 ;
-	setAttr ".sp" -type "double3" 0.79153384328590126 -8.4211044311523455 0.47073119071535097 ;
-	setAttr -k on ".Heel";
-	setAttr -k on ".Toe";
-	setAttr -k on ".Ball";
-createNode nurbsCurve -n "L_Leg_IK_CTRLShape" -p "L_Leg_IK_CTRL";
-	rename -uid "FEBE1B3D-BD48-7E42-CFD9-14B31CB18313";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 6;
-	setAttr ".cc" -type "nurbsCurve" 
-		1 4 0 no 3
-		5 0 1 2 3 4
-		5
-		0.19153384328590062 -8.4211044311523455 -0.97085994327372704
-		0.19153384328590084 -8.4211044311523455 1.9123223247044288
-		1.3915338432859019 -8.4211044311523455 1.9123223247044288
-		1.3915338432859017 -8.4211044311523455 -0.97085994327372704
-		0.19153384328590062 -8.4211044311523455 -0.97085994327372704
-		;
-createNode transform -n "L_RIK_JNT_GRP" -p "L_Leg_IK_CTRL";
-	rename -uid "E305DA61-3348-9E01-2E09-1AB21C0F9125";
-	setAttr ".v" no;
-	setAttr ".rp" -type "double3" 1.4185785886782276 -1.5543122344752192e-15 1.0436096431476471e-14 ;
-	setAttr ".sp" -type "double3" 1.4185785886782276 -1.5543122344752192e-15 1.0436096431476471e-14 ;
-createNode joint -n "L_Heel_RIK_JNT" -p "L_RIK_JNT_GRP";
-	rename -uid "032DA827-A845-BEED-1B1C-9691A0E73BFE";
-	setAttr ".t" -type "double3" 0.70157085364482019 -8.3795091113378817 -0.80930061041269807 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" -73.531654532935903 -88.479230625212708 73.526166354498727 ;
-	setAttr ".radi" 0.59179287125186719;
-createNode joint -n "L_Toe_RIK_JNT" -p "L_Heel_RIK_JNT";
-	rename -uid "A6C5401B-0A4F-25A9-2397-1D9FBA5B96C4";
-	setAttr ".t" -type "double3" 2.6792267478887513 3.8910097704495695e-16 4.6561979201901011e-16 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 179.9754202769472 -0.10760971874375562 176.73237755873774 ;
-	setAttr ".radi" 0.50941789102366919;
-createNode joint -n "L_Ball_RIK_JNT" -p "L_Toe_RIK_JNT";
-	rename -uid "1B5F3357-BF46-4438-F6A6-B681EDDCFEBA";
-	setAttr ".t" -type "double3" 1.1820792264576045 1.6003441190284883e-15 2.7464934184202942e-16 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" -0.31123645987202087 0.16635865273411166 35.334785783751791 ;
-	setAttr ".radi" 0.51524890926921296;
-createNode joint -n "L_Ankle_RIK_JNT" -p "L_Ball_RIK_JNT";
-	rename -uid "253E672E-0146-B125-88B7-A089CA673F90";
-	setAttr ".t" -type "double3" 1.2948122458714508 2.3906634016047733e-15 -4.7918031893376793e-17 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jo" -type "double3" 142.85372560810856 -89.394656551642314 179.99999999993707 ;
-	setAttr ".radi" 0.51524890926921296;
-createNode ikHandle -n "L_Leg_IK_Handle" -p "L_Ball_RIK_JNT";
-	rename -uid "EBC66B35-624A-E056-D216-0CA115C1635E";
-	setAttr ".t" -type "double3" 1.2948121635848882 -1.1703520552686086e-07 4.9252990574899513e-10 ;
-	setAttr ".r" -type "double3" 142.85372560813005 -89.394656551641688 -179.99999999999488 ;
-	setAttr ".roc" yes;
-createNode poleVectorConstraint -n "ikHandle1_poleVectorConstraint1" -p "L_Leg_IK_Handle";
-	rename -uid "7829939D-9341-9820-FA07-6D8AC2DEEE3D";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Leg_IK_PoleVectorW0" -dv 1 -min 
-		0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".rst" -type "double3" -0.024158624997142053 -4.0760980475921658 3.945955423463019 ;
-	setAttr -k on ".w0";
-createNode ikHandle -n "L_Leg_IK_FootHandle_01" -p "L_Toe_RIK_JNT";
-	rename -uid "A2C19A85-F04F-90B5-017B-EFBB8F9C4A62";
-	setAttr ".t" -type "double3" 1.1820792258767256 4.5710008578225825e-07 2.1522174487031975e-08 ;
-	setAttr ".r" -type "double3" 2.3281246779261666 179.00073968712314 35.382138314100075 ;
-	setAttr ".s" -type "double3" 1 0.99999999999999978 1.0000000000000002 ;
-	setAttr ".pv" -type "double3" -0.9994573158431328 0.031574609936200565 -0.0093871089807813796 ;
-	setAttr ".roc" yes;
-createNode ikHandle -n "L_Leg_IK_FootHandle_02" -p "L_Heel_RIK_JNT";
-	rename -uid "75F7A92F-E245-C965-E35C-A699632DF692";
-	setAttr ".t" -type "double3" 2.6792267897898796 -2.821905198402419e-08 -8.2326722106174088e-09 ;
-	setAttr ".r" -type "double3" 0.10804013611556605 -3.7953063546801045 -3.2745460146053214 ;
-	setAttr ".s" -type "double3" 1.0000000000000002 1 1.0000000000000002 ;
-	setAttr ".pv" -type "double3" 0.99964777031133023 -0.025450580696115908 0.0075235133957978241 ;
-	setAttr ".roc" yes;
-createNode transform -n "L_Leg_IK_PoleVector" -p "WhiteboxHumanCharacter1:L_Leg_IK_CTRL_GRP";
-	rename -uid "BAB99AA1-F44B-24F7-8D3D-7095A9737512";
-	setAttr ".t" -type "double3" 0.69691337500285799 -3.6331460475921653 3.0469264812626737 ;
-	setAttr ".s" -type "double3" 0.6 0.6 0.6 ;
-	setAttr ".rp" -type "double3" 0 -1.6757428777935956e-16 0.60989194220034504 ;
-	setAttr ".sp" -type "double3" 0 0 1.0164865703339083 ;
-	setAttr ".spt" -type "double3" 0 -1.6653345369377348e-16 -0.40659462813356378 ;
-createNode nurbsCurve -n "L_Leg_IK_PoleVectorShape" -p "L_Leg_IK_PoleVector";
-	rename -uid "76DC151D-F44C-1D46-7190-FDA86541F8B4";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 6;
-	setAttr ".cc" -type "nurbsCurve" 
-		1 3 0 no 3
-		4 0 1 2 3
-		4
-		0 0 1.0000000000000009
-		0 1.0000000000000002 3.0000000000000027
-		0 -1.0000000000000002 3.0000000000000027
-		0 0 1.0000000000000009
-		;
-createNode transform -n "WhiteboxHumanCharacter1:R_Leg_IK_CTRL_GRP" -p "WhiteboxHumanCharacter1:IK_CTRL_GRP";
-	rename -uid "16CF5063-9847-7859-2A47-36A9780E28DD";
-	setAttr -av ".v" yes;
-createNode transform -n "WhiteboxHumanCharacter1:R_Leg_IK_PoleVector" -p "WhiteboxHumanCharacter1:R_Leg_IK_CTRL_GRP";
-	rename -uid "251BA885-9341-A31F-247D-D5B649D33522";
-	setAttr ".t" -type "double3" -0.72107201814651489 -3.6331460475921631 3.0469264812626702 ;
-	setAttr ".s" -type "double3" 0.6 0.6 0.6 ;
-	setAttr ".rp" -type "double3" 0 -1.6757428777935956e-16 0.60989194220034504 ;
-	setAttr ".sp" -type "double3" 0 0 1.0164865703339083 ;
-	setAttr ".spt" -type "double3" 0 -1.6653345369377348e-16 -0.40659462813356378 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Leg_IK_PoleVectorShape" -p "WhiteboxHumanCharacter1:R_Leg_IK_PoleVector";
-	rename -uid "885C71B8-794D-B7BE-BDA9-45B3B417B24F";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 13;
-	setAttr ".cc" -type "nurbsCurve" 
-		1 3 0 no 3
-		4 0 1 2 3
-		4
-		0 0 1.0000000000000009
-		0 1.0000000000000002 3.0000000000000027
-		0 -1.0000000000000002 3.0000000000000027
-		0 0 1.0000000000000009
-		;
-createNode transform -n "WhiteboxHumanCharacter1:R_Leg_IK_CTRL" -p "WhiteboxHumanCharacter1:R_Leg_IK_CTRL_GRP";
-	rename -uid "2D06146D-994A-C76C-5301-EDB596656207";
-	addAttr -ci true -sn "Heel" -ln "Heel" -min -1 -max 1 -at "double";
-	addAttr -ci true -sn "Toe" -ln "Toe" -min -1 -max 1 -at "double";
-	addAttr -ci true -sn "Ball" -ln "Ball" -min -1 -max 1 -at "double";
-	setAttr ".t" -type "double3" 0.069908253245826613 -0.92893075942993164 0.81521891740372587 ;
-	setAttr ".r" -type "double3" 180 180 180 ;
-	setAttr ".s" -type "double3" 1 1 2.4026518899817959 ;
-	setAttr ".rp" -type "double3" -0.69695299863815308 -7.4921736717224121 -0.34448772668838501 ;
-	setAttr ".sp" -type "double3" -0.69695299863815308 -7.4921736717224121 -0.34448772668838501 ;
-	setAttr -k on ".Heel";
-	setAttr -k on ".Toe";
-	setAttr -k on ".Ball";
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Leg_IK_CTRLShape" -p "WhiteboxHumanCharacter1:R_Leg_IK_CTRL";
-	rename -uid "8C90B79C-0D44-5041-441A-5687FA525B72";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 13;
-	setAttr ".cc" -type "nurbsCurve" 
-		1 4 0 no 3
-		5 0 1 2 3 4
-		5
-		-1.2969529986381527 -7.4921736717224121 -0.94448772668838543
-		-1.2969529986381532 -7.4921736717224121 0.25551227331161508
-		-0.096952998638152571 -7.4921736717224121 0.25551227331161508
-		-0.096952998638152543 -7.4921736717224121 -0.94448772668838521
-		-1.2969529986381527 -7.4921736717224121 -0.94448772668838543
-		;
-createNode transform -n "WhiteboxHumanCharacter1:L_RIK_JNT_GRP" -p "WhiteboxHumanCharacter1:R_Leg_IK_CTRL";
-	rename -uid "513FA34A-C244-F389-48B3-38A0DAF976C2";
-	setAttr ".v" no;
-	setAttr ".t" -type "double3" -0.06990825324582757 0.92893075942993186 -0.54040923853041312 ;
-	setAttr ".s" -type "double3" 1 1 0.41620677725709848 ;
-createNode joint -n "WhiteboxHumanCharacter1:R_Heel_RIK_JNT" -p "WhiteboxHumanCharacter1:L_RIK_JNT_GRP";
-	rename -uid "5CBB22D0-B341-9E55-7A71-6782C41C82AE";
-	setAttr ".t" -type "double3" -0.6969529986381553 -8.4136211061156985 -0.83014922905531441 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jo" -type "double3" 90 -89.800363945475709 -90 ;
-	setAttr ".radi" 0.5813816572116205;
-createNode joint -n "WhiteboxHumanCharacter1:R_Toe_RIK_JNT" -p "WhiteboxHumanCharacter1:R_Heel_RIK_JNT";
-	rename -uid "B532CB8E-3B4A-4FEB-926C-5C98ED27D49B";
-	setAttr ".t" -type "double3" 2.5733787060913307 -1.7763568394002505e-15 -0.094001724000411291 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jo" -type "double3" 175.66265419131452 32.658385033196879 172.19901176013076 ;
-	setAttr ".radi" 0.51386676918686303;
-createNode joint -n "WhiteboxHumanCharacter1:R_Ball_RIK_JNT" -p "WhiteboxHumanCharacter1:R_Toe_RIK_JNT";
-	rename -uid "F47A93AD-9B4D-D8C1-4C35-C1BCE6CA9F34";
-	setAttr ".t" -type "double3" 0.85492607678968491 0.04875022428189979 -0.64275356750971846 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jo" -type "double3" 20.844516868651912 25.128645675669212 35.150855731748372 ;
-	setAttr ".radi" 0.51518416727606253;
-createNode joint -n "WhiteboxHumanCharacter1:R_Ankle_RIK_JNT" -p "WhiteboxHumanCharacter1:R_Ball_RIK_JNT";
-	rename -uid "65FA3C8D-AB4D-9286-D87E-F2B75B828DEA";
-	setAttr ".t" -type "double3" 1.2934001410946552 0.0001217049478263732 -0.016398087602660261 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jo" -type "double3" 2.5902428579135231e-13 -89.296448443776171 -37.185223537560034 ;
-	setAttr ".radi" 0.51518416727606253;
-createNode ikHandle -n "WhiteboxHumanCharacter1:R_Leg_IK_Handle" -p "WhiteboxHumanCharacter1:R_Ankle_RIK_JNT";
-	rename -uid "15CA0010-A147-AA05-63C5-3B86B12BB43C";
-	setAttr ".t" -type "double3" -0.0089091672210679373 4.0053657617278304e-06 3.8857805861880479e-16 ;
-	setAttr ".s" -type "double3" 0.99999999999999978 1 0.99999999999999956 ;
-	setAttr ".roc" yes;
-createNode poleVectorConstraint -n "WhiteboxHumanCharacter1:ikHandle3_poleVectorConstraint1" 
-		-p "WhiteboxHumanCharacter1:R_Leg_IK_Handle";
-	rename -uid "725E5C83-C249-E208-B0DA-BE93FA1A9856";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Leg_IK_PoleVectorW0" -dv 1 -min 
-		0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".rst" -type "double3" -1.8146515068373503e-08 -4.0760983812355143 3.9459552802573725 ;
-	setAttr -k on ".w0";
-createNode ikHandle -n "WhiteboxHumanCharacter1:R_Leg_IK_FootHandle01" -p "WhiteboxHumanCharacter1:R_Toe_RIK_JNT";
-	rename -uid "4C508456-AE4A-EF5E-8DF3-059790A9ED90";
-	setAttr ".t" -type "double3" 0.85492628420296146 0.048750689953402926 -0.64275364800268064 ;
-	setAttr ".r" -type "double3" -156.51757985278513 26.172618458747877 35.603936290263626 ;
-	setAttr ".s" -type "double3" 0.99999999999999989 1 1 ;
-	setAttr ".pv" -type "double3" -0.83370832798197259 0.098371082313061714 0.54337238981941294 ;
-	setAttr ".roc" yes;
-createNode ikHandle -n "WhiteboxHumanCharacter1:R_Leg_IK_FootHandle02" -p "WhiteboxHumanCharacter1:R_Heel_RIK_JNT";
-	rename -uid "E3759F41-5F49-E0F1-CF98-66A378059FD2";
-	setAttr ".t" -type "double3" 2.6924890654568117 0.11172474946250865 -0.081873413688656194 ;
-	setAttr ".r" -type "double3" 0.083366940773552042 -3.3648007453889361 178.38499904851631 ;
-	setAttr ".s" -type "double3" 1 1.0000000000000002 0.99999999999999989 ;
-	setAttr ".pv" -type "double3" 0.99999392981039781 0.0034842994070036328 2.22317517002211e-16 ;
-	setAttr ".roc" yes;
-createNode transform -n "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP" -p "WhiteboxHumanCharacter1:CTRL_GRP";
-	rename -uid "C66A55C1-DC45-AC8F-6941-E3A62FE49347";
-	setAttr ".rp" -type "double3" 8.8817841970012523e-16 0 4.9960036108132044e-16 ;
-	setAttr ".sp" -type "double3" 8.8817841970012523e-16 0 4.9960036108132044e-16 ;
-createNode transform -n "WhiteboxHumanCharacter1:L_Hand_CTRL" -p "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP";
-	rename -uid "86243B25-B645-A847-C1BA-B988E331AF55";
-	addAttr -ci true -sn "Fist" -ln "Fist" -min 0 -max 1 -at "double";
-	addAttr -ci true -sn "Stretch" -ln "Stretch" -min 0 -max 1 -at "double";
-	addAttr -ci true -sn "Point" -ln "Point" -min 0 -max 1 -at "double";
-	addAttr -ci true -sn "Grab" -ln "Grab" -min 0 -max 1 -at "double";
-	addAttr -ci true -sn "Grip" -ln "Grip" -min 0 -max 1 -at "double";
-	setAttr ".rp" -type "double3" 6.4372601509094247 4.3568305969238299 0.057797901332378943 ;
-	setAttr ".sp" -type "double3" 6.4372601509094247 4.3568305969238299 0.057797901332378943 ;
-	setAttr -k on ".Fist";
-	setAttr -k on ".Stretch";
-	setAttr -k on ".Point";
-	setAttr -k on ".Grab";
-	setAttr -k on ".Grip";
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Hand_CTRLShape" -p "WhiteboxHumanCharacter1:L_Hand_CTRL";
-	rename -uid "373A7426-1449-D6CE-DCE4-B8B173FD5FA2";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 6;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		6.5827228447578321 4.7320522015825848 -0.21621245213993417
-		7.0395329501410195 4.6207799591360477 -0.41096198973783271
-		7.4963430555242061 4.5095077166895106 -0.21621245213993445
-		7.685559996603005 4.4634172447524882 0.25395452279480002
-		7.496343055524207 4.5095077166895106 0.72412149772953471
-		7.0395329501410195 4.6207799591360477 0.91887103532743319
-		6.582722844757833 4.7320522015825848 0.72412149772953482
-		6.393505903679034 4.7781426735196071 0.25395452279480052
-		6.5827228447578321 4.7320522015825848 -0.21621245213993417
-		7.0395329501410195 4.6207799591360477 -0.41096198973783271
-		7.4963430555242061 4.5095077166895106 -0.21621245213993445
-		;
-createNode transform -n "WhiteboxHumanCharacter1:L_Thumb01_CTRL_GRP" -p "WhiteboxHumanCharacter1:L_Hand_CTRL";
-	rename -uid "AC31F2B7-6B45-EB1D-5A38-699D1A48CBEB";
-	setAttr ".t" -type "double3" -8.8817841970012523e-16 8.8817841970012523e-16 3.8857805861880479e-16 ;
-createNode transform -n "WhiteboxHumanCharacter1:L_Thumb01_CTRL" -p "WhiteboxHumanCharacter1:L_Thumb01_CTRL_GRP";
-	rename -uid "BA12C99C-AA47-CB14-FF11-FAADE50108B9";
-	setAttr ".rp" -type "double3" 6.6884503364562979 4.3190708160400382 0.36514899134635914 ;
-	setAttr ".sp" -type "double3" 6.6884503364562979 4.3190708160400391 0.36514899134635914 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Thumb01_CTRLShape" -p "WhiteboxHumanCharacter1:L_Thumb01_CTRL";
-	rename -uid "2B8E688D-F24B-6F57-5FB1-AB8AF4389DD5";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 6;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		6.5738589166959169 4.5954942217166685 0.60612081926195827
-		6.7796378365606547 4.6131859847037795 0.54851972509027136
-		6.9620706623649848 4.5163550681154447 0.60612081926195815
-		7.0142907189747801 4.3617237096320931 0.7451821620187743
-		6.9057082054559125 4.2398728618850967 0.88424350477559055
-		6.6999292855911747 4.2221810988979858 0.94184459894727757
-		6.5174964597868446 4.3190120154863205 0.88424350477559066
-		6.4652764031770493 4.4736433739696722 0.74518216201877452
-		6.5738589166959169 4.5954942217166685 0.60612081926195827
-		6.7796378365606547 4.6131859847037795 0.54851972509027136
-		6.9620706623649848 4.5163550681154447 0.60612081926195815
-		;
-createNode transform -n "WhiteboxHumanCharacter1:L_Thumb02_CTRL_GRP" -p "WhiteboxHumanCharacter1:L_Thumb01_CTRL";
-	rename -uid "D8B7E6C4-144D-72CC-5097-43A27A61586E";
-createNode transform -n "WhiteboxHumanCharacter1:L_Thumb02_CTRL" -p "WhiteboxHumanCharacter1:L_Thumb02_CTRL_GRP";
-	rename -uid "1180A084-1B4D-0FBC-BF28-6EB6A315B8DD";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 6;
-	setAttr ".rp" -type "double3" 6.8126201629638663 4.0761404037475595 0.69190198183059692 ;
-	setAttr ".sp" -type "double3" 6.8126201629638663 4.0761404037475595 0.69190198183059692 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Thumb02_CTRLShape" -p "WhiteboxHumanCharacter1:L_Thumb02_CTRL";
-	rename -uid "772C4BD8-1F4C-61C6-C7CC-25A7198CAFDA";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 6;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		6.986764415514374 4.2507234348738985 0.86668302961250265
-		7.0537001137070385 4.2240484017951188 0.86649036019452375
-		7.0825932884686749 4.0721847756312801 0.94802934774428005
-		6.9749461449006276 4.027251521770042 0.98329255335684917
-		6.864989810035719 3.9866391998346846 1.0166188525976547
-		6.7459623232875918 4.1030686883025576 0.96349056819462142
-		6.7691609370814181 4.1651778590773034 0.93527253446587744
-		6.915500128493564 4.1315288574981706 0.92475305477983993
-		6.986764415514374 4.2507234348738985 0.86668302961250265
-		7.0537001137070385 4.2240484017951188 0.86649036019452375
-		7.0825932884686749 4.0721847756312801 0.94802934774428005
-		;
-createNode transform -n "WhiteboxHumanCharacter1:L_Thumb03_CTRL" -p "WhiteboxHumanCharacter1:L_Thumb02_CTRL";
-	rename -uid "F6F70A68-EA4D-B323-0BA6-E4BA0C785546";
-createNode transform -n "WhiteboxHumanCharacter1:L_Thumb03_CTRL" -p "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL|WhiteboxHumanCharacter1:L_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb01_CTRL|WhiteboxHumanCharacter1:L_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb02_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL";
-	rename -uid "10D22584-DE49-1920-4FCE-DB848D97201E";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 6;
-	setAttr ".rp" -type "double3" 6.9718699455261213 3.8952906131744371 0.75487202405929654 ;
-	setAttr ".sp" -type "double3" 6.9718699455261213 3.8952906131744371 0.75487202405929654 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Thumb03_CTRLShape" -p "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL|WhiteboxHumanCharacter1:L_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb01_CTRL|WhiteboxHumanCharacter1:L_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb02_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL";
-	rename -uid "60796671-724E-EAFD-F7DE-79B783CE1CE8";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 6;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		7.11612755068625 4.0404596147387668 0.96148395648466889
-		7.1718483693912756 4.0145053467824887 0.95246514987728648
-		7.2356909386096726 3.8591852512607767 0.98430172638802982
-		7.168005715600291 3.8141042466587107 1.0060301669976921
-		7.0974403767945624 3.7734034606969984 1.0272360742506346
-		6.9763325498666475 3.8931915751625445 1.0131834869162262
-		6.9778769888711407 3.9546778241749885 1.0044183043472736
-		7.0934872761807393 3.9223792045061447 0.98240813921673553
-		7.11612755068625 4.0404596147387668 0.96148395648466889
-		7.1718483693912756 4.0145053467824887 0.95246514987728648
-		7.2356909386096726 3.8591852512607767 0.98430172638802982
-		;
-createNode transform -n "WhiteboxHumanCharacter1:L_Finger01_CTRL_GRP" -p "WhiteboxHumanCharacter1:L_Hand_CTRL";
-	rename -uid "25B7DC64-8947-9BC4-E9AA-C887607FA154";
-	setAttr ".t" -type "double3" -8.8817841970012523e-16 8.8817841970012523e-16 3.8857805861880479e-16 ;
-createNode transform -n "WhiteboxHumanCharacter1:L_Finger01_CTRL" -p "WhiteboxHumanCharacter1:L_Finger01_CTRL_GRP";
-	rename -uid "821A7E46-A34E-CE53-BB10-1FB215218200";
-	setAttr ".rp" -type "double3" 7.2715401649475098 4.1683406829833984 0.1098800003528595 ;
-	setAttr ".sp" -type "double3" 7.2715401649475098 4.1683406829833984 0.1098800003528595 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Finger01_CTRLShape" -p "WhiteboxHumanCharacter1:L_Finger01_CTRL";
-	rename -uid "D84A3161-554E-496B-84C3-4E938BE10C0E";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 6;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		7.0842335032638291 4.445820795404078 -0.12907788612241333
-		7.3183757719126188 4.3980895735390613 -0.22805748353648198
-		7.5525180405614085 4.3503583516740454 -0.12907788612241347
-		7.6495029437605417 4.3305874322289162 0.1098800003528594
-		7.5525180405614085 4.3503583516740445 0.34883788682813244
-		7.3183757719126188 4.3980895735390613 0.44781748424220102
-		7.0842335032638291 4.4458207954040772 0.34883788682813249
-		6.9872486000646958 4.4655917148492064 0.10988000035285968
-		7.0842335032638291 4.445820795404078 -0.12907788612241333
-		7.3183757719126188 4.3980895735390613 -0.22805748353648198
-		7.5525180405614085 4.3503583516740454 -0.12907788612241347
-		;
-createNode transform -n "WhiteboxHumanCharacter1:L_Finger02_CTRL_GRP" -p "WhiteboxHumanCharacter1:L_Finger01_CTRL";
-	rename -uid "C30491EC-5E42-CCCD-B772-1A900C239745";
-createNode transform -n "WhiteboxHumanCharacter1:L_Finger02_CTRL" -p "WhiteboxHumanCharacter1:L_Finger02_CTRL_GRP";
-	rename -uid "FF6B6E63-7540-0D45-2F52-9F800EF2571C";
-	setAttr ".rp" -type "double3" 7.6008000373840332 4.127180576324462 0.12212700396776199 ;
-	setAttr ".sp" -type "double3" 7.6008000373840332 4.127180576324462 0.12212700396776199 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Finger02_CTRLShape" -p "WhiteboxHumanCharacter1:L_Finger02_CTRL";
-	rename -uid "BFEA1575-0C4B-9275-5AA9-398B94F8F7A8";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 6;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		7.5897030050072223 4.3385369159592555 -0.074545352674876927
-		7.6158437485918817 4.2968870945811428 -0.16071440434236872
-		7.7837704060767985 4.1835215954053595 -0.11200262029220732
-		7.824289388283959 4.1838543019999062 0.076231094374246522
-		7.8601438445972143 4.1879498457476823 0.26536468323092011
-		7.7238521011525219 4.3031495862728377 0.37296355429620259
-		7.666076443527639 4.3429651663015774 0.30282195084825042
-		7.6997691335658534 4.2705064149678265 0.10041528490729668
-		7.5897030050072223 4.3385369159592555 -0.074545352674876927
-		7.6158437485918817 4.2968870945811428 -0.16071440434236872
-		7.7837704060767985 4.1835215954053595 -0.11200262029220732
-		;
-createNode transform -n "WhiteboxHumanCharacter1:L_Finger03_CTRL_GRP" -p "WhiteboxHumanCharacter1:L_Finger02_CTRL";
-	rename -uid "4A5715D4-8045-F175-8E4B-A2AC887B7147";
-createNode transform -n "WhiteboxHumanCharacter1:L_Finger03_CTRL" -p "WhiteboxHumanCharacter1:L_Finger03_CTRL_GRP";
-	rename -uid "3B27BD13-B941-BF55-66C2-768D77367DBA";
-	setAttr ".rp" -type "double3" 7.7834501266479474 3.9067206382751465 0.12953600287437442 ;
-	setAttr ".sp" -type "double3" 7.7834501266479474 3.9067206382751465 0.12953600287437442 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Finger03_CTRLShape" -p "WhiteboxHumanCharacter1:L_Finger03_CTRL";
-	rename -uid "C8EA3046-4D40-0D6B-A100-15A6F3ED4066";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 6;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		7.8711215199898987 4.1247138433714561 -0.02650245885835098
-		7.8863813819740667 4.0855624367841834 -0.11255477651072299
-		7.9929247355950936 3.9114944368296758 -0.079383589745352395
-		8.0143992479715376 3.8762104626621601 0.097953282773847156
-		8.0329603942202059 3.846085128910544 0.27656579069543752
-		7.9430003533802402 3.9930597064195088 0.39083366482694287
-		7.911157178615011 4.0593045354523243 0.32944692158243888
-		7.9313067656418674 4.0013061943025399 0.13028677770182362
-		7.8711215199898987 4.1247138433714561 -0.02650245885835098
-		7.8863813819740667 4.0855624367841834 -0.11255477651072299
-		7.9929247355950936 3.9114944368296758 -0.079383589745352395
-		;
-createNode transform -n "WhiteboxHumanCharacter1:L_Index01_CTRL_GRP" -p "WhiteboxHumanCharacter1:L_Hand_CTRL";
-	rename -uid "09461A90-0E4D-6114-7647-718958A87B5B";
-	setAttr ".t" -type "double3" -8.8817841970012523e-16 8.8817841970012523e-16 3.8857805861880479e-16 ;
-createNode transform -n "WhiteboxHumanCharacter1:L_Index01_CTRL" -p "WhiteboxHumanCharacter1:L_Index01_CTRL_GRP";
-	rename -uid "F308BF41-1B47-5851-86A2-E0BB23ADB6CA";
-	setAttr ".rp" -type "double3" 7.220400333404541 4.1891703605651864 0.43244600296020508 ;
-	setAttr ".sp" -type "double3" 7.220400333404541 4.1891703605651864 0.43244600296020508 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Index01_CTRLShape" -p "WhiteboxHumanCharacter1:L_Index01_CTRL";
-	rename -uid "13FC9946-DB45-0910-395F-D5A32D653051";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 6;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		7.1441988442311244 4.4373831649695745 0.31961292400874192
-		7.2553468259723619 4.4147250220936396 0.27287593242273134
-		7.3664948077135994 4.3920668792177047 0.31961292400874186
-		7.412533809181217 4.3826815691403054 0.43244600296020547
-		7.3664948077135994 4.3920668792177047 0.54527908191166918
-		7.2553468259723619 4.4147250220936396 0.59201607349767971
-		7.1441988442311244 4.4373831649695745 0.54527908191166918
-		7.0981598427635069 4.4467684750469738 0.43244600296020563
-		7.1441988442311244 4.4373831649695745 0.31961292400874192
-		7.2553468259723619 4.4147250220936396 0.27287593242273134
-		7.3664948077135994 4.3920668792177047 0.31961292400874186
-		;
-createNode transform -n "WhiteboxHumanCharacter1:L_Index02_CTRL_GRP" -p "WhiteboxHumanCharacter1:L_Index01_CTRL";
-	rename -uid "0EFC99F2-674C-014B-9ACF-DE8BA1BE923F";
-createNode transform -n "WhiteboxHumanCharacter1:L_Index02_CTRL" -p "WhiteboxHumanCharacter1:L_Index02_CTRL_GRP";
-	rename -uid "7BDD3109-AA44-446E-E1EB-97843EBD6FD0";
-	setAttr ".rp" -type "double3" 7.603790283203125 4.084850788116456 0.52567398548126221 ;
-	setAttr ".sp" -type "double3" 7.603790283203125 4.084850788116456 0.52567398548126221 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Index02_CTRLShape" -p "WhiteboxHumanCharacter1:L_Index02_CTRL";
-	rename -uid "7351F7EF-2048-9DFC-7BB2-87AF9F4DF283";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 6;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		7.6663759992413754 4.2722019835910308 0.38573519879025092
-		7.711909131262451 4.2302300257296492 0.34889675629559658
-		7.8339318067236627 4.142274842388753 0.43789302243543571
-		7.8123217129609914 4.1577232795609191 0.55682471765373631
-		7.7866867620043196 4.1763295502906423 0.6744982255897789
-		7.6450945482654324 4.2783906555071551 0.68350704352451042
-		7.6191309545220332 4.3062566914929192 0.62234040194459428
-		7.7039639262341053 4.2289693566938267 0.52493347973960158
-		7.6663759992413754 4.2722019835910308 0.38573519879025092
-		7.711909131262451 4.2302300257296492 0.34889675629559658
-		7.8339318067236627 4.142274842388753 0.43789302243543571
-		;
-createNode transform -n "WhiteboxHumanCharacter1:L_Index03_CTRL_GRP" -p "WhiteboxHumanCharacter1:L_Index02_CTRL";
-	rename -uid "91850CA1-8441-1F32-6862-FFAF170ABDDB";
-createNode transform -n "WhiteboxHumanCharacter1:L_Index03_CTRL" -p "WhiteboxHumanCharacter1:L_Index03_CTRL_GRP";
-	rename -uid "1F7EB7F8-694A-38CD-EA87-5697A154319D";
-	setAttr ".rp" -type "double3" 7.7450003623962402 3.8862605094909664 0.56891399621963501 ;
-	setAttr ".sp" -type "double3" 7.7450003623962402 3.8862605094909668 0.56891399621963501 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:L_Index03_CTRLShape" -p "WhiteboxHumanCharacter1:L_Index03_CTRL";
-	rename -uid "8D2E3E9F-D148-13B4-25EE-7B942610142B";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 6;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		7.8798033131487708 4.0577787545543424 0.51194667727963294
-		7.9073137541411924 4.0091849793378582 0.48471446874748741
-		7.9799930376681489 3.8665344456634556 0.54456695666252963
-		7.9597092840723125 3.866835437880987 0.62626267420535531
-		7.9370330165454126 3.8717646515322626 0.70717745199604887
-		7.8465591096295846 4.0165816074115277 0.71468043663235736
-		7.8368432920260354 4.063008960423149 0.67455717261315229
-		7.8900135794610673 3.9786058577583239 0.60425480047663649
-		7.8798033131487708 4.0577787545543424 0.51194667727963294
-		7.9073137541411924 4.0091849793378582 0.48471446874748741
-		7.9799930376681489 3.8665344456634556 0.54456695666252963
-		;
-createNode parentConstraint -n "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1" 
-		-p "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP";
-	rename -uid "DF06A856-584C-B2DF-5544-A48EB1131958";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Wrist_RK_JNTW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" -4.8999953788619797 -5.6078616712492879 2.2283490967531985 ;
-	setAttr ".tg[0].tor" -type "double3" 5.5928984128918833 24.477195717256084 13.297644475667601 ;
-	setAttr ".lr" -type "double3" -2.4150074804773456 0.073707535864503237 -0.11366300701274912 ;
-	setAttr ".rst" -type "double3" 8.8817841970012523e-16 0 -6.106226635438361e-16 ;
-	setAttr ".rsrr" -type "double3" -1.490885006936024e-16 -7.1562480332929135e-15 7.9513867036587919e-16 ;
-	setAttr -k on ".w0";
-createNode transform -n "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP" -p "WhiteboxHumanCharacter1:CTRL_GRP";
-	rename -uid "88B4DE5D-1E4A-902D-4807-E395440C3FEC";
-createNode transform -n "WhiteboxHumanCharacter1:R_Hand_CTRL" -p "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP";
-	rename -uid "347732E7-3B4F-D957-3CE6-45942D3E3887";
-	addAttr -ci true -sn "Fist" -ln "Fist" -min 0 -max 1 -at "double";
-	addAttr -ci true -sn "Stretch" -ln "Stretch" -min 0 -max 1 -at "double";
-	addAttr -ci true -sn "Point" -ln "Point" -min 0 -max 1 -at "double";
-	addAttr -ci true -sn "Grab" -ln "Grab" -min 0 -max 1 -at "double";
-	addAttr -ci true -sn "Grip" -ln "Grip" -min 0 -max 1 -at "double";
-	setAttr ".t" -type "double3" 0 -8.8817841970012523e-16 6.9388939039072284e-17 ;
-	setAttr ".s" -type "double3" 1 1.0000000000000004 1.0000000000000002 ;
-	setAttr ".rp" -type "double3" -6.4372601509094238 4.3568305969238308 0.057797901332378374 ;
-	setAttr ".sp" -type "double3" -6.4372601509094238 4.356830596923829 0.05779790133237836 ;
-	setAttr ".spt" -type "double3" 0 1.7763568394002513e-15 1.387778780781446e-17 ;
-	setAttr -k on ".Fist";
-	setAttr -k on ".Stretch";
-	setAttr -k on ".Point";
-	setAttr -k on ".Grab";
-	setAttr -k on ".Grip";
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Hand_CTRLShape" -p "WhiteboxHumanCharacter1:R_Hand_CTRL";
-	rename -uid "977F455C-0242-E78A-510D-C0BF8483EF9B";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 13;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		-6.5827228447578312 4.7320522015825839 -0.21621245213993467
-		-7.0395329501410187 4.6207799591360468 -0.41096198973783316
-		-7.4963430555242052 4.5095077166895097 -0.21621245213993495
-		-7.6855599966030042 4.4634172447524874 0.25395452279479941
-		-7.4963430555242061 4.5095077166895097 0.72412149772953405
-		-7.0395329501410187 4.6207799591360468 0.91887103532743242
-		-6.5827228447578321 4.7320522015825839 0.72412149772953416
-		-6.3935059036790332 4.7781426735196062 0.25395452279479991
-		-6.5827228447578312 4.7320522015825839 -0.21621245213993467
-		-7.0395329501410187 4.6207799591360468 -0.41096198973783316
-		-7.4963430555242052 4.5095077166895097 -0.21621245213993495
-		;
-createNode transform -n "WhiteboxHumanCharacter1:R_Finger01_CTRL_GRP" -p "WhiteboxHumanCharacter1:R_Hand_CTRL";
-	rename -uid "6B6D237A-CE4A-BDD2-5A3B-79BC3B487E13";
-	setAttr ".t" -type "double3" 0 8.8817841970012484e-16 -4.5796699765787697e-16 ;
-	setAttr ".s" -type "double3" 1 0.99999999999999956 0.99999999999999978 ;
-createNode transform -n "WhiteboxHumanCharacter1:R_Finger01_CTRL" -p "WhiteboxHumanCharacter1:R_Finger01_CTRL_GRP";
-	rename -uid "8987D077-F744-9742-C0B6-9C9F452489E8";
-	setAttr ".rp" -type "double3" -7.2715401649475098 4.1683406829833984 0.1098800003528595 ;
-	setAttr ".sp" -type "double3" -7.2715401649475098 4.1683406829833984 0.1098800003528595 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Finger01_CTRLShape" -p "WhiteboxHumanCharacter1:R_Finger01_CTRL";
-	rename -uid "94633750-BB4B-CFB7-3A19-DDB9C328C484";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 13;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		-7.0842335032638291 4.445820795404078 -0.12907788612241333
-		-7.3183757719126188 4.3980895735390613 -0.22805748353648198
-		-7.5525180405614085 4.3503583516740454 -0.12907788612241347
-		-7.6495029437605417 4.3305874322289162 0.1098800003528594
-		-7.5525180405614085 4.3503583516740445 0.34883788682813244
-		-7.3183757719126188 4.3980895735390613 0.44781748424220102
-		-7.0842335032638291 4.4458207954040772 0.34883788682813249
-		-6.9872486000646958 4.4655917148492064 0.10988000035285968
-		-7.0842335032638291 4.445820795404078 -0.12907788612241333
-		-7.3183757719126188 4.3980895735390613 -0.22805748353648198
-		-7.5525180405614085 4.3503583516740454 -0.12907788612241347
-		;
-createNode transform -n "WhiteboxHumanCharacter1:R_Finger02_CTRL_GRP" -p "WhiteboxHumanCharacter1:R_Finger01_CTRL";
-	rename -uid "852BC286-DF46-E3C6-0735-F68F483D483D";
-createNode transform -n "WhiteboxHumanCharacter1:R_Finger02_CTRL" -p "WhiteboxHumanCharacter1:R_Finger02_CTRL_GRP";
-	rename -uid "90DEDDB5-1A4E-358C-631B-35968E117BBE";
-	setAttr ".rp" -type "double3" -7.6008000373840332 4.127180576324462 0.12212700396776199 ;
-	setAttr ".sp" -type "double3" -7.6008000373840332 4.127180576324462 0.12212700396776199 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Finger02_CTRLShape" -p "WhiteboxHumanCharacter1:R_Finger02_CTRL";
-	rename -uid "9EE1ACD5-6545-37EA-017F-FC9B1B827F01";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 13;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		-7.5897030050072223 4.3385369159592555 -0.074545352674876927
-		-7.6158437485918817 4.2968870945811428 -0.16071440434236872
-		-7.7837704060767985 4.1835215954053595 -0.11200262029220732
-		-7.824289388283959 4.1838543019999062 0.076231094374246522
-		-7.8601438445972143 4.1879498457476823 0.26536468323092011
-		-7.7238521011525219 4.3031495862728377 0.37296355429620259
-		-7.666076443527639 4.3429651663015774 0.30282195084825042
-		-7.6997691335658534 4.2705064149678265 0.10041528490729668
-		-7.5897030050072223 4.3385369159592555 -0.074545352674876927
-		-7.6158437485918817 4.2968870945811428 -0.16071440434236872
-		-7.7837704060767985 4.1835215954053595 -0.11200262029220732
-		;
-createNode transform -n "WhiteboxHumanCharacter1:R_Finger03_CTRL_GRP" -p "WhiteboxHumanCharacter1:R_Finger02_CTRL";
-	rename -uid "61C1BA77-AD45-736D-971B-71938765A001";
-createNode transform -n "WhiteboxHumanCharacter1:R_Finger03_CTRL" -p "WhiteboxHumanCharacter1:R_Finger03_CTRL_GRP";
-	rename -uid "5604D00A-1E45-97BD-5337-7CB6515B9FF9";
-	setAttr ".rp" -type "double3" -7.7834501266479474 3.9067206382751465 0.12953600287437442 ;
-	setAttr ".sp" -type "double3" -7.7834501266479474 3.9067206382751465 0.12953600287437442 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Finger03_CTRLShape" -p "WhiteboxHumanCharacter1:R_Finger03_CTRL";
-	rename -uid "CAC75F90-A346-B021-D08B-7EB9A671B233";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 13;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		-7.8711215199898987 4.1247138433714561 -0.02650245885835098
-		-7.8863813819740667 4.0855624367841834 -0.11255477651072299
-		-7.9929247355950936 3.9114944368296758 -0.079383589745352395
-		-8.0143992479715376 3.8762104626621601 0.097953282773847156
-		-8.0329603942202059 3.846085128910544 0.27656579069543752
-		-7.9430003533802402 3.9930597064195088 0.39083366482694287
-		-7.911157178615011 4.0593045354523243 0.32944692158243888
-		-7.9313067656418674 4.0013061943025399 0.13028677770182362
-		-7.8711215199898987 4.1247138433714561 -0.02650245885835098
-		-7.8863813819740667 4.0855624367841834 -0.11255477651072299
-		-7.9929247355950936 3.9114944368296758 -0.079383589745352395
-		;
-createNode transform -n "WhiteboxHumanCharacter1:R_Index01_CTRL_GRP" -p "WhiteboxHumanCharacter1:R_Hand_CTRL";
-	rename -uid "C27C0154-8D44-FA00-7DEC-E78F8C212E53";
-	setAttr ".t" -type "double3" 0 8.8817841970012484e-16 -4.5796699765787697e-16 ;
-	setAttr ".s" -type "double3" 1 0.99999999999999956 0.99999999999999978 ;
-createNode transform -n "WhiteboxHumanCharacter1:R_Index01_CTRL" -p "WhiteboxHumanCharacter1:R_Index01_CTRL_GRP";
-	rename -uid "026516A4-7A48-CA8C-A1D0-B79D0F34FE89";
-	setAttr ".rp" -type "double3" -7.220400333404541 4.1891703605651864 0.43244600296020508 ;
-	setAttr ".sp" -type "double3" -7.220400333404541 4.1891703605651864 0.43244600296020508 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Index01_CTRLShape" -p "WhiteboxHumanCharacter1:R_Index01_CTRL";
-	rename -uid "3F0ABB9B-F34A-70D7-9BB8-DEBE9BEB2954";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 13;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		-7.1441988442311244 4.4373831649695745 0.31961292400874192
-		-7.2553468259723619 4.4147250220936396 0.27287593242273134
-		-7.3664948077135994 4.3920668792177047 0.31961292400874186
-		-7.412533809181217 4.3826815691403054 0.43244600296020547
-		-7.3664948077135994 4.3920668792177047 0.54527908191166918
-		-7.2553468259723619 4.4147250220936396 0.59201607349767971
-		-7.1441988442311244 4.4373831649695745 0.54527908191166918
-		-7.0981598427635069 4.4467684750469738 0.43244600296020563
-		-7.1441988442311244 4.4373831649695745 0.31961292400874192
-		-7.2553468259723619 4.4147250220936396 0.27287593242273134
-		-7.3664948077135994 4.3920668792177047 0.31961292400874186
-		;
-createNode transform -n "WhiteboxHumanCharacter1:R_Index02_CTRL_GRP" -p "WhiteboxHumanCharacter1:R_Index01_CTRL";
-	rename -uid "5D2B0FD8-054D-6D33-CD59-E18142BF62E8";
-createNode transform -n "WhiteboxHumanCharacter1:R_Index02_CTRL" -p "WhiteboxHumanCharacter1:R_Index02_CTRL_GRP";
-	rename -uid "82BEC4E7-2C40-A19A-91CB-CCBEDCC734B8";
-	setAttr ".rp" -type "double3" -7.603790283203125 4.084850788116456 0.52567398548126221 ;
-	setAttr ".sp" -type "double3" -7.603790283203125 4.084850788116456 0.52567398548126221 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Index02_CTRLShape" -p "WhiteboxHumanCharacter1:R_Index02_CTRL";
-	rename -uid "ABEE4D95-3F4C-BB07-4100-07969A0D6B38";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 13;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		-7.6663759992413754 4.2722019835910308 0.38573519879025092
-		-7.711909131262451 4.2302300257296492 0.34889675629559658
-		-7.8339318067236627 4.142274842388753 0.43789302243543571
-		-7.8123217129609914 4.1577232795609191 0.55682471765373631
-		-7.7866867620043196 4.1763295502906423 0.6744982255897789
-		-7.6450945482654324 4.2783906555071551 0.68350704352451042
-		-7.6191309545220332 4.3062566914929192 0.62234040194459428
-		-7.7039639262341053 4.2289693566938267 0.52493347973960158
-		-7.6663759992413754 4.2722019835910308 0.38573519879025092
-		-7.711909131262451 4.2302300257296492 0.34889675629559658
-		-7.8339318067236627 4.142274842388753 0.43789302243543571
-		;
-createNode transform -n "WhiteboxHumanCharacter1:R_Index03_CTRL_GRP" -p "WhiteboxHumanCharacter1:R_Index02_CTRL";
-	rename -uid "3763DB16-5F42-77C4-0B5F-93B6EF332AC8";
-createNode transform -n "WhiteboxHumanCharacter1:R_Index03_CTRL" -p "WhiteboxHumanCharacter1:R_Index03_CTRL_GRP";
-	rename -uid "E6FA9AF9-8943-DA4C-8AA3-F488CFB997A7";
-	setAttr ".rp" -type "double3" -7.7450003623962402 3.8862605094909664 0.56891399621963501 ;
-	setAttr ".sp" -type "double3" -7.7450003623962402 3.8862605094909668 0.56891399621963501 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Index03_CTRLShape" -p "WhiteboxHumanCharacter1:R_Index03_CTRL";
-	rename -uid "3EB5F871-2A41-CBAB-D0A1-BD97384D5453";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 13;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		-7.8798033131487708 4.0577787545543424 0.51194667727963294
-		-7.9073137541411924 4.0091849793378582 0.48471446874748741
-		-7.9799930376681489 3.8665344456634556 0.54456695666252963
-		-7.9597092840723125 3.866835437880987 0.62626267420535531
-		-7.9370330165454126 3.8717646515322626 0.70717745199604887
-		-7.8465591096295846 4.0165816074115277 0.71468043663235736
-		-7.8368432920260354 4.063008960423149 0.67455717261315229
-		-7.8900135794610673 3.9786058577583239 0.60425480047663649
-		-7.8798033131487708 4.0577787545543424 0.51194667727963294
-		-7.9073137541411924 4.0091849793378582 0.48471446874748741
-		-7.9799930376681489 3.8665344456634556 0.54456695666252963
-		;
-createNode transform -n "WhiteboxHumanCharacter1:R_Thumb01_CTRL_GRP" -p "WhiteboxHumanCharacter1:R_Hand_CTRL";
-	rename -uid "2762E2E6-394D-E27D-0FA5-6883B55432A4";
-	setAttr ".t" -type "double3" 0 8.8817841970012484e-16 -4.5796699765787697e-16 ;
-	setAttr ".s" -type "double3" 1 0.99999999999999956 0.99999999999999978 ;
-createNode transform -n "WhiteboxHumanCharacter1:R_Thumb01_CTRL" -p "WhiteboxHumanCharacter1:R_Thumb01_CTRL_GRP";
-	rename -uid "D7DEBBBE-E94D-F921-B8F5-5F98F6C9F92E";
-	setAttr ".rp" -type "double3" -6.6884503364562979 4.3190708160400382 0.36514899134635914 ;
-	setAttr ".sp" -type "double3" -6.6884503364562979 4.3190708160400391 0.36514899134635914 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Thumb01_CTRLShape" -p "WhiteboxHumanCharacter1:R_Thumb01_CTRL";
-	rename -uid "1C5B610A-874D-626A-0AFA-5F98870E6CD2";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 13;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		-6.5738589166959169 4.5954942217166685 0.60612081926195827
-		-6.7796378365606547 4.6131859847037795 0.54851972509027136
-		-6.9620706623649848 4.5163550681154447 0.60612081926195815
-		-7.0142907189747801 4.3617237096320931 0.7451821620187743
-		-6.9057082054559125 4.2398728618850967 0.88424350477559055
-		-6.6999292855911747 4.2221810988979858 0.94184459894727757
-		-6.5174964597868446 4.3190120154863205 0.88424350477559066
-		-6.4652764031770493 4.4736433739696722 0.74518216201877452
-		-6.5738589166959169 4.5954942217166685 0.60612081926195827
-		-6.7796378365606547 4.6131859847037795 0.54851972509027136
-		-6.9620706623649848 4.5163550681154447 0.60612081926195815
-		;
-createNode transform -n "WhiteboxHumanCharacter1:R_Thumb02_CTRL_GRP" -p "WhiteboxHumanCharacter1:R_Thumb01_CTRL";
-	rename -uid "77CA7D95-B54E-8648-2B79-64B574C0754A";
-createNode transform -n "WhiteboxHumanCharacter1:R_Thumb02_CTRL" -p "WhiteboxHumanCharacter1:R_Thumb02_CTRL_GRP";
-	rename -uid "AB1A93AF-2F49-C445-7074-58B6A1C309A7";
-	setAttr ".rp" -type "double3" -6.8126201629638663 4.0761404037475595 0.69190198183059692 ;
-	setAttr ".sp" -type "double3" -6.8126201629638663 4.0761404037475595 0.69190198183059692 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Thumb02_CTRLShape" -p "WhiteboxHumanCharacter1:R_Thumb02_CTRL";
-	rename -uid "41F2ABA3-FC4B-7C68-8103-B8A434FED473";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 13;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		-6.986764415514374 4.2507234348738985 0.86668302961250265
-		-7.0537001137070385 4.2240484017951188 0.86649036019452375
-		-7.0825932884686749 4.0721847756312801 0.94802934774428005
-		-6.9749461449006276 4.027251521770042 0.98329255335684917
-		-6.864989810035719 3.9866391998346846 1.0166188525976547
-		-6.7459623232875918 4.1030686883025576 0.96349056819462142
-		-6.7691609370814181 4.1651778590773034 0.93527253446587744
-		-6.915500128493564 4.1315288574981706 0.92475305477983993
-		-6.986764415514374 4.2507234348738985 0.86668302961250265
-		-7.0537001137070385 4.2240484017951188 0.86649036019452375
-		-7.0825932884686749 4.0721847756312801 0.94802934774428005
-		;
-createNode transform -n "WhiteboxHumanCharacter1:R_Thumb03_CTRL" -p "WhiteboxHumanCharacter1:R_Thumb02_CTRL";
-	rename -uid "FBCC6E96-FD4E-6721-BBB1-519CDA726F76";
-createNode transform -n "WhiteboxHumanCharacter1:R_Thumb03_CTRL" -p "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL|WhiteboxHumanCharacter1:R_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb01_CTRL|WhiteboxHumanCharacter1:R_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb02_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL";
-	rename -uid "26035416-FD42-A749-3E26-E8A6B1960673";
-	setAttr ".rp" -type "double3" -6.9718699455261213 3.8952906131744371 0.75487202405929654 ;
-	setAttr ".sp" -type "double3" -6.9718699455261213 3.8952906131744371 0.75487202405929654 ;
-createNode nurbsCurve -n "WhiteboxHumanCharacter1:R_Thumb03_CTRLShape" -p "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL|WhiteboxHumanCharacter1:R_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb01_CTRL|WhiteboxHumanCharacter1:R_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb02_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL";
-	rename -uid "524C5E5A-2247-8F26-7FCA-3CBAF419DC1D";
-	setAttr -k off ".v";
-	setAttr ".ove" yes;
-	setAttr ".ovc" 13;
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		-7.11612755068625 4.0404596147387668 0.96148395648466889
-		-7.1718483693912756 4.0145053467824887 0.95246514987728648
-		-7.2356909386096726 3.8591852512607767 0.98430172638802982
-		-7.168005715600291 3.8141042466587107 1.0060301669976921
-		-7.0974403767945624 3.7734034606969984 1.0272360742506346
-		-6.9763325498666475 3.8931915751625445 1.0131834869162262
-		-6.9778769888711407 3.9546778241749885 1.0044183043472736
-		-7.0934872761807393 3.9223792045061447 0.98240813921673553
-		-7.11612755068625 4.0404596147387668 0.96148395648466889
-		-7.1718483693912756 4.0145053467824887 0.95246514987728648
-		-7.2356909386096726 3.8591852512607767 0.98430172638802982
-		;
-createNode parentConstraint -n "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1" 
-		-p "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP";
-	rename -uid "90252ECF-A442-FF27-4964-8E8D169BB2F2";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Wrist_RK_JNTW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" 4.8999985455178381 5.6078603344748528 -2.2283506312015873 ;
-	setAttr ".tg[0].tor" -type "double3" -174.407101587108 24.47719571725607 13.297644475667571 ;
-	setAttr ".lr" -type "double3" -2.4146726184661049 -0.074094652064132446 0.11368592674500479 ;
-	setAttr ".rst" -type "double3" 8.8817841970012523e-16 0 2.7755575615628914e-16 ;
-	setAttr ".rsrr" -type "double3" 1.2672522558956201e-14 -2.3854160110976376e-15 -1.5902773407317588e-15 ;
-	setAttr -k on ".w0";
-createNode transform -n "WhiteboxHumanCharacter1:JNT_GRP";
-	rename -uid "3FF64077-8C4E-C74E-5E93-9385F353513F";
-	setAttr ".v" no;
-createNode joint -n "WhiteboxHumanCharacter1:COG_JNT" -p "WhiteboxHumanCharacter1:JNT_GRP";
-	rename -uid "C1481463-6B4F-F452-862F-ADBDDC3D3191";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" -89.999999999999986 -7.8617961959984601 89.999999999999986 ;
-	setAttr ".radi" 0.6;
-createNode joint -n "WhiteboxHumanCharacter1:SpineBase_RK_JNT" -p "WhiteboxHumanCharacter1:COG_JNT";
-	rename -uid "52165AD2-C744-24BF-B90C-BB81875BA583";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".radi" 0.4;
-createNode joint -n "WhiteboxHumanCharacter1:Chest_RK_JNT" -p "WhiteboxHumanCharacter1:SpineBase_RK_JNT";
-	rename -uid "4D43C7EB-1543-A548-C7C0-0BB5E1FCF671";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 0 0 24.668956883553896 ;
-	setAttr ".radi" 0.54375141074451394;
-createNode joint -n "WhiteboxHumanCharacter1:Neck_RK_JNT" -p "WhiteboxHumanCharacter1:Chest_RK_JNT";
-	rename -uid "461398D9-024E-7454-0386-8CACD4656B75";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 0 0 -33.313524526082119 ;
-	setAttr ".radi" 0.5;
-createNode joint -n "WhiteboxHumanCharacter1:Head_RK_JNT" -p "WhiteboxHumanCharacter1:Neck_RK_JNT";
-	rename -uid "CE12EA27-0E43-87FB-75D9-0893A64F0738";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 0 0 16.506363838526656 ;
-	setAttr ".radi" 0.55172413793103448;
-createNode joint -n "WhiteboxHumanCharacter1:Head02_RK_JNT" -p "WhiteboxHumanCharacter1:Head_RK_JNT";
-	rename -uid "76C46F44-DA48-FFAC-F741-E0BD9B2DF01C";
-	setAttr ".t" -type "double3" 1.7346918303048759 7.7035792425345117e-16 3.8517896212672539e-16 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jo" -type "double3" 89.999999999999986 89.999999999999943 0 ;
-	setAttr ".radi" 0.55172413793103448;
-createNode parentConstraint -n "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1" 
-		-p "WhiteboxHumanCharacter1:Head_RK_JNT";
-	rename -uid "493C5D6E-AE44-1F42-2876-C9B6B45278C9";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Head_CTRLW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" -5.0086799845564314e-15 1.0394919058853702e-07 
-		-1.861268243696923e-09 ;
-	setAttr ".tg[0].tor" -type "double3" -90 -2.544443745170814e-14 89.999999999999972 ;
-	setAttr ".lr" -type "double3" 1.3696828020924836e-15 9.4428450033698822e-15 3.8166656177562201e-14 ;
-	setAttr ".rst" -type "double3" 1.0429832337590401 -4.4408920985006262e-16 2.220446049250317e-16 ;
-	setAttr ".rsrr" -type "double3" 1.3696828020924836e-15 9.4428450033698822e-15 3.8166656177562201e-14 ;
-	setAttr -k on ".w0";
-createNode parentConstraint -n "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1" 
-		-p "WhiteboxHumanCharacter1:Neck_RK_JNT";
-	rename -uid "EEF1A1EA-C541-7735-39A5-398660429FBD";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Neck_CTRLW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" -1.8138771268477084e-16 1.0394919147671544e-07 
-		1.3711783541925371e-08 ;
-	setAttr ".tg[0].tor" -type "double3" -90 -16.506363838526696 89.999999999999972 ;
-	setAttr ".lr" -type "double3" 7.0058579804945521e-15 -1.2237623813625887e-15 -7.4817949232547961e-32 ;
-	setAttr ".rst" -type "double3" 2.0892455335266433 4.4408920985006262e-16 -4.4408920985006198e-16 ;
-	setAttr ".rsrr" -type "double3" 7.0058579804945521e-15 -1.2237623813625887e-15 -7.4817949232547961e-32 ;
-	setAttr -k on ".w0";
-createNode joint -n "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT" -p "WhiteboxHumanCharacter1:Chest_RK_JNT";
-	rename -uid "7C6BADE4-AA45-A558-9412-7EA14ACBBA17";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 36.630931006370723 60.479432523376403 106.09493995560251 ;
-	setAttr ".radi" 0.5;
-createNode joint -n "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT" -p "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT";
-	rename -uid "24A3EAD2-6E4D-9341-2A5A-2887BE1F429A";
-	setAttr ".t" -type "double3" 0.95693469205386983 9.0276145704271334e-16 -4.9960036108132044e-16 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 83.393433624841649 21.105803356008117 -15.883172248551773 ;
-	setAttr ".radi" 0.60434188757843832;
-createNode joint -n "WhiteboxHumanCharacter1:L_Elbow_RK_JNT" -p "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT";
-	rename -uid "BF49E625-524C-C85C-9E88-4C9F9966EF5C";
-	setAttr ".t" -type "double3" 3.0201197908950226 -6.6985255742173204e-17 -6.9808492224035787e-16 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 0.4668617108391494 -1.0624708392404922 -11.771931331807675 ;
-	setAttr ".radi" 0.56806478500620017;
-createNode joint -n "WhiteboxHumanCharacter1:L_Wrist_RK_JNT" -p "WhiteboxHumanCharacter1:L_Elbow_RK_JNT";
-	rename -uid "5C93DABD-734A-6FBC-D538-72B74FB0250E";
-	setAttr ".t" -type "double3" 2.3466453757273538 -4.3739203359650297e-16 -5.7681804584805341e-16 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 85.151962216901282 9.7996309802259027 -16.2215501884662 ;
-	setAttr ".radi" 0.3;
-createNode orientConstraint -n "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1" 
-		-p "WhiteboxHumanCharacter1:L_Wrist_RK_JNT";
-	rename -uid "7AE04FFC-8C4C-938E-ADB5-25930C91C416";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Wrist_IK_JNTW0" -dv 1 -min 0 -at "double";
-	addAttr -dcb 0 -ci true -k true -sn "w1" -ln "L_Wrist_FK_JNTW1" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr -s 2 ".tg";
-	setAttr ".lr" -type "double3" 2.1974340322016555 0.44840199971239597 -0.89731418251163542 ;
-	setAttr ".o" -type "double3" -2.2042440051078369 -0.41361196846423515 0.91387105439260119 ;
-	setAttr ".rsrr" -type "double3" -3.9718108387904993e-16 3.1060104311167148e-18 1.5530052155583574e-18 ;
-	setAttr -k on ".w0";
-	setAttr -k on ".w1";
-createNode orientConstraint -n "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1" 
-		-p "WhiteboxHumanCharacter1:L_Elbow_RK_JNT";
-	rename -uid "25866D65-484F-063D-CACC-F1908174737A";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Elbow_IK_JNTW0" -dv 1 -min 0 -at "double";
-	addAttr -dcb 0 -ci true -k true -sn "w1" -ln "L_Elbow_FK_JNTW1" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr -s 2 ".tg";
-	setAttr ".lr" -type "double3" 2.4023887063971867 0.27942768513078975 -0.021564581332019349 ;
-	setAttr ".o" -type "double3" -2.4025238184104203 -0.27833144580167513 0.032553237770718814 ;
-	setAttr ".rsrr" -type "double3" 3.6398559739649017e-20 9.9392333795734899e-17 5.4355182544542523e-18 ;
-	setAttr -k on ".w0";
-	setAttr -k on ".w1";
-createNode orientConstraint -n "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1" 
-		-p "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT";
-	rename -uid "1BB54D34-9C4F-297D-1FEE-23B54ECB344A";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Shoulder_IK_JNTW0" -dv 1 -min 0 
-		-at "double";
-	addAttr -dcb 0 -ci true -k true -sn "w1" -ln "L_Shoulder_FK_JNTW1" -dv 1 -min 0 
-		-at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr -s 2 ".tg";
-	setAttr ".lr" -type "double3" -5.9635400277440939e-16 -2.8966260080954173e-32 -5.5659706925611551e-15 ;
-	setAttr ".o" -type "double3" -2.408958344139208 0.21639814642967101 -0.02395853072253604 ;
-	setAttr ".rsrr" -type "double3" -7.9513867036587919e-16 2.4799552035947529e-17 -3.8825130388958945e-18 ;
-	setAttr -k on ".w0";
-	setAttr -k on ".w1";
-createNode parentConstraint -n "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1" 
-		-p "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT";
-	rename -uid "603F50CC-3E40-EDD4-C98B-1397AE4D2073";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Collar_FK_CTRLW0" -dv 1 -min 0 
-		-at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" 0.00027017853931393665 1.2541259764020651e-07 
-		-1.2956331563174217e-09 ;
-	setAttr ".tg[0].tor" -type "double3" -179.99999999999991 24.437544359623786 -17.09727965501256 ;
-	setAttr ".lr" -type "double3" 3.1805546814635155e-14 -9.5416640443905487e-15 1.5902773407317554e-15 ;
-	setAttr ".rst" -type "double3" 1.7279126959264417 -0.44883906917148231 -0.27427016757205952 ;
-	setAttr ".rsrr" -type "double3" 1.9083328088781097e-14 -1.2722218725854064e-14 -4.7708320221952767e-15 ;
-	setAttr -k on ".w0";
-createNode joint -n "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT" -p "WhiteboxHumanCharacter1:Chest_RK_JNT";
-	rename -uid "E2B9B790-2D4F-85BC-6265-7EB7140D990F";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" -36.629346544383125 -60.487156227430347 106.09542507489542 ;
-	setAttr ".radi" 0.5;
-createNode joint -n "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT" -p "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT";
-	rename -uid "6255D7B5-AE4B-3D43-291D-24AFEE02589A";
-	setAttr ".t" -type "double3" 0.9571669162148948 8.6120493468691508e-16 3.8857805861880479e-16 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 83.397362180450628 21.100253514761359 164.12265873399167 ;
-	setAttr ".radi" 0.60434188757843832;
-createNode joint -n "WhiteboxHumanCharacter1:R_Elbow_RK_JNT" -p "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT";
-	rename -uid "929C2D48-9149-C09D-98D4-31B78419F857";
-	setAttr ".t" -type "double3" -3.0201240546336696 -2.8538302976333085e-07 -4.7966670431165426e-06 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 0.46686171083506767 -1.0624708392404829 -11.771931331807645 ;
-	setAttr ".radi" 0.56806478500620017;
-createNode joint -n "WhiteboxHumanCharacter1:R_Wrist_RK_JNT" -p "WhiteboxHumanCharacter1:R_Elbow_RK_JNT";
-	rename -uid "1A3AA770-A84C-A15F-D301-F8881A01377B";
-	setAttr ".t" -type "double3" -2.346648632687955 -4.6468127234966516e-07 2.0844545982612317e-06 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 85.151962216905289 9.799630980227052 -16.221550188465535 ;
-	setAttr ".radi" 0.3;
-createNode orientConstraint -n "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1" 
-		-p "WhiteboxHumanCharacter1:R_Wrist_RK_JNT";
-	rename -uid "BD6891EE-CE42-5E6B-27F3-C39E287C64E6";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Wrist_IK_JNTW0" -dv 1 -min 0 -at "double";
-	addAttr -dcb 0 -ci true -k true -sn "w1" -ln "R_Wrist_FK_JNTW1" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr -s 2 ".tg";
-	setAttr ".lr" -type "double3" 2.1972207795336001 0.44794935222810628 -0.89720551941178306 ;
-	setAttr ".o" -type "double3" -2.2040227767488112 -0.41316729151784004 0.91374352331616349 ;
-	setAttr ".rsrr" -type "double3" -7.9358566515032083e-16 -5.2802177328984168e-17 
-		5.9946001320552611e-16 ;
-	setAttr -k on ".w0";
-	setAttr -k on ".w1";
-createNode orientConstraint -n "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1" 
-		-p "WhiteboxHumanCharacter1:R_Elbow_RK_JNT";
-	rename -uid "5E50636E-3647-48CA-4604-D9BE2F8DC1F0";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Elbow_IK_JNTW0" -dv 1 -min 0 -at "double";
-	addAttr -dcb 0 -ci true -k true -sn "w1" -ln "R_Elbow_FK_JNTW1" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr -s 2 ".tg";
-	setAttr ".lr" -type "double3" 2.402072501898604 0.27939073041861745 -0.021253352410089521 ;
-	setAttr ".o" -type "double3" -2.4022043183512629 -0.27825443610331169 0.032944786748329548 ;
-	setAttr ".rsrr" -type "double3" -1.1927322712553117e-15 3.8825130388958926e-19 -4.6590156466750726e-18 ;
-	setAttr -k on ".w0";
-	setAttr -k on ".w1";
-createNode orientConstraint -n "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1" 
-		-p "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT";
-	rename -uid "73310425-2940-CEB6-D459-698553EE035B";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Shoulder_IK_JNTW0" -dv 1 -min 0 
-		-at "double";
-	addAttr -dcb 0 -ci true -k true -sn "w1" -ln "R_Shoulder_FK_JNTW1" -dv 1 -min 0 
-		-at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr -s 2 ".tg";
-	setAttr ".lr" -type "double3" 2.5444437451708134e-14 8.7465253740246735e-15 -1.3119788061037004e-14 ;
-	setAttr ".o" -type "double3" -2.4086362790653419 0.21635815826540583 -0.024263665094834387 ;
-	setAttr ".rsrr" -type "double3" 7.9513867036587919e-16 -4.9599104071895058e-17 3.1060104311167156e-18 ;
-	setAttr -k on ".w0";
-	setAttr -k on ".w1";
-createNode parentConstraint -n "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1" 
-		-p "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT";
-	rename -uid "BD8EAF76-1E41-C399-682F-D29DF3B05744";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Collar_FK_CTRLW0" -dv 1 -min 0 
-		-at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" -1.0967254215898947e-08 1.2541259764020651e-07 
-		-1.2956325456947582e-09 ;
-	setAttr ".tg[0].tor" -type "double3" -2.6554644200347583e-14 24.431203455259098 
-		-162.90757134272872 ;
-	setAttr ".lr" -type "double3" 3.1805546814635155e-14 -3.1805546814635176e-15 4.7708320221952736e-15 ;
-	setAttr ".rst" -type "double3" 1.7279126959264417 -0.44883906917148275 0.27400000000000047 ;
-	setAttr ".rsrr" -type "double3" 3.1805546814635155e-14 -3.1805546814635176e-15 4.7708320221952736e-15 ;
-	setAttr -k on ".w0";
-createNode parentConstraint -n "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1" 
-		-p "WhiteboxHumanCharacter1:Chest_RK_JNT";
-	rename -uid "B748DECF-464E-6B14-FC7F-9F817C06F245";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Chest_CTRLW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" 2.7651430316072281e-17 1.0394919058853702e-07 
-		1.0015821505504618e-09 ;
-	setAttr ".tg[0].tor" -type "double3" -90 16.807160687555442 89.999999999999972 ;
-	setAttr ".lr" -type "double3" 1.2428554344792826e-14 -2.7176986968763291e-15 3.1805546814635168e-15 ;
-	setAttr ".rst" -type "double3" 1.1171135364414313 -0.12453097126772472 2.5496189143456058e-16 ;
-	setAttr ".rsrr" -type "double3" 1.2428554344792826e-14 -2.7176986968763291e-15 3.1805546814635168e-15 ;
-	setAttr -k on ".w0";
-createNode parentConstraint -n "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1" 
-		-p "WhiteboxHumanCharacter1:SpineBase_RK_JNT";
-	rename -uid "C85A7809-474A-972B-DB38-82B1206A5CF9";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "SpineBase_CTRLW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" 1.4701245677308265e-32 -4.4781982566632905e-09 
-		5.2468978605788231e-17 ;
-	setAttr ".tg[0].tor" -type "double3" -90 -7.8617961959984539 89.999999999999972 ;
-	setAttr ".lr" -type "double3" 3.1805546814635168e-15 6.3611093629270335e-15 1.7655625192200639e-31 ;
-	setAttr ".rst" -type "double3" 2.2204460492503131e-16 0 4.9303806576313238e-32 ;
-	setAttr ".rsrr" -type "double3" 3.1805546814635168e-15 6.3611093629270335e-15 1.7655625192200639e-31 ;
-	setAttr -k on ".w0";
-createNode joint -n "WhiteboxHumanCharacter1:Pelvis_RK_JNT" -p "WhiteboxHumanCharacter1:COG_JNT";
-	rename -uid "825EFAB8-254F-946C-1A66-3284690B41CC";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".radi" 0.3;
-createNode joint -n "WhiteboxHumanCharacter1:L_Hip_RK_JNT" -p "WhiteboxHumanCharacter1:Pelvis_RK_JNT";
-	rename -uid "1E515726-EA42-53B7-9B49-4CA04E23D787";
-	setAttr ".t" -type "double3" -1.4911548683528255 0.085978906117019749 -0.72107200000000038 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 3.3329378010491499 0.4696899673739558 179.45476347656918 ;
-	setAttr ".radi" 0.65910852983609347;
-createNode joint -n "WhiteboxHumanCharacter1:L_Knee_RK_JNT" -p "WhiteboxHumanCharacter1:L_Hip_RK_JNT";
-	rename -uid "BD35ADD0-E84F-67FC-264E-B9B3417CE07B";
-	setAttr ".t" -type "double3" 4.0401681341773967 0.54287343233163887 -2.271214316618142e-08 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" -1.1943682958428056e-06 -0.35809378237255041 8.4309309824981078 ;
-	setAttr ".radi" 0.64788465312454702;
-createNode joint -n "WhiteboxHumanCharacter1:L_Ankle_RK_JNT" -p "WhiteboxHumanCharacter1:L_Knee_RK_JNT";
-	rename -uid "88BCC2CB-5649-1E70-BCEA-26B73FE01C59";
-	setAttr ".t" -type "double3" 3.859095507869676 -1.8897061582201502e-07 1.4306168605142389e-07 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 0.28537603515314924 2.3512600368997814 52.785935235012793 ;
-	setAttr ".radi" 0.5;
-createNode joint -n "WhiteboxHumanCharacter1:L_Ball_RK_JNT" -p "WhiteboxHumanCharacter1:L_Ankle_RK_JNT";
-	rename -uid "F38D0050-864F-2D7B-CE30-798287301C19";
-	setAttr ".t" -type "double3" 1.2945435216654368 -2.6936225435589725e-07 -0.026361454188674648 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" -1.2370325768014823 -1.7398228642076301 35.421595798139847 ;
-	setAttr ".radi" 0.50927625006926813;
-createNode joint -n "WhiteboxHumanCharacter1:L_Toe_RK_JNT" -p "WhiteboxHumanCharacter1:L_Ball_RK_JNT";
-	rename -uid "BC94AA98-ED40-B20E-F794-2D81FC278CDB";
-	setAttr ".t" -type "double3" 1.1793378022302934 -9.3607522870466559e-06 -0.080459599374378923 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jo" -type "double3" 89.999999999999986 -1.0273191621127159e-12 91.822421587241536 ;
-	setAttr ".radi" 0.4;
-createNode orientConstraint -n "L_Toe_RK_JNT_orientConstraint1" -p "WhiteboxHumanCharacter1:L_Toe_RK_JNT";
-	rename -uid "F75A5BE2-B547-FE83-FB8C-FAA58966BED3";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Toe_IK_JNTW0" -dv 1 -min 0 -at "double";
-	addAttr -dcb 0 -ci true -k true -sn "w1" -ln "L_Toe_FK_JNTW1" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr -s 2 ".tg";
-	setAttr -k on ".w0";
-	setAttr -k on ".w1";
-createNode orientConstraint -n "L_Ball_RK_JNT_orientConstraint1" -p "WhiteboxHumanCharacter1:L_Ball_RK_JNT";
-	rename -uid "2CAE6880-B942-0A8E-A6F7-FA8DE2FCCF8B";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Ball_IK_JNTW0" -dv 1 -min 0 -at "double";
-	addAttr -dcb 0 -ci true -k true -sn "w1" -ln "L_Ball_FK_JNTW1" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr -s 2 ".tg";
-	setAttr -k on ".w0";
-	setAttr -k on ".w1";
-createNode orientConstraint -n "L_Ankle_RK_JNT_orientConstraint1" -p "WhiteboxHumanCharacter1:L_Ankle_RK_JNT";
-	rename -uid "554353AA-6243-7D29-6EA8-99A9E324FA89";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Ankle_IK_JNTW0" -dv 1 -min 0 -at "double";
-	addAttr -dcb 0 -ci true -k true -sn "w1" -ln "L_Ankle_FK_JNTW1" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr -s 2 ".tg";
-	setAttr ".lr" -type "double3" -9.1988860255015652 11.980131010966884 -1.351677944804204 ;
-	setAttr ".rsrr" -type "double3" 4.5720473546037823e-15 -8.2296852382868502e-14 3.2122359878609065e-14 ;
-	setAttr -k on ".w0";
-	setAttr -k on ".w1";
-createNode orientConstraint -n "L_Knee_RK_JNT_orientConstraint1" -p "WhiteboxHumanCharacter1:L_Knee_RK_JNT";
-	rename -uid "9B71B374-FD45-6D32-750D-7889D70D5702";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Knee_IK_JNTW0" -dv 1 -min 0 -at "double";
-	addAttr -dcb 0 -ci true -k true -sn "w1" -ln "L_Knee_FK_JNTW1" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr -s 2 ".tg";
-	setAttr ".lr" -type "double3" -3.1060104311167156e-17 3.8825130388958815e-19 -4.7707834907822889e-15 ;
-	setAttr ".rsrr" -type "double3" 7.5338973956222546 -0.050813020529789588 -0.027567350300259794 ;
-	setAttr -k on ".w0";
-	setAttr -k on ".w1";
-createNode orientConstraint -n "L_Hip_RK_JNT_orientConstraint1" -p "WhiteboxHumanCharacter1:L_Hip_RK_JNT";
-	rename -uid "C50D265C-AE47-73B4-6086-7EBAB1B8A3BB";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Hip_IK_JNTW0" -dv 1 -min 0 -at "double";
-	addAttr -dcb 0 -ci true -k true -sn "w1" -ln "L_Hip_FK_JNTW1" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr -s 2 ".tg";
-	setAttr ".lr" -type "double3" 14.927789403467697 2.0755658773545589 0.31801682777844043 ;
-	setAttr ".rsrr" -type "double3" 7.4612220120942192 1.0481512953646852 0.091277630201843749 ;
-	setAttr -k on ".w0";
-	setAttr -k on ".w1";
-createNode joint -n "WhiteboxHumanCharacter1:R_Hip_RK_JNT" -p "WhiteboxHumanCharacter1:Pelvis_RK_JNT";
-	rename -uid "2F396708-E343-6D5E-CDBD-6D8E9BABFDD3";
-	setAttr ".t" -type "double3" -1.4911545182571759 0.085978809894475594 0.72107199999999949 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 0 0 -0.56913478894544156 ;
-	setAttr ".radi" 0.65910852983609347;
-createNode joint -n "WhiteboxHumanCharacter1:R_Knee_RK_JNT" -p "WhiteboxHumanCharacter1:R_Hip_RK_JNT";
-	rename -uid "C9D23AAE-5141-F7B0-9BA6-21983A2B32AF";
-	setAttr ".t" -type "double3" -4.0401682775207899 -0.54287339455596872 -6.5084070544502485e-16 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 6.2121421895810701e-18 -0.35809395932360016 8.4309309849439025 ;
-	setAttr ".radi" 0.64788465312454702;
-createNode joint -n "WhiteboxHumanCharacter1:R_Ankle_RK_JNT" -p "WhiteboxHumanCharacter1:R_Knee_RK_JNT";
-	rename -uid "078EEEBD-7349-7862-0E8E-15AA29BAF710";
-	setAttr ".t" -type "double3" -3.8590953715295755 -3.3306690738754696e-16 -1.2499755963624182e-07 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 0.285376758110231 2.3512590857264817 52.78593526467256 ;
-	setAttr ".radi" 0.5;
-createNode joint -n "WhiteboxHumanCharacter1:R_Ball_RK_JNT" -p "WhiteboxHumanCharacter1:R_Ankle_RK_JNT";
-	rename -uid "48D4969A-F648-4BB0-5ED2-07A0B9979A3A";
-	setAttr ".t" -type "double3" -1.2935625580073733 3.2258676858631929e-06 1.4402362036314287e-07 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" -1.2370325768008548 -1.7398228642073374 35.421595798139876 ;
-	setAttr ".radi" 0.50927625006926813;
-createNode joint -n "WhiteboxHumanCharacter1:R_Toe_RK_JNT" -p "WhiteboxHumanCharacter1:R_Ball_RK_JNT";
-	rename -uid "95BE4797-6346-4070-7FBB-CB9235739F4F";
-	setAttr ".t" -type "double3" -1.1793406707196934 4.7352936878297669e-06 -2.2204460492503131e-16 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jo" -type "double3" 90.000000000000014 3.1805546814635168e-15 91.822421587241536 ;
-	setAttr ".radi" 0.4;
-createNode orientConstraint -n "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1" 
-		-p "WhiteboxHumanCharacter1:R_Toe_RK_JNT";
-	rename -uid "7A48C548-0B4A-B65D-DBBD-C2A8A6E1C5AE";
-	addAttr -dcb 0 -ci true -k true -sn "w1" -ln "R_Toe_FK_JNTW1" -dv 1 -min 0 -at "double";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Toe_IK_JNTW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr -s 2 ".tg";
-	setAttr ".rsrr" -type "double3" -1.6828756563439793 0.0049420236757404899 -0.011812200973079799 ;
-	setAttr -k on ".w1";
-	setAttr -k on ".w0";
-createNode orientConstraint -n "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1" 
-		-p "WhiteboxHumanCharacter1:R_Ball_RK_JNT";
-	rename -uid "7C834719-4F4C-8981-5EB9-24A762DCF618";
-	addAttr -dcb 0 -ci true -k true -sn "w1" -ln "R_Ball_FK_JNTW1" -dv 1 -min 0 -at "double";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Ball_IK_JNTW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr -s 2 ".tg";
-	setAttr ".rsrr" -type "double3" 0.041722668212670476 -1.6823989576659486 0.0045029047187652533 ;
-	setAttr -k on ".w1";
-	setAttr -k on ".w0";
-createNode orientConstraint -n "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1" 
-		-p "WhiteboxHumanCharacter1:R_Ankle_RK_JNT";
-	rename -uid "69F58FDB-BE45-B5D6-BF39-98873C126951";
-	addAttr -dcb 0 -ci true -k true -sn "w1" -ln "R_Ankle_FK_JNTW1" -dv 1 -min 0 -at "double";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Ankle_IK_JNTW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr -s 2 ".tg";
-	setAttr ".rsrr" -type "double3" 1.007501218003602 -1.3474194094748997 0.030839689514208141 ;
-	setAttr -k on ".w1";
-	setAttr -k on ".w0";
-createNode orientConstraint -n "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1" 
-		-p "WhiteboxHumanCharacter1:R_Knee_RK_JNT";
-	rename -uid "98E881C3-A04C-E467-0AF9-B78FC6AF69DF";
-	addAttr -dcb 0 -ci true -k true -sn "w1" -ln "R_Knee_FK_JNTW1" -dv 1 -min 0 -at "double";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Knee_IK_JNTW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr -s 2 ".tg";
-	setAttr ".rsrr" -type "double3" 1.6828748154511441 -0.011657748235100802 -0.0055743281545955004 ;
-	setAttr -k on ".w1";
-	setAttr -k on ".w0";
-createNode orientConstraint -n "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1" 
-		-p "WhiteboxHumanCharacter1:R_Hip_RK_JNT";
-	rename -uid "40D40684-3E44-2686-4171-A79D57A79981";
-	addAttr -dcb 0 -ci true -k true -sn "w1" -ln "R_Hip_FK_JNTW1" -dv 1 -min 0 -at "double";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Hip_IK_JNTW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr -s 2 ".tg";
-	setAttr ".lr" -type "double3" 3.3329365935852269 0.46968996787757628 0.0238982556163965 ;
-	setAttr ".rsrr" -type "double3" 1.6664298030438525 0.23501876591651522 0.0085334778237436647 ;
-	setAttr -k on ".w1";
-	setAttr -k on ".w0";
-createNode parentConstraint -n "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1" 
-		-p "WhiteboxHumanCharacter1:Pelvis_RK_JNT";
-	rename -uid "4CCD4B8F-574F-F2F7-42B3-C1B645003C06";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Pelvis_CTRLW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" 1.4701245677308265e-32 -4.4781982566632905e-09 
-		5.2468978605788231e-17 ;
-	setAttr ".tg[0].tor" -type "double3" -90 -7.8617961959984539 89.999999999999972 ;
-	setAttr ".lr" -type "double3" 3.1805546814635168e-15 6.3611093629270335e-15 1.7655625192200639e-31 ;
-	setAttr ".rst" -type "double3" 2.2204460492503131e-16 0 4.9303806576313238e-32 ;
-	setAttr ".rsrr" -type "double3" 3.1805546814635168e-15 6.3611093629270335e-15 1.7655625192200639e-31 ;
-	setAttr -k on ".w0";
-createNode parentConstraint -n "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1" 
-		-p "WhiteboxHumanCharacter1:COG_JNT";
-	rename -uid "D24AC2C8-984C-1CFE-7D95-E89F50E53BD0";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "COG_CTRLW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" 0 -4.4781984787078954e-09 0 ;
-	setAttr ".tg[0].tor" -type "double3" -89.999999999999986 -7.8617961959984601 89.999999999999986 ;
-	setAttr ".rst" -type "double3" 0 1.9083307936709104 0 ;
-	setAttr -k on ".w0";
-createNode transform -n "WhiteboxHumanCharacter1:FK_JNT_GRP" -p "WhiteboxHumanCharacter1:JNT_GRP";
-	rename -uid "3873D0D9-0644-D838-889C-D3994A4FA7E3";
-	setAttr ".v" no;
-createNode transform -n "WhiteboxHumanCharacter1:FK_Arm_JNT_GRP" -p "WhiteboxHumanCharacter1:FK_JNT_GRP";
-	rename -uid "085714A4-684F-1B11-38ED-4AB3461BDF02";
-createNode joint -n "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT" -p "WhiteboxHumanCharacter1:FK_Arm_JNT_GRP";
-	rename -uid "3DCAD200-9749-FB5D-D08F-A08915B6AC05";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 89.900575359835685 -2.4863988230193823 2.2906100426384932 ;
-	setAttr ".radi" 0.60434188757843832;
-createNode joint -n "WhiteboxHumanCharacter1:R_Elbow_FK_JNT" -p "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT";
-	rename -uid "E7013032-3A4A-213C-461A-6DB0D7A7E31F";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 0.46686171083506744 -1.0624708392404825 -11.771931331807638 ;
-	setAttr ".radi" 0.56806478500620017;
-createNode joint -n "WhiteboxHumanCharacter1:R_Wrist_FK_JNT" -p "WhiteboxHumanCharacter1:R_Elbow_FK_JNT";
-	rename -uid "4967B86B-6541-4301-4E6B-FABBF5272631";
-	setAttr ".t" -type "double3" -2.346648632687955 -4.6468127234966516e-07 2.0844545982612317e-06 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 85.151962216905289 9.799630980227052 -16.221550188465535 ;
-	setAttr ".radi" 0.3;
-createNode parentConstraint -n "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1" 
-		-p "WhiteboxHumanCharacter1:R_Elbow_FK_JNT";
-	rename -uid "2A0C7F89-8847-A905-4433-A296E7457C26";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Elbow_FK_CTRLW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" 1.5258727614764211e-10 -1.7818581987683046e-07 
-		-1.6976359207276914e-10 ;
-	setAttr ".tg[0].tor" -type "double3" 90.192530325092648 9.2820378407979138 1.1934894239819376 ;
-	setAttr ".lr" -type "double3" 3.2600685485001048e-14 -6.2120208622332414e-17 -6.6643336312648029e-15 ;
-	setAttr ".rst" -type "double3" -3.0201240546336701 -2.8538302987435316e-07 -4.796667044004721e-06 ;
-	setAttr ".rsrr" -type "double3" 6.7835267815589081e-15 8.9453100416161439e-16 -3.2477221570364163e-15 ;
-	setAttr -k on ".w0";
-createNode parentConstraint -n "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1" 
-		-p "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT";
-	rename -uid "78BC8AC7-3448-675A-0FA3-A8B8D4419C50";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Shoulder_FK_CTRLW0" -dv 1 -min 
-		0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" -4.7416685911016998e-08 0.12058982181417921 
-		0.13101999983023579 ;
-	setAttr ".tg[0].tor" -type "double3" 89.900575359835685 -2.4863988230193823 2.2906100426384928 ;
-	setAttr ".lr" -type "double3" -6.2120208622334312e-18 8.082103817230515e-36 1.4908850069360235e-16 ;
-	setAttr ".rst" -type "double3" -1.1069700000000011 4.5256606035219464 -0.18968299999999974 ;
-	setAttr ".rsrr" -type "double3" 1.9108176172230033e-14 7.951386703658788e-16 6.2120208622334334e-16 ;
-	setAttr -k on ".w0";
-createNode joint -n "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT" -p "WhiteboxHumanCharacter1:FK_Arm_JNT_GRP";
-	rename -uid "23B62E08-2E45-83B0-944D-61AAF01C608E";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" -90.099424640164173 2.4863988230193628 -2.2906100426385207 ;
-	setAttr ".radi" 0.60434188757843832;
-createNode joint -n "WhiteboxHumanCharacter1:L_Elbow_FK_JNT" -p "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT";
-	rename -uid "7042DE01-524E-D6D2-AA5E-95A2AE9E6A65";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 0.4668617108391494 -1.0624708392404922 -11.771931331807677 ;
-	setAttr ".radi" 0.56806478500620017;
-createNode joint -n "WhiteboxHumanCharacter1:L_Wrist_FK_JNT" -p "WhiteboxHumanCharacter1:L_Elbow_FK_JNT";
-	rename -uid "33F2320B-0B42-551B-1006-68AF1CEBA7EE";
-	setAttr ".t" -type "double3" 2.3466453757273538 -4.3739203359650297e-16 -5.7681804584805341e-16 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 85.151962216901282 9.7996309802259027 -16.2215501884662 ;
-	setAttr ".radi" 0.3;
-createNode parentConstraint -n "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1" 
-		-p "WhiteboxHumanCharacter1:L_Elbow_FK_JNT";
-	rename -uid "EB5F22CB-0247-058B-C999-C08FA14D52EB";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Elbow_FK_CTRLW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" 8.5428594864822571e-08 -2.8543648511458741e-07 
-		1.0777345360590829e-07 ;
-	setAttr ".tg[0].tor" -type "double3" -89.807469674903132 -9.2820378407979671 -1.1934894239819893 ;
-	setAttr ".lr" -type "double3" -1.9133024255678967e-15 -7.9513867036587919e-16 1.6108546598379067e-15 ;
-	setAttr ".rst" -type "double3" 3.020119790895023 0 0 ;
-	setAttr ".rsrr" -type "double3" -2.0872390097104338e-15 -2.484808344893378e-17 -3.1615303675729269e-15 ;
-	setAttr -k on ".w0";
-createNode parentConstraint -n "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1" 
-		-p "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT";
-	rename -uid "656D7FA3-3A42-E318-DED8-62AC13C91210";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Shoulder_FK_CTRLW0" -dv 1 -min 
-		0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" 4.568280557837312e-06 0.12059433715220802 0.13101962937329395 ;
-	setAttr ".tg[0].tor" -type "double3" -90.099424640164173 2.486398823019365 -2.2906100426385207 ;
-	setAttr ".lr" -type "double3" -3.8825130388958953e-17 -1.8636062586700295e-16 1.5902773407317584e-15 ;
-	setAttr ".rst" -type "double3" 1.106974520863873 4.5256651188599752 -0.18968337045694153 ;
-	setAttr ".rsrr" -type "double3" -6.3502383264181249e-15 2.8575295966273777e-16 -7.9513867036587919e-16 ;
-	setAttr -k on ".w0";
-createNode transform -n "WhiteboxHumanCharacter1:FK_Legs_JNT_GRP" -p "WhiteboxHumanCharacter1:FK_JNT_GRP";
-	rename -uid "3BE96C4E-4C4F-12E9-98E2-DE978AFC2FAB";
-createNode joint -n "L_Hip_FK_JNT" -p "WhiteboxHumanCharacter1:FK_Legs_JNT_GRP";
-	rename -uid "9F326134-5B41-8C7D-DD92-44AC4A6D66B7";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 93.40235367957122 8.4067481947350569 -89.525208338632183 ;
-	setAttr ".radi" 0.65910852983609347;
-createNode joint -n "L_Knee_FK_JNT" -p "L_Hip_FK_JNT";
-	rename -uid "1D7E3799-D84D-B7B5-C930-818E08552C16";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 3.1060710947305805e-18 -0.35809378237255041 8.4309309824981025 ;
-	setAttr ".radi" 0.64788465312454702;
-createNode joint -n "L_Ankle_FK_JNT" -p "L_Knee_FK_JNT";
-	rename -uid "64C8F7D1-9F42-F3BF-CD2B-BEBCEC49E70C";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 0.28537603515314958 2.3512600368997814 52.785935235012822 ;
-	setAttr ".radi" 0.5;
-createNode joint -n "L_Ball_FK_JNT" -p "L_Ankle_FK_JNT";
-	rename -uid "1C4B71DC-9D42-2FEC-3F09-DBA1DAB9D82C";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" -1.2370325768014823 -1.7398228642076301 35.421595798139847 ;
-	setAttr ".radi" 0.50927625006926813;
-createNode joint -n "L_Toe_FK_JNT" -p "L_Ball_FK_JNT";
-	rename -uid "23E1CCF7-5C45-1517-00E3-CC96A3F10D14";
-	setAttr ".t" -type "double3" 1.1793378022302934 -9.3607522870466559e-06 -0.080459599374378923 ;
-	setAttr ".r" -type "double3" -6.3611093629270335e-15 3.1805546814635168e-15 3.1805546814635168e-15 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jo" -type "double3" 89.999999999999986 -3.180554681463516e-15 91.822421587241536 ;
-	setAttr ".radi" 0.4;
-createNode parentConstraint -n "L_Ball_FK_JNT_parentConstraint1" -p "L_Ball_FK_JNT";
-	rename -uid "24F6A5A1-6E42-266E-3C16-0A91EDC67514";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Ball_FK_CTRLW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" -0.034502842357291397 0.00016925721234706259 
-		0.0027322917277348147 ;
-	setAttr ".tg[0].tor" -type "double3" 151.72361035467867 -86.177565589532747 -151.69354714421965 ;
-	setAttr ".lr" -type "double3" -1.0287106547858562e-13 1.0933156717530864e-14 2.7135660131451175e-14 ;
-	setAttr ".rst" -type "double3" 1.294543521665438 -2.6936225516749346e-07 -0.026361454188674749 ;
-	setAttr ".rsrr" -type "double3" -1.0346741948136005e-13 1.1107093301673372e-14 -4.6698866831839929e-15 ;
-	setAttr -k on ".w0";
-createNode parentConstraint -n "L_Ankle_FK_JNT_parentConstraint1" -p "L_Ankle_FK_JNT";
-	rename -uid "51EE524B-1740-0336-3D3B-E598D984A09C";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Ankle_FK_CTRLW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" 1.8017578551354774e-07 3.6717224167759355e-06 
-		-2.7331161694954531e-07 ;
-	setAttr ".tg[0].tor" -type "double3" 92.755267618147741 -52.809096742558779 -90.927306120878754 ;
-	setAttr ".lr" -type "double3" -1.987846675914698e-16 2.087239009710433e-15 -9.3180312933501514e-18 ;
-	setAttr ".rst" -type "double3" 3.8590955078696747 -1.8897061571099272e-07 1.43061685831114e-07 ;
-	setAttr ".rsrr" -type "double3" -1.987846675914698e-16 2.0375428428125655e-15 -9.3180312933501514e-18 ;
-	setAttr -k on ".w0";
-createNode parentConstraint -n "L_Knee_FK_JNT_parentConstraint1" -p "L_Knee_FK_JNT";
-	rename -uid "1BB1D0FF-EF4F-B433-F426-1A8BD33FE41F";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Knee_FK_CTRLW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" 0.0015592798767112281 -1.3952407837081182e-05 
-		0.00077372668838443515 ;
-	setAttr ".tg[0].tor" -type "double3" 93.365747413250915 0.011488610161350152 -90.381240724015811 ;
-	setAttr ".lr" -type "double3" -1.5592172364205913e-14 2.946050893914204e-15 -4.7221428821168721e-15 ;
-	setAttr ".rst" -type "double3" 4.0401681341773967 0.54287343233163887 -2.271214316618142e-08 ;
-	setAttr ".rsrr" -type "double3" -1.5592172364205913e-14 2.946050893914204e-15 -4.7221428821168721e-15 ;
-	setAttr -k on ".w0";
-createNode parentConstraint -n "L_Hip_FK_JNT_parentConstraint1" -p "L_Hip_FK_JNT";
-	rename -uid "228892C2-0E4C-297F-E8AD-2DB25726AB7C";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Hip_FK_CTLRW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" 2.7987670936369113e-07 -3.0507850662386815e-07 
-		-1.4320564278857972e-07 ;
-	setAttr ".tg[0].tor" -type "double3" 93.40235367957122 8.406748194735064 -89.525208338632183 ;
-	setAttr ".lr" -type "double3" 3.1805546814635168e-15 0 0 ;
-	setAttr ".rst" -type "double3" 0.721072 0.44295200000000023 -0.28913700000000009 ;
-	setAttr ".rsrr" -type "double3" 3.1805546814635168e-15 0 0 ;
-	setAttr -k on ".w0";
-createNode joint -n "WhiteboxHumanCharacter1:R_Hip_FK_JNT" -p "WhiteboxHumanCharacter1:FK_Legs_JNT_GRP";
-	rename -uid "8ABCE524-AD46-DAEC-EE1B-08965E999265";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" -89.999999999999957 -8.4309309849439042 89.999999999999957 ;
-	setAttr ".radi" 0.65910852983609347;
-createNode joint -n "WhiteboxHumanCharacter1:R_Knee_FK_JNT" -p "WhiteboxHumanCharacter1:R_Hip_FK_JNT";
-	rename -uid "40A53F0B-DF4A-7B80-D2B0-FE9052EFFBBC";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 6.2121421895810701e-18 -0.35809395932360016 8.4309309849439025 ;
-	setAttr ".radi" 0.64788465312454702;
-createNode joint -n "WhiteboxHumanCharacter1:R_Ankle_FK_JNT" -p "WhiteboxHumanCharacter1:R_Knee_FK_JNT";
-	rename -uid "5744444C-0743-0A7C-9998-239BDAD8864E";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 0.285376758110231 2.3512590857264817 52.78593526467256 ;
-	setAttr ".radi" 0.5;
-createNode joint -n "WhiteboxHumanCharacter1:R_Ball_FK_JNT" -p "WhiteboxHumanCharacter1:R_Ankle_FK_JNT";
-	rename -uid "A7A67CD7-0942-3810-A2A8-77B18B290EE6";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" -1.2370325768008548 -1.7398228642073374 35.421595798139876 ;
-	setAttr ".radi" 0.50927625006926813;
-createNode joint -n "WhiteboxHumanCharacter1:R_Toe_FK_JNT" -p "WhiteboxHumanCharacter1:R_Ball_FK_JNT";
-	rename -uid "5F625F0A-1140-9DB1-C9A8-21B9DEEB4FA6";
-	setAttr ".t" -type "double3" -1.1793406707196934 4.7352936878297669e-06 -2.2204460492503131e-16 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jo" -type "double3" 90.000000000000014 3.1805546814635168e-15 91.822421587241536 ;
-	setAttr ".radi" 0.4;
-createNode parentConstraint -n "R_Ball_FK_JNT_parentConstraint1" -p "WhiteboxHumanCharacter1:R_Ball_FK_JNT";
-	rename -uid "C4DC1E89-054C-FE20-5A26-539BEC57C1DE";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Ball_FK_CTRLW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" 2.2567749113910907e-08 2.5551834248460636e-07 
-		-1.5325546187661132e-07 ;
-	setAttr ".tg[0].tor" -type "double3" -90.000000000004775 88.177578412750137 89.999999999994671 ;
-	setAttr ".lr" -type "double3" 4.1168304658193397e-13 4.820528189093119e-15 6.5257279157762368e-15 ;
-	setAttr ".rst" -type "double3" -1.293562558007376 3.2258676876395498e-06 1.4402362047416517e-07 ;
-	setAttr ".rsrr" -type "double3" 4.1168304658193397e-13 4.820528189093119e-15 6.5257279157762368e-15 ;
-	setAttr -k on ".w0";
-createNode parentConstraint -n "R_Ankle_FK_JNT_parentConstraint1" -p "WhiteboxHumanCharacter1:R_Ankle_FK_JNT";
-	rename -uid "6D71B704-8449-10E4-3A51-A48F4525B9D1";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Ankle_FK_CTRLW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" -1.3618519645319793e-09 1.9066849343829517e-07 
-		4.4408920985006262e-16 ;
-	setAttr ".tg[0].tor" -type "double3" -92.806839579536614 52.722462988866411 86.474171715557091 ;
-	setAttr ".lr" -type "double3" -4.5720473546038036e-15 -7.4544250346801154e-15 -6.441865634136067e-15 ;
-	setAttr ".rst" -type "double3" -3.8590953715295737 -1.1102230246251565e-16 -1.2499755941419721e-07 ;
-	setAttr ".rsrr" -type "double3" -4.5720473546038036e-15 -7.4544250346801154e-15 
-		-6.441865634136067e-15 ;
-	setAttr -k on ".w0";
-createNode parentConstraint -n "R_Knee_FK_JNT_parentConstraint1" -p "WhiteboxHumanCharacter1:R_Knee_FK_JNT";
-	rename -uid "F2A47DC3-2D4C-3462-37E4-5B92A2C78D11";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Knee_FK_CTRLW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" 1.8146511404637522e-08 -4.2485802431713182e-08 
-		-1.6653345369377348e-16 ;
-	setAttr ".tg[0].tor" -type "double3" -89.999999999999986 4.7242005741956297e-15 
-		90.35809395932354 ;
-	setAttr ".lr" -type "double3" 7.5631353997692015e-15 1.2884119519576023e-14 1.5666668083139732e-15 ;
-	setAttr ".rst" -type "double3" -4.0401682775207926 -0.54287339455596872 -6.6613381477509392e-16 ;
-	setAttr ".rsrr" -type "double3" 7.5631353997692015e-15 1.2884119519576023e-14 1.5666668083139732e-15 ;
-	setAttr -k on ".w0";
-createNode parentConstraint -n "R_Hip_FK_JNT_parentConstraint1" -p "WhiteboxHumanCharacter1:R_Hip_FK_JNT";
-	rename -uid "8BE18556-6647-3764-DB63-D380E6A2C8B6";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Hip_FK_CTLRW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" 1.8146515179395806e-08 -1.2374773983303555e-09 
-		1.1102230246251565e-16 ;
-	setAttr ".tg[0].tor" -type "double3" -89.999999999999957 -8.4309309849439042 89.999999999999957 ;
-	setAttr ".lr" -type "double3" -3.180554681463516e-15 -8.8278125961003129e-32 -3.180554681463516e-15 ;
-	setAttr ".rst" -type "double3" -0.72107199999999982 0.44295233364335185 -0.28913685679435719 ;
-	setAttr ".rsrr" -type "double3" -3.180554681463516e-15 -8.8278125961003129e-32 -3.180554681463516e-15 ;
-	setAttr -k on ".w0";
-createNode transform -n "WhiteboxHumanCharacter1:IK_JNT_GRP" -p "WhiteboxHumanCharacter1:JNT_GRP";
-	rename -uid "12293CAC-6C4C-3F66-6626-6EB6D6236121";
-	setAttr ".v" no;
-createNode transform -n "WhiteboxHumanCharacter1:IK_Arm_JNT_GRP" -p "WhiteboxHumanCharacter1:IK_JNT_GRP";
-	rename -uid "41591F1A-EF44-913E-BFD0-57B6717AFF9F";
-createNode joint -n "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT" -p "WhiteboxHumanCharacter1:IK_Arm_JNT_GRP";
-	rename -uid "DA4BCFF9-0340-7BB9-F01B-4C88D9577EBC";
-	setAttr ".r" -type "double3" 4.8171180307455383 -0.43481819990122395 0.021158714001510415 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 89.900575359835685 -2.4863988230193823 2.2906100426384932 ;
-	setAttr ".radi" 0.60434188757843832;
-createNode joint -n "WhiteboxHumanCharacter1:R_Elbow_IK_JNT" -p "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT";
-	rename -uid "D12204AD-E64D-8DB9-15EE-6B8DE5C0049C";
-	setAttr ".t" -type "double3" -3.0201240546336696 -2.8538302976333085e-07 -4.7966670431165426e-06 ;
-	setAttr ".r" -type "double3" 7.2531803020162708e-19 8.0676131284082064e-14 8.3453577075891068e-13 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 0.46686171083506744 -1.0624708392404825 -11.771931331807638 ;
-	setAttr ".radi" 0.56806478500620017;
-createNode joint -n "WhiteboxHumanCharacter1:R_Wrist_IK_JNT" -p "WhiteboxHumanCharacter1:R_Elbow_IK_JNT";
-	rename -uid "D0728A02-2F4D-2F94-DBE6-DDAEA47314C2";
-	setAttr ".t" -type "double3" -2.346648632687955 -4.6468127234966516e-07 2.0844545982612317e-06 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 85.151962216905289 9.799630980227052 -16.221550188465535 ;
-	setAttr ".radi" 0.3;
-createNode ikEffector -n "WhiteboxHumanCharacter1:effector8" -p "WhiteboxHumanCharacter1:R_Elbow_IK_JNT";
-	rename -uid "73516B1A-D34C-3233-421A-6F8DA6825DFC";
-	setAttr ".v" no;
-	setAttr ".hd" yes;
-createNode pointConstraint -n "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT_pointConstraint1" 
-		-p "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT";
-	rename -uid "731BE1AB-134D-03FF-85C2-E3BDD2CF3D1A";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Shoulder_RK_JNTW0" -dv 1 -min 0 
-		-at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".rst" -type "double3" -1.1069700000000009 4.5256606035219464 -0.18968299999999971 ;
-	setAttr -k on ".w0";
-createNode joint -n "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT" -p "WhiteboxHumanCharacter1:IK_Arm_JNT_GRP";
-	rename -uid "05CDCCAE-6543-7C0E-F276-9BA8CB2C1346";
-	setAttr ".r" -type "double3" 4.8177656358843111 -0.43485970021436227 0.020541070233630589 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" -90.099424640164173 2.4863988230193628 -2.2906100426385207 ;
-	setAttr ".radi" 0.60434188757843832;
-createNode joint -n "WhiteboxHumanCharacter1:L_Elbow_IK_JNT" -p "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT";
-	rename -uid "44E563A0-0D4D-48C1-5C83-47B521FE2D76";
-	setAttr ".t" -type "double3" 3.0201197908950226 -6.6985255742173204e-17 -6.9808492224035787e-16 ;
-	setAttr ".r" -type "double3" 3.7863529459868397e-19 0.00013616449742319482 0.0014083475180205079 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 0.4668617108391494 -1.0624708392404922 -11.771931331807677 ;
-	setAttr ".radi" 0.56806478500620017;
-createNode joint -n "WhiteboxHumanCharacter1:L_Wrist_IK_JNT" -p "WhiteboxHumanCharacter1:L_Elbow_IK_JNT";
-	rename -uid "D4B70BEB-9946-6C64-A034-7E8F5D4B708E";
-	setAttr ".t" -type "double3" 2.3466453757273538 -4.3739203359650297e-16 -5.7681804584805341e-16 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 85.151962216901282 9.7996309802259027 -16.2215501884662 ;
-	setAttr ".radi" 0.3;
-createNode ikEffector -n "WhiteboxHumanCharacter1:effector9" -p "WhiteboxHumanCharacter1:L_Elbow_IK_JNT";
-	rename -uid "8A988088-774F-BF66-4DA3-A88ED79B9A0D";
-	setAttr ".v" no;
-	setAttr ".hd" yes;
-createNode pointConstraint -n "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT_pointConstraint1" 
-		-p "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT";
-	rename -uid "30995DB9-5446-DF6A-9A56-FF802DD77731";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Shoulder_RK_JNTW0" -dv 1 -min 0 
-		-at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".rst" -type "double3" 1.1069745208638728 4.5256651188599752 -0.1896833704569415 ;
-	setAttr -k on ".w0";
-createNode transform -n "WhiteboxHumanCharacter1:IK_Legs_JNT_GRP" -p "WhiteboxHumanCharacter1:IK_JNT_GRP";
-	rename -uid "94055A0B-1348-DCC1-E104-A992B5ABC478";
-createNode joint -n "L_Hip_IK_JNT" -p "WhiteboxHumanCharacter1:IK_Legs_JNT_GRP";
-	rename -uid "EF1F4DC1-7147-80DA-3D90-7E9B88F8191F";
-	setAttr ".r" -type "double3" 14.927789403467726 2.0755658773545291 0.3180168277784573 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 93.40235367957122 8.4067481947350569 -89.525208338632183 ;
-	setAttr ".radi" 0.65910852983609347;
-createNode joint -n "L_Knee_IK_JNT" -p "L_Hip_IK_JNT";
-	rename -uid "905A4D7A-A546-4ABC-68EF-E0A2164C62FE";
-	setAttr ".t" -type "double3" 4.0084186745977792 0.75776781664856108 -0.050416314759802287 ;
-	setAttr ".r" -type "double3" -7.4279166394114226e-16 -4.4469940139660134e-14 -1.3474711783689551e-13 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 3.1060710947305805e-18 -0.35809378237255041 8.4309309824981025 ;
-	setAttr ".radi" 0.64788465312454702;
-createNode joint -n "L_Ankle_IK_JNT" -p "L_Knee_IK_JNT";
-	rename -uid "AEAED86C-5941-31B4-A454-78BD8436CB32";
-	setAttr ".t" -type "double3" 3.8593097753064578 -0.21722729231605081 0.050416080621138996 ;
-	setAttr ".r" -type "double3" -9.1988860255015634 11.980131010966883 -1.3516779448042324 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 0.28537603515314958 2.3512600368997814 52.785935235012822 ;
-	setAttr ".radi" 0.5;
-createNode joint -n "L_Ball_IK_JNT" -p "L_Ankle_IK_JNT";
-	rename -uid "EADCB313-0845-15A1-ACC4-578234A2A871";
-	setAttr ".t" -type "double3" 1.2945435216654368 -2.6936225435589725e-07 -0.026361454188674648 ;
-	setAttr ".r" -type "double3" 3.3001055037753448e-13 -2.6193911602575211e-18 -2.2514767713271105e-14 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" -1.2370325768014823 -1.7398228642076301 35.421595798139847 ;
-	setAttr ".radi" 0.50927625006926813;
-createNode joint -n "L_Toe_IK_JNT" -p "L_Ball_IK_JNT";
-	rename -uid "4FCEC231-8A4A-521B-9C4A-5DAA2B0F0931";
-	setAttr ".t" -type "double3" 1.1793378022302934 -9.3607522870466559e-06 -0.080459599374378923 ;
-	setAttr ".r" -type "double3" -6.3611093629270335e-15 3.1805546814635168e-15 3.1805546814635168e-15 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jo" -type "double3" 89.999999999999986 -3.180554681463516e-15 91.822421587241536 ;
-	setAttr ".radi" 0.4;
-createNode ikEffector -n "effector2" -p "L_Ball_IK_JNT";
-	rename -uid "5CBDBCC7-3343-E8EC-4DAD-949259495F4E";
-	setAttr ".v" no;
-	setAttr ".hd" yes;
-createNode ikEffector -n "effector1" -p "L_Ankle_IK_JNT";
-	rename -uid "72980AD9-4D40-B7CF-4DCF-9E95AD81EEE4";
-	setAttr ".v" no;
-	setAttr ".hd" yes;
-createNode ikEffector -n "effector3" -p "L_Knee_IK_JNT";
-	rename -uid "5D45B3C4-CE40-C886-C4A9-3F862950B01A";
-	setAttr ".v" no;
-	setAttr ".hd" yes;
-createNode pointConstraint -n "L_Hip_IK_JNT_pointConstraint1" -p "L_Hip_IK_JNT";
-	rename -uid "FC82B383-BA4B-B55D-A5E0-0FB844940D0A";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Hip_RK_JNTW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".rst" -type "double3" 0.721072 0.44295200000000023 -0.28913700000000009 ;
-	setAttr -k on ".w0";
-createNode joint -n "WhiteboxHumanCharacter1:R_Hip_IK_JNT" -p "WhiteboxHumanCharacter1:IK_Legs_JNT_GRP";
-	rename -uid "F48CECE6-9D41-F691-C5BC-19A2D9D0FF51";
-	setAttr ".r" -type "double3" 3.3329365935851905 0.46968996787757378 0.023898255616406003 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" -89.999999999999957 -8.4309309849439042 89.999999999999957 ;
-	setAttr ".radi" 0.65910852983609347;
-createNode joint -n "WhiteboxHumanCharacter1:R_Knee_IK_JNT" -p "WhiteboxHumanCharacter1:R_Hip_IK_JNT";
-	rename -uid "E0ED0917-AE44-1852-50C2-F982147204FA";
-	setAttr ".t" -type "double3" -4.0068949425629148 -0.76736132319628392 -5.6129487627643947e-16 ;
-	setAttr ".r" -type "double3" 6.5004992681028707e-15 1.105399893997002e-13 1.7861328619460225e-12 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 6.2121421895810701e-18 -0.35809395932360016 8.4309309849439025 ;
-	setAttr ".radi" 0.64788465312454702;
-createNode joint -n "WhiteboxHumanCharacter1:R_Ankle_IK_JNT" -p "WhiteboxHumanCharacter1:R_Knee_IK_JNT";
-	rename -uid "3879BE75-8849-07FC-4884-2C9261163CA7";
-	setAttr ".t" -type "double3" -3.8590953715295746 0.22694039949827799 -1.2499755973078012e-07 ;
-	setAttr ".r" -type "double3" 2.544443745162886e-14 -6.3452971835096112e-20 -2.8329515083771147e-21 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 0.285376758110231 2.3512590857264817 52.78593526467256 ;
-	setAttr ".radi" 0.5;
-createNode joint -n "WhiteboxHumanCharacter1:R_Ball_IK_JNT" -p "WhiteboxHumanCharacter1:R_Ankle_IK_JNT";
-	rename -uid "D8FD163D-1947-362D-66FA-08A4A3B8A919";
-	setAttr ".t" -type "double3" -1.2935625580073733 3.2258676858631929e-06 1.4402362036314287e-07 ;
-	setAttr ".r" -type "double3" 7.6333312354509091e-14 -3.0649384112468813e-19 1.4371724662789449e-29 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" -1.2370325768008548 -1.7398228642073374 35.421595798139876 ;
-	setAttr ".radi" 0.50927625006926813;
-createNode joint -n "WhiteboxHumanCharacter1:R_Toe_IK_JNT" -p "WhiteboxHumanCharacter1:R_Ball_IK_JNT";
-	rename -uid "2DC38C39-F44B-2BEA-575A-9DB716A1A8B1";
-	setAttr ".t" -type "double3" -1.1793406707196934 4.7352936878297669e-06 -2.2204460492503131e-16 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jo" -type "double3" 90.000000000000014 3.1805546814635168e-15 91.822421587241536 ;
-	setAttr ".radi" 0.4;
-createNode ikEffector -n "WhiteboxHumanCharacter1:effector7" -p "WhiteboxHumanCharacter1:R_Ball_IK_JNT";
-	rename -uid "46EEC94E-1E45-B350-55C3-E3AF82B12FCA";
-	setAttr ".v" no;
-	setAttr ".hd" yes;
-createNode ikEffector -n "WhiteboxHumanCharacter1:effector6" -p "WhiteboxHumanCharacter1:R_Ankle_IK_JNT";
-	rename -uid "8AE4CF62-BE43-EF27-106D-DCBCFDFECC8E";
-	setAttr ".v" no;
-	setAttr ".hd" yes;
-createNode ikEffector -n "WhiteboxHumanCharacter1:effector3" -p "WhiteboxHumanCharacter1:R_Knee_IK_JNT";
-	rename -uid "8247881D-034C-B0B5-90C1-068F3BC0775D";
-	setAttr ".v" no;
-	setAttr ".hd" yes;
-createNode pointConstraint -n "WhiteboxHumanCharacter1:R_Hip_IK_JNT_pointConstraint1" 
-		-p "WhiteboxHumanCharacter1:R_Hip_IK_JNT";
-	rename -uid "5B99F417-3E48-D3BD-4224-95939979B073";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Hip_RK_JNTW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".rst" -type "double3" -0.72107199999999982 0.4429523336433514 -0.28913685679435719 ;
-	setAttr -k on ".w0";
-createNode transform -n "WhiteboxHumanCharacter1:Hand_JNT_GRP" -p "WhiteboxHumanCharacter1:JNT_GRP";
-	rename -uid "3A509E62-5943-6B7F-53F2-DB86544A0DAD";
-	setAttr ".v" no;
-createNode joint -n "WhiteboxHumanCharacter1:R_Hand_RK_JNT" -p "WhiteboxHumanCharacter1:Hand_JNT_GRP";
-	rename -uid "DB645AC5-0B41-EE7B-DC38-5BBCFB82BAD1";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 179.99999999999972 25.069621642117756 12.083553820328447 ;
-	setAttr ".radi" 0.5;
-createNode joint -n "WhiteboxHumanCharacter1:R_Index01_RK_JNT" -p "WhiteboxHumanCharacter1:R_Hand_RK_JNT";
-	rename -uid "6AC07CA0-7E46-2410-8FB5-5EA51097A83B";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" -1.3583137987283647 11.82835627150989 -3.1221834418951042 ;
-	setAttr ".radi" 0.2;
-createNode joint -n "WhiteboxHumanCharacter1:R_Index02_RK_JNT" -p "WhiteboxHumanCharacter1:R_Index01_RK_JNT";
-	rename -uid "DE1FD3D3-DC46-D17F-7876-5C8C1B503159";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" -8.3305409821383858 0.21768474061040347 -38.64440586065809 ;
-	setAttr ".radi" 0.15;
-createNode joint -n "WhiteboxHumanCharacter1:R_Index03_RK_JNT" -p "WhiteboxHumanCharacter1:R_Index02_RK_JNT";
-	rename -uid "B2E64E66-AA42-CAEC-3BD3-56A73420207A";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" -3.656855359009433 3.1200153266098143 -21.2770502560723 ;
-	setAttr ".radi" 0.12;
-createNode joint -n "WhiteboxHumanCharacter1:R_Index04_RK_JNT" -p "WhiteboxHumanCharacter1:R_Index03_RK_JNT";
-	rename -uid "A366B7CE-8346-E489-6B5D-5EB5C2F3C3F1";
-	setAttr ".t" -type "double3" -0.17643554305497755 8.7084570203899148e-06 2.4025126210691639e-07 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jo" -type "double3" 1.5231234571347487 -6.068767276154146 165.88254375341572 ;
-	setAttr ".radi" 0.1;
-createNode parentConstraint -n "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1" 
-		-p "WhiteboxHumanCharacter1:R_Index03_RK_JNT";
-	rename -uid "616EA209-7443-7EDE-2E76-AC9CDE818043";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Index03_CTRLW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" 2.1148681650373646e-07 8.7432861839431553e-08 
-		5.112745560253984e-09 ;
-	setAttr ".tg[0].tor" -type "double3" -179.99999999999903 6.2562895322556402 75.963288590674168 ;
-	setAttr ".lr" -type "double3" 3.081162347667783e-15 3.9756933518294058e-16 -3.175585064773731e-14 ;
-	setAttr ".rst" -type "double3" -0.2474832313126949 -4.338060854536252e-06 -4.5799354331244047e-07 ;
-	setAttr ".rsrr" -type "double3" 5.8641476939483601e-15 -9.939233379573482e-16 -2.2152066394724419e-14 ;
-	setAttr -k on ".w0";
-createNode parentConstraint -n "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1" 
-		-p "WhiteboxHumanCharacter1:R_Index02_RK_JNT";
-	rename -uid "9E99C43B-BC48-8695-B3B6-A9B10773984B";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Index02_CTRLW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" 1.3229369866252227e-07 -1.9119262262279335e-07 
-		1.5851117640686141e-08 ;
-	setAttr ".tg[0].tor" -type "double3" -179.99999999999986 10.062194696871872 54.585795777395475 ;
-	setAttr ".lr" -type "double3" 1.630034274250053e-14 5.5659706925611567e-15 -5.9883881111930289e-15 ;
-	setAttr ".rst" -type "double3" -0.4081200980678279 -5.8962586670929795e-06 1.5301157729741277e-06 ;
-	setAttr ".rsrr" -type "double3" 1.8685758753598167e-14 2.782985346280578e-15 2.2363275104040399e-16 ;
-	setAttr -k on ".w0";
-createNode parentConstraint -n "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1" 
-		-p "WhiteboxHumanCharacter1:R_Index01_RK_JNT";
-	rename -uid "27FCAC62-124C-723E-38F7-F98DE4D50514";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Index01_CTRLW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" 1.8249511679613306e-07 2.3635864554449881e-07 
-		-1.6278269288072522e-09 ;
-	setAttr ".tg[0].tor" -type "double3" -179.99999999999844 13.205034075672224 15.222453411734998 ;
-	setAttr ".lr" -type "double3" 7.4544250346801169e-15 4.9416625959066949e-15 4.4353828956346695e-15 ;
-	setAttr ".rst" -type "double3" -0.88418286231133258 4.3423798405939351e-06 -3.1130671462875625e-06 ;
-	setAttr ".rsrr" -type "double3" 7.8519943698630569e-15 1.7611079144431773e-15 5.6280909011834887e-15 ;
-	setAttr -k on ".w0";
-createNode joint -n "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT" -p "WhiteboxHumanCharacter1:R_Hand_RK_JNT";
-	rename -uid "88567B20-2A45-3EAF-796A-EE8ADA7FF01C";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 45.889760022626817 -31.589050034709079 -35.692545340629358 ;
-	setAttr ".radi" 0.3;
-createNode joint -n "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT" -p "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT";
-	rename -uid "368FFE2D-D241-91FC-7C37-8DAA9605701B";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 10.433589938804667 25.217463569702467 -28.512853109420387 ;
-	setAttr ".radi" 0.2;
-createNode joint -n "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT" -p "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT";
-	rename -uid "5A9114E8-074B-78A2-0B2A-249CE1D18BCC";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 12.161808297782413 3.5926471708858765 -14.213925873974414 ;
-	setAttr ".radi" 0.18;
-createNode joint -n "WhiteboxHumanCharacter1:R_Thumb04_RK_JNT" -p "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT";
-	rename -uid "0D491444-AC4B-A035-8150-61AE121C87B3";
-	setAttr ".t" -type "double3" -0.27526154709909068 4.4408920985006262e-16 9.4135744879153549e-06 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jo" -type "double3" -64.251117298133551 42.242863676044983 35.65728319926194 ;
-	setAttr ".radi" 0.15;
-createNode parentConstraint -n "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1" 
-		-p "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT";
-	rename -uid "91BF8406-F541-8995-28FF-FD8E90E8ED01";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Thumb03_CTRLW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" -2.0538329970065661e-07 -1.6250606638124054e-08 
-		-2.2726917348059317e-08 ;
-	setAttr ".tg[0].tor" -type "double3" -90.000000000000057 1.7532807681567636e-13 
-		48.179830119864519 ;
-	setAttr ".lr" -type "double3" -2.8823776800763143e-14 1.5505204072134603e-14 -1.6511551451816463e-13 ;
-	setAttr ".rst" -type "double3" -0.24906325678361996 1.4720752152808103e-06 -4.2625057430356605e-06 ;
-	setAttr ".rsrr" -type "double3" 1.5057938570053833e-14 1.1927080055488415e-15 -1.7025906779209389e-13 ;
-	setAttr -k on ".w0";
-createNode parentConstraint -n "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1" 
-		-p "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT";
-	rename -uid "E3F4E7FD-6F4E-5206-25E1-5C83644FDAB4";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Thumb02_CTRLW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" 1.205444544183365e-08 1.9317627142356741e-07 
-		1.9501782189124128e-08 ;
-	setAttr ".tg[0].tor" -type "double3" -102.55165681684873 14.645000183183098 48.63295073948882 ;
-	setAttr ".lr" -type "double3" -6.3611093629270327e-15 -1.5902773407317584e-14 -3.578124016646456e-15 ;
-	setAttr ".rst" -type "double3" -0.42567675150697576 9.1394900181285266e-07 5.8850988997605214e-06 ;
-	setAttr ".rsrr" -type "double3" -6.3611093629270327e-15 -1.5902773407317584e-14 
-		-3.5781240166464568e-15 ;
-	setAttr -k on ".w0";
-createNode parentConstraint -n "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1" 
-		-p "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT";
-	rename -uid "46CC425C-2A44-A922-00EE-799A41B5DD5C";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Thumb01_CTRLW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" 1.8554687386540536e-07 -2.1911620695647116e-07 
-		9.9860182900535222e-09 ;
-	setAttr ".tg[0].tor" -type "double3" -111.42183642955349 50.140001637606012 62.927919762006916 ;
-	setAttr ".lr" -type "double3" 7.1562480332929135e-15 1.5902773407317582e-15 1.5902773407317584e-15 ;
-	setAttr ".rst" -type "double3" -0.35987557910017021 -0.015660219460515101 -0.17097151068226069 ;
-	setAttr ".rsrr" -type "double3" 1.5107634736951704e-14 3.975693351829396e-15 1.5902773407317588e-15 ;
-	setAttr -k on ".w0";
-createNode joint -n "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT" -p "WhiteboxHumanCharacter1:R_Hand_RK_JNT";
-	rename -uid "39C2DBAF-D64D-BB11-7F49-16A7B0C76223";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 2.2771434497910095 22.857309659470207 5.3769986354497306 ;
-	setAttr ".radi" 0.3;
-createNode joint -n "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT" -p "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT";
-	rename -uid "44AB7948-F941-3D1B-D75F-9992A18BAB2D";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" -1.4476568555227598 0.05797411934792146 -43.212998810847694 ;
-	setAttr ".radi" 0.25;
-createNode joint -n "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT" -p "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT";
-	rename -uid "31612EE8-0644-FB1B-933B-B285EF512C45";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" -0.67325523041743951 4.4907143870605042 -26.968252079085016 ;
-	setAttr ".radi" 0.2;
-createNode joint -n "WhiteboxHumanCharacter1:R_Fingers04_RK_JNT" -p "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT";
-	rename -uid "B67C9526-E840-72CF-4EE4-979DE7861797";
-	setAttr ".t" -type "double3" -0.234382185853651 -4.2888504001581396e-06 2.6613046951416697e-07 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jo" -type "double3" 1.9722698054203363 -26.364370281006881 66.590886947327448 ;
-	setAttr ".radi" 0.15;
-createNode parentConstraint -n "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1" 
-		-p "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT";
-	rename -uid "ADBD31FF-4042-1EE5-199A-5AAA7B0DBE52";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Finger03_CTRLW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" -2.4261478159814942e-08 -4.1351319257643127e-08 
-		-1.5419943377725787e-09 ;
-	setAttr ".tg[0].tor" -type "double3" 179.99999999999605 -3.1691922059982636 77.280777335817987 ;
-	setAttr ".lr" -type "double3" -1.8486974086006691e-14 1.950574550741293e-15 -2.6202303996900613e-14 ;
-	setAttr ".rst" -type "double3" -0.28638876961168691 4.6150143404588562e-06 7.9294783836281191e-08 ;
-	setAttr ".rsrr" -type "double3" -1.7890620083232287e-14 1.5405811738338907e-15 -3.8794070284647783e-15 ;
-	setAttr -k on ".w0";
-createNode parentConstraint -n "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1" 
-		-p "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT";
-	rename -uid "250FA48C-D94F-5929-91D7-57997678936F";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Finger02_CTRLW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" -1.1352539264208872e-07 2.0599367545059977e-08 
-		-2.6353827037306488e-09 ;
-	setAttr ".tg[0].tor" -type "double3" -179.99999999999881 1.4824475851394647 50.357499199535191 ;
-	setAttr ".lr" -type "double3" 4.7708320221952752e-15 1.689669674527493e-15 6.3867339489837464e-15 ;
-	setAttr ".rst" -type "double3" -0.33204861416858567 -6.1269272073616321e-06 4.2673856767705409e-07 ;
-	setAttr ".rsrr" -type "double3" 6.708982531212106e-15 3.9756933518293925e-16 6.3696508916126048e-15 ;
-	setAttr -k on ".w0";
-createNode parentConstraint -n "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1" 
-		-p "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT";
-	rename -uid "FBBCBF9D-314F-EB9B-51CA-4FB94429005F";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Finger01_CTRLW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" 1.4038084472645096e-08 -8.6059566584140157e-08 
-		9.7951889654890323e-10 ;
-	setAttr ".tg[0].tor" -type "double3" 179.9999999999992 2.1138020903535306 7.1265026258541075 ;
-	setAttr ".lr" -type "double3" -1.05355873823479e-14 4.5347752294304053e-16 1.2424041724466865e-15 ;
-	setAttr ".rst" -type "double3" -0.79675110402320026 0.0096672799153036948 0.3152116203081059 ;
-	setAttr ".rsrr" -type "double3" -1.05355873823479e-14 4.5347752294304073e-16 2.882377680076313e-15 ;
-	setAttr -k on ".w0";
-createNode parentConstraint -n "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1" 
-		-p "WhiteboxHumanCharacter1:R_Hand_RK_JNT";
-	rename -uid "68F9AE3C-BB42-D59F-187A-B0BE00C2258B";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Hand_CTRLW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" -8.8817841970012523e-16 -1.7763568394002505e-15 
-		-3.3306690738754696e-16 ;
-	setAttr ".tg[0].tor" -type "double3" 179.99999999999972 25.069621642117756 12.083553820328445 ;
-	setAttr ".lr" -type "double3" -2.2040227767488054 -0.413167291517824 0.91374352331617148 ;
-	setAttr ".rst" -type "double3" -6.4372601509094238 4.3568305969238281 0.057797901332378387 ;
-	setAttr ".rsrr" -type "double3" -3.975693351829396e-16 -5.5173828725626983e-33 -1.5902773407317584e-15 ;
-	setAttr -k on ".w0";
-createNode joint -n "WhiteboxHumanCharacter1:L_Hand_RK_JNT" -p "WhiteboxHumanCharacter1:Hand_JNT_GRP";
-	rename -uid "2E31C6E7-2544-FB6F-4C6B-1C8A5A97D55D";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" -4.3891825083885231e-16 -25.06962164211772 -12.083553820328532 ;
-	setAttr ".radi" 0.5;
-createNode joint -n "WhiteboxHumanCharacter1:L_Index01_RK_JNT" -p "WhiteboxHumanCharacter1:L_Hand_RK_JNT";
-	rename -uid "BC7EFE76-3748-F7A1-D01A-62AAD1F53A4D";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" -1.3583137987304765 11.82835627150987 -3.1221834418951078 ;
-	setAttr ".radi" 0.2;
-createNode joint -n "WhiteboxHumanCharacter1:L_Index02_RK_JNT" -p "WhiteboxHumanCharacter1:L_Index01_RK_JNT";
-	rename -uid "6CE457FD-8049-0A57-2E0D-BAA72A0DCA35";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" -8.3305409821369789 0.21768474061171281 -38.644405860658033 ;
-	setAttr ".radi" 0.15;
-createNode joint -n "WhiteboxHumanCharacter1:L_Index03_RK_JNT" -p "WhiteboxHumanCharacter1:L_Index02_RK_JNT";
-	rename -uid "F4C5535E-5347-4BA2-EBBB-E5B738BE37A5";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" -3.6568553590100401 3.1200153266098978 -21.277050256072318 ;
-	setAttr ".radi" 0.12;
-createNode joint -n "WhiteboxHumanCharacter1:L_Index04_RK_JNT" -p "WhiteboxHumanCharacter1:L_Index03_RK_JNT";
-	rename -uid "B4AD2C3B-ED48-3EB8-723D-5CB5D238B5E1";
-	setAttr ".t" -type "double3" 0.17642944251445952 -9.7356670779816715e-17 2.8417571465855516e-16 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jo" -type "double3" 1.5231234571339314 -6.0687672761543414 165.8825437534158 ;
-	setAttr ".radi" 0.1;
-createNode parentConstraint -n "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1" 
-		-p "WhiteboxHumanCharacter1:L_Index03_RK_JNT";
-	rename -uid "878CE9F1-EB41-14FB-2029-E4946613C1A0";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Index03_CTRLW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" -4.4369131639854231e-06 -3.6829362843882052e-06 
-		2.3116423442104406e-08 ;
-	setAttr ".tg[0].tor" -type "double3" 2.3677116513964075e-13 -6.2562895322554244 
-		-75.963288590674097 ;
-	setAttr ".lr" -type "double3" -2.3635496976625761e-13 -3.478731682850689e-15 1.5753684906623991e-14 ;
-	setAttr ".rst" -type "double3" 0.24748520554016862 -1.7763568394002505e-15 -2.2204460492503131e-16 ;
-	setAttr ".rsrr" -type "double3" -2.3327380741858982e-13 -2.0872390097104002e-15 
-		1.5877925323868655e-14 ;
-	setAttr -k on ".w0";
-createNode parentConstraint -n "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1" 
-		-p "WhiteboxHumanCharacter1:L_Index02_RK_JNT";
-	rename -uid "1A800BC2-964A-2C04-3546-A38CBEF20045";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Index02_CTRLW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" -1.9950740002272482e-06 2.017023463807277e-07 
-		1.3987252134306516e-07 ;
-	setAttr ".tg[0].tor" -type "double3" 4.8453600687343373e-14 -10.062194696871707 
-		-54.585795777395418 ;
-	setAttr ".lr" -type "double3" -5.3274290914513908e-14 -7.9513867036588215e-16 -6.510197863620636e-15 ;
-	setAttr ".rst" -type "double3" 0.40811618694970875 0 1.1102230246251565e-16 ;
-	setAttr ".rsrr" -type "double3" -4.9298597562684508e-14 -1.9878466759147007e-15 
-		-6.6095901974163695e-15 ;
-	setAttr -k on ".w0";
-createNode parentConstraint -n "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1" 
-		-p "WhiteboxHumanCharacter1:L_Index01_RK_JNT";
-	rename -uid "6D3A0FEE-924E-D584-E754-D3AD0ED133D3";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Index01_CTRLW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" 3.5142650558483979e-06 5.2270793799991111e-06 
-		-4.7382237505777525e-07 ;
-	setAttr ".tg[0].tor" -type "double3" -2.8136488708253003e-13 -13.2050340756722 -15.222453411735032 ;
-	setAttr ".lr" -type "double3" 2.8003790046948314e-13 -4.9074964811644234e-16 4.8453762725420654e-16 ;
-	setAttr ".rst" -type "double3" 0.88418829235410534 0 0 ;
-	setAttr ".rsrr" -type "double3" 2.809324314736448e-13 -4.4726550208080167e-16 -2.2363275104040371e-15 ;
-	setAttr -k on ".w0";
-createNode joint -n "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT" -p "WhiteboxHumanCharacter1:L_Hand_RK_JNT";
-	rename -uid "D544376F-5E45-0A29-622D-D6B7F157F097";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 45.889760022626767 -31.589050034709054 -35.692545340629337 ;
-	setAttr ".radi" 0.3;
-createNode joint -n "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT" -p "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT";
-	rename -uid "83DA7C00-0F4A-D3C9-EA67-3E8DC788EBE3";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 10.433589938804683 25.217463569702431 -28.512853109420341 ;
-	setAttr ".radi" 0.2;
-createNode joint -n "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT" -p "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT";
-	rename -uid "4AB93CA7-8D46-B99A-D0AC-2BA1D6F47C6E";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 12.161808297782382 3.5926471708858805 -14.213925873974457 ;
-	setAttr ".radi" 0.18;
-createNode joint -n "WhiteboxHumanCharacter1:L_Thumb04_RK_JNT" -p "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT";
-	rename -uid "3B33346C-9643-7B9D-F612-E18384CA1AC4";
-	setAttr ".t" -type "double3" 0.27526617451949786 -7.0447603178497952e-16 -1.3055463497149784e-15 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jo" -type "double3" -64.251117298133494 42.242863676044948 35.657283199261926 ;
-	setAttr ".radi" 0.15;
-createNode parentConstraint -n "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1" 
-		-p "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT";
-	rename -uid "B6961D72-074B-0E4F-941D-E895949AD61B";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Thumb03_CTRLW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" -9.8494225042600192e-07 4.8184272345430657e-06 
-		2.3559763073777162e-07 ;
-	setAttr ".tg[0].tor" -type "double3" 90.000000000000071 3.766969450858352e-14 -48.179830119864519 ;
-	setAttr ".lr" -type "double3" -1.1827687721692452e-14 3.1805546814635195e-15 2.8252270881437646e-14 ;
-	setAttr ".rst" -type "double3" 0.24906314829253029 -4.4408920985006262e-16 4.4408920985006262e-15 ;
-	setAttr ".rsrr" -type "double3" -1.4362192233483691e-14 -2.5842006786891024e-15 
-		4.0030262436232228e-14 ;
-	setAttr -k on ".w0";
-createNode parentConstraint -n "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1" 
-		-p "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT";
-	rename -uid "6F999F7B-F348-B094-F4CB-32BA5347F2A1";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Thumb02_CTRLW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" -4.4103090477420892e-06 1.8910955876805247e-06 
-		-1.8872277585124664e-07 ;
-	setAttr ".tg[0].tor" -type "double3" 77.448343183151422 -14.645000183182935 -48.632950739488841 ;
-	setAttr ".lr" -type "double3" -1.590277340731758e-15 -7.9513867036587899e-16 -3.180554681463516e-15 ;
-	setAttr ".rst" -type "double3" 0.42567382791019254 4.4408920985006262e-16 1.7763568394002505e-15 ;
-	setAttr ".rsrr" -type "double3" -8.7465253740246687e-15 7.9513867036587888e-15 -5.5659706925611536e-15 ;
-	setAttr -k on ".w0";
-createNode parentConstraint -n "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1" 
-		-p "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT";
-	rename -uid "E9667250-5845-4E66-818B-AB8F8F59E32C";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Thumb01_CTRLW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" 1.8981521376915111e-06 1.0106777459384375e-07 
-		1.2305988861260886e-07 ;
-	setAttr ".tg[0].tor" -type "double3" 68.578163570446691 -50.140001637605771 -62.927919762007015 ;
-	setAttr ".lr" -type "double3" 1.7493050748049341e-14 -3.1805546814635168e-15 -1.5902773407317592e-15 ;
-	setAttr ".rst" -type "double3" 0.35988071401783284 0.015659657112156999 0.17096918180989684 ;
-	setAttr ".rsrr" -type "double3" 2.2263882770244621e-14 -3.1805546814635156e-15 -7.9513867036587919e-15 ;
-	setAttr -k on ".w0";
-createNode joint -n "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT" -p "WhiteboxHumanCharacter1:L_Hand_RK_JNT";
-	rename -uid "854343D6-2441-6DBF-06FE-CEA4D8EDDCFF";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 2.2771434497916179 22.857309659470189 5.3769986354497217 ;
-	setAttr ".radi" 0.3;
-createNode joint -n "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT" -p "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT";
-	rename -uid "D88F9C02-E149-D783-D37C-2ABBED9E9997";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" -1.4476568555243807 0.057974119347492095 -43.212998810847637 ;
-	setAttr ".radi" 0.25;
-createNode joint -n "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT" -p "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT";
-	rename -uid "82F0832F-B843-6F19-12E0-B6A21886FEB2";
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" -0.67325523041304891 4.4907143870610202 -26.968252079084944 ;
-	setAttr ".radi" 0.2;
-createNode joint -n "WhiteboxHumanCharacter1:L_Fingers04_RK_JNT" -p "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT";
-	rename -uid "9163D862-0F40-3E65-EDE5-8BB67FC0A3EC";
-	setAttr ".t" -type "double3" 0.23438613287589163 7.8789875074915504e-16 1.0198323031499772e-17 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jo" -type "double3" 1.9722698054187959 -26.364370281003733 66.590886947328102 ;
-	setAttr ".radi" 0.15;
-createNode parentConstraint -n "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1" 
-		-p "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT";
-	rename -uid "AB9F6006-BF43-D65C-493E-D5B508EAF53E";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Finger03_CTRLW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" -1.0531489698095697e-06 3.6739832589560706e-06 
-		-1.3101395959780326e-07 ;
-	setAttr ".tg[0].tor" -type "double3" -4.9513471003192007e-13 3.1691922059984954 
-		-77.280777335817888 ;
-	setAttr ".lr" -type "double3" 4.9755802298144891e-13 -5.0938571070312924e-16 -2.7954093880050464e-15 ;
-	setAttr ".rst" -type "double3" 0.28638704588378672 1.7763568394002505e-15 1.3877787807814457e-17 ;
-	setAttr ".rsrr" -type "double3" 4.9517260697035132e-13 5.7150591932548807e-16 -2.8854836905074267e-15 ;
-	setAttr -k on ".w0";
-createNode parentConstraint -n "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1" 
-		-p "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT";
-	rename -uid "2B12ECD8-4347-585C-2671-DCA5DA8D2AF2";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Finger02_CTRLW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" -3.4169605171996409e-06 -5.3689899992548362e-07 
-		-1.6678153536009432e-07 ;
-	setAttr ".tg[0].tor" -type "double3" 2.0899263603652371e-13 -1.4824475851393015 
-		-50.357499199535113 ;
-	setAttr ".lr" -type "double3" -2.0750634488204554e-13 -1.2921003393445771e-15 -1.2844906137883174e-14 ;
-	setAttr ".rst" -type "double3" 0.33204443467247913 8.8817841970012523e-16 -4.7184478546569153e-16 ;
-	setAttr ".rsrr" -type "double3" -2.090966222227773e-13 4.9696166897865112e-16 -1.2824717070080919e-14 ;
-	setAttr -k on ".w0";
-createNode parentConstraint -n "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1" 
-		-p "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT";
-	rename -uid "39E38EA7-CC40-113B-8C81-34BE017500F9";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Finger01_CTRLW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" 1.3755899734846366e-06 4.9159265094189664e-06 
-		-4.3545645621312357e-07 ;
-	setAttr ".tg[0].tor" -type "double3" 1.0105137279507002e-13 -2.1138020903535373 
-		-7.1265026258540942 ;
-	setAttr ".lr" -type "double3" -1.0197653447442403e-13 -1.956786571603532e-15 -7.9513867036587761e-16 ;
-	setAttr ".rst" -type "double3" 0.79675450359861522 -0.0096634094898959688 -0.31521374406968539 ;
-	setAttr ".rsrr" -type "double3" -1.0098261113646668e-13 -2.0064827385014026e-15 
-		-3.8763010180336594e-15 ;
-	setAttr -k on ".w0";
-createNode parentConstraint -n "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1" 
-		-p "WhiteboxHumanCharacter1:L_Hand_RK_JNT";
-	rename -uid "4FE57687-CB4F-75BE-902B-1BB61A566915";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Hand_CTRLW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".tg[0].tot" -type "double3" -3.3116253437270871e-06 2.0503119770864942e-06 
-		4.6788163510225189e-08 ;
-	setAttr ".tg[0].tor" -type "double3" 0 -25.069621642117717 -12.083553820328531 ;
-	setAttr ".lr" -type "double3" -2.2042440051078347 -0.41361196846425147 0.91387105439259575 ;
-	setAttr ".rst" -type "double3" 6.4372568392840819 4.356832647235807 0.057797948120541842 ;
-	setAttr ".rsrr" -type "double3" -1.987846675914698e-15 -7.931237879308879e-32 -4.5720473546038052e-15 ;
-	setAttr -k on ".w0";
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "5A2A29A1-DD44-4C1B-B36F-6886B4C6F192";
+	rename -uid "C29466B5-BA41-FA84-91E5-95922EE5E86C";
 	setAttr -s 2 ".lnk";
 	setAttr -s 2 ".slnk";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "E29B217C-FF4A-F8E3-E7A5-FBB79559AF49";
+	rename -uid "FB2C3392-2149-5909-064D-B19D3F0E011A";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "8E7947DE-6F45-F999-8783-39879AA52C27";
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "2BC027FD-6B49-645F-FD3E-E3B128047335";
+	rename -uid "D5BC16E0-9543-7A9B-E57D-7290FD8475EE";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "2DAE5B6B-9E48-F21B-476D-67825EC01029";
 	setAttr ".g" yes;
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "D86D54CB-2344-8802-0BC2-6D9FAFBF791B";
+	rename -uid "A4C7B059-D442-A485-735E-7281376AB71D";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "7281806C-5E44-BEED-5687-328CFBFD3510";
+	rename -uid "3810EA4C-F845-B4EF-9529-2E9BB94E059C";
 createNode ikSCsolver -n "ikSCsolver";
 	rename -uid "7E560C44-D84E-8BBF-0851-76ACC2A29C42";
 createNode ikRPsolver -n "ikRPsolver";
@@ -12010,10 +12012,10 @@ createNode script -n "uiConfigurationScriptNode";
 		+ "            -clipGhosts 1\n            -greasePencils 1\n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1\n            -height 1\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Persp View\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `modelPanel -unParent -l (localizedPanelLabel(\"Persp View\")) -mbv $menusOkayInPanels `;\n\t\t\t$editorName = $panelName;\n            modelEditor -e \n                -camera \"persp\" \n                -useInteractiveMode 0\n                -displayLights \"default\" \n                -displayAppearance \"smoothShaded\" \n                -activeOnly 0\n                -ignorePanZoom 0\n                -wireframeOnShaded 0\n                -headsUpDisplay 1\n"
 		+ "                -holdOuts 1\n                -selectionHiliteDisplay 1\n                -useDefaultMaterial 0\n                -bufferMode \"double\" \n                -twoSidedLighting 0\n                -backfaceCulling 0\n                -xray 0\n                -jointXray 1\n                -activeComponentsXray 0\n                -displayTextures 0\n                -smoothWireframe 0\n                -lineWidth 1\n                -textureAnisotropic 0\n                -textureHilight 1\n                -textureSampling 2\n                -textureDisplay \"modulate\" \n                -textureMaxSize 16384\n                -fogging 0\n                -fogSource \"fragment\" \n                -fogMode \"linear\" \n                -fogStart 0\n                -fogEnd 100\n                -fogDensity 0.1\n                -fogColor 0.5 0.5 0.5 1 \n                -depthOfFieldPreview 1\n                -maxConstantTransparency 1\n                -rendererName \"vp2Renderer\" \n                -objectFilterShowInHUD 1\n                -isFiltered 0\n"
 		+ "                -colorResolution 256 256 \n                -bumpResolution 512 512 \n                -textureCompression 0\n                -transparencyAlgorithm \"frontAndBackCull\" \n                -transpInShadows 0\n                -cullingOverride \"none\" \n                -lowQualityLighting 0\n                -maximumNumHardwareLights 1\n                -occlusionCulling 0\n                -shadingModel 0\n                -useBaseRenderer 0\n                -useReducedRenderer 0\n                -smallObjectCulling 0\n                -smallObjectThreshold -1 \n                -interactiveDisableShadows 0\n                -interactiveBackFaceCull 0\n                -sortTransparent 1\n                -nurbsCurves 1\n                -nurbsSurfaces 1\n                -polymeshes 1\n                -subdivSurfaces 1\n                -planes 1\n                -lights 1\n                -cameras 1\n                -controlVertices 1\n                -hulls 1\n                -grid 0\n                -imagePlane 1\n                -joints 1\n"
-		+ "                -ikHandles 1\n                -deformers 1\n                -dynamics 1\n                -particleInstancers 1\n                -fluids 1\n                -hairSystems 1\n                -follicles 1\n                -nCloths 1\n                -nParticles 1\n                -nRigids 1\n                -dynamicConstraints 1\n                -locators 1\n                -manipulators 1\n                -pluginShapes 1\n                -dimensions 1\n                -handles 1\n                -pivots 1\n                -textures 1\n                -strokes 1\n                -motionTrails 1\n                -clipGhosts 1\n                -greasePencils 1\n                -shadows 0\n                -captureSequenceNumber -1\n                -width 757\n                -height 777\n                -sceneRenderFilter 0\n                $editorName;\n            modelEditor -e -viewSelected 0 $editorName;\n            modelEditor -e \n                -pluginObjects \"gpuCacheDisplayFilter\" 1 \n                $editorName;\n\t\t}\n\t} else {\n"
+		+ "                -ikHandles 1\n                -deformers 1\n                -dynamics 1\n                -particleInstancers 1\n                -fluids 1\n                -hairSystems 1\n                -follicles 1\n                -nCloths 1\n                -nParticles 1\n                -nRigids 1\n                -dynamicConstraints 1\n                -locators 1\n                -manipulators 1\n                -pluginShapes 1\n                -dimensions 1\n                -handles 1\n                -pivots 1\n                -textures 1\n                -strokes 1\n                -motionTrails 1\n                -clipGhosts 1\n                -greasePencils 1\n                -shadows 0\n                -captureSequenceNumber -1\n                -width 770\n                -height 777\n                -sceneRenderFilter 0\n                $editorName;\n            modelEditor -e -viewSelected 0 $editorName;\n            modelEditor -e \n                -pluginObjects \"gpuCacheDisplayFilter\" 1 \n                $editorName;\n\t\t}\n\t} else {\n"
 		+ "\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Persp View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"persp\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 1\n            -activeComponentsXray 0\n            -displayTextures 0\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 16384\n            -fogging 0\n            -fogSource \"fragment\" \n"
 		+ "            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n"
-		+ "            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 0\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -greasePencils 1\n            -shadows 0\n            -captureSequenceNumber -1\n            -width 757\n            -height 777\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n"
+		+ "            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 0\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -greasePencils 1\n            -shadows 0\n            -captureSequenceNumber -1\n            -width 770\n            -height 777\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n"
 		+ "            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"outlinerPanel\" (localizedPanelLabel(\"ToggledOutliner\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `outlinerPanel -unParent -l (localizedPanelLabel(\"ToggledOutliner\")) -mbv $menusOkayInPanels `;\n\t\t\t$editorName = $panelName;\n            outlinerEditor -e \n                -showShapes 0\n                -showAssignedMaterials 0\n                -showTimeEditor 1\n                -showReferenceNodes 0\n                -showReferenceMembers 0\n                -showAttributes 0\n                -showConnected 0\n                -showAnimCurvesOnly 0\n                -showMuteInfo 0\n                -organizeByLayer 1\n                -showAnimLayerWeight 1\n                -autoExpandLayers 1\n                -autoExpand 0\n                -showDagOnly 1\n                -showAssets 1\n                -showContainedOnly 1\n                -showPublishedAsConnected 0\n"
 		+ "                -showContainerContents 1\n                -ignoreDagHierarchy 0\n                -expandConnections 0\n                -showUpstreamCurves 1\n                -showUnitlessCurves 1\n                -showCompounds 1\n                -showLeafs 1\n                -showNumericAttrsOnly 0\n                -highlightActive 1\n                -autoSelectNewObjects 0\n                -doNotSelectNewObjects 0\n                -dropIsParent 1\n                -transmitFilters 0\n                -setFilter \"defaultSetFilter\" \n                -showSetMembers 1\n                -allowMultiSelection 1\n                -alwaysToggleSelect 0\n                -directSelect 0\n                -isSet 0\n                -isSetMember 0\n                -displayMode \"DAG\" \n                -expandObjects 0\n                -setsIgnoreFilters 1\n                -containersIgnoreFilters 0\n                -editAttrName 0\n                -showAttrValues 0\n                -highlightSecondary 0\n                -showUVAttrsOnly 0\n                -showTextureNodesOnly 0\n"
 		+ "                -attrAlphaOrder \"default\" \n                -animLayerFilterOptions \"allAffecting\" \n                -sortOrder \"none\" \n                -longNames 0\n                -niceNames 1\n                -showNamespace 1\n                -showPinIcons 0\n                -mapMotionTrails 0\n                -ignoreHiddenAttribute 0\n                -ignoreOutlinerColor 0\n                -renderFilterVisible 0\n                -renderFilterIndex 0\n                -selectionOrder \"chronological\" \n                -expandAttribute 0\n                $editorName;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\toutlinerPanel -edit -l (localizedPanelLabel(\"ToggledOutliner\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        outlinerEditor -e \n            -showShapes 0\n            -showAssignedMaterials 0\n            -showTimeEditor 1\n            -showReferenceNodes 0\n            -showReferenceMembers 0\n            -showAttributes 0\n            -showConnected 0\n            -showAnimCurvesOnly 0\n"
@@ -12052,8 +12054,8 @@ createNode script -n "uiConfigurationScriptNode";
 		+ "                -nodeTitleMode \"name\" \n                -gridSnap 0\n                -gridVisibility 1\n                -popupMenuScript \"nodeEdBuildPanelMenus\" \n                -showNamespace 1\n                -showShapes 1\n                -showSGShapes 0\n                -showTransforms 1\n                -useAssets 1\n                -syncedSelection 1\n                -extendToShapes 1\n                -activeTab -1\n                -editorMode \"default\" \n                $editorName;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Node Editor\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"NodeEditorEd\");\n            nodeEditor -e \n                -allAttributes 0\n                -allNodes 0\n                -autoSizeNodes 1\n                -consistentNameSize 1\n                -createNodeCommand \"nodeEdCreateNodeCommand\" \n                -defaultPinnedState 0\n                -additiveGraphingMode 0\n                -settingsChangedCallback \"nodeEdSyncControls\" \n"
 		+ "                -traversalDepthLimit -1\n                -keyPressCommand \"nodeEdKeyPressCommand\" \n                -nodeTitleMode \"name\" \n                -gridSnap 0\n                -gridVisibility 1\n                -popupMenuScript \"nodeEdBuildPanelMenus\" \n                -showNamespace 1\n                -showShapes 1\n                -showSGShapes 0\n                -showTransforms 1\n                -useAssets 1\n                -syncedSelection 1\n                -extendToShapes 1\n                -activeTab -1\n                -editorMode \"default\" \n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"hyperShadePanel\" (localizedPanelLabel(\"Hypershade\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `scriptedPanel -unParent  -type \"hyperShadePanel\" -l (localizedPanelLabel(\"Hypershade\")) -mbv $menusOkayInPanels `;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Hypershade\")) -mbv $menusOkayInPanels  $panelName;\n"
 		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\tif ($useSceneConfig) {\n        string $configName = `getPanel -cwl (localizedPanelLabel(\"Current Layout\"))`;\n        if (\"\" != $configName) {\n\t\t\tpanelConfiguration -edit -label (localizedPanelLabel(\"Current Layout\")) \n\t\t\t\t-userCreated false\n\t\t\t\t-defaultImage \"vacantCell.xP:/\"\n\t\t\t\t-image \"\"\n\t\t\t\t-sc false\n\t\t\t\t-configString \"global string $gMainPane; paneLayout -e -cn \\\"single\\\" -ps 1 100 100 $gMainPane;\"\n\t\t\t\t-removeAllPanels\n\t\t\t\t-ap false\n\t\t\t\t\t(localizedPanelLabel(\"Persp View\")) \n\t\t\t\t\t\"modelPanel\"\n"
-		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 1\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 16384\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 0\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -greasePencils 1\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 757\\n    -height 777\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
-		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 1\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 16384\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 0\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -greasePencils 1\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 757\\n    -height 777\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
+		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 1\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 16384\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 0\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -greasePencils 1\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 770\\n    -height 777\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
+		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 1\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 16384\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 0\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -greasePencils 1\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 770\\n    -height 777\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
 		+ "\t\t\t\t$configName;\n\n            setNamedPanelLayout (localizedPanelLabel(\"Current Layout\"));\n        }\n\n        panelHistory -e -clear mainPanelHistory;\n        setFocus `paneLayout -q -p1 $gMainPane`;\n        sceneUIReplacement -deleteRemaining;\n        sceneUIReplacement -clear;\n\t}\n\n\ngrid -spacing 5 -size 12 -divisions 5 -displayAxes yes -displayGridLines yes -displayDivisionLines yes -displayPerspectiveLabels no -displayOrthographicLabels no -displayAxesBold yes -perspectiveLabelPosition axis -orthographicLabelPosition edge;\nviewManip -drawCompass 0 -compassAngle 0 -frontParameters \"\" -homeParameters \"\" -selectionLockParameters \"\";\n}\n");
 	setAttr ".st" 3;
 createNode script -n "sceneConfigurationScriptNode";
@@ -14808,6 +14810,2597 @@ select -ne :hardwareRenderGlobals;
 	setAttr ".btrs" 512;
 select -ne :ikSystem;
 	setAttr -s 6 ".sol";
+connectAttr "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:COG_JNT.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:COG_JNT.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:COG_JNT.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:COG_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:COG_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:COG_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:SpineBase_RK_JNT.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:SpineBase_RK_JNT.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:SpineBase_RK_JNT.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:SpineBase_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:SpineBase_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:SpineBase_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:COG_JNT.s" "WhiteboxHumanCharacter1:SpineBase_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:Chest_RK_JNT.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:Chest_RK_JNT.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:Chest_RK_JNT.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:Chest_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:Chest_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:Chest_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:SpineBase_RK_JNT.s" "WhiteboxHumanCharacter1:Chest_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:Neck_RK_JNT.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:Neck_RK_JNT.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:Neck_RK_JNT.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:Neck_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:Neck_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:Neck_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:Chest_RK_JNT.s" "WhiteboxHumanCharacter1:Neck_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:Head_RK_JNT.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:Head_RK_JNT.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:Head_RK_JNT.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:Head_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:Head_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:Head_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:Neck_RK_JNT.s" "WhiteboxHumanCharacter1:Head_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:Head_RK_JNT.s" "WhiteboxHumanCharacter1:Head02_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:Head_RK_JNT.ro" "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:Head_RK_JNT.pim" "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:Head_RK_JNT.rp" "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:Head_RK_JNT.rpt" "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:Head_RK_JNT.jo" "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:Head_CTRL.t" "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:Head_CTRL.rp" "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:Head_CTRL.rpt" "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:Head_CTRL.r" "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:Head_CTRL.ro" "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:Head_CTRL.s" "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:Head_CTRL.pm" "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:Neck_RK_JNT.ro" "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:Neck_RK_JNT.pim" "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:Neck_RK_JNT.rp" "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:Neck_RK_JNT.rpt" "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:Neck_RK_JNT.jo" "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:Neck_CTRL.t" "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:Neck_CTRL.rp" "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:Neck_CTRL.rpt" "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:Neck_CTRL.r" "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:Neck_CTRL.ro" "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:Neck_CTRL.s" "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:Neck_CTRL.pm" "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:Chest_RK_JNT.s" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.crx" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.cry" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.crz" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT.s" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.crx" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.cry" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.crz" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT.s" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.crx" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.cry" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.crz" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Elbow_RK_JNT.s" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT.ro" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT.pim" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT.jo" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT.is" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Wrist_IK_JNT.r" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Wrist_IK_JNT.ro" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Wrist_IK_JNT.pm" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Wrist_IK_JNT.jo" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.tg[0].tjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.w0" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Wrist_FK_JNT.r" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.tg[1].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Wrist_FK_JNT.ro" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.tg[1].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Wrist_FK_JNT.pm" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.tg[1].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Wrist_FK_JNT.jo" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.tg[1].tjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.w1" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.tg[1].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.L_Arm_FK_IK" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.w0"
+		;
+connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.L_Arm_FK" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.w1"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Elbow_RK_JNT.ro" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Elbow_RK_JNT.pim" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Elbow_RK_JNT.jo" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Elbow_RK_JNT.is" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Elbow_IK_JNT.r" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Elbow_IK_JNT.ro" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Elbow_IK_JNT.pm" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Elbow_IK_JNT.jo" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.tg[0].tjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.w0" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Elbow_FK_JNT.r" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.tg[1].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Elbow_FK_JNT.ro" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.tg[1].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Elbow_FK_JNT.pm" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.tg[1].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Elbow_FK_JNT.jo" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.tg[1].tjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.w1" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.tg[1].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.L_Arm_FK_IK" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.w0"
+		;
+connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.L_Arm_FK" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.w1"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT.ro" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT.pim" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT.jo" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT.is" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT.r" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT.ro" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT.pm" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT.jo" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.tg[0].tjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.w0" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT.r" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.tg[1].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT.ro" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.tg[1].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT.pm" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.tg[1].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT.jo" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.tg[1].tjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.w1" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.tg[1].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.L_Arm_FK_IK" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.w0"
+		;
+connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.L_Arm_FK" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.w1"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT.ro" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT.pim" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT.rp" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT.rpt" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT.jo" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Collar_FK_CTRL.t" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Collar_FK_CTRL.rp" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Collar_FK_CTRL.rpt" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Collar_FK_CTRL.r" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Collar_FK_CTRL.ro" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Collar_FK_CTRL.s" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Collar_FK_CTRL.pm" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:Chest_RK_JNT.s" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.crx" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.cry" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.crz" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT.s" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.crx" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.cry" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.crz" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT.s" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.crx" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.cry" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.crz" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Elbow_RK_JNT.s" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT.pim" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT.is" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Wrist_IK_JNT.r" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Wrist_IK_JNT.ro" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Wrist_IK_JNT.pm" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Wrist_IK_JNT.jo" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.tg[0].tjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.w0" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Wrist_FK_JNT.r" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.tg[1].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Wrist_FK_JNT.ro" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.tg[1].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Wrist_FK_JNT.pm" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.tg[1].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Wrist_FK_JNT.jo" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.tg[1].tjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.w1" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.tg[1].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.R_Arm_FK_IK" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.w0"
+		;
+connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.R_Arm_FK" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.w1"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Elbow_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Elbow_RK_JNT.pim" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Elbow_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Elbow_RK_JNT.is" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Elbow_IK_JNT.r" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Elbow_IK_JNT.ro" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Elbow_IK_JNT.pm" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Elbow_IK_JNT.jo" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.tg[0].tjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.w0" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Elbow_FK_JNT.r" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.tg[1].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Elbow_FK_JNT.ro" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.tg[1].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Elbow_FK_JNT.pm" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.tg[1].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Elbow_FK_JNT.jo" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.tg[1].tjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.w1" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.tg[1].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.R_Arm_FK_IK" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.w0"
+		;
+connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.R_Arm_FK" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.w1"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT.pim" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT.is" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT.r" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT.ro" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT.pm" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT.jo" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.tg[0].tjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.w0" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT.r" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.tg[1].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT.ro" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.tg[1].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT.pm" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.tg[1].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT.jo" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.tg[1].tjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.w1" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.tg[1].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.R_Arm_FK_IK" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.w0"
+		;
+connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.R_Arm_FK" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.w1"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT.ro" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT.pim" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT.rp" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT.rpt" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT.jo" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Collar_FK_CTRL.t" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Collar_FK_CTRL.rp" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Collar_FK_CTRL.rpt" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Collar_FK_CTRL.r" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Collar_FK_CTRL.ro" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Collar_FK_CTRL.s" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Collar_FK_CTRL.pm" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:Chest_RK_JNT.ro" "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:Chest_RK_JNT.pim" "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:Chest_RK_JNT.rp" "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:Chest_RK_JNT.rpt" "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:Chest_RK_JNT.jo" "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:Chest_CTRL.t" "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:Chest_CTRL.rp" "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:Chest_CTRL.rpt" "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:Chest_CTRL.r" "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:Chest_CTRL.ro" "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:Chest_CTRL.s" "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:Chest_CTRL.pm" "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:SpineBase_RK_JNT.ro" "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:SpineBase_RK_JNT.pim" "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:SpineBase_RK_JNT.rp" "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:SpineBase_RK_JNT.rpt" "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:SpineBase_RK_JNT.jo" "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:SpineBase_CTRL.t" "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:SpineBase_CTRL.rp" "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:SpineBase_CTRL.rpt" "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:SpineBase_CTRL.r" "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:SpineBase_CTRL.ro" "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:SpineBase_CTRL.s" "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:SpineBase_CTRL.pm" "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:Pelvis_RK_JNT.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:Pelvis_RK_JNT.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:Pelvis_RK_JNT.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:Pelvis_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:Pelvis_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:Pelvis_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:COG_JNT.s" "WhiteboxHumanCharacter1:Pelvis_RK_JNT.is"
+		;
+connectAttr "L_Hip_RK_JNT_orientConstraint1.crx" "WhiteboxHumanCharacter1:L_Hip_RK_JNT.rx"
+		;
+connectAttr "L_Hip_RK_JNT_orientConstraint1.cry" "WhiteboxHumanCharacter1:L_Hip_RK_JNT.ry"
+		;
+connectAttr "L_Hip_RK_JNT_orientConstraint1.crz" "WhiteboxHumanCharacter1:L_Hip_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:Pelvis_RK_JNT.s" "WhiteboxHumanCharacter1:L_Hip_RK_JNT.is"
+		;
+connectAttr "L_Knee_RK_JNT_orientConstraint1.crx" "WhiteboxHumanCharacter1:L_Knee_RK_JNT.rx"
+		;
+connectAttr "L_Knee_RK_JNT_orientConstraint1.cry" "WhiteboxHumanCharacter1:L_Knee_RK_JNT.ry"
+		;
+connectAttr "L_Knee_RK_JNT_orientConstraint1.crz" "WhiteboxHumanCharacter1:L_Knee_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hip_RK_JNT.s" "WhiteboxHumanCharacter1:L_Knee_RK_JNT.is"
+		;
+connectAttr "L_Ankle_RK_JNT_orientConstraint1.crx" "WhiteboxHumanCharacter1:L_Ankle_RK_JNT.rx"
+		;
+connectAttr "L_Ankle_RK_JNT_orientConstraint1.cry" "WhiteboxHumanCharacter1:L_Ankle_RK_JNT.ry"
+		;
+connectAttr "L_Ankle_RK_JNT_orientConstraint1.crz" "WhiteboxHumanCharacter1:L_Ankle_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Knee_RK_JNT.s" "WhiteboxHumanCharacter1:L_Ankle_RK_JNT.is"
+		;
+connectAttr "L_Ball_RK_JNT_orientConstraint1.crx" "WhiteboxHumanCharacter1:L_Ball_RK_JNT.rx"
+		;
+connectAttr "L_Ball_RK_JNT_orientConstraint1.cry" "WhiteboxHumanCharacter1:L_Ball_RK_JNT.ry"
+		;
+connectAttr "L_Ball_RK_JNT_orientConstraint1.crz" "WhiteboxHumanCharacter1:L_Ball_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Ankle_RK_JNT.s" "WhiteboxHumanCharacter1:L_Ball_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Ball_RK_JNT.s" "WhiteboxHumanCharacter1:L_Toe_RK_JNT.is"
+		;
+connectAttr "L_Toe_RK_JNT_orientConstraint1.crx" "WhiteboxHumanCharacter1:L_Toe_RK_JNT.rx"
+		;
+connectAttr "L_Toe_RK_JNT_orientConstraint1.cry" "WhiteboxHumanCharacter1:L_Toe_RK_JNT.ry"
+		;
+connectAttr "L_Toe_RK_JNT_orientConstraint1.crz" "WhiteboxHumanCharacter1:L_Toe_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Toe_RK_JNT.ro" "L_Toe_RK_JNT_orientConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Toe_RK_JNT.pim" "L_Toe_RK_JNT_orientConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Toe_RK_JNT.jo" "L_Toe_RK_JNT_orientConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Toe_RK_JNT.is" "L_Toe_RK_JNT_orientConstraint1.is"
+		;
+connectAttr "L_Toe_IK_JNT.r" "L_Toe_RK_JNT_orientConstraint1.tg[0].tr";
+connectAttr "L_Toe_IK_JNT.ro" "L_Toe_RK_JNT_orientConstraint1.tg[0].tro";
+connectAttr "L_Toe_IK_JNT.pm" "L_Toe_RK_JNT_orientConstraint1.tg[0].tpm";
+connectAttr "L_Toe_IK_JNT.jo" "L_Toe_RK_JNT_orientConstraint1.tg[0].tjo";
+connectAttr "L_Toe_RK_JNT_orientConstraint1.w0" "L_Toe_RK_JNT_orientConstraint1.tg[0].tw"
+		;
+connectAttr "L_Toe_FK_JNT.r" "L_Toe_RK_JNT_orientConstraint1.tg[1].tr";
+connectAttr "L_Toe_FK_JNT.ro" "L_Toe_RK_JNT_orientConstraint1.tg[1].tro";
+connectAttr "L_Toe_FK_JNT.pm" "L_Toe_RK_JNT_orientConstraint1.tg[1].tpm";
+connectAttr "L_Toe_FK_JNT.jo" "L_Toe_RK_JNT_orientConstraint1.tg[1].tjo";
+connectAttr "L_Toe_RK_JNT_orientConstraint1.w1" "L_Toe_RK_JNT_orientConstraint1.tg[1].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.L_Leg_FK_IK" "L_Toe_RK_JNT_orientConstraint1.w0"
+		;
+connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.L_Leg_FK" "L_Toe_RK_JNT_orientConstraint1.w1"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Ball_RK_JNT.ro" "L_Ball_RK_JNT_orientConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Ball_RK_JNT.pim" "L_Ball_RK_JNT_orientConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Ball_RK_JNT.jo" "L_Ball_RK_JNT_orientConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Ball_RK_JNT.is" "L_Ball_RK_JNT_orientConstraint1.is"
+		;
+connectAttr "L_Ball_IK_JNT.r" "L_Ball_RK_JNT_orientConstraint1.tg[0].tr";
+connectAttr "L_Ball_IK_JNT.ro" "L_Ball_RK_JNT_orientConstraint1.tg[0].tro";
+connectAttr "L_Ball_IK_JNT.pm" "L_Ball_RK_JNT_orientConstraint1.tg[0].tpm";
+connectAttr "L_Ball_IK_JNT.jo" "L_Ball_RK_JNT_orientConstraint1.tg[0].tjo";
+connectAttr "L_Ball_RK_JNT_orientConstraint1.w0" "L_Ball_RK_JNT_orientConstraint1.tg[0].tw"
+		;
+connectAttr "L_Ball_FK_JNT.r" "L_Ball_RK_JNT_orientConstraint1.tg[1].tr";
+connectAttr "L_Ball_FK_JNT.ro" "L_Ball_RK_JNT_orientConstraint1.tg[1].tro";
+connectAttr "L_Ball_FK_JNT.pm" "L_Ball_RK_JNT_orientConstraint1.tg[1].tpm";
+connectAttr "L_Ball_FK_JNT.jo" "L_Ball_RK_JNT_orientConstraint1.tg[1].tjo";
+connectAttr "L_Ball_RK_JNT_orientConstraint1.w1" "L_Ball_RK_JNT_orientConstraint1.tg[1].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.L_Leg_FK_IK" "L_Ball_RK_JNT_orientConstraint1.w0"
+		;
+connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.L_Leg_FK" "L_Ball_RK_JNT_orientConstraint1.w1"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Ankle_RK_JNT.ro" "L_Ankle_RK_JNT_orientConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Ankle_RK_JNT.pim" "L_Ankle_RK_JNT_orientConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Ankle_RK_JNT.jo" "L_Ankle_RK_JNT_orientConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Ankle_RK_JNT.is" "L_Ankle_RK_JNT_orientConstraint1.is"
+		;
+connectAttr "L_Ankle_IK_JNT.r" "L_Ankle_RK_JNT_orientConstraint1.tg[0].tr";
+connectAttr "L_Ankle_IK_JNT.ro" "L_Ankle_RK_JNT_orientConstraint1.tg[0].tro";
+connectAttr "L_Ankle_IK_JNT.pm" "L_Ankle_RK_JNT_orientConstraint1.tg[0].tpm";
+connectAttr "L_Ankle_IK_JNT.jo" "L_Ankle_RK_JNT_orientConstraint1.tg[0].tjo";
+connectAttr "L_Ankle_RK_JNT_orientConstraint1.w0" "L_Ankle_RK_JNT_orientConstraint1.tg[0].tw"
+		;
+connectAttr "L_Ankle_FK_JNT.r" "L_Ankle_RK_JNT_orientConstraint1.tg[1].tr";
+connectAttr "L_Ankle_FK_JNT.ro" "L_Ankle_RK_JNT_orientConstraint1.tg[1].tro";
+connectAttr "L_Ankle_FK_JNT.pm" "L_Ankle_RK_JNT_orientConstraint1.tg[1].tpm";
+connectAttr "L_Ankle_FK_JNT.jo" "L_Ankle_RK_JNT_orientConstraint1.tg[1].tjo";
+connectAttr "L_Ankle_RK_JNT_orientConstraint1.w1" "L_Ankle_RK_JNT_orientConstraint1.tg[1].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.L_Leg_FK_IK" "L_Ankle_RK_JNT_orientConstraint1.w0"
+		;
+connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.L_Leg_FK" "L_Ankle_RK_JNT_orientConstraint1.w1"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Knee_RK_JNT.ro" "L_Knee_RK_JNT_orientConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Knee_RK_JNT.pim" "L_Knee_RK_JNT_orientConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Knee_RK_JNT.jo" "L_Knee_RK_JNT_orientConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Knee_RK_JNT.is" "L_Knee_RK_JNT_orientConstraint1.is"
+		;
+connectAttr "L_Knee_IK_JNT.r" "L_Knee_RK_JNT_orientConstraint1.tg[0].tr";
+connectAttr "L_Knee_IK_JNT.ro" "L_Knee_RK_JNT_orientConstraint1.tg[0].tro";
+connectAttr "L_Knee_IK_JNT.pm" "L_Knee_RK_JNT_orientConstraint1.tg[0].tpm";
+connectAttr "L_Knee_IK_JNT.jo" "L_Knee_RK_JNT_orientConstraint1.tg[0].tjo";
+connectAttr "L_Knee_RK_JNT_orientConstraint1.w0" "L_Knee_RK_JNT_orientConstraint1.tg[0].tw"
+		;
+connectAttr "L_Knee_FK_JNT.r" "L_Knee_RK_JNT_orientConstraint1.tg[1].tr";
+connectAttr "L_Knee_FK_JNT.ro" "L_Knee_RK_JNT_orientConstraint1.tg[1].tro";
+connectAttr "L_Knee_FK_JNT.pm" "L_Knee_RK_JNT_orientConstraint1.tg[1].tpm";
+connectAttr "L_Knee_FK_JNT.jo" "L_Knee_RK_JNT_orientConstraint1.tg[1].tjo";
+connectAttr "L_Knee_RK_JNT_orientConstraint1.w1" "L_Knee_RK_JNT_orientConstraint1.tg[1].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.L_Leg_FK_IK" "L_Knee_RK_JNT_orientConstraint1.w0"
+		;
+connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.L_Leg_FK" "L_Knee_RK_JNT_orientConstraint1.w1"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hip_RK_JNT.ro" "L_Hip_RK_JNT_orientConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hip_RK_JNT.pim" "L_Hip_RK_JNT_orientConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hip_RK_JNT.jo" "L_Hip_RK_JNT_orientConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hip_RK_JNT.is" "L_Hip_RK_JNT_orientConstraint1.is"
+		;
+connectAttr "L_Hip_IK_JNT.r" "L_Hip_RK_JNT_orientConstraint1.tg[0].tr";
+connectAttr "L_Hip_IK_JNT.ro" "L_Hip_RK_JNT_orientConstraint1.tg[0].tro";
+connectAttr "L_Hip_IK_JNT.pm" "L_Hip_RK_JNT_orientConstraint1.tg[0].tpm";
+connectAttr "L_Hip_IK_JNT.jo" "L_Hip_RK_JNT_orientConstraint1.tg[0].tjo";
+connectAttr "L_Hip_RK_JNT_orientConstraint1.w0" "L_Hip_RK_JNT_orientConstraint1.tg[0].tw"
+		;
+connectAttr "L_Hip_FK_JNT.r" "L_Hip_RK_JNT_orientConstraint1.tg[1].tr";
+connectAttr "L_Hip_FK_JNT.ro" "L_Hip_RK_JNT_orientConstraint1.tg[1].tro";
+connectAttr "L_Hip_FK_JNT.pm" "L_Hip_RK_JNT_orientConstraint1.tg[1].tpm";
+connectAttr "L_Hip_FK_JNT.jo" "L_Hip_RK_JNT_orientConstraint1.tg[1].tjo";
+connectAttr "L_Hip_RK_JNT_orientConstraint1.w1" "L_Hip_RK_JNT_orientConstraint1.tg[1].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.L_Leg_FK_IK" "L_Hip_RK_JNT_orientConstraint1.w0"
+		;
+connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.L_Leg_FK" "L_Hip_RK_JNT_orientConstraint1.w1"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.crx" "WhiteboxHumanCharacter1:R_Hip_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.cry" "WhiteboxHumanCharacter1:R_Hip_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.crz" "WhiteboxHumanCharacter1:R_Hip_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:Pelvis_RK_JNT.s" "WhiteboxHumanCharacter1:R_Hip_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.crx" "WhiteboxHumanCharacter1:R_Knee_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.cry" "WhiteboxHumanCharacter1:R_Knee_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.crz" "WhiteboxHumanCharacter1:R_Knee_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_RK_JNT.s" "WhiteboxHumanCharacter1:R_Knee_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.crx" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.cry" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.crz" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Knee_RK_JNT.s" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.crx" "WhiteboxHumanCharacter1:R_Ball_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.cry" "WhiteboxHumanCharacter1:R_Ball_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.crz" "WhiteboxHumanCharacter1:R_Ball_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ankle_RK_JNT.s" "WhiteboxHumanCharacter1:R_Ball_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ball_RK_JNT.s" "WhiteboxHumanCharacter1:R_Toe_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.crx" "WhiteboxHumanCharacter1:R_Toe_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.cry" "WhiteboxHumanCharacter1:R_Toe_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.crz" "WhiteboxHumanCharacter1:R_Toe_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Toe_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Toe_RK_JNT.pim" "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Toe_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Toe_RK_JNT.is" "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Toe_IK_JNT.r" "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Toe_IK_JNT.ro" "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Toe_IK_JNT.pm" "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Toe_IK_JNT.jo" "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.tg[0].tjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.w0" "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Toe_FK_JNT.r" "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.tg[1].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Toe_FK_JNT.ro" "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.tg[1].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Toe_FK_JNT.pm" "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.tg[1].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Toe_FK_JNT.jo" "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.tg[1].tjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.w1" "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.tg[1].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.R_Leg_FK_IK" "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.w0"
+		;
+connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.R_Leg_FK" "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.w1"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ball_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ball_RK_JNT.pim" "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ball_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ball_RK_JNT.is" "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ball_IK_JNT.r" "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ball_IK_JNT.ro" "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ball_IK_JNT.pm" "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ball_IK_JNT.jo" "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.tg[0].tjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.w0" "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ball_FK_JNT.r" "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.tg[1].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ball_FK_JNT.ro" "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.tg[1].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ball_FK_JNT.pm" "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.tg[1].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ball_FK_JNT.jo" "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.tg[1].tjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.w1" "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.tg[1].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.R_Leg_FK_IK" "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.w0"
+		;
+connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.R_Leg_FK" "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.w1"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ankle_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ankle_RK_JNT.pim" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ankle_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ankle_RK_JNT.is" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ankle_IK_JNT.r" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ankle_IK_JNT.ro" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ankle_IK_JNT.pm" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ankle_IK_JNT.jo" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.tg[0].tjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.w0" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ankle_FK_JNT.r" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.tg[1].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ankle_FK_JNT.ro" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.tg[1].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ankle_FK_JNT.pm" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.tg[1].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ankle_FK_JNT.jo" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.tg[1].tjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.w1" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.tg[1].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.R_Leg_FK_IK" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.w0"
+		;
+connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.R_Leg_FK" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.w1"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Knee_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Knee_RK_JNT.pim" "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Knee_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Knee_RK_JNT.is" "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Knee_IK_JNT.r" "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Knee_IK_JNT.ro" "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Knee_IK_JNT.pm" "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Knee_IK_JNT.jo" "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.tg[0].tjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.w0" "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Knee_FK_JNT.r" "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.tg[1].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Knee_FK_JNT.ro" "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.tg[1].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Knee_FK_JNT.pm" "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.tg[1].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Knee_FK_JNT.jo" "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.tg[1].tjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.w1" "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.tg[1].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.R_Leg_FK_IK" "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.w0"
+		;
+connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.R_Leg_FK" "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.w1"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_RK_JNT.pim" "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_RK_JNT.is" "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_IK_JNT.r" "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_IK_JNT.ro" "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_IK_JNT.pm" "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_IK_JNT.jo" "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.tg[0].tjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.w0" "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_FK_JNT.r" "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.tg[1].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_FK_JNT.ro" "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.tg[1].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_FK_JNT.pm" "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.tg[1].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_FK_JNT.jo" "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.tg[1].tjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.w1" "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.tg[1].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.R_Leg_FK_IK" "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.w0"
+		;
+connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.R_Leg_FK" "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.w1"
+		;
+connectAttr "WhiteboxHumanCharacter1:Pelvis_RK_JNT.ro" "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:Pelvis_RK_JNT.pim" "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:Pelvis_RK_JNT.rp" "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:Pelvis_RK_JNT.rpt" "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:Pelvis_RK_JNT.jo" "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:Pelvis_CTRL.t" "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:Pelvis_CTRL.rp" "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:Pelvis_CTRL.rpt" "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:Pelvis_CTRL.r" "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:Pelvis_CTRL.ro" "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:Pelvis_CTRL.s" "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:Pelvis_CTRL.pm" "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:COG_JNT.ro" "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:COG_JNT.pim" "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:COG_JNT.rp" "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:COG_JNT.rpt" "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:COG_JNT.jo" "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:COG_CTRL.t" "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:COG_CTRL.rp" "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:COG_CTRL.rpt" "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:COG_CTRL.r" "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:COG_CTRL.ro" "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:COG_CTRL.s" "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:COG_CTRL.pm" "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT.s" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Elbow_FK_JNT.s" "WhiteboxHumanCharacter1:R_Wrist_FK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Elbow_FK_JNT.ro" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Elbow_FK_JNT.pim" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Elbow_FK_JNT.rp" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Elbow_FK_JNT.rpt" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Elbow_FK_JNT.jo" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.cjo"
+		;
+connectAttr "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:R_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Collar_FK_CTRL|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL.t" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:R_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Collar_FK_CTRL|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL.rp" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:R_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Collar_FK_CTRL|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL.rpt" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:R_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Collar_FK_CTRL|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL.r" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:R_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Collar_FK_CTRL|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL.ro" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:R_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Collar_FK_CTRL|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL.s" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:R_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Collar_FK_CTRL|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL.pm" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT.ro" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT.pim" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT.rp" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT.rpt" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT.jo" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL.t" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL.rp" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL.rpt" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL.r" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL.ro" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL.s" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL.pm" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT.s" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Elbow_FK_JNT.s" "WhiteboxHumanCharacter1:L_Wrist_FK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Elbow_FK_JNT.ro" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Elbow_FK_JNT.pim" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Elbow_FK_JNT.rp" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Elbow_FK_JNT.rpt" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Elbow_FK_JNT.jo" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.cjo"
+		;
+connectAttr "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:L_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Collar_FK_CTRL|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL.t" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:L_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Collar_FK_CTRL|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL.rp" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:L_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Collar_FK_CTRL|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL.rpt" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:L_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Collar_FK_CTRL|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL.r" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:L_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Collar_FK_CTRL|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL.ro" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:L_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Collar_FK_CTRL|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL.s" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:L_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Collar_FK_CTRL|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL.pm" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT.ro" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT.pim" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT.rp" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT.rpt" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT.jo" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL.t" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL.rp" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL.rpt" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL.r" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL.ro" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL.s" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL.pm" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "L_Hip_FK_JNT_parentConstraint1.crx" "L_Hip_FK_JNT.rx";
+connectAttr "L_Hip_FK_JNT_parentConstraint1.cry" "L_Hip_FK_JNT.ry";
+connectAttr "L_Hip_FK_JNT_parentConstraint1.crz" "L_Hip_FK_JNT.rz";
+connectAttr "L_Hip_FK_JNT_parentConstraint1.ctx" "L_Hip_FK_JNT.tx";
+connectAttr "L_Hip_FK_JNT_parentConstraint1.cty" "L_Hip_FK_JNT.ty";
+connectAttr "L_Hip_FK_JNT_parentConstraint1.ctz" "L_Hip_FK_JNT.tz";
+connectAttr "L_Knee_FK_JNT_parentConstraint1.crx" "L_Knee_FK_JNT.rx";
+connectAttr "L_Knee_FK_JNT_parentConstraint1.cry" "L_Knee_FK_JNT.ry";
+connectAttr "L_Knee_FK_JNT_parentConstraint1.crz" "L_Knee_FK_JNT.rz";
+connectAttr "L_Knee_FK_JNT_parentConstraint1.ctx" "L_Knee_FK_JNT.tx";
+connectAttr "L_Knee_FK_JNT_parentConstraint1.cty" "L_Knee_FK_JNT.ty";
+connectAttr "L_Knee_FK_JNT_parentConstraint1.ctz" "L_Knee_FK_JNT.tz";
+connectAttr "L_Hip_FK_JNT.s" "L_Knee_FK_JNT.is";
+connectAttr "L_Ankle_FK_JNT_parentConstraint1.crx" "L_Ankle_FK_JNT.rx";
+connectAttr "L_Ankle_FK_JNT_parentConstraint1.cry" "L_Ankle_FK_JNT.ry";
+connectAttr "L_Ankle_FK_JNT_parentConstraint1.crz" "L_Ankle_FK_JNT.rz";
+connectAttr "L_Ankle_FK_JNT_parentConstraint1.ctx" "L_Ankle_FK_JNT.tx";
+connectAttr "L_Ankle_FK_JNT_parentConstraint1.cty" "L_Ankle_FK_JNT.ty";
+connectAttr "L_Ankle_FK_JNT_parentConstraint1.ctz" "L_Ankle_FK_JNT.tz";
+connectAttr "L_Knee_FK_JNT.s" "L_Ankle_FK_JNT.is";
+connectAttr "L_Ball_FK_JNT_parentConstraint1.crx" "L_Ball_FK_JNT.rx";
+connectAttr "L_Ball_FK_JNT_parentConstraint1.cry" "L_Ball_FK_JNT.ry";
+connectAttr "L_Ball_FK_JNT_parentConstraint1.crz" "L_Ball_FK_JNT.rz";
+connectAttr "L_Ball_FK_JNT_parentConstraint1.ctx" "L_Ball_FK_JNT.tx";
+connectAttr "L_Ball_FK_JNT_parentConstraint1.cty" "L_Ball_FK_JNT.ty";
+connectAttr "L_Ball_FK_JNT_parentConstraint1.ctz" "L_Ball_FK_JNT.tz";
+connectAttr "L_Ankle_FK_JNT.s" "L_Ball_FK_JNT.is";
+connectAttr "L_Ball_FK_JNT.s" "L_Toe_FK_JNT.is";
+connectAttr "L_Ball_FK_JNT.ro" "L_Ball_FK_JNT_parentConstraint1.cro";
+connectAttr "L_Ball_FK_JNT.pim" "L_Ball_FK_JNT_parentConstraint1.cpim";
+connectAttr "L_Ball_FK_JNT.rp" "L_Ball_FK_JNT_parentConstraint1.crp";
+connectAttr "L_Ball_FK_JNT.rpt" "L_Ball_FK_JNT_parentConstraint1.crt";
+connectAttr "L_Ball_FK_JNT.jo" "L_Ball_FK_JNT_parentConstraint1.cjo";
+connectAttr "WhiteboxHumanCharacter1:L_Ball_FK_CTRL.t" "L_Ball_FK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Ball_FK_CTRL.rp" "L_Ball_FK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Ball_FK_CTRL.rpt" "L_Ball_FK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Ball_FK_CTRL.r" "L_Ball_FK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Ball_FK_CTRL.ro" "L_Ball_FK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Ball_FK_CTRL.s" "L_Ball_FK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Ball_FK_CTRL.pm" "L_Ball_FK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "L_Ball_FK_JNT_parentConstraint1.w0" "L_Ball_FK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "L_Ankle_FK_JNT.ro" "L_Ankle_FK_JNT_parentConstraint1.cro";
+connectAttr "L_Ankle_FK_JNT.pim" "L_Ankle_FK_JNT_parentConstraint1.cpim";
+connectAttr "L_Ankle_FK_JNT.rp" "L_Ankle_FK_JNT_parentConstraint1.crp";
+connectAttr "L_Ankle_FK_JNT.rpt" "L_Ankle_FK_JNT_parentConstraint1.crt";
+connectAttr "L_Ankle_FK_JNT.jo" "L_Ankle_FK_JNT_parentConstraint1.cjo";
+connectAttr "WhiteboxHumanCharacter1:L_Ankle_FK_CTRL.t" "L_Ankle_FK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Ankle_FK_CTRL.rp" "L_Ankle_FK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Ankle_FK_CTRL.rpt" "L_Ankle_FK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Ankle_FK_CTRL.r" "L_Ankle_FK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Ankle_FK_CTRL.ro" "L_Ankle_FK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Ankle_FK_CTRL.s" "L_Ankle_FK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Ankle_FK_CTRL.pm" "L_Ankle_FK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "L_Ankle_FK_JNT_parentConstraint1.w0" "L_Ankle_FK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "L_Knee_FK_JNT.ro" "L_Knee_FK_JNT_parentConstraint1.cro";
+connectAttr "L_Knee_FK_JNT.pim" "L_Knee_FK_JNT_parentConstraint1.cpim";
+connectAttr "L_Knee_FK_JNT.rp" "L_Knee_FK_JNT_parentConstraint1.crp";
+connectAttr "L_Knee_FK_JNT.rpt" "L_Knee_FK_JNT_parentConstraint1.crt";
+connectAttr "L_Knee_FK_JNT.jo" "L_Knee_FK_JNT_parentConstraint1.cjo";
+connectAttr "WhiteboxHumanCharacter1:L_Knee_FK_CTRL.t" "L_Knee_FK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Knee_FK_CTRL.rp" "L_Knee_FK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Knee_FK_CTRL.rpt" "L_Knee_FK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Knee_FK_CTRL.r" "L_Knee_FK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Knee_FK_CTRL.ro" "L_Knee_FK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Knee_FK_CTRL.s" "L_Knee_FK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Knee_FK_CTRL.pm" "L_Knee_FK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "L_Knee_FK_JNT_parentConstraint1.w0" "L_Knee_FK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "L_Hip_FK_JNT.ro" "L_Hip_FK_JNT_parentConstraint1.cro";
+connectAttr "L_Hip_FK_JNT.pim" "L_Hip_FK_JNT_parentConstraint1.cpim";
+connectAttr "L_Hip_FK_JNT.rp" "L_Hip_FK_JNT_parentConstraint1.crp";
+connectAttr "L_Hip_FK_JNT.rpt" "L_Hip_FK_JNT_parentConstraint1.crt";
+connectAttr "L_Hip_FK_JNT.jo" "L_Hip_FK_JNT_parentConstraint1.cjo";
+connectAttr "WhiteboxHumanCharacter1:L_Hip_FK_CTLR.t" "L_Hip_FK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hip_FK_CTLR.rp" "L_Hip_FK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hip_FK_CTLR.rpt" "L_Hip_FK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hip_FK_CTLR.r" "L_Hip_FK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hip_FK_CTLR.ro" "L_Hip_FK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hip_FK_CTLR.s" "L_Hip_FK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hip_FK_CTLR.pm" "L_Hip_FK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "L_Hip_FK_JNT_parentConstraint1.w0" "L_Hip_FK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "R_Hip_FK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:R_Hip_FK_JNT.rx"
+		;
+connectAttr "R_Hip_FK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:R_Hip_FK_JNT.ry"
+		;
+connectAttr "R_Hip_FK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:R_Hip_FK_JNT.rz"
+		;
+connectAttr "R_Hip_FK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:R_Hip_FK_JNT.tx"
+		;
+connectAttr "R_Hip_FK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:R_Hip_FK_JNT.ty"
+		;
+connectAttr "R_Hip_FK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:R_Hip_FK_JNT.tz"
+		;
+connectAttr "R_Knee_FK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:R_Knee_FK_JNT.rx"
+		;
+connectAttr "R_Knee_FK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:R_Knee_FK_JNT.ry"
+		;
+connectAttr "R_Knee_FK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:R_Knee_FK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_FK_JNT.s" "WhiteboxHumanCharacter1:R_Knee_FK_JNT.is"
+		;
+connectAttr "R_Knee_FK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:R_Knee_FK_JNT.tx"
+		;
+connectAttr "R_Knee_FK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:R_Knee_FK_JNT.ty"
+		;
+connectAttr "R_Knee_FK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:R_Knee_FK_JNT.tz"
+		;
+connectAttr "R_Ankle_FK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:R_Ankle_FK_JNT.rx"
+		;
+connectAttr "R_Ankle_FK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:R_Ankle_FK_JNT.ry"
+		;
+connectAttr "R_Ankle_FK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:R_Ankle_FK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Knee_FK_JNT.s" "WhiteboxHumanCharacter1:R_Ankle_FK_JNT.is"
+		;
+connectAttr "R_Ankle_FK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:R_Ankle_FK_JNT.tx"
+		;
+connectAttr "R_Ankle_FK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:R_Ankle_FK_JNT.ty"
+		;
+connectAttr "R_Ankle_FK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:R_Ankle_FK_JNT.tz"
+		;
+connectAttr "R_Ball_FK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:R_Ball_FK_JNT.rx"
+		;
+connectAttr "R_Ball_FK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:R_Ball_FK_JNT.ry"
+		;
+connectAttr "R_Ball_FK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:R_Ball_FK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ankle_FK_JNT.s" "WhiteboxHumanCharacter1:R_Ball_FK_JNT.is"
+		;
+connectAttr "R_Ball_FK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:R_Ball_FK_JNT.tx"
+		;
+connectAttr "R_Ball_FK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:R_Ball_FK_JNT.ty"
+		;
+connectAttr "R_Ball_FK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:R_Ball_FK_JNT.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ball_FK_JNT.s" "WhiteboxHumanCharacter1:R_Toe_FK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ball_FK_JNT.ro" "R_Ball_FK_JNT_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ball_FK_JNT.pim" "R_Ball_FK_JNT_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ball_FK_JNT.rp" "R_Ball_FK_JNT_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ball_FK_JNT.rpt" "R_Ball_FK_JNT_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ball_FK_JNT.jo" "R_Ball_FK_JNT_parentConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ball_FK_CTRL.t" "R_Ball_FK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ball_FK_CTRL.rp" "R_Ball_FK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ball_FK_CTRL.rpt" "R_Ball_FK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ball_FK_CTRL.r" "R_Ball_FK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ball_FK_CTRL.ro" "R_Ball_FK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ball_FK_CTRL.s" "R_Ball_FK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ball_FK_CTRL.pm" "R_Ball_FK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "R_Ball_FK_JNT_parentConstraint1.w0" "R_Ball_FK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ankle_FK_JNT.ro" "R_Ankle_FK_JNT_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ankle_FK_JNT.pim" "R_Ankle_FK_JNT_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ankle_FK_JNT.rp" "R_Ankle_FK_JNT_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ankle_FK_JNT.rpt" "R_Ankle_FK_JNT_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ankle_FK_JNT.jo" "R_Ankle_FK_JNT_parentConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ankle_FK_CTRL.t" "R_Ankle_FK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ankle_FK_CTRL.rp" "R_Ankle_FK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ankle_FK_CTRL.rpt" "R_Ankle_FK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ankle_FK_CTRL.r" "R_Ankle_FK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ankle_FK_CTRL.ro" "R_Ankle_FK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ankle_FK_CTRL.s" "R_Ankle_FK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ankle_FK_CTRL.pm" "R_Ankle_FK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "R_Ankle_FK_JNT_parentConstraint1.w0" "R_Ankle_FK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Knee_FK_JNT.ro" "R_Knee_FK_JNT_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Knee_FK_JNT.pim" "R_Knee_FK_JNT_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Knee_FK_JNT.rp" "R_Knee_FK_JNT_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Knee_FK_JNT.rpt" "R_Knee_FK_JNT_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Knee_FK_JNT.jo" "R_Knee_FK_JNT_parentConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Knee_FK_CTRL.t" "R_Knee_FK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Knee_FK_CTRL.rp" "R_Knee_FK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Knee_FK_CTRL.rpt" "R_Knee_FK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Knee_FK_CTRL.r" "R_Knee_FK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Knee_FK_CTRL.ro" "R_Knee_FK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Knee_FK_CTRL.s" "R_Knee_FK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Knee_FK_CTRL.pm" "R_Knee_FK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "R_Knee_FK_JNT_parentConstraint1.w0" "R_Knee_FK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_FK_JNT.ro" "R_Hip_FK_JNT_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_FK_JNT.pim" "R_Hip_FK_JNT_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_FK_JNT.rp" "R_Hip_FK_JNT_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_FK_JNT.rpt" "R_Hip_FK_JNT_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_FK_JNT.jo" "R_Hip_FK_JNT_parentConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_FK_CTLR.t" "R_Hip_FK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_FK_CTLR.rp" "R_Hip_FK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_FK_CTLR.rpt" "R_Hip_FK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_FK_CTLR.r" "R_Hip_FK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_FK_CTLR.ro" "R_Hip_FK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_FK_CTLR.s" "R_Hip_FK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_FK_CTLR.pm" "R_Hip_FK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "R_Hip_FK_JNT_parentConstraint1.w0" "R_Hip_FK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT_pointConstraint1.ctx" "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT_pointConstraint1.cty" "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT_pointConstraint1.ctz" "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT.s" "WhiteboxHumanCharacter1:R_Elbow_IK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Elbow_IK_JNT.s" "WhiteboxHumanCharacter1:R_Wrist_IK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Wrist_IK_JNT.tx" "WhiteboxHumanCharacter1:effector8.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Wrist_IK_JNT.ty" "WhiteboxHumanCharacter1:effector8.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Wrist_IK_JNT.tz" "WhiteboxHumanCharacter1:effector8.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT.pim" "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT_pointConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT.rp" "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT_pointConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT.rpt" "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT_pointConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT.t" "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT_pointConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT.rp" "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT_pointConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT.rpt" "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT_pointConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT.pm" "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT_pointConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT_pointConstraint1.w0" "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT_pointConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT_pointConstraint1.ctx" "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT_pointConstraint1.cty" "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT_pointConstraint1.ctz" "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT.s" "WhiteboxHumanCharacter1:L_Elbow_IK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Elbow_IK_JNT.s" "WhiteboxHumanCharacter1:L_Wrist_IK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Wrist_IK_JNT.tx" "WhiteboxHumanCharacter1:effector9.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Wrist_IK_JNT.ty" "WhiteboxHumanCharacter1:effector9.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Wrist_IK_JNT.tz" "WhiteboxHumanCharacter1:effector9.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT.pim" "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT_pointConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT.rp" "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT_pointConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT.rpt" "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT_pointConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT.t" "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT_pointConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT.rp" "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT_pointConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT.rpt" "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT_pointConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT.pm" "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT_pointConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT_pointConstraint1.w0" "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT_pointConstraint1.tg[0].tw"
+		;
+connectAttr "L_Hip_IK_JNT_pointConstraint1.ctx" "L_Hip_IK_JNT.tx";
+connectAttr "L_Hip_IK_JNT_pointConstraint1.cty" "L_Hip_IK_JNT.ty";
+connectAttr "L_Hip_IK_JNT_pointConstraint1.ctz" "L_Hip_IK_JNT.tz";
+connectAttr "L_Hip_IK_JNT.s" "L_Knee_IK_JNT.is";
+connectAttr "L_Knee_IK_JNT.s" "L_Ankle_IK_JNT.is";
+connectAttr "L_Ankle_IK_JNT.s" "L_Ball_IK_JNT.is";
+connectAttr "L_Ball_IK_JNT.s" "L_Toe_IK_JNT.is";
+connectAttr "L_Toe_IK_JNT.tx" "effector2.tx";
+connectAttr "L_Toe_IK_JNT.ty" "effector2.ty";
+connectAttr "L_Toe_IK_JNT.tz" "effector2.tz";
+connectAttr "L_Ball_IK_JNT.tx" "effector1.tx";
+connectAttr "L_Ball_IK_JNT.ty" "effector1.ty";
+connectAttr "L_Ball_IK_JNT.tz" "effector1.tz";
+connectAttr "L_Ankle_IK_JNT.tx" "effector3.tx";
+connectAttr "L_Ankle_IK_JNT.ty" "effector3.ty";
+connectAttr "L_Ankle_IK_JNT.tz" "effector3.tz";
+connectAttr "L_Hip_IK_JNT.pim" "L_Hip_IK_JNT_pointConstraint1.cpim";
+connectAttr "L_Hip_IK_JNT.rp" "L_Hip_IK_JNT_pointConstraint1.crp";
+connectAttr "L_Hip_IK_JNT.rpt" "L_Hip_IK_JNT_pointConstraint1.crt";
+connectAttr "WhiteboxHumanCharacter1:L_Hip_RK_JNT.t" "L_Hip_IK_JNT_pointConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hip_RK_JNT.rp" "L_Hip_IK_JNT_pointConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hip_RK_JNT.rpt" "L_Hip_IK_JNT_pointConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hip_RK_JNT.pm" "L_Hip_IK_JNT_pointConstraint1.tg[0].tpm"
+		;
+connectAttr "L_Hip_IK_JNT_pointConstraint1.w0" "L_Hip_IK_JNT_pointConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_IK_JNT_pointConstraint1.ctx" "WhiteboxHumanCharacter1:R_Hip_IK_JNT.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_IK_JNT_pointConstraint1.cty" "WhiteboxHumanCharacter1:R_Hip_IK_JNT.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_IK_JNT_pointConstraint1.ctz" "WhiteboxHumanCharacter1:R_Hip_IK_JNT.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_IK_JNT.s" "WhiteboxHumanCharacter1:R_Knee_IK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Knee_IK_JNT.s" "WhiteboxHumanCharacter1:R_Ankle_IK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ankle_IK_JNT.s" "WhiteboxHumanCharacter1:R_Ball_IK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ball_IK_JNT.s" "WhiteboxHumanCharacter1:R_Toe_IK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Toe_IK_JNT.tx" "WhiteboxHumanCharacter1:effector7.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Toe_IK_JNT.ty" "WhiteboxHumanCharacter1:effector7.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Toe_IK_JNT.tz" "WhiteboxHumanCharacter1:effector7.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ball_IK_JNT.tx" "WhiteboxHumanCharacter1:effector6.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ball_IK_JNT.ty" "WhiteboxHumanCharacter1:effector6.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ball_IK_JNT.tz" "WhiteboxHumanCharacter1:effector6.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ankle_IK_JNT.tx" "WhiteboxHumanCharacter1:effector3.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ankle_IK_JNT.ty" "WhiteboxHumanCharacter1:effector3.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ankle_IK_JNT.tz" "WhiteboxHumanCharacter1:effector3.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_IK_JNT.pim" "WhiteboxHumanCharacter1:R_Hip_IK_JNT_pointConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_IK_JNT.rp" "WhiteboxHumanCharacter1:R_Hip_IK_JNT_pointConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_IK_JNT.rpt" "WhiteboxHumanCharacter1:R_Hip_IK_JNT_pointConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_RK_JNT.t" "WhiteboxHumanCharacter1:R_Hip_IK_JNT_pointConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_RK_JNT.rp" "WhiteboxHumanCharacter1:R_Hip_IK_JNT_pointConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_RK_JNT.rpt" "WhiteboxHumanCharacter1:R_Hip_IK_JNT_pointConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_RK_JNT.pm" "WhiteboxHumanCharacter1:R_Hip_IK_JNT_pointConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_IK_JNT_pointConstraint1.w0" "WhiteboxHumanCharacter1:R_Hip_IK_JNT_pointConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:R_Hand_RK_JNT.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:R_Hand_RK_JNT.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:R_Hand_RK_JNT.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:R_Hand_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:R_Hand_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:R_Hand_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:R_Index01_RK_JNT.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:R_Index01_RK_JNT.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:R_Index01_RK_JNT.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:R_Index01_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:R_Index01_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:R_Index01_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hand_RK_JNT.s" "WhiteboxHumanCharacter1:R_Index01_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:R_Index02_RK_JNT.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:R_Index02_RK_JNT.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:R_Index02_RK_JNT.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:R_Index02_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:R_Index02_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:R_Index02_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index01_RK_JNT.s" "WhiteboxHumanCharacter1:R_Index02_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:R_Index03_RK_JNT.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:R_Index03_RK_JNT.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:R_Index03_RK_JNT.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:R_Index03_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:R_Index03_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:R_Index03_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index02_RK_JNT.s" "WhiteboxHumanCharacter1:R_Index03_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index03_RK_JNT.s" "WhiteboxHumanCharacter1:R_Index04_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index03_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index03_RK_JNT.pim" "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index03_RK_JNT.rp" "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index03_RK_JNT.rpt" "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index03_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index03_CTRL.t" "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index03_CTRL.rp" "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index03_CTRL.rpt" "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index03_CTRL.r" "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index03_CTRL.ro" "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index03_CTRL.s" "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index03_CTRL.pm" "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index02_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index02_RK_JNT.pim" "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index02_RK_JNT.rp" "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index02_RK_JNT.rpt" "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index02_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index02_CTRL.t" "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index02_CTRL.rp" "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index02_CTRL.rpt" "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index02_CTRL.r" "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index02_CTRL.ro" "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index02_CTRL.s" "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index02_CTRL.pm" "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index01_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index01_RK_JNT.pim" "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index01_RK_JNT.rp" "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index01_RK_JNT.rpt" "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index01_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index01_CTRL.t" "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index01_CTRL.rp" "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index01_CTRL.rpt" "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index01_CTRL.r" "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index01_CTRL.ro" "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index01_CTRL.s" "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index01_CTRL.pm" "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hand_RK_JNT.s" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT.s" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT.s" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT.s" "WhiteboxHumanCharacter1:R_Thumb04_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT.pim" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT.rp" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT.rpt" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.cjo"
+		;
+connectAttr "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL|WhiteboxHumanCharacter1:R_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb01_CTRL|WhiteboxHumanCharacter1:R_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb02_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL.t" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL|WhiteboxHumanCharacter1:R_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb01_CTRL|WhiteboxHumanCharacter1:R_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb02_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL.rp" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL|WhiteboxHumanCharacter1:R_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb01_CTRL|WhiteboxHumanCharacter1:R_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb02_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL.rpt" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL|WhiteboxHumanCharacter1:R_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb01_CTRL|WhiteboxHumanCharacter1:R_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb02_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL.r" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL|WhiteboxHumanCharacter1:R_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb01_CTRL|WhiteboxHumanCharacter1:R_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb02_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL.ro" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL|WhiteboxHumanCharacter1:R_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb01_CTRL|WhiteboxHumanCharacter1:R_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb02_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL.s" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL|WhiteboxHumanCharacter1:R_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb01_CTRL|WhiteboxHumanCharacter1:R_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb02_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL.pm" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT.pim" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT.rp" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT.rpt" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb02_CTRL.t" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb02_CTRL.rp" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb02_CTRL.rpt" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb02_CTRL.r" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb02_CTRL.ro" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb02_CTRL.s" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb02_CTRL.pm" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT.pim" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT.rp" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT.rpt" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb01_CTRL.t" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb01_CTRL.rp" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb01_CTRL.rpt" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb01_CTRL.r" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb01_CTRL.ro" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb01_CTRL.s" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb01_CTRL.pm" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hand_RK_JNT.s" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT.s" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT.s" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT.s" "WhiteboxHumanCharacter1:R_Fingers04_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT.pim" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT.rp" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT.rpt" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Finger03_CTRL.t" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Finger03_CTRL.rp" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Finger03_CTRL.rpt" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Finger03_CTRL.r" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Finger03_CTRL.ro" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Finger03_CTRL.s" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Finger03_CTRL.pm" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT.pim" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT.rp" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT.rpt" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Finger02_CTRL.t" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Finger02_CTRL.rp" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Finger02_CTRL.rpt" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Finger02_CTRL.r" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Finger02_CTRL.ro" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Finger02_CTRL.s" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Finger02_CTRL.pm" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT.pim" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT.rp" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT.rpt" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Finger01_CTRL.t" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Finger01_CTRL.rp" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Finger01_CTRL.rpt" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Finger01_CTRL.r" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Finger01_CTRL.ro" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Finger01_CTRL.s" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Finger01_CTRL.pm" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hand_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hand_RK_JNT.pim" "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hand_RK_JNT.rp" "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hand_RK_JNT.rpt" "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hand_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hand_CTRL.t" "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hand_CTRL.rp" "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hand_CTRL.rpt" "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hand_CTRL.r" "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hand_CTRL.ro" "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hand_CTRL.s" "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hand_CTRL.pm" "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:L_Hand_RK_JNT.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:L_Hand_RK_JNT.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:L_Hand_RK_JNT.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:L_Hand_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:L_Hand_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:L_Hand_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:L_Index01_RK_JNT.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:L_Index01_RK_JNT.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:L_Index01_RK_JNT.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:L_Index01_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:L_Index01_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:L_Index01_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hand_RK_JNT.s" "WhiteboxHumanCharacter1:L_Index01_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:L_Index02_RK_JNT.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:L_Index02_RK_JNT.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:L_Index02_RK_JNT.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:L_Index02_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:L_Index02_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:L_Index02_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index01_RK_JNT.s" "WhiteboxHumanCharacter1:L_Index02_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:L_Index03_RK_JNT.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:L_Index03_RK_JNT.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:L_Index03_RK_JNT.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:L_Index03_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:L_Index03_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:L_Index03_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index02_RK_JNT.s" "WhiteboxHumanCharacter1:L_Index03_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index03_RK_JNT.s" "WhiteboxHumanCharacter1:L_Index04_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index03_RK_JNT.ro" "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index03_RK_JNT.pim" "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index03_RK_JNT.rp" "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index03_RK_JNT.rpt" "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index03_RK_JNT.jo" "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index03_CTRL.t" "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index03_CTRL.rp" "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index03_CTRL.rpt" "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index03_CTRL.r" "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index03_CTRL.ro" "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index03_CTRL.s" "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index03_CTRL.pm" "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index02_RK_JNT.ro" "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index02_RK_JNT.pim" "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index02_RK_JNT.rp" "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index02_RK_JNT.rpt" "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index02_RK_JNT.jo" "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index02_CTRL.t" "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index02_CTRL.rp" "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index02_CTRL.rpt" "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index02_CTRL.r" "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index02_CTRL.ro" "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index02_CTRL.s" "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index02_CTRL.pm" "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index01_RK_JNT.ro" "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index01_RK_JNT.pim" "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index01_RK_JNT.rp" "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index01_RK_JNT.rpt" "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index01_RK_JNT.jo" "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index01_CTRL.t" "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index01_CTRL.rp" "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index01_CTRL.rpt" "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index01_CTRL.r" "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index01_CTRL.ro" "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index01_CTRL.s" "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index01_CTRL.pm" "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hand_RK_JNT.s" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT.s" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT.s" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT.s" "WhiteboxHumanCharacter1:L_Thumb04_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT.ro" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT.pim" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT.rp" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT.rpt" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT.jo" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.cjo"
+		;
+connectAttr "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL|WhiteboxHumanCharacter1:L_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb01_CTRL|WhiteboxHumanCharacter1:L_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb02_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL.t" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL|WhiteboxHumanCharacter1:L_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb01_CTRL|WhiteboxHumanCharacter1:L_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb02_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL.rp" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL|WhiteboxHumanCharacter1:L_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb01_CTRL|WhiteboxHumanCharacter1:L_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb02_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL.rpt" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL|WhiteboxHumanCharacter1:L_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb01_CTRL|WhiteboxHumanCharacter1:L_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb02_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL.r" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL|WhiteboxHumanCharacter1:L_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb01_CTRL|WhiteboxHumanCharacter1:L_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb02_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL.ro" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL|WhiteboxHumanCharacter1:L_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb01_CTRL|WhiteboxHumanCharacter1:L_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb02_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL.s" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL|WhiteboxHumanCharacter1:L_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb01_CTRL|WhiteboxHumanCharacter1:L_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb02_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL.pm" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT.ro" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT.pim" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT.rp" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT.rpt" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT.jo" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb02_CTRL.t" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb02_CTRL.rp" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb02_CTRL.rpt" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb02_CTRL.r" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb02_CTRL.ro" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb02_CTRL.s" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb02_CTRL.pm" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT.ro" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT.pim" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT.rp" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT.rpt" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT.jo" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb01_CTRL.t" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb01_CTRL.rp" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb01_CTRL.rpt" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb01_CTRL.r" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb01_CTRL.ro" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb01_CTRL.s" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb01_CTRL.pm" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hand_RK_JNT.s" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT.s" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT.s" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT.s" "WhiteboxHumanCharacter1:L_Fingers04_RK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT.ro" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT.pim" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT.rp" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT.rpt" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT.jo" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Finger03_CTRL.t" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Finger03_CTRL.rp" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Finger03_CTRL.rpt" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Finger03_CTRL.r" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Finger03_CTRL.ro" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Finger03_CTRL.s" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Finger03_CTRL.pm" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT.ro" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT.pim" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT.rp" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT.rpt" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT.jo" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Finger02_CTRL.t" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Finger02_CTRL.rp" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Finger02_CTRL.rpt" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Finger02_CTRL.r" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Finger02_CTRL.ro" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Finger02_CTRL.s" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Finger02_CTRL.pm" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT.ro" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT.pim" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT.rp" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT.rpt" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT.jo" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Finger01_CTRL.t" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Finger01_CTRL.rp" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Finger01_CTRL.rpt" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Finger01_CTRL.r" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Finger01_CTRL.ro" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Finger01_CTRL.s" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Finger01_CTRL.pm" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hand_RK_JNT.ro" "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hand_RK_JNT.pim" "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hand_RK_JNT.rp" "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hand_RK_JNT.rpt" "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hand_RK_JNT.jo" "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.cjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hand_CTRL.t" "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hand_CTRL.rp" "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hand_CTRL.rpt" "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hand_CTRL.r" "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hand_CTRL.ro" "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hand_CTRL.s" "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hand_CTRL.pm" "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL_visibility.o" "WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL.v"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL_visibility.o" "WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL.v"
+		;
+connectAttr "WhiteboxHumanCharacter1:blendWeighted1.o" "WhiteboxHumanCharacter1:R_Hip_FK_CTLR.v"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hip_FK_CTLR_visibility.o" "WhiteboxHumanCharacter1:L_Hip_FK_CTLR.v"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Leg_CTRL_Expression.out[0]" "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.L_Leg_FK"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Leg_CTRL_Expression.out[0]" "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.R_Leg_FK"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Arm_CTRL_Expression.out[0]" "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.R_Arm_FK"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Arm_CTRL.out[0]" "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.L_Arm_FK"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_CTRL_GRP_visibility.o" "WhiteboxHumanCharacter1:L_Arm_IK_CTRL_GRP.v"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT.msg" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl.hsj"
+		;
+connectAttr "WhiteboxHumanCharacter1:effector9.hp" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl.hee"
+		;
+connectAttr "WhiteboxHumanCharacter1:ikRPsolver.msg" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl.hsv"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_pointConstraint1.ctx" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_pointConstraint1.cty" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_pointConstraint1.ctz" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_poleVectorConstraint1.ctx" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl.pvx"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_poleVectorConstraint1.cty" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl.pvy"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_poleVectorConstraint1.ctz" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl.pvz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_Hndl.pim" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_pointConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_Hndl.rp" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_pointConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_Hndl.rpt" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_pointConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_Handle_CTRL.t" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_pointConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_Handle_CTRL.rp" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_pointConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_Handle_CTRL.rpt" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_pointConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_Handle_CTRL.pm" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_pointConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_pointConstraint1.w0" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_pointConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_Hndl.pim" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_poleVectorConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT.pm" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_poleVectorConstraint1.ps"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT.t" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_poleVectorConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_PoleVector_CTRL.t" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_poleVectorConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_PoleVector_CTRL.rp" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_poleVectorConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_PoleVector_CTRL.rpt" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_poleVectorConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_PoleVector_CTRL.pm" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_poleVectorConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_poleVectorConstraint1.w0" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_poleVectorConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Arm_IK_CTRL_GRP_visibility.o" "WhiteboxHumanCharacter1:R_Arm_IK_CTRL_GRP.v"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT.msg" "WhiteboxHumanCharacter1:R_Arm_IK_Hndl.hsj"
+		;
+connectAttr "WhiteboxHumanCharacter1:effector8.hp" "WhiteboxHumanCharacter1:R_Arm_IK_Hndl.hee"
+		;
+connectAttr "WhiteboxHumanCharacter1:ikRPsolver.msg" "WhiteboxHumanCharacter1:R_Arm_IK_Hndl.hsv"
+		;
+connectAttr "WhiteboxHumanCharacter1:ikHandle4_pointConstraint1.ctx" "WhiteboxHumanCharacter1:R_Arm_IK_Hndl.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:ikHandle4_pointConstraint1.cty" "WhiteboxHumanCharacter1:R_Arm_IK_Hndl.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:ikHandle4_pointConstraint1.ctz" "WhiteboxHumanCharacter1:R_Arm_IK_Hndl.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:ikHandle4_poleVectorConstraint1.ctx" "WhiteboxHumanCharacter1:R_Arm_IK_Hndl.pvx"
+		;
+connectAttr "WhiteboxHumanCharacter1:ikHandle4_poleVectorConstraint1.cty" "WhiteboxHumanCharacter1:R_Arm_IK_Hndl.pvy"
+		;
+connectAttr "WhiteboxHumanCharacter1:ikHandle4_poleVectorConstraint1.ctz" "WhiteboxHumanCharacter1:R_Arm_IK_Hndl.pvz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Arm_IK_Hndl.pim" "WhiteboxHumanCharacter1:ikHandle4_pointConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Arm_IK_Hndl.rp" "WhiteboxHumanCharacter1:ikHandle4_pointConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Arm_IK_Hndl.rpt" "WhiteboxHumanCharacter1:ikHandle4_pointConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Arm_IK_Handle_CTRL.t" "WhiteboxHumanCharacter1:ikHandle4_pointConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Arm_IK_Handle_CTRL.rp" "WhiteboxHumanCharacter1:ikHandle4_pointConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Arm_IK_Handle_CTRL.rpt" "WhiteboxHumanCharacter1:ikHandle4_pointConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Arm_IK_Handle_CTRL.pm" "WhiteboxHumanCharacter1:ikHandle4_pointConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:ikHandle4_pointConstraint1.w0" "WhiteboxHumanCharacter1:ikHandle4_pointConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Arm_IK_Hndl.pim" "WhiteboxHumanCharacter1:ikHandle4_poleVectorConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT.pm" "WhiteboxHumanCharacter1:ikHandle4_poleVectorConstraint1.ps"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT.t" "WhiteboxHumanCharacter1:ikHandle4_poleVectorConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Arm_IK_PoleVector_CTRL.t" "WhiteboxHumanCharacter1:ikHandle4_poleVectorConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Arm_IK_PoleVector_CTRL.rp" "WhiteboxHumanCharacter1:ikHandle4_poleVectorConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Arm_IK_PoleVector_CTRL.rpt" "WhiteboxHumanCharacter1:ikHandle4_poleVectorConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Arm_IK_PoleVector_CTRL.pm" "WhiteboxHumanCharacter1:ikHandle4_poleVectorConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:ikHandle4_poleVectorConstraint1.w0" "WhiteboxHumanCharacter1:ikHandle4_poleVectorConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Leg_IK_CTRL_GRP_visibility.o" "WhiteboxHumanCharacter1:L_Leg_IK_CTRL_GRP.v"
+		;
+connectAttr "L_Heel_RIK_JNT_rotateZ.o" "L_Heel_RIK_JNT.rz";
+connectAttr "L_Heel_RIK_JNT.s" "L_Toe_RIK_JNT.is";
+connectAttr "L_Toe_RIK_JNT_rotateZ.o" "L_Toe_RIK_JNT.rz";
+connectAttr "L_Toe_RIK_JNT.s" "L_Ball_RIK_JNT.is";
+connectAttr "L_Ball_RIK_JNT_rotateZ.o" "L_Ball_RIK_JNT.rz";
+connectAttr "L_Ball_RIK_JNT.s" "L_Ankle_RIK_JNT.is";
+connectAttr "L_Hip_IK_JNT.msg" "L_Leg_IK_Handle.hsj";
+connectAttr "effector3.hp" "L_Leg_IK_Handle.hee";
+connectAttr "ikRPsolver.msg" "L_Leg_IK_Handle.hsv";
+connectAttr "ikHandle1_poleVectorConstraint1.ctx" "L_Leg_IK_Handle.pvx";
+connectAttr "ikHandle1_poleVectorConstraint1.cty" "L_Leg_IK_Handle.pvy";
+connectAttr "ikHandle1_poleVectorConstraint1.ctz" "L_Leg_IK_Handle.pvz";
+connectAttr "L_Leg_IK_Handle.pim" "ikHandle1_poleVectorConstraint1.cpim";
+connectAttr "L_Hip_IK_JNT.pm" "ikHandle1_poleVectorConstraint1.ps";
+connectAttr "L_Hip_IK_JNT.t" "ikHandle1_poleVectorConstraint1.crp";
+connectAttr "L_Leg_IK_PoleVector.t" "ikHandle1_poleVectorConstraint1.tg[0].tt";
+connectAttr "L_Leg_IK_PoleVector.rp" "ikHandle1_poleVectorConstraint1.tg[0].trp"
+		;
+connectAttr "L_Leg_IK_PoleVector.rpt" "ikHandle1_poleVectorConstraint1.tg[0].trt"
+		;
+connectAttr "L_Leg_IK_PoleVector.pm" "ikHandle1_poleVectorConstraint1.tg[0].tpm"
+		;
+connectAttr "ikHandle1_poleVectorConstraint1.w0" "ikHandle1_poleVectorConstraint1.tg[0].tw"
+		;
+connectAttr "L_Ankle_IK_JNT.msg" "L_Leg_IK_FootHandle_01.hsj";
+connectAttr "effector1.hp" "L_Leg_IK_FootHandle_01.hee";
+connectAttr "ikSCsolver.msg" "L_Leg_IK_FootHandle_01.hsv";
+connectAttr "L_Ball_IK_JNT.msg" "L_Leg_IK_FootHandle_02.hsj";
+connectAttr "effector2.hp" "L_Leg_IK_FootHandle_02.hee";
+connectAttr "ikSCsolver.msg" "L_Leg_IK_FootHandle_02.hsv";
+connectAttr "WhiteboxHumanCharacter1:R_Leg_IK_CTRL_GRP_visibility.o" "WhiteboxHumanCharacter1:R_Leg_IK_CTRL_GRP.v"
+		;
+connectAttr "R_Heel_RIK_JNT_rotateZ.o" "WhiteboxHumanCharacter1:R_Heel_RIK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Heel_RIK_JNT.s" "WhiteboxHumanCharacter1:R_Toe_RIK_JNT.is"
+		;
+connectAttr "unitConversion1.o" "WhiteboxHumanCharacter1:R_Toe_RIK_JNT.rx";
+connectAttr "unitConversion4.o" "WhiteboxHumanCharacter1:R_Toe_RIK_JNT.rz";
+connectAttr "WhiteboxHumanCharacter1:R_Toe_RIK_JNT.s" "WhiteboxHumanCharacter1:R_Ball_RIK_JNT.is"
+		;
+connectAttr "R_Ball_RIK_JNT_rotateZ.o" "WhiteboxHumanCharacter1:R_Ball_RIK_JNT.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ball_RIK_JNT.s" "WhiteboxHumanCharacter1:R_Ankle_RIK_JNT.is"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_IK_JNT.msg" "WhiteboxHumanCharacter1:R_Leg_IK_Handle.hsj"
+		;
+connectAttr "WhiteboxHumanCharacter1:effector3.hp" "WhiteboxHumanCharacter1:R_Leg_IK_Handle.hee"
+		;
+connectAttr "WhiteboxHumanCharacter1:ikRPsolver.msg" "WhiteboxHumanCharacter1:R_Leg_IK_Handle.hsv"
+		;
+connectAttr "WhiteboxHumanCharacter1:ikHandle3_poleVectorConstraint1.ctx" "WhiteboxHumanCharacter1:R_Leg_IK_Handle.pvx"
+		;
+connectAttr "WhiteboxHumanCharacter1:ikHandle3_poleVectorConstraint1.cty" "WhiteboxHumanCharacter1:R_Leg_IK_Handle.pvy"
+		;
+connectAttr "WhiteboxHumanCharacter1:ikHandle3_poleVectorConstraint1.ctz" "WhiteboxHumanCharacter1:R_Leg_IK_Handle.pvz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Leg_IK_Handle.pim" "WhiteboxHumanCharacter1:ikHandle3_poleVectorConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_IK_JNT.pm" "WhiteboxHumanCharacter1:ikHandle3_poleVectorConstraint1.ps"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hip_IK_JNT.t" "WhiteboxHumanCharacter1:ikHandle3_poleVectorConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Leg_IK_PoleVector.t" "WhiteboxHumanCharacter1:ikHandle3_poleVectorConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Leg_IK_PoleVector.rp" "WhiteboxHumanCharacter1:ikHandle3_poleVectorConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Leg_IK_PoleVector.rpt" "WhiteboxHumanCharacter1:ikHandle3_poleVectorConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Leg_IK_PoleVector.pm" "WhiteboxHumanCharacter1:ikHandle3_poleVectorConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:ikHandle3_poleVectorConstraint1.w0" "WhiteboxHumanCharacter1:ikHandle3_poleVectorConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ankle_IK_JNT.msg" "WhiteboxHumanCharacter1:R_Leg_IK_FootHandle01.hsj"
+		;
+connectAttr "WhiteboxHumanCharacter1:effector6.hp" "WhiteboxHumanCharacter1:R_Leg_IK_FootHandle01.hee"
+		;
+connectAttr "WhiteboxHumanCharacter1:ikSCsolver.msg" "WhiteboxHumanCharacter1:R_Leg_IK_FootHandle01.hsv"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Ball_IK_JNT.msg" "WhiteboxHumanCharacter1:R_Leg_IK_FootHandle02.hsj"
+		;
+connectAttr "WhiteboxHumanCharacter1:effector7.hp" "WhiteboxHumanCharacter1:R_Leg_IK_FootHandle02.hee"
+		;
+connectAttr "WhiteboxHumanCharacter1:ikSCsolver.msg" "WhiteboxHumanCharacter1:R_Leg_IK_FootHandle02.hsv"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.ctx" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.cty" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.ctz" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.crx" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.cry" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.crz" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP.ro" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP.pim" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP.rp" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP.rpt" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT.t" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT.rp" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT.rpt" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT.r" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT.ro" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT.s" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT.pm" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT.jo" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.tg[0].tjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT.ssc" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.tg[0].tsc"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT.is" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.tg[0].tis"
+		;
+connectAttr "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.w0" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.tg[0].tw"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.ctx" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP.tx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.cty" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP.ty"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.ctz" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP.tz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.crx" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP.rx"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.cry" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP.ry"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.crz" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP.rz"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP.ro" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.cro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP.pim" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.cpim"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP.rp" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.crp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP.rpt" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.crt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT.t" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.tg[0].tt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT.rp" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.tg[0].trp"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT.rpt" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.tg[0].trt"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT.r" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.tg[0].tr"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.tg[0].tro"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT.s" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.tg[0].ts"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT.pm" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.tg[0].tjo"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT.ssc" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.tg[0].tsc"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT.is" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.tg[0].tis"
+		;
+connectAttr "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.w0" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.tg[0].tw"
+		;
 connectAttr "WhiteboxHumanCharacter1:AbWall_parentConstraint1.ctx" "WhiteboxHumanCharacter1:AbWall.tx"
 		;
 connectAttr "WhiteboxHumanCharacter1:AbWall_parentConstraint1.cty" "WhiteboxHumanCharacter1:AbWall.ty"
@@ -16362,2597 +18955,6 @@ connectAttr "WhiteboxHumanCharacter1:Pelvis_RK_JNT.is" "WhiteboxHumanCharacter1:
 		;
 connectAttr "WhiteboxHumanCharacter1:Pelvis_parentConstraint1.w0" "WhiteboxHumanCharacter1:Pelvis_parentConstraint1.tg[0].tw"
 		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL_visibility.o" "WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL.v"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL_visibility.o" "WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL.v"
-		;
-connectAttr "WhiteboxHumanCharacter1:blendWeighted1.o" "WhiteboxHumanCharacter1:R_Hip_FK_CTLR.v"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hip_FK_CTLR_visibility.o" "WhiteboxHumanCharacter1:L_Hip_FK_CTLR.v"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Leg_CTRL_Expression.out[0]" "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.L_Leg_FK"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Leg_CTRL_Expression.out[0]" "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.R_Leg_FK"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Arm_CTRL_Expression.out[0]" "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.R_Arm_FK"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Arm_CTRL.out[0]" "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.L_Arm_FK"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_CTRL_GRP_visibility.o" "WhiteboxHumanCharacter1:L_Arm_IK_CTRL_GRP.v"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT.msg" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl.hsj"
-		;
-connectAttr "WhiteboxHumanCharacter1:effector9.hp" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl.hee"
-		;
-connectAttr "WhiteboxHumanCharacter1:ikRPsolver.msg" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl.hsv"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_pointConstraint1.ctx" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_pointConstraint1.cty" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_pointConstraint1.ctz" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_poleVectorConstraint1.ctx" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl.pvx"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_poleVectorConstraint1.cty" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl.pvy"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_poleVectorConstraint1.ctz" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl.pvz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_Hndl.pim" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_pointConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_Hndl.rp" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_pointConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_Hndl.rpt" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_pointConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_Handle_CTRL.t" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_pointConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_Handle_CTRL.rp" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_pointConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_Handle_CTRL.rpt" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_pointConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_Handle_CTRL.pm" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_pointConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_pointConstraint1.w0" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_pointConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_Hndl.pim" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_poleVectorConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT.pm" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_poleVectorConstraint1.ps"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT.t" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_poleVectorConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_PoleVector_CTRL.t" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_poleVectorConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_PoleVector_CTRL.rp" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_poleVectorConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_PoleVector_CTRL.rpt" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_poleVectorConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_PoleVector_CTRL.pm" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_poleVectorConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_poleVectorConstraint1.w0" "WhiteboxHumanCharacter1:L_Arm_IK_Hndl_poleVectorConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Arm_IK_CTRL_GRP_visibility.o" "WhiteboxHumanCharacter1:R_Arm_IK_CTRL_GRP.v"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT.msg" "WhiteboxHumanCharacter1:R_Arm_IK_Hndl.hsj"
-		;
-connectAttr "WhiteboxHumanCharacter1:effector8.hp" "WhiteboxHumanCharacter1:R_Arm_IK_Hndl.hee"
-		;
-connectAttr "WhiteboxHumanCharacter1:ikRPsolver.msg" "WhiteboxHumanCharacter1:R_Arm_IK_Hndl.hsv"
-		;
-connectAttr "WhiteboxHumanCharacter1:ikHandle4_pointConstraint1.ctx" "WhiteboxHumanCharacter1:R_Arm_IK_Hndl.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:ikHandle4_pointConstraint1.cty" "WhiteboxHumanCharacter1:R_Arm_IK_Hndl.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:ikHandle4_pointConstraint1.ctz" "WhiteboxHumanCharacter1:R_Arm_IK_Hndl.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:ikHandle4_poleVectorConstraint1.ctx" "WhiteboxHumanCharacter1:R_Arm_IK_Hndl.pvx"
-		;
-connectAttr "WhiteboxHumanCharacter1:ikHandle4_poleVectorConstraint1.cty" "WhiteboxHumanCharacter1:R_Arm_IK_Hndl.pvy"
-		;
-connectAttr "WhiteboxHumanCharacter1:ikHandle4_poleVectorConstraint1.ctz" "WhiteboxHumanCharacter1:R_Arm_IK_Hndl.pvz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Arm_IK_Hndl.pim" "WhiteboxHumanCharacter1:ikHandle4_pointConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Arm_IK_Hndl.rp" "WhiteboxHumanCharacter1:ikHandle4_pointConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Arm_IK_Hndl.rpt" "WhiteboxHumanCharacter1:ikHandle4_pointConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Arm_IK_Handle_CTRL.t" "WhiteboxHumanCharacter1:ikHandle4_pointConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Arm_IK_Handle_CTRL.rp" "WhiteboxHumanCharacter1:ikHandle4_pointConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Arm_IK_Handle_CTRL.rpt" "WhiteboxHumanCharacter1:ikHandle4_pointConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Arm_IK_Handle_CTRL.pm" "WhiteboxHumanCharacter1:ikHandle4_pointConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:ikHandle4_pointConstraint1.w0" "WhiteboxHumanCharacter1:ikHandle4_pointConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Arm_IK_Hndl.pim" "WhiteboxHumanCharacter1:ikHandle4_poleVectorConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT.pm" "WhiteboxHumanCharacter1:ikHandle4_poleVectorConstraint1.ps"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT.t" "WhiteboxHumanCharacter1:ikHandle4_poleVectorConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Arm_IK_PoleVector_CTRL.t" "WhiteboxHumanCharacter1:ikHandle4_poleVectorConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Arm_IK_PoleVector_CTRL.rp" "WhiteboxHumanCharacter1:ikHandle4_poleVectorConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Arm_IK_PoleVector_CTRL.rpt" "WhiteboxHumanCharacter1:ikHandle4_poleVectorConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Arm_IK_PoleVector_CTRL.pm" "WhiteboxHumanCharacter1:ikHandle4_poleVectorConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:ikHandle4_poleVectorConstraint1.w0" "WhiteboxHumanCharacter1:ikHandle4_poleVectorConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Leg_IK_CTRL_GRP_visibility.o" "WhiteboxHumanCharacter1:L_Leg_IK_CTRL_GRP.v"
-		;
-connectAttr "L_Heel_RIK_JNT_rotateZ.o" "L_Heel_RIK_JNT.rz";
-connectAttr "L_Heel_RIK_JNT.s" "L_Toe_RIK_JNT.is";
-connectAttr "L_Toe_RIK_JNT_rotateZ.o" "L_Toe_RIK_JNT.rz";
-connectAttr "L_Toe_RIK_JNT.s" "L_Ball_RIK_JNT.is";
-connectAttr "L_Ball_RIK_JNT_rotateZ.o" "L_Ball_RIK_JNT.rz";
-connectAttr "L_Ball_RIK_JNT.s" "L_Ankle_RIK_JNT.is";
-connectAttr "L_Hip_IK_JNT.msg" "L_Leg_IK_Handle.hsj";
-connectAttr "effector3.hp" "L_Leg_IK_Handle.hee";
-connectAttr "ikRPsolver.msg" "L_Leg_IK_Handle.hsv";
-connectAttr "ikHandle1_poleVectorConstraint1.ctx" "L_Leg_IK_Handle.pvx";
-connectAttr "ikHandle1_poleVectorConstraint1.cty" "L_Leg_IK_Handle.pvy";
-connectAttr "ikHandle1_poleVectorConstraint1.ctz" "L_Leg_IK_Handle.pvz";
-connectAttr "L_Leg_IK_Handle.pim" "ikHandle1_poleVectorConstraint1.cpim";
-connectAttr "L_Hip_IK_JNT.pm" "ikHandle1_poleVectorConstraint1.ps";
-connectAttr "L_Hip_IK_JNT.t" "ikHandle1_poleVectorConstraint1.crp";
-connectAttr "L_Leg_IK_PoleVector.t" "ikHandle1_poleVectorConstraint1.tg[0].tt";
-connectAttr "L_Leg_IK_PoleVector.rp" "ikHandle1_poleVectorConstraint1.tg[0].trp"
-		;
-connectAttr "L_Leg_IK_PoleVector.rpt" "ikHandle1_poleVectorConstraint1.tg[0].trt"
-		;
-connectAttr "L_Leg_IK_PoleVector.pm" "ikHandle1_poleVectorConstraint1.tg[0].tpm"
-		;
-connectAttr "ikHandle1_poleVectorConstraint1.w0" "ikHandle1_poleVectorConstraint1.tg[0].tw"
-		;
-connectAttr "L_Ankle_IK_JNT.msg" "L_Leg_IK_FootHandle_01.hsj";
-connectAttr "effector1.hp" "L_Leg_IK_FootHandle_01.hee";
-connectAttr "ikSCsolver.msg" "L_Leg_IK_FootHandle_01.hsv";
-connectAttr "L_Ball_IK_JNT.msg" "L_Leg_IK_FootHandle_02.hsj";
-connectAttr "effector2.hp" "L_Leg_IK_FootHandle_02.hee";
-connectAttr "ikSCsolver.msg" "L_Leg_IK_FootHandle_02.hsv";
-connectAttr "WhiteboxHumanCharacter1:R_Leg_IK_CTRL_GRP_visibility.o" "WhiteboxHumanCharacter1:R_Leg_IK_CTRL_GRP.v"
-		;
-connectAttr "R_Heel_RIK_JNT_rotateZ.o" "WhiteboxHumanCharacter1:R_Heel_RIK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Heel_RIK_JNT.s" "WhiteboxHumanCharacter1:R_Toe_RIK_JNT.is"
-		;
-connectAttr "unitConversion1.o" "WhiteboxHumanCharacter1:R_Toe_RIK_JNT.rx";
-connectAttr "unitConversion4.o" "WhiteboxHumanCharacter1:R_Toe_RIK_JNT.rz";
-connectAttr "WhiteboxHumanCharacter1:R_Toe_RIK_JNT.s" "WhiteboxHumanCharacter1:R_Ball_RIK_JNT.is"
-		;
-connectAttr "R_Ball_RIK_JNT_rotateZ.o" "WhiteboxHumanCharacter1:R_Ball_RIK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ball_RIK_JNT.s" "WhiteboxHumanCharacter1:R_Ankle_RIK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_IK_JNT.msg" "WhiteboxHumanCharacter1:R_Leg_IK_Handle.hsj"
-		;
-connectAttr "WhiteboxHumanCharacter1:effector3.hp" "WhiteboxHumanCharacter1:R_Leg_IK_Handle.hee"
-		;
-connectAttr "WhiteboxHumanCharacter1:ikRPsolver.msg" "WhiteboxHumanCharacter1:R_Leg_IK_Handle.hsv"
-		;
-connectAttr "WhiteboxHumanCharacter1:ikHandle3_poleVectorConstraint1.ctx" "WhiteboxHumanCharacter1:R_Leg_IK_Handle.pvx"
-		;
-connectAttr "WhiteboxHumanCharacter1:ikHandle3_poleVectorConstraint1.cty" "WhiteboxHumanCharacter1:R_Leg_IK_Handle.pvy"
-		;
-connectAttr "WhiteboxHumanCharacter1:ikHandle3_poleVectorConstraint1.ctz" "WhiteboxHumanCharacter1:R_Leg_IK_Handle.pvz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Leg_IK_Handle.pim" "WhiteboxHumanCharacter1:ikHandle3_poleVectorConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_IK_JNT.pm" "WhiteboxHumanCharacter1:ikHandle3_poleVectorConstraint1.ps"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_IK_JNT.t" "WhiteboxHumanCharacter1:ikHandle3_poleVectorConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Leg_IK_PoleVector.t" "WhiteboxHumanCharacter1:ikHandle3_poleVectorConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Leg_IK_PoleVector.rp" "WhiteboxHumanCharacter1:ikHandle3_poleVectorConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Leg_IK_PoleVector.rpt" "WhiteboxHumanCharacter1:ikHandle3_poleVectorConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Leg_IK_PoleVector.pm" "WhiteboxHumanCharacter1:ikHandle3_poleVectorConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:ikHandle3_poleVectorConstraint1.w0" "WhiteboxHumanCharacter1:ikHandle3_poleVectorConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ankle_IK_JNT.msg" "WhiteboxHumanCharacter1:R_Leg_IK_FootHandle01.hsj"
-		;
-connectAttr "WhiteboxHumanCharacter1:effector6.hp" "WhiteboxHumanCharacter1:R_Leg_IK_FootHandle01.hee"
-		;
-connectAttr "WhiteboxHumanCharacter1:ikSCsolver.msg" "WhiteboxHumanCharacter1:R_Leg_IK_FootHandle01.hsv"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ball_IK_JNT.msg" "WhiteboxHumanCharacter1:R_Leg_IK_FootHandle02.hsj"
-		;
-connectAttr "WhiteboxHumanCharacter1:effector7.hp" "WhiteboxHumanCharacter1:R_Leg_IK_FootHandle02.hee"
-		;
-connectAttr "WhiteboxHumanCharacter1:ikSCsolver.msg" "WhiteboxHumanCharacter1:R_Leg_IK_FootHandle02.hsv"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.ctx" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.cty" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.ctz" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.crx" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.cry" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.crz" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP.ro" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP.pim" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP.rp" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP.rpt" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT.t" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT.rp" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT.rpt" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT.r" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT.ro" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT.s" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT.pm" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT.jo" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.tg[0].tjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT.ssc" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.tg[0].tsc"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT.is" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.tg[0].tis"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.w0" "WhiteboxHumanCharacter1:L_Hand_CTRL_GRP_parentConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.ctx" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.cty" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.ctz" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.crx" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.cry" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.crz" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP.ro" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP.pim" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP.rp" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP.rpt" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT.t" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT.rp" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT.rpt" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT.r" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT.s" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT.pm" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.tg[0].tjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT.ssc" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.tg[0].tsc"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT.is" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.tg[0].tis"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.w0" "WhiteboxHumanCharacter1:R_Hand_CTRL_GRP_parentConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:COG_JNT.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:COG_JNT.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:COG_JNT.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:COG_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:COG_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:COG_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:SpineBase_RK_JNT.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:SpineBase_RK_JNT.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:SpineBase_RK_JNT.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:SpineBase_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:SpineBase_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:SpineBase_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:COG_JNT.s" "WhiteboxHumanCharacter1:SpineBase_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:Chest_RK_JNT.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:Chest_RK_JNT.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:Chest_RK_JNT.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:Chest_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:Chest_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:Chest_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:SpineBase_RK_JNT.s" "WhiteboxHumanCharacter1:Chest_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:Neck_RK_JNT.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:Neck_RK_JNT.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:Neck_RK_JNT.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:Neck_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:Neck_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:Neck_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:Chest_RK_JNT.s" "WhiteboxHumanCharacter1:Neck_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:Head_RK_JNT.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:Head_RK_JNT.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:Head_RK_JNT.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:Head_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:Head_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:Head_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:Neck_RK_JNT.s" "WhiteboxHumanCharacter1:Head_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:Head_RK_JNT.s" "WhiteboxHumanCharacter1:Head02_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:Head_RK_JNT.ro" "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:Head_RK_JNT.pim" "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:Head_RK_JNT.rp" "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:Head_RK_JNT.rpt" "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:Head_RK_JNT.jo" "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:Head_CTRL.t" "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:Head_CTRL.rp" "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:Head_CTRL.rpt" "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:Head_CTRL.r" "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:Head_CTRL.ro" "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:Head_CTRL.s" "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:Head_CTRL.pm" "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:Head_RK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:Neck_RK_JNT.ro" "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:Neck_RK_JNT.pim" "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:Neck_RK_JNT.rp" "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:Neck_RK_JNT.rpt" "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:Neck_RK_JNT.jo" "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:Neck_CTRL.t" "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:Neck_CTRL.rp" "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:Neck_CTRL.rpt" "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:Neck_CTRL.r" "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:Neck_CTRL.ro" "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:Neck_CTRL.s" "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:Neck_CTRL.pm" "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:Neck_RK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:Chest_RK_JNT.s" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.crx" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.cry" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.crz" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT.s" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.crx" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.cry" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.crz" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT.s" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.crx" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.cry" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.crz" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Elbow_RK_JNT.s" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT.ro" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT.pim" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT.jo" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT.is" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Wrist_IK_JNT.r" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Wrist_IK_JNT.ro" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Wrist_IK_JNT.pm" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Wrist_IK_JNT.jo" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.tg[0].tjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.w0" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Wrist_FK_JNT.r" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.tg[1].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Wrist_FK_JNT.ro" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.tg[1].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Wrist_FK_JNT.pm" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.tg[1].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Wrist_FK_JNT.jo" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.tg[1].tjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.w1" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.tg[1].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.L_Arm_FK_IK" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.w0"
-		;
-connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.L_Arm_FK" "WhiteboxHumanCharacter1:L_Wrist_RK_JNT_orientConstraint1.w1"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Elbow_RK_JNT.ro" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Elbow_RK_JNT.pim" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Elbow_RK_JNT.jo" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Elbow_RK_JNT.is" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Elbow_IK_JNT.r" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Elbow_IK_JNT.ro" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Elbow_IK_JNT.pm" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Elbow_IK_JNT.jo" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.tg[0].tjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.w0" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Elbow_FK_JNT.r" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.tg[1].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Elbow_FK_JNT.ro" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.tg[1].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Elbow_FK_JNT.pm" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.tg[1].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Elbow_FK_JNT.jo" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.tg[1].tjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.w1" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.tg[1].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.L_Arm_FK_IK" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.w0"
-		;
-connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.L_Arm_FK" "WhiteboxHumanCharacter1:L_Elbow_RK_JNT_orientConstraint1.w1"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT.ro" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT.pim" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT.jo" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT.is" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT.r" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT.ro" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT.pm" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT.jo" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.tg[0].tjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.w0" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT.r" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.tg[1].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT.ro" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.tg[1].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT.pm" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.tg[1].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT.jo" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.tg[1].tjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.w1" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.tg[1].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.L_Arm_FK_IK" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.w0"
-		;
-connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.L_Arm_FK" "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT_orientConstraint1.w1"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT.ro" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT.pim" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT.rp" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT.rpt" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT.jo" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Collar_FK_CTRL.t" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Collar_FK_CTRL.rp" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Collar_FK_CTRL.rpt" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Collar_FK_CTRL.r" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Collar_FK_CTRL.ro" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Collar_FK_CTRL.s" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Collar_FK_CTRL.pm" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:L_CollarBone_RK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:Chest_RK_JNT.s" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.crx" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.cry" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.crz" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT.s" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.crx" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.cry" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.crz" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT.s" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.crx" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.cry" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.crz" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Elbow_RK_JNT.s" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT.pim" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT.is" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Wrist_IK_JNT.r" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Wrist_IK_JNT.ro" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Wrist_IK_JNT.pm" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Wrist_IK_JNT.jo" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.tg[0].tjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.w0" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Wrist_FK_JNT.r" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.tg[1].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Wrist_FK_JNT.ro" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.tg[1].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Wrist_FK_JNT.pm" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.tg[1].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Wrist_FK_JNT.jo" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.tg[1].tjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.w1" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.tg[1].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.R_Arm_FK_IK" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.w0"
-		;
-connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.R_Arm_FK" "WhiteboxHumanCharacter1:R_Wrist_RK_JNT_orientConstraint1.w1"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Elbow_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Elbow_RK_JNT.pim" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Elbow_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Elbow_RK_JNT.is" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Elbow_IK_JNT.r" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Elbow_IK_JNT.ro" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Elbow_IK_JNT.pm" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Elbow_IK_JNT.jo" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.tg[0].tjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.w0" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Elbow_FK_JNT.r" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.tg[1].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Elbow_FK_JNT.ro" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.tg[1].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Elbow_FK_JNT.pm" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.tg[1].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Elbow_FK_JNT.jo" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.tg[1].tjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.w1" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.tg[1].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.R_Arm_FK_IK" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.w0"
-		;
-connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.R_Arm_FK" "WhiteboxHumanCharacter1:R_Elbow_RK_JNT_orientConstraint1.w1"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT.pim" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT.is" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT.r" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT.ro" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT.pm" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT.jo" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.tg[0].tjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.w0" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT.r" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.tg[1].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT.ro" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.tg[1].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT.pm" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.tg[1].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT.jo" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.tg[1].tjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.w1" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.tg[1].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.R_Arm_FK_IK" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.w0"
-		;
-connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.R_Arm_FK" "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT_orientConstraint1.w1"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT.ro" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT.pim" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT.rp" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT.rpt" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT.jo" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Collar_FK_CTRL.t" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Collar_FK_CTRL.rp" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Collar_FK_CTRL.rpt" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Collar_FK_CTRL.r" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Collar_FK_CTRL.ro" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Collar_FK_CTRL.s" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Collar_FK_CTRL.pm" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:R_CollarBone_RK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:Chest_RK_JNT.ro" "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:Chest_RK_JNT.pim" "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:Chest_RK_JNT.rp" "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:Chest_RK_JNT.rpt" "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:Chest_RK_JNT.jo" "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:Chest_CTRL.t" "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:Chest_CTRL.rp" "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:Chest_CTRL.rpt" "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:Chest_CTRL.r" "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:Chest_CTRL.ro" "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:Chest_CTRL.s" "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:Chest_CTRL.pm" "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:Chest_RK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:SpineBase_RK_JNT.ro" "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:SpineBase_RK_JNT.pim" "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:SpineBase_RK_JNT.rp" "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:SpineBase_RK_JNT.rpt" "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:SpineBase_RK_JNT.jo" "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:SpineBase_CTRL.t" "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:SpineBase_CTRL.rp" "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:SpineBase_CTRL.rpt" "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:SpineBase_CTRL.r" "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:SpineBase_CTRL.ro" "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:SpineBase_CTRL.s" "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:SpineBase_CTRL.pm" "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:SpineBase_RK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:Pelvis_RK_JNT.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:Pelvis_RK_JNT.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:Pelvis_RK_JNT.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:Pelvis_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:Pelvis_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:Pelvis_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:COG_JNT.s" "WhiteboxHumanCharacter1:Pelvis_RK_JNT.is"
-		;
-connectAttr "L_Hip_RK_JNT_orientConstraint1.crx" "WhiteboxHumanCharacter1:L_Hip_RK_JNT.rx"
-		;
-connectAttr "L_Hip_RK_JNT_orientConstraint1.cry" "WhiteboxHumanCharacter1:L_Hip_RK_JNT.ry"
-		;
-connectAttr "L_Hip_RK_JNT_orientConstraint1.crz" "WhiteboxHumanCharacter1:L_Hip_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:Pelvis_RK_JNT.s" "WhiteboxHumanCharacter1:L_Hip_RK_JNT.is"
-		;
-connectAttr "L_Knee_RK_JNT_orientConstraint1.crx" "WhiteboxHumanCharacter1:L_Knee_RK_JNT.rx"
-		;
-connectAttr "L_Knee_RK_JNT_orientConstraint1.cry" "WhiteboxHumanCharacter1:L_Knee_RK_JNT.ry"
-		;
-connectAttr "L_Knee_RK_JNT_orientConstraint1.crz" "WhiteboxHumanCharacter1:L_Knee_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hip_RK_JNT.s" "WhiteboxHumanCharacter1:L_Knee_RK_JNT.is"
-		;
-connectAttr "L_Ankle_RK_JNT_orientConstraint1.crx" "WhiteboxHumanCharacter1:L_Ankle_RK_JNT.rx"
-		;
-connectAttr "L_Ankle_RK_JNT_orientConstraint1.cry" "WhiteboxHumanCharacter1:L_Ankle_RK_JNT.ry"
-		;
-connectAttr "L_Ankle_RK_JNT_orientConstraint1.crz" "WhiteboxHumanCharacter1:L_Ankle_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Knee_RK_JNT.s" "WhiteboxHumanCharacter1:L_Ankle_RK_JNT.is"
-		;
-connectAttr "L_Ball_RK_JNT_orientConstraint1.crx" "WhiteboxHumanCharacter1:L_Ball_RK_JNT.rx"
-		;
-connectAttr "L_Ball_RK_JNT_orientConstraint1.cry" "WhiteboxHumanCharacter1:L_Ball_RK_JNT.ry"
-		;
-connectAttr "L_Ball_RK_JNT_orientConstraint1.crz" "WhiteboxHumanCharacter1:L_Ball_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Ankle_RK_JNT.s" "WhiteboxHumanCharacter1:L_Ball_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Ball_RK_JNT.s" "WhiteboxHumanCharacter1:L_Toe_RK_JNT.is"
-		;
-connectAttr "L_Toe_RK_JNT_orientConstraint1.crx" "WhiteboxHumanCharacter1:L_Toe_RK_JNT.rx"
-		;
-connectAttr "L_Toe_RK_JNT_orientConstraint1.cry" "WhiteboxHumanCharacter1:L_Toe_RK_JNT.ry"
-		;
-connectAttr "L_Toe_RK_JNT_orientConstraint1.crz" "WhiteboxHumanCharacter1:L_Toe_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Toe_RK_JNT.ro" "L_Toe_RK_JNT_orientConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Toe_RK_JNT.pim" "L_Toe_RK_JNT_orientConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Toe_RK_JNT.jo" "L_Toe_RK_JNT_orientConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Toe_RK_JNT.is" "L_Toe_RK_JNT_orientConstraint1.is"
-		;
-connectAttr "L_Toe_IK_JNT.r" "L_Toe_RK_JNT_orientConstraint1.tg[0].tr";
-connectAttr "L_Toe_IK_JNT.ro" "L_Toe_RK_JNT_orientConstraint1.tg[0].tro";
-connectAttr "L_Toe_IK_JNT.pm" "L_Toe_RK_JNT_orientConstraint1.tg[0].tpm";
-connectAttr "L_Toe_IK_JNT.jo" "L_Toe_RK_JNT_orientConstraint1.tg[0].tjo";
-connectAttr "L_Toe_RK_JNT_orientConstraint1.w0" "L_Toe_RK_JNT_orientConstraint1.tg[0].tw"
-		;
-connectAttr "L_Toe_FK_JNT.r" "L_Toe_RK_JNT_orientConstraint1.tg[1].tr";
-connectAttr "L_Toe_FK_JNT.ro" "L_Toe_RK_JNT_orientConstraint1.tg[1].tro";
-connectAttr "L_Toe_FK_JNT.pm" "L_Toe_RK_JNT_orientConstraint1.tg[1].tpm";
-connectAttr "L_Toe_FK_JNT.jo" "L_Toe_RK_JNT_orientConstraint1.tg[1].tjo";
-connectAttr "L_Toe_RK_JNT_orientConstraint1.w1" "L_Toe_RK_JNT_orientConstraint1.tg[1].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.L_Leg_FK_IK" "L_Toe_RK_JNT_orientConstraint1.w0"
-		;
-connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.L_Leg_FK" "L_Toe_RK_JNT_orientConstraint1.w1"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Ball_RK_JNT.ro" "L_Ball_RK_JNT_orientConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Ball_RK_JNT.pim" "L_Ball_RK_JNT_orientConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Ball_RK_JNT.jo" "L_Ball_RK_JNT_orientConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Ball_RK_JNT.is" "L_Ball_RK_JNT_orientConstraint1.is"
-		;
-connectAttr "L_Ball_IK_JNT.r" "L_Ball_RK_JNT_orientConstraint1.tg[0].tr";
-connectAttr "L_Ball_IK_JNT.ro" "L_Ball_RK_JNT_orientConstraint1.tg[0].tro";
-connectAttr "L_Ball_IK_JNT.pm" "L_Ball_RK_JNT_orientConstraint1.tg[0].tpm";
-connectAttr "L_Ball_IK_JNT.jo" "L_Ball_RK_JNT_orientConstraint1.tg[0].tjo";
-connectAttr "L_Ball_RK_JNT_orientConstraint1.w0" "L_Ball_RK_JNT_orientConstraint1.tg[0].tw"
-		;
-connectAttr "L_Ball_FK_JNT.r" "L_Ball_RK_JNT_orientConstraint1.tg[1].tr";
-connectAttr "L_Ball_FK_JNT.ro" "L_Ball_RK_JNT_orientConstraint1.tg[1].tro";
-connectAttr "L_Ball_FK_JNT.pm" "L_Ball_RK_JNT_orientConstraint1.tg[1].tpm";
-connectAttr "L_Ball_FK_JNT.jo" "L_Ball_RK_JNT_orientConstraint1.tg[1].tjo";
-connectAttr "L_Ball_RK_JNT_orientConstraint1.w1" "L_Ball_RK_JNT_orientConstraint1.tg[1].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.L_Leg_FK_IK" "L_Ball_RK_JNT_orientConstraint1.w0"
-		;
-connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.L_Leg_FK" "L_Ball_RK_JNT_orientConstraint1.w1"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Ankle_RK_JNT.ro" "L_Ankle_RK_JNT_orientConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Ankle_RK_JNT.pim" "L_Ankle_RK_JNT_orientConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Ankle_RK_JNT.jo" "L_Ankle_RK_JNT_orientConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Ankle_RK_JNT.is" "L_Ankle_RK_JNT_orientConstraint1.is"
-		;
-connectAttr "L_Ankle_IK_JNT.r" "L_Ankle_RK_JNT_orientConstraint1.tg[0].tr";
-connectAttr "L_Ankle_IK_JNT.ro" "L_Ankle_RK_JNT_orientConstraint1.tg[0].tro";
-connectAttr "L_Ankle_IK_JNT.pm" "L_Ankle_RK_JNT_orientConstraint1.tg[0].tpm";
-connectAttr "L_Ankle_IK_JNT.jo" "L_Ankle_RK_JNT_orientConstraint1.tg[0].tjo";
-connectAttr "L_Ankle_RK_JNT_orientConstraint1.w0" "L_Ankle_RK_JNT_orientConstraint1.tg[0].tw"
-		;
-connectAttr "L_Ankle_FK_JNT.r" "L_Ankle_RK_JNT_orientConstraint1.tg[1].tr";
-connectAttr "L_Ankle_FK_JNT.ro" "L_Ankle_RK_JNT_orientConstraint1.tg[1].tro";
-connectAttr "L_Ankle_FK_JNT.pm" "L_Ankle_RK_JNT_orientConstraint1.tg[1].tpm";
-connectAttr "L_Ankle_FK_JNT.jo" "L_Ankle_RK_JNT_orientConstraint1.tg[1].tjo";
-connectAttr "L_Ankle_RK_JNT_orientConstraint1.w1" "L_Ankle_RK_JNT_orientConstraint1.tg[1].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.L_Leg_FK_IK" "L_Ankle_RK_JNT_orientConstraint1.w0"
-		;
-connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.L_Leg_FK" "L_Ankle_RK_JNT_orientConstraint1.w1"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Knee_RK_JNT.ro" "L_Knee_RK_JNT_orientConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Knee_RK_JNT.pim" "L_Knee_RK_JNT_orientConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Knee_RK_JNT.jo" "L_Knee_RK_JNT_orientConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Knee_RK_JNT.is" "L_Knee_RK_JNT_orientConstraint1.is"
-		;
-connectAttr "L_Knee_IK_JNT.r" "L_Knee_RK_JNT_orientConstraint1.tg[0].tr";
-connectAttr "L_Knee_IK_JNT.ro" "L_Knee_RK_JNT_orientConstraint1.tg[0].tro";
-connectAttr "L_Knee_IK_JNT.pm" "L_Knee_RK_JNT_orientConstraint1.tg[0].tpm";
-connectAttr "L_Knee_IK_JNT.jo" "L_Knee_RK_JNT_orientConstraint1.tg[0].tjo";
-connectAttr "L_Knee_RK_JNT_orientConstraint1.w0" "L_Knee_RK_JNT_orientConstraint1.tg[0].tw"
-		;
-connectAttr "L_Knee_FK_JNT.r" "L_Knee_RK_JNT_orientConstraint1.tg[1].tr";
-connectAttr "L_Knee_FK_JNT.ro" "L_Knee_RK_JNT_orientConstraint1.tg[1].tro";
-connectAttr "L_Knee_FK_JNT.pm" "L_Knee_RK_JNT_orientConstraint1.tg[1].tpm";
-connectAttr "L_Knee_FK_JNT.jo" "L_Knee_RK_JNT_orientConstraint1.tg[1].tjo";
-connectAttr "L_Knee_RK_JNT_orientConstraint1.w1" "L_Knee_RK_JNT_orientConstraint1.tg[1].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.L_Leg_FK_IK" "L_Knee_RK_JNT_orientConstraint1.w0"
-		;
-connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.L_Leg_FK" "L_Knee_RK_JNT_orientConstraint1.w1"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hip_RK_JNT.ro" "L_Hip_RK_JNT_orientConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hip_RK_JNT.pim" "L_Hip_RK_JNT_orientConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hip_RK_JNT.jo" "L_Hip_RK_JNT_orientConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hip_RK_JNT.is" "L_Hip_RK_JNT_orientConstraint1.is"
-		;
-connectAttr "L_Hip_IK_JNT.r" "L_Hip_RK_JNT_orientConstraint1.tg[0].tr";
-connectAttr "L_Hip_IK_JNT.ro" "L_Hip_RK_JNT_orientConstraint1.tg[0].tro";
-connectAttr "L_Hip_IK_JNT.pm" "L_Hip_RK_JNT_orientConstraint1.tg[0].tpm";
-connectAttr "L_Hip_IK_JNT.jo" "L_Hip_RK_JNT_orientConstraint1.tg[0].tjo";
-connectAttr "L_Hip_RK_JNT_orientConstraint1.w0" "L_Hip_RK_JNT_orientConstraint1.tg[0].tw"
-		;
-connectAttr "L_Hip_FK_JNT.r" "L_Hip_RK_JNT_orientConstraint1.tg[1].tr";
-connectAttr "L_Hip_FK_JNT.ro" "L_Hip_RK_JNT_orientConstraint1.tg[1].tro";
-connectAttr "L_Hip_FK_JNT.pm" "L_Hip_RK_JNT_orientConstraint1.tg[1].tpm";
-connectAttr "L_Hip_FK_JNT.jo" "L_Hip_RK_JNT_orientConstraint1.tg[1].tjo";
-connectAttr "L_Hip_RK_JNT_orientConstraint1.w1" "L_Hip_RK_JNT_orientConstraint1.tg[1].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.L_Leg_FK_IK" "L_Hip_RK_JNT_orientConstraint1.w0"
-		;
-connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.L_Leg_FK" "L_Hip_RK_JNT_orientConstraint1.w1"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.crx" "WhiteboxHumanCharacter1:R_Hip_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.cry" "WhiteboxHumanCharacter1:R_Hip_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.crz" "WhiteboxHumanCharacter1:R_Hip_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:Pelvis_RK_JNT.s" "WhiteboxHumanCharacter1:R_Hip_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.crx" "WhiteboxHumanCharacter1:R_Knee_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.cry" "WhiteboxHumanCharacter1:R_Knee_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.crz" "WhiteboxHumanCharacter1:R_Knee_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_RK_JNT.s" "WhiteboxHumanCharacter1:R_Knee_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.crx" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.cry" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.crz" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Knee_RK_JNT.s" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.crx" "WhiteboxHumanCharacter1:R_Ball_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.cry" "WhiteboxHumanCharacter1:R_Ball_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.crz" "WhiteboxHumanCharacter1:R_Ball_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ankle_RK_JNT.s" "WhiteboxHumanCharacter1:R_Ball_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ball_RK_JNT.s" "WhiteboxHumanCharacter1:R_Toe_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.crx" "WhiteboxHumanCharacter1:R_Toe_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.cry" "WhiteboxHumanCharacter1:R_Toe_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.crz" "WhiteboxHumanCharacter1:R_Toe_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Toe_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Toe_RK_JNT.pim" "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Toe_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Toe_RK_JNT.is" "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Toe_IK_JNT.r" "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Toe_IK_JNT.ro" "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Toe_IK_JNT.pm" "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Toe_IK_JNT.jo" "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.tg[0].tjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.w0" "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Toe_FK_JNT.r" "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.tg[1].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Toe_FK_JNT.ro" "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.tg[1].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Toe_FK_JNT.pm" "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.tg[1].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Toe_FK_JNT.jo" "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.tg[1].tjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.w1" "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.tg[1].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.R_Leg_FK_IK" "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.w0"
-		;
-connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.R_Leg_FK" "WhiteboxHumanCharacter1:R_Toe_RK_JNT_orientConstraint1.w1"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ball_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ball_RK_JNT.pim" "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ball_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ball_RK_JNT.is" "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ball_IK_JNT.r" "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ball_IK_JNT.ro" "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ball_IK_JNT.pm" "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ball_IK_JNT.jo" "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.tg[0].tjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.w0" "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ball_FK_JNT.r" "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.tg[1].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ball_FK_JNT.ro" "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.tg[1].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ball_FK_JNT.pm" "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.tg[1].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ball_FK_JNT.jo" "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.tg[1].tjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.w1" "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.tg[1].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.R_Leg_FK_IK" "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.w0"
-		;
-connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.R_Leg_FK" "WhiteboxHumanCharacter1:R_Ball_RK_JNT_orientConstraint1.w1"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ankle_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ankle_RK_JNT.pim" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ankle_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ankle_RK_JNT.is" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ankle_IK_JNT.r" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ankle_IK_JNT.ro" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ankle_IK_JNT.pm" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ankle_IK_JNT.jo" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.tg[0].tjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.w0" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ankle_FK_JNT.r" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.tg[1].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ankle_FK_JNT.ro" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.tg[1].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ankle_FK_JNT.pm" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.tg[1].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ankle_FK_JNT.jo" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.tg[1].tjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.w1" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.tg[1].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.R_Leg_FK_IK" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.w0"
-		;
-connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.R_Leg_FK" "WhiteboxHumanCharacter1:R_Ankle_RK_JNT_orientConstraint1.w1"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Knee_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Knee_RK_JNT.pim" "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Knee_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Knee_RK_JNT.is" "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Knee_IK_JNT.r" "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Knee_IK_JNT.ro" "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Knee_IK_JNT.pm" "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Knee_IK_JNT.jo" "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.tg[0].tjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.w0" "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Knee_FK_JNT.r" "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.tg[1].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Knee_FK_JNT.ro" "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.tg[1].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Knee_FK_JNT.pm" "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.tg[1].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Knee_FK_JNT.jo" "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.tg[1].tjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.w1" "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.tg[1].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.R_Leg_FK_IK" "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.w0"
-		;
-connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.R_Leg_FK" "WhiteboxHumanCharacter1:R_Knee_RK_JNT_orientConstraint1.w1"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_RK_JNT.pim" "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_RK_JNT.is" "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_IK_JNT.r" "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_IK_JNT.ro" "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_IK_JNT.pm" "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_IK_JNT.jo" "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.tg[0].tjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.w0" "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_FK_JNT.r" "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.tg[1].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_FK_JNT.ro" "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.tg[1].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_FK_JNT.pm" "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.tg[1].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_FK_JNT.jo" "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.tg[1].tjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.w1" "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.tg[1].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.R_Leg_FK_IK" "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.w0"
-		;
-connectAttr "WhiteboxHumanCharacter1:IK_FK_Switch_CTRL.R_Leg_FK" "WhiteboxHumanCharacter1:R_Hip_RK_JNT_orientConstraint1.w1"
-		;
-connectAttr "WhiteboxHumanCharacter1:Pelvis_RK_JNT.ro" "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:Pelvis_RK_JNT.pim" "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:Pelvis_RK_JNT.rp" "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:Pelvis_RK_JNT.rpt" "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:Pelvis_RK_JNT.jo" "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:Pelvis_CTRL.t" "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:Pelvis_CTRL.rp" "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:Pelvis_CTRL.rpt" "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:Pelvis_CTRL.r" "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:Pelvis_CTRL.ro" "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:Pelvis_CTRL.s" "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:Pelvis_CTRL.pm" "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:Pelvis_RK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:COG_JNT.ro" "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:COG_JNT.pim" "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:COG_JNT.rp" "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:COG_JNT.rpt" "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:COG_JNT.jo" "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:COG_CTRL.t" "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:COG_CTRL.rp" "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:COG_CTRL.rpt" "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:COG_CTRL.r" "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:COG_CTRL.ro" "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:COG_CTRL.s" "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:COG_CTRL.pm" "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:COG_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT.s" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Elbow_FK_JNT.s" "WhiteboxHumanCharacter1:R_Wrist_FK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Elbow_FK_JNT.ro" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Elbow_FK_JNT.pim" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Elbow_FK_JNT.rp" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Elbow_FK_JNT.rpt" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Elbow_FK_JNT.jo" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.cjo"
-		;
-connectAttr "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:R_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Collar_FK_CTRL|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL.t" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:R_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Collar_FK_CTRL|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL.rp" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:R_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Collar_FK_CTRL|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL.rpt" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:R_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Collar_FK_CTRL|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL.r" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:R_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Collar_FK_CTRL|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL.ro" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:R_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Collar_FK_CTRL|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL.s" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:R_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Collar_FK_CTRL|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL.pm" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:R_Elbow_FK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT.ro" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT.pim" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT.rp" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT.rpt" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT.jo" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL.t" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL.rp" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL.rpt" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL.r" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL.ro" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL.s" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL.pm" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:R_Shoulder_FK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT.s" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Elbow_FK_JNT.s" "WhiteboxHumanCharacter1:L_Wrist_FK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Elbow_FK_JNT.ro" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Elbow_FK_JNT.pim" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Elbow_FK_JNT.rp" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Elbow_FK_JNT.rpt" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Elbow_FK_JNT.jo" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.cjo"
-		;
-connectAttr "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:L_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Collar_FK_CTRL|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL.t" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:L_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Collar_FK_CTRL|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL.rp" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:L_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Collar_FK_CTRL|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL.rpt" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:L_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Collar_FK_CTRL|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL.r" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:L_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Collar_FK_CTRL|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL.ro" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:L_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Collar_FK_CTRL|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL.s" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:L_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Collar_FK_CTRL|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL.pm" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:L_Elbow_FK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT.ro" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT.pim" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT.rp" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT.rpt" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT.jo" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL.t" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL.rp" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL.rpt" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL.r" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL.ro" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL.s" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL.pm" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:L_Shoulder_FK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "L_Hip_FK_JNT_parentConstraint1.crx" "L_Hip_FK_JNT.rx";
-connectAttr "L_Hip_FK_JNT_parentConstraint1.cry" "L_Hip_FK_JNT.ry";
-connectAttr "L_Hip_FK_JNT_parentConstraint1.crz" "L_Hip_FK_JNT.rz";
-connectAttr "L_Hip_FK_JNT_parentConstraint1.ctx" "L_Hip_FK_JNT.tx";
-connectAttr "L_Hip_FK_JNT_parentConstraint1.cty" "L_Hip_FK_JNT.ty";
-connectAttr "L_Hip_FK_JNT_parentConstraint1.ctz" "L_Hip_FK_JNT.tz";
-connectAttr "L_Knee_FK_JNT_parentConstraint1.crx" "L_Knee_FK_JNT.rx";
-connectAttr "L_Knee_FK_JNT_parentConstraint1.cry" "L_Knee_FK_JNT.ry";
-connectAttr "L_Knee_FK_JNT_parentConstraint1.crz" "L_Knee_FK_JNT.rz";
-connectAttr "L_Knee_FK_JNT_parentConstraint1.ctx" "L_Knee_FK_JNT.tx";
-connectAttr "L_Knee_FK_JNT_parentConstraint1.cty" "L_Knee_FK_JNT.ty";
-connectAttr "L_Knee_FK_JNT_parentConstraint1.ctz" "L_Knee_FK_JNT.tz";
-connectAttr "L_Hip_FK_JNT.s" "L_Knee_FK_JNT.is";
-connectAttr "L_Ankle_FK_JNT_parentConstraint1.crx" "L_Ankle_FK_JNT.rx";
-connectAttr "L_Ankle_FK_JNT_parentConstraint1.cry" "L_Ankle_FK_JNT.ry";
-connectAttr "L_Ankle_FK_JNT_parentConstraint1.crz" "L_Ankle_FK_JNT.rz";
-connectAttr "L_Ankle_FK_JNT_parentConstraint1.ctx" "L_Ankle_FK_JNT.tx";
-connectAttr "L_Ankle_FK_JNT_parentConstraint1.cty" "L_Ankle_FK_JNT.ty";
-connectAttr "L_Ankle_FK_JNT_parentConstraint1.ctz" "L_Ankle_FK_JNT.tz";
-connectAttr "L_Knee_FK_JNT.s" "L_Ankle_FK_JNT.is";
-connectAttr "L_Ball_FK_JNT_parentConstraint1.crx" "L_Ball_FK_JNT.rx";
-connectAttr "L_Ball_FK_JNT_parentConstraint1.cry" "L_Ball_FK_JNT.ry";
-connectAttr "L_Ball_FK_JNT_parentConstraint1.crz" "L_Ball_FK_JNT.rz";
-connectAttr "L_Ball_FK_JNT_parentConstraint1.ctx" "L_Ball_FK_JNT.tx";
-connectAttr "L_Ball_FK_JNT_parentConstraint1.cty" "L_Ball_FK_JNT.ty";
-connectAttr "L_Ball_FK_JNT_parentConstraint1.ctz" "L_Ball_FK_JNT.tz";
-connectAttr "L_Ankle_FK_JNT.s" "L_Ball_FK_JNT.is";
-connectAttr "L_Ball_FK_JNT.s" "L_Toe_FK_JNT.is";
-connectAttr "L_Ball_FK_JNT.ro" "L_Ball_FK_JNT_parentConstraint1.cro";
-connectAttr "L_Ball_FK_JNT.pim" "L_Ball_FK_JNT_parentConstraint1.cpim";
-connectAttr "L_Ball_FK_JNT.rp" "L_Ball_FK_JNT_parentConstraint1.crp";
-connectAttr "L_Ball_FK_JNT.rpt" "L_Ball_FK_JNT_parentConstraint1.crt";
-connectAttr "L_Ball_FK_JNT.jo" "L_Ball_FK_JNT_parentConstraint1.cjo";
-connectAttr "WhiteboxHumanCharacter1:L_Ball_FK_CTRL.t" "L_Ball_FK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Ball_FK_CTRL.rp" "L_Ball_FK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Ball_FK_CTRL.rpt" "L_Ball_FK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Ball_FK_CTRL.r" "L_Ball_FK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Ball_FK_CTRL.ro" "L_Ball_FK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Ball_FK_CTRL.s" "L_Ball_FK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Ball_FK_CTRL.pm" "L_Ball_FK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "L_Ball_FK_JNT_parentConstraint1.w0" "L_Ball_FK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "L_Ankle_FK_JNT.ro" "L_Ankle_FK_JNT_parentConstraint1.cro";
-connectAttr "L_Ankle_FK_JNT.pim" "L_Ankle_FK_JNT_parentConstraint1.cpim";
-connectAttr "L_Ankle_FK_JNT.rp" "L_Ankle_FK_JNT_parentConstraint1.crp";
-connectAttr "L_Ankle_FK_JNT.rpt" "L_Ankle_FK_JNT_parentConstraint1.crt";
-connectAttr "L_Ankle_FK_JNT.jo" "L_Ankle_FK_JNT_parentConstraint1.cjo";
-connectAttr "WhiteboxHumanCharacter1:L_Ankle_FK_CTRL.t" "L_Ankle_FK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Ankle_FK_CTRL.rp" "L_Ankle_FK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Ankle_FK_CTRL.rpt" "L_Ankle_FK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Ankle_FK_CTRL.r" "L_Ankle_FK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Ankle_FK_CTRL.ro" "L_Ankle_FK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Ankle_FK_CTRL.s" "L_Ankle_FK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Ankle_FK_CTRL.pm" "L_Ankle_FK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "L_Ankle_FK_JNT_parentConstraint1.w0" "L_Ankle_FK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "L_Knee_FK_JNT.ro" "L_Knee_FK_JNT_parentConstraint1.cro";
-connectAttr "L_Knee_FK_JNT.pim" "L_Knee_FK_JNT_parentConstraint1.cpim";
-connectAttr "L_Knee_FK_JNT.rp" "L_Knee_FK_JNT_parentConstraint1.crp";
-connectAttr "L_Knee_FK_JNT.rpt" "L_Knee_FK_JNT_parentConstraint1.crt";
-connectAttr "L_Knee_FK_JNT.jo" "L_Knee_FK_JNT_parentConstraint1.cjo";
-connectAttr "WhiteboxHumanCharacter1:L_Knee_FK_CTRL.t" "L_Knee_FK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Knee_FK_CTRL.rp" "L_Knee_FK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Knee_FK_CTRL.rpt" "L_Knee_FK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Knee_FK_CTRL.r" "L_Knee_FK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Knee_FK_CTRL.ro" "L_Knee_FK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Knee_FK_CTRL.s" "L_Knee_FK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Knee_FK_CTRL.pm" "L_Knee_FK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "L_Knee_FK_JNT_parentConstraint1.w0" "L_Knee_FK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "L_Hip_FK_JNT.ro" "L_Hip_FK_JNT_parentConstraint1.cro";
-connectAttr "L_Hip_FK_JNT.pim" "L_Hip_FK_JNT_parentConstraint1.cpim";
-connectAttr "L_Hip_FK_JNT.rp" "L_Hip_FK_JNT_parentConstraint1.crp";
-connectAttr "L_Hip_FK_JNT.rpt" "L_Hip_FK_JNT_parentConstraint1.crt";
-connectAttr "L_Hip_FK_JNT.jo" "L_Hip_FK_JNT_parentConstraint1.cjo";
-connectAttr "WhiteboxHumanCharacter1:L_Hip_FK_CTLR.t" "L_Hip_FK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hip_FK_CTLR.rp" "L_Hip_FK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hip_FK_CTLR.rpt" "L_Hip_FK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hip_FK_CTLR.r" "L_Hip_FK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hip_FK_CTLR.ro" "L_Hip_FK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hip_FK_CTLR.s" "L_Hip_FK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hip_FK_CTLR.pm" "L_Hip_FK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "L_Hip_FK_JNT_parentConstraint1.w0" "L_Hip_FK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "R_Hip_FK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:R_Hip_FK_JNT.rx"
-		;
-connectAttr "R_Hip_FK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:R_Hip_FK_JNT.ry"
-		;
-connectAttr "R_Hip_FK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:R_Hip_FK_JNT.rz"
-		;
-connectAttr "R_Hip_FK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:R_Hip_FK_JNT.tx"
-		;
-connectAttr "R_Hip_FK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:R_Hip_FK_JNT.ty"
-		;
-connectAttr "R_Hip_FK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:R_Hip_FK_JNT.tz"
-		;
-connectAttr "R_Knee_FK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:R_Knee_FK_JNT.rx"
-		;
-connectAttr "R_Knee_FK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:R_Knee_FK_JNT.ry"
-		;
-connectAttr "R_Knee_FK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:R_Knee_FK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_FK_JNT.s" "WhiteboxHumanCharacter1:R_Knee_FK_JNT.is"
-		;
-connectAttr "R_Knee_FK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:R_Knee_FK_JNT.tx"
-		;
-connectAttr "R_Knee_FK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:R_Knee_FK_JNT.ty"
-		;
-connectAttr "R_Knee_FK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:R_Knee_FK_JNT.tz"
-		;
-connectAttr "R_Ankle_FK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:R_Ankle_FK_JNT.rx"
-		;
-connectAttr "R_Ankle_FK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:R_Ankle_FK_JNT.ry"
-		;
-connectAttr "R_Ankle_FK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:R_Ankle_FK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Knee_FK_JNT.s" "WhiteboxHumanCharacter1:R_Ankle_FK_JNT.is"
-		;
-connectAttr "R_Ankle_FK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:R_Ankle_FK_JNT.tx"
-		;
-connectAttr "R_Ankle_FK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:R_Ankle_FK_JNT.ty"
-		;
-connectAttr "R_Ankle_FK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:R_Ankle_FK_JNT.tz"
-		;
-connectAttr "R_Ball_FK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:R_Ball_FK_JNT.rx"
-		;
-connectAttr "R_Ball_FK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:R_Ball_FK_JNT.ry"
-		;
-connectAttr "R_Ball_FK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:R_Ball_FK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ankle_FK_JNT.s" "WhiteboxHumanCharacter1:R_Ball_FK_JNT.is"
-		;
-connectAttr "R_Ball_FK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:R_Ball_FK_JNT.tx"
-		;
-connectAttr "R_Ball_FK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:R_Ball_FK_JNT.ty"
-		;
-connectAttr "R_Ball_FK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:R_Ball_FK_JNT.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ball_FK_JNT.s" "WhiteboxHumanCharacter1:R_Toe_FK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ball_FK_JNT.ro" "R_Ball_FK_JNT_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ball_FK_JNT.pim" "R_Ball_FK_JNT_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ball_FK_JNT.rp" "R_Ball_FK_JNT_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ball_FK_JNT.rpt" "R_Ball_FK_JNT_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ball_FK_JNT.jo" "R_Ball_FK_JNT_parentConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ball_FK_CTRL.t" "R_Ball_FK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ball_FK_CTRL.rp" "R_Ball_FK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ball_FK_CTRL.rpt" "R_Ball_FK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ball_FK_CTRL.r" "R_Ball_FK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ball_FK_CTRL.ro" "R_Ball_FK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ball_FK_CTRL.s" "R_Ball_FK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ball_FK_CTRL.pm" "R_Ball_FK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "R_Ball_FK_JNT_parentConstraint1.w0" "R_Ball_FK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ankle_FK_JNT.ro" "R_Ankle_FK_JNT_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ankle_FK_JNT.pim" "R_Ankle_FK_JNT_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ankle_FK_JNT.rp" "R_Ankle_FK_JNT_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ankle_FK_JNT.rpt" "R_Ankle_FK_JNT_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ankle_FK_JNT.jo" "R_Ankle_FK_JNT_parentConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ankle_FK_CTRL.t" "R_Ankle_FK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ankle_FK_CTRL.rp" "R_Ankle_FK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ankle_FK_CTRL.rpt" "R_Ankle_FK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ankle_FK_CTRL.r" "R_Ankle_FK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ankle_FK_CTRL.ro" "R_Ankle_FK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ankle_FK_CTRL.s" "R_Ankle_FK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ankle_FK_CTRL.pm" "R_Ankle_FK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "R_Ankle_FK_JNT_parentConstraint1.w0" "R_Ankle_FK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Knee_FK_JNT.ro" "R_Knee_FK_JNT_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Knee_FK_JNT.pim" "R_Knee_FK_JNT_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Knee_FK_JNT.rp" "R_Knee_FK_JNT_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Knee_FK_JNT.rpt" "R_Knee_FK_JNT_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Knee_FK_JNT.jo" "R_Knee_FK_JNT_parentConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Knee_FK_CTRL.t" "R_Knee_FK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Knee_FK_CTRL.rp" "R_Knee_FK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Knee_FK_CTRL.rpt" "R_Knee_FK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Knee_FK_CTRL.r" "R_Knee_FK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Knee_FK_CTRL.ro" "R_Knee_FK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Knee_FK_CTRL.s" "R_Knee_FK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Knee_FK_CTRL.pm" "R_Knee_FK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "R_Knee_FK_JNT_parentConstraint1.w0" "R_Knee_FK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_FK_JNT.ro" "R_Hip_FK_JNT_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_FK_JNT.pim" "R_Hip_FK_JNT_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_FK_JNT.rp" "R_Hip_FK_JNT_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_FK_JNT.rpt" "R_Hip_FK_JNT_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_FK_JNT.jo" "R_Hip_FK_JNT_parentConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_FK_CTLR.t" "R_Hip_FK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_FK_CTLR.rp" "R_Hip_FK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_FK_CTLR.rpt" "R_Hip_FK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_FK_CTLR.r" "R_Hip_FK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_FK_CTLR.ro" "R_Hip_FK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_FK_CTLR.s" "R_Hip_FK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_FK_CTLR.pm" "R_Hip_FK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "R_Hip_FK_JNT_parentConstraint1.w0" "R_Hip_FK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT_pointConstraint1.ctx" "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT_pointConstraint1.cty" "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT_pointConstraint1.ctz" "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT.s" "WhiteboxHumanCharacter1:R_Elbow_IK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Elbow_IK_JNT.s" "WhiteboxHumanCharacter1:R_Wrist_IK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Wrist_IK_JNT.tx" "WhiteboxHumanCharacter1:effector8.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Wrist_IK_JNT.ty" "WhiteboxHumanCharacter1:effector8.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Wrist_IK_JNT.tz" "WhiteboxHumanCharacter1:effector8.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT.pim" "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT_pointConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT.rp" "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT_pointConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT.rpt" "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT_pointConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT.t" "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT_pointConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT.rp" "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT_pointConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT.rpt" "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT_pointConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_RK_JNT.pm" "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT_pointConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT_pointConstraint1.w0" "WhiteboxHumanCharacter1:R_Shoulder_IK_JNT_pointConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT_pointConstraint1.ctx" "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT_pointConstraint1.cty" "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT_pointConstraint1.ctz" "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT.s" "WhiteboxHumanCharacter1:L_Elbow_IK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Elbow_IK_JNT.s" "WhiteboxHumanCharacter1:L_Wrist_IK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Wrist_IK_JNT.tx" "WhiteboxHumanCharacter1:effector9.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Wrist_IK_JNT.ty" "WhiteboxHumanCharacter1:effector9.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Wrist_IK_JNT.tz" "WhiteboxHumanCharacter1:effector9.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT.pim" "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT_pointConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT.rp" "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT_pointConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT.rpt" "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT_pointConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT.t" "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT_pointConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT.rp" "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT_pointConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT.rpt" "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT_pointConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_RK_JNT.pm" "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT_pointConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT_pointConstraint1.w0" "WhiteboxHumanCharacter1:L_Shoulder_IK_JNT_pointConstraint1.tg[0].tw"
-		;
-connectAttr "L_Hip_IK_JNT_pointConstraint1.ctx" "L_Hip_IK_JNT.tx";
-connectAttr "L_Hip_IK_JNT_pointConstraint1.cty" "L_Hip_IK_JNT.ty";
-connectAttr "L_Hip_IK_JNT_pointConstraint1.ctz" "L_Hip_IK_JNT.tz";
-connectAttr "L_Hip_IK_JNT.s" "L_Knee_IK_JNT.is";
-connectAttr "L_Knee_IK_JNT.s" "L_Ankle_IK_JNT.is";
-connectAttr "L_Ankle_IK_JNT.s" "L_Ball_IK_JNT.is";
-connectAttr "L_Ball_IK_JNT.s" "L_Toe_IK_JNT.is";
-connectAttr "L_Toe_IK_JNT.tx" "effector2.tx";
-connectAttr "L_Toe_IK_JNT.ty" "effector2.ty";
-connectAttr "L_Toe_IK_JNT.tz" "effector2.tz";
-connectAttr "L_Ball_IK_JNT.tx" "effector1.tx";
-connectAttr "L_Ball_IK_JNT.ty" "effector1.ty";
-connectAttr "L_Ball_IK_JNT.tz" "effector1.tz";
-connectAttr "L_Ankle_IK_JNT.tx" "effector3.tx";
-connectAttr "L_Ankle_IK_JNT.ty" "effector3.ty";
-connectAttr "L_Ankle_IK_JNT.tz" "effector3.tz";
-connectAttr "L_Hip_IK_JNT.pim" "L_Hip_IK_JNT_pointConstraint1.cpim";
-connectAttr "L_Hip_IK_JNT.rp" "L_Hip_IK_JNT_pointConstraint1.crp";
-connectAttr "L_Hip_IK_JNT.rpt" "L_Hip_IK_JNT_pointConstraint1.crt";
-connectAttr "WhiteboxHumanCharacter1:L_Hip_RK_JNT.t" "L_Hip_IK_JNT_pointConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hip_RK_JNT.rp" "L_Hip_IK_JNT_pointConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hip_RK_JNT.rpt" "L_Hip_IK_JNT_pointConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hip_RK_JNT.pm" "L_Hip_IK_JNT_pointConstraint1.tg[0].tpm"
-		;
-connectAttr "L_Hip_IK_JNT_pointConstraint1.w0" "L_Hip_IK_JNT_pointConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_IK_JNT_pointConstraint1.ctx" "WhiteboxHumanCharacter1:R_Hip_IK_JNT.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_IK_JNT_pointConstraint1.cty" "WhiteboxHumanCharacter1:R_Hip_IK_JNT.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_IK_JNT_pointConstraint1.ctz" "WhiteboxHumanCharacter1:R_Hip_IK_JNT.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_IK_JNT.s" "WhiteboxHumanCharacter1:R_Knee_IK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Knee_IK_JNT.s" "WhiteboxHumanCharacter1:R_Ankle_IK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ankle_IK_JNT.s" "WhiteboxHumanCharacter1:R_Ball_IK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ball_IK_JNT.s" "WhiteboxHumanCharacter1:R_Toe_IK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Toe_IK_JNT.tx" "WhiteboxHumanCharacter1:effector7.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Toe_IK_JNT.ty" "WhiteboxHumanCharacter1:effector7.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Toe_IK_JNT.tz" "WhiteboxHumanCharacter1:effector7.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ball_IK_JNT.tx" "WhiteboxHumanCharacter1:effector6.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ball_IK_JNT.ty" "WhiteboxHumanCharacter1:effector6.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ball_IK_JNT.tz" "WhiteboxHumanCharacter1:effector6.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ankle_IK_JNT.tx" "WhiteboxHumanCharacter1:effector3.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ankle_IK_JNT.ty" "WhiteboxHumanCharacter1:effector3.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Ankle_IK_JNT.tz" "WhiteboxHumanCharacter1:effector3.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_IK_JNT.pim" "WhiteboxHumanCharacter1:R_Hip_IK_JNT_pointConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_IK_JNT.rp" "WhiteboxHumanCharacter1:R_Hip_IK_JNT_pointConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_IK_JNT.rpt" "WhiteboxHumanCharacter1:R_Hip_IK_JNT_pointConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_RK_JNT.t" "WhiteboxHumanCharacter1:R_Hip_IK_JNT_pointConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_RK_JNT.rp" "WhiteboxHumanCharacter1:R_Hip_IK_JNT_pointConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_RK_JNT.rpt" "WhiteboxHumanCharacter1:R_Hip_IK_JNT_pointConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_RK_JNT.pm" "WhiteboxHumanCharacter1:R_Hip_IK_JNT_pointConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hip_IK_JNT_pointConstraint1.w0" "WhiteboxHumanCharacter1:R_Hip_IK_JNT_pointConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:R_Hand_RK_JNT.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:R_Hand_RK_JNT.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:R_Hand_RK_JNT.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:R_Hand_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:R_Hand_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:R_Hand_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:R_Index01_RK_JNT.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:R_Index01_RK_JNT.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:R_Index01_RK_JNT.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:R_Index01_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:R_Index01_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:R_Index01_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hand_RK_JNT.s" "WhiteboxHumanCharacter1:R_Index01_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:R_Index02_RK_JNT.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:R_Index02_RK_JNT.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:R_Index02_RK_JNT.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:R_Index02_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:R_Index02_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:R_Index02_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index01_RK_JNT.s" "WhiteboxHumanCharacter1:R_Index02_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:R_Index03_RK_JNT.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:R_Index03_RK_JNT.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:R_Index03_RK_JNT.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:R_Index03_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:R_Index03_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:R_Index03_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index02_RK_JNT.s" "WhiteboxHumanCharacter1:R_Index03_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index03_RK_JNT.s" "WhiteboxHumanCharacter1:R_Index04_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index03_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index03_RK_JNT.pim" "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index03_RK_JNT.rp" "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index03_RK_JNT.rpt" "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index03_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index03_CTRL.t" "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index03_CTRL.rp" "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index03_CTRL.rpt" "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index03_CTRL.r" "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index03_CTRL.ro" "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index03_CTRL.s" "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index03_CTRL.pm" "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:R_Index03_RK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index02_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index02_RK_JNT.pim" "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index02_RK_JNT.rp" "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index02_RK_JNT.rpt" "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index02_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index02_CTRL.t" "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index02_CTRL.rp" "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index02_CTRL.rpt" "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index02_CTRL.r" "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index02_CTRL.ro" "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index02_CTRL.s" "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index02_CTRL.pm" "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:R_Index02_RK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index01_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index01_RK_JNT.pim" "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index01_RK_JNT.rp" "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index01_RK_JNT.rpt" "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index01_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index01_CTRL.t" "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index01_CTRL.rp" "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index01_CTRL.rpt" "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index01_CTRL.r" "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index01_CTRL.ro" "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index01_CTRL.s" "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index01_CTRL.pm" "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:R_Index01_RK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hand_RK_JNT.s" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT.s" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT.s" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT.s" "WhiteboxHumanCharacter1:R_Thumb04_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT.pim" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT.rp" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT.rpt" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.cjo"
-		;
-connectAttr "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL|WhiteboxHumanCharacter1:R_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb01_CTRL|WhiteboxHumanCharacter1:R_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb02_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL.t" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL|WhiteboxHumanCharacter1:R_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb01_CTRL|WhiteboxHumanCharacter1:R_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb02_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL.rp" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL|WhiteboxHumanCharacter1:R_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb01_CTRL|WhiteboxHumanCharacter1:R_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb02_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL.rpt" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL|WhiteboxHumanCharacter1:R_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb01_CTRL|WhiteboxHumanCharacter1:R_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb02_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL.r" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL|WhiteboxHumanCharacter1:R_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb01_CTRL|WhiteboxHumanCharacter1:R_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb02_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL.ro" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL|WhiteboxHumanCharacter1:R_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb01_CTRL|WhiteboxHumanCharacter1:R_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb02_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL.s" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL|WhiteboxHumanCharacter1:R_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb01_CTRL|WhiteboxHumanCharacter1:R_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb02_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL.pm" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:R_Thumb03_RK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT.pim" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT.rp" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT.rpt" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb02_CTRL.t" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb02_CTRL.rp" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb02_CTRL.rpt" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb02_CTRL.r" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb02_CTRL.ro" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb02_CTRL.s" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb02_CTRL.pm" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:R_Thumb02_RK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT.pim" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT.rp" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT.rpt" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb01_CTRL.t" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb01_CTRL.rp" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb01_CTRL.rpt" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb01_CTRL.r" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb01_CTRL.ro" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb01_CTRL.s" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb01_CTRL.pm" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:R_Thumb01_RK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hand_RK_JNT.s" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT.s" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT.s" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT.s" "WhiteboxHumanCharacter1:R_Fingers04_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT.pim" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT.rp" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT.rpt" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Finger03_CTRL.t" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Finger03_CTRL.rp" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Finger03_CTRL.rpt" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Finger03_CTRL.r" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Finger03_CTRL.ro" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Finger03_CTRL.s" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Finger03_CTRL.pm" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:R_Fingers03_RK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT.pim" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT.rp" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT.rpt" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Finger02_CTRL.t" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Finger02_CTRL.rp" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Finger02_CTRL.rpt" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Finger02_CTRL.r" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Finger02_CTRL.ro" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Finger02_CTRL.s" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Finger02_CTRL.pm" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:R_Fingers02_RK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT.pim" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT.rp" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT.rpt" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Finger01_CTRL.t" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Finger01_CTRL.rp" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Finger01_CTRL.rpt" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Finger01_CTRL.r" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Finger01_CTRL.ro" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Finger01_CTRL.s" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Finger01_CTRL.pm" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:R_Fingers01_RK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hand_RK_JNT.ro" "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hand_RK_JNT.pim" "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hand_RK_JNT.rp" "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hand_RK_JNT.rpt" "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hand_RK_JNT.jo" "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hand_CTRL.t" "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hand_CTRL.rp" "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hand_CTRL.rpt" "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hand_CTRL.r" "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hand_CTRL.ro" "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hand_CTRL.s" "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hand_CTRL.pm" "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:R_Hand_RK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:L_Hand_RK_JNT.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:L_Hand_RK_JNT.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:L_Hand_RK_JNT.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:L_Hand_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:L_Hand_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:L_Hand_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:L_Index01_RK_JNT.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:L_Index01_RK_JNT.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:L_Index01_RK_JNT.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:L_Index01_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:L_Index01_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:L_Index01_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hand_RK_JNT.s" "WhiteboxHumanCharacter1:L_Index01_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:L_Index02_RK_JNT.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:L_Index02_RK_JNT.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:L_Index02_RK_JNT.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:L_Index02_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:L_Index02_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:L_Index02_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index01_RK_JNT.s" "WhiteboxHumanCharacter1:L_Index02_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:L_Index03_RK_JNT.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:L_Index03_RK_JNT.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:L_Index03_RK_JNT.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:L_Index03_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:L_Index03_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:L_Index03_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index02_RK_JNT.s" "WhiteboxHumanCharacter1:L_Index03_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index03_RK_JNT.s" "WhiteboxHumanCharacter1:L_Index04_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index03_RK_JNT.ro" "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index03_RK_JNT.pim" "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index03_RK_JNT.rp" "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index03_RK_JNT.rpt" "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index03_RK_JNT.jo" "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index03_CTRL.t" "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index03_CTRL.rp" "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index03_CTRL.rpt" "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index03_CTRL.r" "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index03_CTRL.ro" "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index03_CTRL.s" "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index03_CTRL.pm" "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:L_Index03_RK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index02_RK_JNT.ro" "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index02_RK_JNT.pim" "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index02_RK_JNT.rp" "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index02_RK_JNT.rpt" "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index02_RK_JNT.jo" "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index02_CTRL.t" "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index02_CTRL.rp" "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index02_CTRL.rpt" "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index02_CTRL.r" "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index02_CTRL.ro" "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index02_CTRL.s" "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index02_CTRL.pm" "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:L_Index02_RK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index01_RK_JNT.ro" "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index01_RK_JNT.pim" "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index01_RK_JNT.rp" "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index01_RK_JNT.rpt" "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index01_RK_JNT.jo" "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index01_CTRL.t" "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index01_CTRL.rp" "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index01_CTRL.rpt" "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index01_CTRL.r" "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index01_CTRL.ro" "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index01_CTRL.s" "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index01_CTRL.pm" "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:L_Index01_RK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hand_RK_JNT.s" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT.s" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT.s" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT.s" "WhiteboxHumanCharacter1:L_Thumb04_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT.ro" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT.pim" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT.rp" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT.rpt" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT.jo" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.cjo"
-		;
-connectAttr "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL|WhiteboxHumanCharacter1:L_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb01_CTRL|WhiteboxHumanCharacter1:L_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb02_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL.t" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL|WhiteboxHumanCharacter1:L_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb01_CTRL|WhiteboxHumanCharacter1:L_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb02_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL.rp" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL|WhiteboxHumanCharacter1:L_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb01_CTRL|WhiteboxHumanCharacter1:L_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb02_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL.rpt" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL|WhiteboxHumanCharacter1:L_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb01_CTRL|WhiteboxHumanCharacter1:L_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb02_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL.r" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL|WhiteboxHumanCharacter1:L_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb01_CTRL|WhiteboxHumanCharacter1:L_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb02_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL.ro" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL|WhiteboxHumanCharacter1:L_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb01_CTRL|WhiteboxHumanCharacter1:L_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb02_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL.s" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL|WhiteboxHumanCharacter1:L_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb01_CTRL|WhiteboxHumanCharacter1:L_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb02_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL.pm" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:L_Thumb03_RK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT.ro" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT.pim" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT.rp" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT.rpt" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT.jo" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb02_CTRL.t" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb02_CTRL.rp" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb02_CTRL.rpt" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb02_CTRL.r" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb02_CTRL.ro" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb02_CTRL.s" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb02_CTRL.pm" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:L_Thumb02_RK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT.ro" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT.pim" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT.rp" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT.rpt" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT.jo" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb01_CTRL.t" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb01_CTRL.rp" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb01_CTRL.rpt" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb01_CTRL.r" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb01_CTRL.ro" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb01_CTRL.s" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb01_CTRL.pm" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:L_Thumb01_RK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hand_RK_JNT.s" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT.s" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.ctx" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT.tx"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.cty" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT.ty"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.ctz" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT.tz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.crx" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT.rx"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.cry" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT.ry"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.crz" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT.rz"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT.s" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT.s" "WhiteboxHumanCharacter1:L_Fingers04_RK_JNT.is"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT.ro" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT.pim" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT.rp" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT.rpt" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT.jo" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Finger03_CTRL.t" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Finger03_CTRL.rp" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Finger03_CTRL.rpt" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Finger03_CTRL.r" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Finger03_CTRL.ro" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Finger03_CTRL.s" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Finger03_CTRL.pm" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:L_Fingers03_RK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT.ro" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT.pim" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT.rp" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT.rpt" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT.jo" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Finger02_CTRL.t" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Finger02_CTRL.rp" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Finger02_CTRL.rpt" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Finger02_CTRL.r" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Finger02_CTRL.ro" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Finger02_CTRL.s" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Finger02_CTRL.pm" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:L_Fingers02_RK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT.ro" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT.pim" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT.rp" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT.rpt" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT.jo" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Finger01_CTRL.t" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Finger01_CTRL.rp" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Finger01_CTRL.rpt" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Finger01_CTRL.r" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Finger01_CTRL.ro" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Finger01_CTRL.s" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Finger01_CTRL.pm" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:L_Fingers01_RK_JNT_parentConstraint1.tg[0].tw"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hand_RK_JNT.ro" "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.cro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hand_RK_JNT.pim" "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.cpim"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hand_RK_JNT.rp" "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.crp"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hand_RK_JNT.rpt" "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.crt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hand_RK_JNT.jo" "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.cjo"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hand_CTRL.t" "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.tg[0].tt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hand_CTRL.rp" "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.tg[0].trp"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hand_CTRL.rpt" "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.tg[0].trt"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hand_CTRL.r" "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.tg[0].tr"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hand_CTRL.ro" "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.tg[0].tro"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hand_CTRL.s" "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.tg[0].ts"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hand_CTRL.pm" "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.tg[0].tpm"
-		;
-connectAttr "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.w0" "WhiteboxHumanCharacter1:L_Hand_RK_JNT_parentConstraint1.tg[0].tw"
-		;
 relationship "link" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" ":initialParticleSE.message" ":defaultLightSet.message";
 relationship "shadowLink" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
@@ -19264,7 +19266,7 @@ connectAttr "WhiteboxHumanCharacter1:L_Sholder02.msg" "WhiteboxHumanCharacter1:M
 		;
 connectAttr "WhiteboxHumanCharacter1:R_Index03_RK_JNT.msg" "WhiteboxHumanCharacter1:MayaNodeEditorSavedTabsInfo.tgi[0].ni[148].dn"
 		;
-connectAttr "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:R_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Collar_FK_CTRL|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL.msg" "WhiteboxHumanCharacter1:MayaNodeEditorSavedTabsInfo.tgi[0].ni[149].dn"
+connectAttr "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:R_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Collar_FK_CTRL|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL.msg" "WhiteboxHumanCharacter1:MayaNodeEditorSavedTabsInfo.tgi[0].ni[149].dn"
 		;
 connectAttr "WhiteboxHumanCharacter1:R_Toes.msg" "WhiteboxHumanCharacter1:MayaNodeEditorSavedTabsInfo.tgi[0].ni[150].dn"
 		;
@@ -19883,9 +19885,9 @@ connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL.msg" "MayaNodeEditorSave
 		;
 connectAttr "WhiteboxHumanCharacter1:R_Shoulder_FK_CTRLShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[299].dn"
 		;
-connectAttr "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:R_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Collar_FK_CTRL|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[300].dn"
+connectAttr "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:R_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Collar_FK_CTRL|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[300].dn"
 		;
-connectAttr "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:R_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Collar_FK_CTRL|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[301].dn"
+connectAttr "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:R_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Collar_FK_CTRL|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:R_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL|WhiteboxHumanCharacter1:R_Elbow_FK_CTRL.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[301].dn"
 		;
 connectAttr "WhiteboxHumanCharacter1:R_Elbow_FK_CTRLShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[302].dn"
 		;
@@ -19901,9 +19903,9 @@ connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL.msg" "MayaNodeEditorSave
 		;
 connectAttr "WhiteboxHumanCharacter1:L_Shoulder_FK_CTRLShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[308].dn"
 		;
-connectAttr "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:L_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Collar_FK_CTRL|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[309].dn"
+connectAttr "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:L_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Collar_FK_CTRL|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[309].dn"
 		;
-connectAttr "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:L_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Collar_FK_CTRL|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[310].dn"
+connectAttr "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:COG_CTRL|WhiteboxHumanCharacter1:SpineBase_CTRL_GRP|WhiteboxHumanCharacter1:SpineBase_CTRL|WhiteboxHumanCharacter1:Chest_CTRL_GRP|WhiteboxHumanCharacter1:Chest_CTRL|WhiteboxHumanCharacter1:L_Collar_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Collar_FK_CTRL|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL_GRP|WhiteboxHumanCharacter1:L_Shoulder_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL|WhiteboxHumanCharacter1:L_Elbow_FK_CTRL.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[310].dn"
 		;
 connectAttr "WhiteboxHumanCharacter1:L_Elbow_FK_CTRLShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[311].dn"
 		;
@@ -20049,9 +20051,9 @@ connectAttr "WhiteboxHumanCharacter1:L_Thumb02_CTRL.msg" "MayaNodeEditorSavedTab
 		;
 connectAttr "WhiteboxHumanCharacter1:L_Thumb02_CTRLShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[382].dn"
 		;
-connectAttr "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL|WhiteboxHumanCharacter1:L_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb01_CTRL|WhiteboxHumanCharacter1:L_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb02_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[383].dn"
+connectAttr "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL|WhiteboxHumanCharacter1:L_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb01_CTRL|WhiteboxHumanCharacter1:L_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb02_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[383].dn"
 		;
-connectAttr "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL|WhiteboxHumanCharacter1:L_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb01_CTRL|WhiteboxHumanCharacter1:L_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb02_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[384].dn"
+connectAttr "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL_GRP|WhiteboxHumanCharacter1:L_Hand_CTRL|WhiteboxHumanCharacter1:L_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb01_CTRL|WhiteboxHumanCharacter1:L_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:L_Thumb02_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL|WhiteboxHumanCharacter1:L_Thumb03_CTRL.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[384].dn"
 		;
 connectAttr "WhiteboxHumanCharacter1:L_Thumb03_CTRLShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[385].dn"
 		;
@@ -20155,9 +20157,9 @@ connectAttr "WhiteboxHumanCharacter1:R_Thumb02_CTRL.msg" "MayaNodeEditorSavedTab
 		;
 connectAttr "WhiteboxHumanCharacter1:R_Thumb02_CTRLShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[435].dn"
 		;
-connectAttr "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL|WhiteboxHumanCharacter1:R_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb01_CTRL|WhiteboxHumanCharacter1:R_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb02_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[436].dn"
+connectAttr "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL|WhiteboxHumanCharacter1:R_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb01_CTRL|WhiteboxHumanCharacter1:R_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb02_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[436].dn"
 		;
-connectAttr "|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL|WhiteboxHumanCharacter1:R_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb01_CTRL|WhiteboxHumanCharacter1:R_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb02_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[437].dn"
+connectAttr "|WhiteboxHumanCharacterGRP|WhiteboxHumanCharacter1:CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL_GRP|WhiteboxHumanCharacter1:R_Hand_CTRL|WhiteboxHumanCharacter1:R_Thumb01_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb01_CTRL|WhiteboxHumanCharacter1:R_Thumb02_CTRL_GRP|WhiteboxHumanCharacter1:R_Thumb02_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL|WhiteboxHumanCharacter1:R_Thumb03_CTRL.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[437].dn"
 		;
 connectAttr "WhiteboxHumanCharacter1:R_Thumb03_CTRLShape.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[438].dn"
 		;
